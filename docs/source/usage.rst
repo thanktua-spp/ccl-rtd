@@ -37,7 +37,7 @@ For example:
 Using tabs
 ----------
 
-You can also use tabs to organize your content. For example, here's a
+You can also use tabs to organize your content. For example, here's how to use tabs
 
 .. tabs::
 
@@ -45,25 +45,31 @@ You can also use tabs to organize your content. For example, here's a
 
       This is how to write code in CCL-Maths.
 
-      >>> import lumache
-      >>> lumache.get_random_ingredients()
-      ['shells', 'gorgonzola', 'parsley']
+      .. code-block:: python
+
+         >>> import lumache
+         >>> lumache.get_random_ingredients()
+         ['shells', 'gorgonzola', 'parsley']
 
    .. tab:: Python
 
       This is how to write code in Python.
 
-      >>> import lumache
-      >>> lumache.get_random_ingredients()
-      ['shells', 'gorgonzola', 'parsley']
+      .. code-block:: python
+
+         >>> import lumache
+         >>> lumache.get_random_ingredients()
+         ['shells', 'gorgonzola', 'parsley']
 
    .. tab:: Matlab
 
       This is how to write code in Matlab.
 
-      >>> import lumache
-      >>> lumache.get_random_ingredients()
-      ['shells', 'gorgonzola', 'parsley']
+      .. code-block:: python
+
+         >>> import lumache
+         >>> lumache.get_random_ingredients()
+         ['shells', 'gorgonzola', 'parsley']
 
 
 
