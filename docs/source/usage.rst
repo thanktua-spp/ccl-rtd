@@ -45,6 +45,8 @@ You can also write equations in your documentation. For example, here's a
 
 
 
+Using tabs
+----------
 
 .. tabs::
 
