@@ -48,6 +48,8 @@ You can also write equations in your documentation. For example, here's a
 Using tabs
 ----------
 
+You can use tabs to display code in multiple languages. For example:
+
 .. tabs::
 
    .. tab:: CCL-Maths
@@ -60,20 +62,20 @@ Using tabs
          lumache.get_random_ingredients()
          # Output: ['shells', 'gorgonzola', 'parsley']
 
-   .. tab:: Python
+   .. .. tab:: Python
 
-      This is how to write code in Python.
+   ..    This is how to write code in Python.
 
-      .. code-block:: python
+   ..    .. code-block:: python
 
-         import lumache
-         lumache.get_random_ingredients()
-         # Output: ['shells', 'gorgonzola', 'parsley']
+   ..       import lumache
+   ..       lumache.get_random_ingredients()
+   ..       # Output: ['shells', 'gorgonzola', 'parsley']
 
-   .. tab:: Matlab
+   .. .. tab:: Matlab
 
-      This is how to write code in Matlab.
+   ..    This is how to write code in Matlab.
 
-      .. code-block:: matlab
+   ..    .. code-block:: matlab
 
-         disp('This is an example of Matlab code.')
+   ..       disp('This is an example of Matlab code.')
