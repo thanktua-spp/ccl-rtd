@@ -34,10 +34,17 @@ For example:
 
 
 
-Using tabs
-----------
+Writing Eqautions
+-----------------
 
-You can also use tabs to organize your content. For example, here's how to use tabs
+You can also write equations in your documentation. For example, here's a
+
+.. math::
+
+   \int_{-\infty}^{\infty} e^{-x^2} dx = \sqrt{\pi}
+
+
+
 
 .. tabs::
 
@@ -47,9 +54,9 @@ You can also use tabs to organize your content. For example, here's how to use t
 
       .. code-block:: python
 
-         >>> import lumache
-         >>> lumache.get_random_ingredients()
-         ['shells', 'gorgonzola', 'parsley']
+         import lumache
+         lumache.get_random_ingredients()
+         # Output: ['shells', 'gorgonzola', 'parsley']
 
    .. tab:: Python
 
@@ -57,27 +64,14 @@ You can also use tabs to organize your content. For example, here's how to use t
 
       .. code-block:: python
 
-         >>> import lumache
-         >>> lumache.get_random_ingredients()
-         ['shells', 'gorgonzola', 'parsley']
+         import lumache
+         lumache.get_random_ingredients()
+         # Output: ['shells', 'gorgonzola', 'parsley']
 
    .. tab:: Matlab
 
       This is how to write code in Matlab.
 
-      .. code-block:: python
+      .. code-block:: matlab
 
-         >>> import lumache
-         >>> lumache.get_random_ingredients()
-         ['shells', 'gorgonzola', 'parsley']
-
-
-
-Writing Eqautions
------------------
-
-You can also write equations in your documentation. For example, here's a
-
-.. math::
-
-   \int_{-\infty}^{\infty} e^{-x^2} dx = \sqrt{\pi}
+         disp('This is an example of Matlab code.')
