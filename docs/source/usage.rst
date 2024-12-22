@@ -64,3 +64,14 @@ You can also use tabs to organize your content. For example, here's a
       >>> import lumache
       >>> lumache.get_random_ingredients()
       ['shells', 'gorgonzola', 'parsley']
+
+
+
+Writing Eqautions
+-----------------
+
+You can also write equations in your documentation. For example, here's a
+
+.. math::
+
+   \int_{-\infty}^{\infty} e^{-x^2} dx = \sqrt{\pi}
