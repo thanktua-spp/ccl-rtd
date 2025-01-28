@@ -1,4 +1,4 @@
-Matrix
+Usage
 =====
 
 .. _installation:
