@@ -19,7 +19,7 @@ Contents
 .. toctree::
 
    usage
-   Matrix
+   matrix
    api
 
 
