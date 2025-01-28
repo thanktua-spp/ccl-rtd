@@ -20,6 +20,7 @@ Contents
 
    usage
    matrix
+   non_linear_system
    api
 
 
