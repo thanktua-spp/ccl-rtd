@@ -20,6 +20,7 @@ Key Concepts:
 
 
 Applications:
+
 - Physics: Describing forces, analyzing electrical circuits, and modeling quantum mechanics.   
 - Computer Graphics: Representing images, performing transformations (rotations, scaling), and rendering 3D graphics.   
 - Machine Learning: Representing data, training models, and making predictions.   
