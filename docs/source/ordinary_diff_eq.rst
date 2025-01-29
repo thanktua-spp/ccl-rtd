@@ -1,10 +1,7 @@
 Ordinary Differential Equation
 ==============================
 
- Ordinary Differential Equations (ODEs) are equations that relate a function 
-to its derivatives. In simpler terms, they describe how a quantity changes 
-with respect to another. These equations are fundamental in various fields 
-of science and engineering, from physics and biology to economics and finance.   
+ Ordinary Differential Equations (ODEs) are equations that relate a function to its derivatives. In simpler terms, they describe how a quantity changes with respect to another. These equations are fundamental in various fields of science and engineering, from physics and biology to economics and finance.   
 
     Key Concepts:
     -------------
