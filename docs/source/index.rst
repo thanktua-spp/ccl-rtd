@@ -26,9 +26,12 @@ Contents
 
 .. toctree::
 
-   Matrix
-   non_linear_system
-   ordinary_diff_eq
+   Linear_Algerba
+   Special_Functions
+   Polynomial_Arithmetic
+   Numerical_Integration
+   Ordinary_Differential_Equation
+   Numerical_Laplace_Transform_Inversion
    api
 
 
