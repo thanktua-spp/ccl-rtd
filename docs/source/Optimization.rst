@@ -1,9 +1,39 @@
+Optimzation
+============
+
+Optimization is a fundamental area of mathematics and computer science that deals with finding the best possible solution to a given problem. This often involves maximizing or minimizing an objective function subject to certain constraints.
+
+Key Concepts:
+
+Objective Function: The function that we aim to optimize (maximize or minimize).
+Constraints: Limitations or restrictions that must be satisfied by the solution.
+Optimization Algorithms: Iterative methods used to find the optimal solution. Common approaches include:
+Gradient Descent: A first-order iterative optimization algorithm that iteratively moves in the direction of the steepest descent of the objective function.
+Newton's Method: A second-order iterative optimization algorithm that uses the gradient and Hessian matrix of the objective function to find the optimal solution more quickly.
+Sequential Quadratic Programming (SQP): A powerful algorithm for constrained nonlinear optimization that solves a sequence of quadratic programming subproblems to approximate the original problem.
+Genetic Algorithms: Inspired by natural selection, these algorithms use concepts like mutation and crossover to evolve a population of solutions towards the optimal one.
+Particle Swarm Optimization: A nature-inspired algorithm that simulates the social behavior of bird flocks or fish schools to find the optimal solution.
+Linear Programming: A method for solving optimization problems where the objective function and constraints are linear.
+Applications:
+
+Engineering: Designing structures, optimizing control systems, and finding the most efficient use of resources.
+Machine Learning: Training machine learning models, selecting optimal hyperparameters, and feature selection.
+Finance: Portfolio optimization, risk management, and algorithmic trading.
+Operations Research: Supply chain management, scheduling, and resource allocation.
+Root Finding as Optimization:
+
+Finding the roots of an equation can be viewed as an optimization problem. We can define an objective function as the square of the equation, and the optimization problem becomes finding the values of the variables that minimize this objective function to zero.
+
+Least Squares Curve Fitting:
+
+Least squares curve fitting is a technique used to find the best-fitting curve for a set of data points. It is an optimization problem where the objective function is the sum of the squared differences between the observed data points and the values predicted by the curve. The goal is to find the parameters of the curve that minimize this sum of squared errors.
 Roots of Equations
 ==================
 
 
 Root of an Equation
 -------------------
+
 
 Root of System of Nonlinear Equation
 ------------------------------------
@@ -14,9 +44,8 @@ Root of System of Nonlinear Equation
 .. math:: x = [0.1, 0.1, -0.1]^T
 
 
-
 .. tabs::
-
+   
    .. tab:: CCL-Maths
 
       CCL-maths Implementation
