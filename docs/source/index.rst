@@ -18,7 +18,7 @@ Contents
 
 .. toctree::
 
-   usage
+   intro
    matrix
    non_linear_system
    ordinary_diff_eq
