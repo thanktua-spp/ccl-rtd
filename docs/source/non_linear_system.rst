@@ -26,10 +26,9 @@ You can use tabs to display code in multiple languages. For example:
       .. code-block:: C#
 
          // import libraries
-         using CypherCrescent.MathematicsLibrary;
          using System;
+         using CypherCrescent.MathematicsLibrary;
          using static System.Math;
-         using static MathsChart.Chart;
 
          // define the function
          ColVec fun(ColVec x)
