@@ -7,7 +7,6 @@ Numerical integration, also known as quadrature, is a collection of techniques u
 -The function is only known at specific points: Data might be collected experimentally or through simulations.   
 
 Key Concepts:
-
 -Approximation: Numerical integration methods approximate the area under the curve of a function by dividing it into smaller shapes (rectangles, trapezoids, etc.) and summing their areas.   
 -Accuracy: The accuracy of the approximation depends on the method used, the number of subdivisions, and the smoothness of the function.
 
