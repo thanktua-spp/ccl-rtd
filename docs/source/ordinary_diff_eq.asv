@@ -20,16 +20,16 @@ They can help us understand:  
 Types of ODEs:
     * First-Order ODEs: Involve only the first derivative of the function.
     * Higher-Order ODEs: Involve second, third, or higher-order derivatives.   
-    * Linear ODEs: Can be expressed as a linear combination of the function and its derivatives.   
-    * Nonlinear ODEs: Contain nonlinear combination of the function and its derivatives.
+    * Linear ODEs: Have terms containing only linear combination of the function and its derivatives.   
+    * Nonlinear ODEs: Have terms containing nonlinear combination of the function and its derivatives.
     
 Solving ODEs:
     Methods for solving ODE falls into two broad categories:
     
     Analytical Methods:
-        Separation of Variables: For certain first-order ODEs.   
-        Integrating Factors: For linear first-order ODEs.   
-        Laplace Transforms: For linear ODEs. 
+        - Separation of Variables: For certain first-order ODEs.   
+        - Integrating Factors: For linear first-order ODEs.   
+        - Laplace Transforms: For linear ODEs. 
   
     Numerical Methods: 
         For complex ODEs that cannot be solved analytically.
@@ -43,10 +43,10 @@ Visualizing Solutions:
 
 
 
-Equation
+First Order ODE
 ------------
 
-.. math:: 3x_1 - \cos(x_2 x_3) - \frac{1}{2} = 0
+.. math:: \frac{dy}{dt} = 
 .. math:: x_1^2 - 81(x_2+0.1)^2 + \sin(x_3) + 1.06 = 0
 .. math:: e^{x_1x_2} + 20x_3 + \frac{10\pi-3}{3} = 0
 .. math:: x = [0.1, 0.1, -0.1]^T
@@ -71,15 +71,10 @@ You can use tabs to display code in multiple languages. For example:
          using static System.Math;
 
          // define the function
-         ColVec fun(ColVec x)
-         {
-             double[] res;
-             double x1 = x[0], x2 = x[1], x3 = x[2];
-             res = [3 * x1 - Cos(x2 * x3) - 0.5,
-                    x1*x1 - 81*Pow(x2 + 0.1, 2) + Sin(x3) + 1.06,
-                    Exp(-x1 * x2) + 20 * x3 + (10 * PI - 3) / 3];
-             return res;
-         };
+         double a = 0.25, y0 = 15.9;
+double dydt(double t, double y) => 2 * (a - t) * y * y;
+Ode.Set options = new() { Stats = true };
+Ode.Result result; ChartHandle plt;
             
          // set initial guess
          double[] x0 = [0.1, 0.1, -0.1];

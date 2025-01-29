@@ -43,13 +43,11 @@ Visualizing Solutions:
 
 
 
-Equation
+First Order ODE
 ------------
 
-.. math:: 3x_1 - \cos(x_2 x_3) - \frac{1}{2} = 0
-.. math:: x_1^2 - 81(x_2+0.1)^2 + \sin(x_3) + 1.06 = 0
-.. math:: e^{x_1x_2} + 20x_3 + \frac{10\pi-3}{3} = 0
-.. math:: x = [0.1, 0.1, -0.1]^T
+.. math:: \frac{dy}{dt} = 2 * (a - t) * y * y;
+.. math:: a = 0.25; y0 = 15.9; t = [0, 1]
 
 
 Code for the Solution
@@ -64,36 +62,36 @@ You can use tabs to display code in multiple languages. For example:
       CCL-maths Implementation
 
       .. code-block:: C#
-
+         
          // import libraries
          using System;
          using CypherCrescent.MathematicsLibrary;
          using static System.Math;
+         using static MathsChart.Chart;
 
-         // define the function
-         ColVec fun(ColVec x)
-         {
-             double[] res;
-             double x1 = x[0], x2 = x[1], x3 = x[2];
-             res = [3 * x1 - Cos(x2 * x3) - 0.5,
-                    x1*x1 - 81*Pow(x2 + 0.1, 2) + Sin(x3) + 1.06,
-                    Exp(-x1 * x2) + 20 * x3 + (10 * PI - 3) / 3];
-             return res;
-         };
-            
-         // set initial guess
-         double[] x0 = [0.1, 0.1, -0.1];
-         
-         // call the solver
-         ColVec x = Solvers.FSolve(fun, x0);
+         // define the ODE
+         double a = 0.25, y0 = 15.9;
+         double dydt(double t, double y) => 2 * (a - t) * y * y;
 
-         // display the result
-         Console.WriteLine(x);
+         // solve ODE 
+         // Ode.solverName(odefun, initcon, time_interval)
+         Ode.Result result = Ode.Ode23(dydt, y0, [0, 1]);
 
-         # Output: 
-            0.5000
-            0.0000
-           -0.5236
+         // plot the result
+         var plt = Plot(result.X, result.Y, "-o");
+         plt.XLabel = "t";
+         plt.YLabel = "y";
+         plt.Title = "Tesing-Ode23.png";
+         plt.SaveFig(plt.Title + ".png");
+         plt.Show();
+
+     .. figure:: images/Tesing-Ode23.png
+   :width: 80%
+   :align: center
+   :alt: Tesing-Ode23.png
+
+   Tesing-Ode23.png
+     
 
    .. tab:: Python
 
@@ -151,9 +149,3 @@ You can use tabs to display code in multiple languages. For example:
             -0.5236
 
 
-.. figure:: images/github-template.png
-   :width: 80%
-   :align: center
-   :alt: GitHub template for the tutorial
-
-   GitHub template for the tutorial
