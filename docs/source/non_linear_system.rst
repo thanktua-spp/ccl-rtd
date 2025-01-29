@@ -38,7 +38,7 @@ You can use tabs to display code in multiple languages. For example:
              double x1 = x[0], x2 = x[1], x3 = x[2];
              res = [3 * x1 - Cos(x2 * x3) - 0.5,
                     x1*x1 - 81*Pow(x2 + 0.1, 2) + Sin(x3) + 1.06,
-                    Exp(x1 * x3) + 20 * x3 + (10 * PI - 3) / 3];
+                    Exp(-x1 * x2) + 20 * x3 + (10 * PI - 3) / 3];
              return res;
          };
             
