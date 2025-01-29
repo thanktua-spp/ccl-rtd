@@ -54,6 +54,7 @@ The transistor amplifier circuit contains six resistors, three capacitors, and a
         
         ColVec dudt(double t, ColVec u)
         {
+            double[] du;
             double Ue = 0.4 * Sin(200 * pi * t),
                    f23 = beta * (Exp((u[1] - u[2]) / Uf) - 1);
             double[] du = [ -(Ue - u[0])/R0,
@@ -68,7 +69,7 @@ The transistor amplifier circuit contains six resistors, three capacitors, and a
         
         Ode.Set options = new() { Stats = true, RelTol = 1e-3, MassType = Ode.MassType.Constant };
         
-        var TY = Ode.Dae45(dudt, Mass, y0, tspan, options);
+        var TY = Ode.Dae12(dudt, Mass, y0, tspan, options);
         Console.WriteLine(TY.Statistics);
         
         ColVec X = TY.X, U5 = TY.Y["", 4];
@@ -81,8 +82,8 @@ The transistor amplifier circuit contains six resistors, three capacitors, and a
         };
         plt.XLabel = "Time t";
         plt.YLabel = "Solution y";
-        plt.Title = "One Transistor Amplifier DAE Problem-DAE45";
-        plt.SaveFig("One Transistor Amplifier DAE Problem-DAE45.png");
+        plt.Title = "One Transistor Amplifier DAE Problem-DAE12";
+        plt.SaveFig("One Transistor Amplifier DAE Problem-DAE12.png");
         plt.Show();
         
 
