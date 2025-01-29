@@ -21,6 +21,7 @@ Contents
    usage
    matrix
    non_linear_system
+   ordinary_diff_eq
    api
 
 
