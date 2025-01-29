@@ -6,7 +6,7 @@ Linear algebra is a cornerstone of modern mathematics, providing a framework for
 
 
 Matrix
-======
+------
 
 Matrix: A Powerful Tool in Mathematics
 
