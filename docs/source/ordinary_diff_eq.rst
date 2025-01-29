@@ -64,9 +64,7 @@ You can use tabs to display code in multiple languages. For example:
       .. code-block:: C#
          
          // import libraries
-         using System;
          using CypherCrescent.MathematicsLibrary;
-         using static System.Math;
          using static MathsChart.Chart;
 
          // define the ODE
@@ -80,7 +78,6 @@ You can use tabs to display code in multiple languages. For example:
          double[] t_span = [0, 1] 
 
          // solve ODE 
-         // Ode.solverName(odefun, initcon, time_interval)
          Ode.Result result = Ode.Ode23(dydt, y0, t_span);
 
          // plot the result
