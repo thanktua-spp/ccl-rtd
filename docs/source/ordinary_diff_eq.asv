@@ -1,20 +1,15 @@
 Ordinary Differential Equation
 ==============================
 
- Ordinary Differential Equations (ODEs) are equations that relate a function 
-to its derivatives. In simpler terms, they describe how a quantity changes 
-with respect to another. These equations are fundamental in various fields 
-of science and engineering, from physics and biology to economics and finance.   
+Ordinary Differential Equations (ODEs) are equations that relate a function to its derivatives. In simpler terms, they describe how a quantity changes with respect to another. These equations are fundamental in various fields of science and engineering, from physics and biology to economics and finance.   
 
-    Key Concepts:
-    -------------
+Key Concepts:
     
-        Independent Variable: The variable that the function depends on (often denoted by x or t).   
-        Dependent Variable: The function itself (often denoted by y).
-        Derivative: The rate of change of the dependent variable with respect to the independent variable.   
+Independent Variable: The variable that the function depends on (often denoted by x or t).   
+Dependent Variable: The function itself (often denoted by y).
+Derivative: The rate of change of the dependent variable with respect to the independent variable.   
     
     Why are ODEs important?
-    
     ODEs provide a powerful framework for modeling real-world phenomena. 
     
     They can help us understand:   
@@ -33,13 +28,14 @@ of science and engineering, from physics and biology to economics and finance. �
     
 
     Solving ODEs:
+    Methods for solving ODE falls into two broad categories:
     
-    Finding solutions to ODEs can be challenging, but various techniques exist, including:
-    
-    Separation of Variables: For certain first-order ODEs.   
-    Integrating Factors: For linear first-order ODEs.   
-    Laplace Transforms: For linear ODEs with constant coefficients.   
-    Numerical Methods: For complex ODEs that cannot be solved analytically.
+        Analytical Methods:
+            Separation of Variables: For certain first-order ODEs.   
+            Integrating Factors: For linear first-order ODEs.   
+            Laplace Transforms: For linear ODEs with constant coefficients. 
+  
+        Numerical Methods: For complex ODEs that cannot be solved analytically.
     
     Visualizing Solutions:
     ----------------------
