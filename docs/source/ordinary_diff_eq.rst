@@ -18,18 +18,18 @@ They can help us understand:  
     * Heat Transfer: The distribution of heat in a material.   
     
 Types of ODEs:
-    First-Order ODEs: Involve only the first derivative of the function.
-    Higher-Order ODEs: Involve second, third, or higher-order derivatives.   
-    Linear ODEs: Can be expressed as a linear combination of the function and its derivatives.   
-    Nonlinear ODEs: Do not exhibit linearity.
+    * First-Order ODEs: Involve only the first derivative of the function.
+    * Higher-Order ODEs: Involve second, third, or higher-order derivatives.   
+    * Linear ODEs: Have terms containing only linear combination of the function and its derivatives.   
+    * Nonlinear ODEs: Have terms containing nonlinear combination of the function and its derivatives.
     
 Solving ODEs:
     Methods for solving ODE falls into two broad categories:
     
     Analytical Methods:
-        Separation of Variables: For certain first-order ODEs.   
-        Integrating Factors: For linear first-order ODEs.   
-        Laplace Transforms: For linear ODEs. 
+        - Separation of Variables: For certain first-order ODEs.   
+        - Integrating Factors: For linear first-order ODEs.   
+        - Laplace Transforms: For linear ODEs. 
   
     Numerical Methods: 
         For complex ODEs that cannot be solved analytically.
