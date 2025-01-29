@@ -5,7 +5,7 @@ CCL-Math - A Comprehensive C# Mathematics Library
 
 CCL-Math is a powerful and versatile C# library designed to provide a wide range of mathematical functionalities for researchers, engineers, and developers. It encompasses a comprehensive collection of algorithms and tools spanning various domains of mathematics, including:
 
-- Linear Algebra: Efficient handling of dense and sparse matrices, enabling operations such as matrix multiplication, inversion, eigenvalue/eigenvector decomposition, and more.
+- Linear Algebra: Efficient handling of dense and sparse matrices, enabling operations such as matrix multiplication, inversion, LU/Cholesky decomposition, Matrix reordering for reduced fill in, and more.
 - Special Functions: Access to a rich set of special functions, including Bessel functions, Gamma function, error function, and many others, for advanced mathematical modeling.
 - Numerical Integration: Implementations of various numerical integration methods, such as trapezoidal rule, Simpson's rule, and more, for accurate approximation of definite integrals.
 - Ordinary Differential Equation (ODE) Solvers: Robust solvers for both initial value problems and boundary value problems, allowing you to model and analyze dynamic systems.
