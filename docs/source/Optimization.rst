@@ -5,7 +5,7 @@ Optimization is a fundamental area of mathematics and computer science that deal
 
 Key Concepts:
 
-- Objective Function: The function that we aim to optimize (maximize or minimize).
+- *Objective Function*: The function that we aim to optimize (maximize or minimize).
 - Constraints: Limitations or restrictions that must be satisfied by the solution.
 - Optimization Algorithms: Iterative methods used to find the optimal solution. Common approaches include:
 - Gradient Descent: A first-order iterative optimization algorithm that iteratively moves in the direction of the steepest descent of the objective function.
