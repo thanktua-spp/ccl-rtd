@@ -167,6 +167,7 @@ The mathematical model of a simple harmonic oscilator (SHO) results in a second 
 To solve this, we first transform the problem into a system of first order differential equations:
 
 Let
+
 .. math:: v = \frac{dy}{dt}
 hence
 
