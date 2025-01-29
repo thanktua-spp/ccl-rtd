@@ -27,6 +27,7 @@ Contents
 .. toctree::
 
    Linear_Algerba
+   Optimization
    Special_Functions
    Polynomial_Arithmetic
    Numerical_Integration
