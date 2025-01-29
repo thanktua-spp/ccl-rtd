@@ -161,21 +161,21 @@ Second Order ODE
 ---------------
 The mathematical model of a simple harmonic oscilator (SHO) results in a second order differential equation
 
-.. math:: \frac{d^2y}{dt^2} = -4y;
+.. math:: \frac{d^2y}{dt^2} = -4y
 .. math:: y_0 = 0; y'_0 = 5; t = [0, 3];
 
 To solve this, we first transform the problem into a system of first order differential equations:
 
-.. math:: Let v = \frac{dy}{dt};
+.. math:: Let: v = \frac{dy}{dt}
 hence
 
-.. math:: \frac{dv}{dt} = -4y;
+.. math:: \frac{dv}{dt} = -4y
 .. math:: y_0 = 0; v_0 = 5; 
 
 Now we have 2 equations
 
-.. math:: \frac{dy}{dt} = v;
-.. math:: \frac{dv}{dt} = -4y;
+.. math:: \frac{dy}{dt} = v
+.. math:: \frac{dv}{dt} = -4y
 .. math:: y_0 = 0; v_0 = 5; 
 
 
