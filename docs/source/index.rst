@@ -29,7 +29,7 @@ Contents
    Linear_Algerba
    Optimization
    Special_Functions
-   Polynomial_Arithmetic
+   Polynomial_Computation
    Numerical_Integration
    Ordinary_Differential_Equation
    Numerical_Laplace_Transform_Inversion
