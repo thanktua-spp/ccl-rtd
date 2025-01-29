@@ -59,9 +59,25 @@ You can use tabs to display code in multiple languages. For example:
 
       .. code-block:: python
 
-         import lumache
-         lumache.get_random_ingredients()
-         # Output: ['shells', 'gorgonzola', 'parsley']
+         import numpy as np
+         from scipy.optimize import fsolve
+
+         # define function
+         def func(x):
+             x1 = x[0]; x2 = x[1]; x3 = x[2]; pi = np.pi;
+             return [3 * x1 - np.cos(x2 * x3) - 0.5,
+                     x1*x1 - 81*np.pow(x2 + 0.1, 2) + np.sin(x3) + 1.06,
+                     np.exp(-x1 * x2) + 20 * x3 + (10 * pi - 3) / 3]
+
+
+         # set inigial guess
+         x0 = [0.1, 0.1, -0.1]
+
+         # call the solver
+         root = fsolve(func, x0)
+
+         # Output: 
+         array([0.5000, 0.0000, -0.5236])
 
    .. tab:: Matlab
 
