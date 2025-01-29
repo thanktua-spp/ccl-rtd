@@ -2,11 +2,15 @@ Roots of Equations
 ==================
 
 
-Root of an Equation
--------------------
 
-Root of System of Nonlinear Equation
-------------------------------------
+
+
+NonLinear System
+=================
+
+
+Equation
+------------
 
 .. math:: 3x_1 - \cos(x_2 x_3) - \frac{1}{2} = 0
 .. math:: x_1^2 - 81(x_2+0.1)^2 + \sin(x_3) + 1.06 = 0
@@ -14,6 +18,10 @@ Root of System of Nonlinear Equation
 .. math:: x = [0.1, 0.1, -0.1]^T
 
 
+Code for the Solution
+----------
+
+You can use tabs to display code in multiple languages. For example:
 
 .. tabs::
 
@@ -109,12 +117,9 @@ Root of System of Nonlinear Equation
             -0.5236
 
 
-Linear Programming
--------------------
+.. figure:: images/github-template.png
+   :width: 80%
+   :align: center
+   :alt: GitHub template for the tutorial
 
-Sequential Quadratic Programming
---------------------------------
-
-Least Square Fitting
----------------------
-
+   GitHub template for the tutorial
