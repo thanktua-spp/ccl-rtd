@@ -9,38 +9,35 @@ Key Concepts:
     3. Derivative: The rate of change of the dependent variable with respect to the independent variable.   
     
 Why are ODEs important?
-ODEs provide a powerful framework for modeling real-world phenomena. 
+    ODEs provide a powerful framework for modeling real-world phenomena. 
 
 They can help us understand:   
-Growth and Decay: Population growth, radioactive decay, and chemical reactions.
-Motion: The movement of objects under the influence of forces (Newton's laws of motion).   
-Electrical Circuits: The flow of current and voltage in circuits.   
-Heat Transfer: The distribution of heat in a material.   
+    Growth and Decay: Population growth, radioactive decay, and chemical reactions.
+    Motion: The movement of objects under the influence of forces (Newton's laws of motion).   
+    Electrical Circuits: The flow of current and voltage in circuits.   
+    Heat Transfer: The distribution of heat in a material.   
     
-    Types of ODEs:
-    --------------
-    
+Types of ODEs:
     First-Order ODEs: Involve only the first derivative of the function.
     Higher-Order ODEs: Involve second, third, or higher-order derivatives.   
     Linear ODEs: Can be expressed as a linear combination of the function and its derivatives.   
     Nonlinear ODEs: Do not exhibit linearity.
     
-
-    Solving ODEs:
+Solving ODEs:
     Methods for solving ODE falls into two broad categories:
     
-        Analytical Methods:
-            Separation of Variables: For certain first-order ODEs.   
-            Integrating Factors: For linear first-order ODEs.   
-            Laplace Transforms: For linear ODEs with constant coefficients. 
+    Analytical Methods:
+        Separation of Variables: For certain first-order ODEs.   
+        Integrating Factors: For linear first-order ODEs.   
+        Laplace Transforms: For linear ODEs. 
   
-        Numerical Methods: For complex ODEs that cannot be solved analytically.
+    Numerical Methods: 
+        For complex ODEs that cannot be solved analytically.
     
-    Visualizing Solutions:
-    ----------------------
-        Solutions to ODEs can often be visualized as curves or trajectories 
-        in the plane, providing insights into the behavior of the system 
-        being modeled.
+Visualizing Solutions:
+    Solutions to ODEs can often be visualized as curves or trajectories 
+    in the plane, providing insights into the behavior of the system 
+    being modeled.
 
    
 
