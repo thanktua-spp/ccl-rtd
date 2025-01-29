@@ -48,11 +48,10 @@ You can use tabs to display code in multiple languages. For example:
          // call the solver
          var x = Solvers.FSolve(fun, x0);
 
-         # Output: [   0.5000
-                       0.0000
-                      -0.5236
-                    
-                    ]
+         # Output: 
+                     0.5000
+                     0.0000
+                    -0.5236
 
    .. tab:: Python
 
