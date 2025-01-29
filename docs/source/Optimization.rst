@@ -48,8 +48,7 @@ Root of System of Nonlinear Equation
 .. tabs::
    
    .. tab:: CCL-Maths
-
-      CCL-maths Implementation
+      CCL-Math Implementation
 
       .. code-block:: C#
 
