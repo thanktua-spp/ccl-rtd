@@ -23,10 +23,26 @@ You can use tabs to display code in multiple languages. For example:
 
       This is how to write code in CCL-Maths.
 
-      .. code-block:: python
+      .. code-block:: C#
 
-         import lumache
-         lumache.get_random_ingredients()
+         // define the lambda function handle
+         ColVec fun(ColVec x)
+         {
+             double[] res;
+             double x1 = x[0], x2 = x[1], x3 = x[2];
+             res = [3 * x1 - Cos(x2 * x3) - 0.5,
+                    x1*x1 - 81*Pow(x2 + 0.1, 2) + Sin(x3) + 1.06,
+                    Exp(x1 * x3) + 20 * x3 + (10 * PI - 3) / 3];
+             return res;
+         };
+            
+            
+         // set initial guess
+         double[] x0 = [0.1, 0.1, -0.1];
+         
+         // call the solver
+         var x = Solvers.FSolve(fun, x0);
+
          # Output: ['shells', 'gorgonzola', 'parsley']
 
    .. tab:: Python
@@ -45,7 +61,7 @@ You can use tabs to display code in multiple languages. For example:
 
          % define the function handle
          f = @(x)[3*x(1) - cos(x(2)*x(2)) - 1/2;
-                  x(1)^2 - 81(x(2)+0.1)^2 + \sin(x(3)) + 1.06;
+                  x(1)^2 - 81(x(2)+0.1)^2 + sin(x(3)) + 1.06;
                   e^(x(1)*x(2)) + 20*x(3) + (10*pi-3)/3];
          
          % set initial guess
