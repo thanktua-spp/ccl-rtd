@@ -70,12 +70,18 @@ You can use tabs to display code in multiple languages. For example:
          using static MathsChart.Chart;
 
          // define the ODE
-         double a = 0.25, y0 = 15.9;
+         double a = 0.25;
          double dydt(double t, double y) => 2 * (a - t) * y * y;
+
+         // set initial condition
+         double y0 = 15.9;
+
+         // set time span
+         double[] t_span = [0, 1] 
 
          // solve ODE 
          // Ode.solverName(odefun, initcon, time_interval)
-         Ode.Result result = Ode.Ode23(dydt, y0, [0, 1]);
+         Ode.Result result = Ode.Ode23(dydt, y0, t_span);
 
          // plot the result
          var plt = Plot(result.X, result.Y, "-o");
@@ -100,27 +106,39 @@ You can use tabs to display code in multiple languages. For example:
       .. code-block:: python
 
          import numpy as np
-         from scipy.optimize import fsolve
+         from scipy.integrate import solve_ivp
+         import matplotlib.pyplot as plt
 
          # define function
-         def func(x):
-             x1 = x[0]; x2 = x[1]; x3 = x[2]; pi = np.pi;
-             return [3 * x1 - np.cos(x2 * x3) - 0.5,
-                     x1*x1 - 81*(x2 + 0.1)**2 + np.sin(x3) + 1.06,
-                     np.exp(-x1 * x2) + 20 * x3 + (10 * pi - 3) / 3]
+         def dydt(t, y):
+             a = 0.25
+             return 2 * (a - t) * y **2;
 
 
-         # set inigial guess
-         x0 = [0.1, 0.1, -0.1]
+         # set inigial condition
+         y0 = 15.9
+
+         # set time span
+         t_span = [0, 10] 
 
          # call the solver
-         x = fsolve(func, x0)
+         sol = solve_ivp(dydt, t_span, y0)
             
          # display the result
-         print(x)
+         plt.plot(t, y)
+         plt.xlabel('Time (t)')
+         plt.ylabel('y(t)')
+         plt.title('Solving-with-Python-Ode23')
+         plt.savefig('Solving-with-Python-Ode23.png') 
+         plt.show()
 
-         # Output: 
-         [ 5.00000000e-01  1.38102142e-13 -5.23598776e-01]
+      .. figure:: images/Solving-with-Python-Ode23.png
+         :width: 80%
+         :align: center
+         :alt: Solving-with-Python-Ode23.png
+
+      Solving-with-Python-Ode23
+
 
    .. tab:: Matlab
 
