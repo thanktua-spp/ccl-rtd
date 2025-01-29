@@ -103,7 +103,7 @@ First Order ODE
            return 2 * (a - t) * y **2;
          
          
-         # set inigial condition
+         # set initial condition
          y0 = [15.9]
          
          # set time span
@@ -162,7 +162,7 @@ Second Order ODE
 The mathematical model of a simple harmonic oscilator (SHO) results in a second order differential equation:
 
 .. math:: \frac{d^2y}{dt^2} = -4y
-.. math:: y_0 = 0; y'_0 = 5; t = [0, 3];
+.. math:: y_0 = 0; y'_0 = 5; t = [0, 10];
 
 To solve this, we first transform the problem into a system of first order differential equations:
 
@@ -214,6 +214,7 @@ Now we have 2 equations
          plt.XLabel = "t";
          plt.YLabel = "y";
          plt.Title = "Solving-SHO-with-CCLMath-Ode45";
+         plt.Legend = new() { labels = ["y_1", "y_2"], alignment = "lowerright" };
          plt.SaveFig("Solving-SHO-with-CCLMath-Ode45.png");
          plt.Show();
 
