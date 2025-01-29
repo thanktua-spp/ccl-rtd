@@ -30,8 +30,6 @@ Least Squares Curve Fitting:
 Least squares curve fitting is a technique used to find the best-fitting curve for a set of data points. It is an optimization problem where the objective function is the sum of the squared differences between the observed data points and the values predicted by the curve. The goal is to find the parameters of the curve that minimize this sum of squared errors.
 
 
-Roots of Equations
-==================
 
 
 Root of an Equation
