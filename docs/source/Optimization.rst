@@ -55,8 +55,9 @@ Root of System of Nonlinear Equation
 
          // import libraries
          using System;
-         using CypherCrescent.MathematicsLibrary;
          using static System.Math;
+         using CypherCrescent.MathematicsLibrary;
+         using static MathsChart.Chart;
 
          // define the function
          ColVec fun(ColVec x)
