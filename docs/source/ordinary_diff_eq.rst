@@ -12,10 +12,10 @@ Why are ODEs important?
     ODEs provide a powerful framework for modeling real-world phenomena. 
 
 They can help us understand:   
-    Growth and Decay: Population growth, radioactive decay, and chemical reactions.
-    Motion: The movement of objects under the influence of forces (Newton's laws of motion).   
-    Electrical Circuits: The flow of current and voltage in circuits.   
-    Heat Transfer: The distribution of heat in a material.   
+    * Growth and Decay: Population growth, radioactive decay, and chemical reactions.
+    * Motion: The movement of objects under the influence of forces (Newton's laws of motion).   
+    * Electrical Circuits: The flow of current and voltage in circuits.   
+    * Heat Transfer: The distribution of heat in a material.   
     
 Types of ODEs:
     First-Order ODEs: Involve only the first derivative of the function.
