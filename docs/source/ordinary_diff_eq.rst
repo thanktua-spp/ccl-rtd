@@ -81,14 +81,14 @@ You can use tabs to display code in multiple languages. For example:
          var plt = Plot(result.X, result.Y, "-o");
          plt.XLabel = "t";
          plt.YLabel = "y";
-         plt.Title = "Tesing-Ode23.png";
+         plt.Title = "Solving-with-CCLMath-Ode23";
          plt.SaveFig(plt.Title + ".png");
          plt.Show();
 
-     .. figure:: images/Tesing-Ode23.png
-   :width: 80%
-   :align: center
-   :alt: Tesing-Ode23.png
+      .. figure:: images/Tesing-Ode23.png
+         :width: 80%
+         :align: center
+         :alt: Tesing-Ode23.png
 
    Tesing-Ode23.png
      
@@ -129,23 +129,23 @@ You can use tabs to display code in multiple languages. For example:
       .. code-block:: matlab
 
          % define the function handle
-         f = @(x)[3*x(1) - cos(x(2)*x(2)) - 1/2;
-                  x(1)^2 - 81*(x(2)+0.1)^2 + sin(x(3)) + 1.06;
-                  exp(x(1)*x(2)) + 20*x(3) + (10*pi-3)/3];
+         a = 0.25;
+         dydt = @(t,y) 2*(a - t)*y^2;
          
-         % set initial guess
-         x0 = [0.1; 0.1; -0.1];
-
+         % set initial condition
+         y0 = 15.9;
+         
          % call the solver
-         x = fsolve(f, x0);
-
+         [T, Y] = ode23(dydt, [0, 1], y0);
+         
          % display the result
-         disp(x);
+         plot(T, Y, '-o');
+         xlabel('t')
+         ylabel('y')
+         title('Solving-with-Matlab-Ode23')
+         saveas(gcf, 'Solving-with-Matlab-Ode23', 'png')
 
-         # Output: 
-
-             0.5000
-             0.0000
-            -0.5236
-
-
+      .. figure:: images/Tesing-Ode23.png
+         :width: 80%
+         :align: center
+         :alt: Tesing-Ode23.png
