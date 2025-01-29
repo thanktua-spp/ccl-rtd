@@ -90,7 +90,7 @@ You can use tabs to display code in multiple languages. For example:
          :align: center
          :alt: Tesing-Ode23.png
 
-   Tesing-Ode23.png
+       Solving-with-CCLMath-Ode23
      
 
    .. tab:: Python
@@ -145,7 +145,9 @@ You can use tabs to display code in multiple languages. For example:
          title('Solving-with-Matlab-Ode23')
          saveas(gcf, 'Solving-with-Matlab-Ode23', 'png')
 
-      .. figure:: images/Tesing-Ode23.png
+      .. figure:: images/Solving-with-Matlab-Ode23.png
          :width: 80%
          :align: center
-         :alt: Tesing-Ode23.png
+         :alt: Solving-with-Matlab-Ode23.png
+
+      Solving-with-Matlab-Ode23
