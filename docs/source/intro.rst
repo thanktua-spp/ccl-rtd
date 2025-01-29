@@ -11,6 +11,6 @@ CCL-Math is a powerful and versatile C# library designed to provide a wide range
 - Ordinary Differential Equation (ODE) Solvers: Robust solvers for both initial value problems and boundary value problems, allowing you to model and analyze dynamic systems.
 - Numerical Laplace Transform Inversion: Efficient algorithms for inverting Laplace transforms, enabling the analysis of systems in the time domain.
 - Polynomial Arithmetic: Comprehensive support for polynomial operations, including convolution, deconvolution, root finding, and more, for signal processing and other applications.
-- Optimization: A suite of optimization algorithms, including linear and non-linear optimization methods, genetic algorithms, and particle swarm optimization, to find optimal solutions for various problems.
+- Optimization: A suite of optimization algorithms, including linear and non-linear optimization methods such as sequential quadratic programming and Levenberg Marquadt algorithm, genetic algorithms, and particle swarm optimization, to find optimal solutions for various problems.
 
 CCL-Math is built with a focus on performance, accuracy, and ease of use. It provides a well-documented API and is designed to be easily integrated into your C# projects. Whether you're working on scientific research, engineering simulations, or data analysis, CCL-Math can significantly enhance your productivity and accelerate your mathematical computations.
