@@ -25,7 +25,7 @@ You can use tabs to display code in multiple languages. For example:
 
       .. code-block:: C#
 
-         // import libraries
+      
          using CypherCrescent.MathematicsLibrary;
          using System;
          using static System.Math;
@@ -48,11 +48,7 @@ You can use tabs to display code in multiple languages. For example:
          // call the solver
          var x = Solvers.FSolve(fun, x0);
 
-         # Output: [   0.5000
-                       0.0000
-                      -0.5236
-                    
-                    ]
+         # Output: ['shells', 'gorgonzola', 'parsley']
 
    .. tab:: Python
 
