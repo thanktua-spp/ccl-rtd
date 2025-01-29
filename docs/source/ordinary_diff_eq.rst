@@ -168,10 +168,12 @@ To solve this, we first transform the problem into a system of first order diffe
 
 .. math:: Let v = \frac{dy}{dt};
 hence
+
 .. math:: \frac{dv}{dt} = -4y;
 .. math:: y_0 = 0; v_0 = 5; 
 
 Now we have 2 equations
+
 .. math:: \frac{dy}{dt} = v;
 .. math:: \frac{dv}{dt} = -4y;
 .. math:: y_0 = 0; v_0 = 5; 
