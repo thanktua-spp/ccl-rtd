@@ -31,7 +31,7 @@ You can use tabs to display code in multiple languages. For example:
          using static System.Math;
          using static MathsChart.Chart;
 
-         // define the lambda function handle
+         // define the function
          ColVec fun(ColVec x)
          {
              double[] res;
@@ -46,12 +46,15 @@ You can use tabs to display code in multiple languages. For example:
          double[] x0 = [0.1, 0.1, -0.1];
          
          // call the solver
-         var x = Solvers.FSolve(fun, x0);
+         ColVec x = Solvers.FSolve(fun, x0);
+
+         // display the result
+         Console.WriteLine(x);
 
          # Output: 
-                     0.5000
-                     0.0000
-                    -0.5236
+            0.5000
+            0.0000
+           -0.5236
 
    .. tab:: Python
 
@@ -74,10 +77,13 @@ You can use tabs to display code in multiple languages. For example:
          x0 = [0.1, 0.1, -0.1]
 
          # call the solver
-         root = fsolve(func, x0)
+         x = fsolve(func, x0)
+            
+         # display the result
+         print(x)
 
          # Output: 
-         array([ 5.00000000e-01,  1.38102142e-13, -5.23598776e-01])
+         [ 5.00000000e-01  1.38102142e-13 -5.23598776e-01]
 
    .. tab:: Matlab
 
@@ -94,8 +100,10 @@ You can use tabs to display code in multiple languages. For example:
          % call the solver
          x = fsolve(f, x0);
 
+         % display the result
+         disp(x);
+
          # Output: 
-         x =
 
              0.5000
              0.0000

@@ -7,4 +7,7 @@
  x0 = [0.1; 0.1; -0.1];
 
  % call the solver
- x = fsolve(f, x0)
+ x = fsolve(f, x0);
+
+ % display the result
+ disp(x)
