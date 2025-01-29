@@ -109,3 +109,11 @@ You can use tabs to display code in multiple languages. For example:
              0.5000
              0.0000
             -0.5236
+
+
+.. figure:: images/github-template.png
+   :width: 80%
+   :align: center
+   :alt: GitHub template for the tutorial
+
+   GitHub template for the tutorial
