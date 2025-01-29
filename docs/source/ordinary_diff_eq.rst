@@ -85,7 +85,7 @@ You can use tabs to display code in multiple languages. For example:
          plt.XLabel = "t";
          plt.YLabel = "y";
          plt.Title = "Solving-with-CCLMath-Ode23";
-         plt.SaveFig(plt.Title + ".png");
+         plt.SaveFig("Solving-with-CCLMath-Ode23.png");
          plt.Show();
 
       .. figure:: images/Solving-with-CCLMath-Ode23.png
