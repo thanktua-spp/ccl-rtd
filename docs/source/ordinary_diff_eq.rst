@@ -159,14 +159,15 @@ First Order ODE
 
 Second Order ODE
 ---------------
-The mathematical model of a simple harmonic oscilator (SHO) results in a second order differential equation
+The mathematical model of a simple harmonic oscilator (SHO) results in a second order differential equation:
 
 .. math:: \frac{d^2y}{dt^2} = -4y
 .. math:: y_0 = 0; y'_0 = 5; t = [0, 3];
 
 To solve this, we first transform the problem into a system of first order differential equations:
 
-.. math:: Let: v = \frac{dy}{dt}
+Let
+.. math:: v = \frac{dy}{dt}
 hence
 
 .. math:: \frac{dv}{dt} = -4y
