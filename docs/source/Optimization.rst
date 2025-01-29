@@ -42,7 +42,7 @@ Root of System of Nonlinear Equation
 .. math:: 3x_1 - \cos(x_2 x_3) - \frac{1}{2} = 0
 .. math:: x_1^2 - 81(x_2+0.1)^2 + \sin(x_3) + 1.06 = 0
 .. math:: e^{x_1x_2} + 20x_3 + \frac{10\pi-3}{3} = 0
-.. math:: x = [0.1, 0.1, -0.1]^T
+.. math:: x_0 = [0.1, 0.1, -0.1]^T
 
 
 .. tabs::
