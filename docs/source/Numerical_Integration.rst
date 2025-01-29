@@ -22,5 +22,3 @@ Applications:
 - Physics: Finding the center of mass, calculating probabilities in statistical mechanics.   
 - Finance: Pricing options and other financial derivatives.   
 - Computer Graphics: Rendering realistic images and animations.
-
-   
