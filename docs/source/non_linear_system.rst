@@ -66,7 +66,7 @@ You can use tabs to display code in multiple languages. For example:
          def func(x):
              x1 = x[0]; x2 = x[1]; x3 = x[2]; pi = np.pi;
              return [3 * x1 - np.cos(x2 * x3) - 0.5,
-                     x1*x1 - 81*np.pow(x2 + 0.1, 2) + np.sin(x3) + 1.06,
+                     x1*x1 - 81*(x2 + 0.1)**2 + np.sin(x3) + 1.06,
                      np.exp(-x1 * x2) + 20 * x3 + (10 * pi - 3) / 3]
 
 
@@ -77,7 +77,7 @@ You can use tabs to display code in multiple languages. For example:
          root = fsolve(func, x0)
 
          # Output: 
-         array([0.5000, 0.0000, -0.5236])
+         array([ 5.00000000e-01,  1.38102142e-13, -5.23598776e-01])
 
    .. tab:: Matlab
 
