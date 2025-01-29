@@ -1,7 +1,6 @@
 NonLinear System
 =================
 
-.. _installation:
 
 Equation
 ------------
