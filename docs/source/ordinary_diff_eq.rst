@@ -44,22 +44,15 @@ Visualizing Solutions:
 
 
 First Order ODE
-------------
+---------------
 
 .. math:: \frac{dy}{dt} = 2(a - t)y^2;
 .. math:: a = 0.25; y_0 = 15.9; t = [0, 1]
 
-
-Code for the Solution
-----------
-
-You can use tabs to display code in multiple languages. For example:
-
 .. tabs::
 
    .. tab:: CCL-Math
-
-      CCL-math Implementation
+      CCL-Math Implementation
 
       .. code-block:: C#
          
@@ -146,8 +139,11 @@ You can use tabs to display code in multiple languages. For example:
          % set initial condition
          y0 = 15.9;
          
+         % set time span
+         t_span = [0, 1];
+         
          % call the solver
-         [T, Y] = ode23(dydt, [0, 1], y0);
+         [T, Y] = ode23(dydt, t_span, y0);
          
          % display the result
          plot(T, Y, '-o');
@@ -160,3 +156,104 @@ You can use tabs to display code in multiple languages. For example:
          :width: 80%
          :align: center
          :alt: Solving-with-Matlab-Ode23.png
+
+Second Order ODE
+---------------
+The mathematical model of a simple harmonic oscilator (SHO) results in a second order differential equation
+
+.. math:: \frac{d^2y}{dt^2} = -4y;
+.. math:: y_0 = 0; y'_0 = 5; t = [0, 3];
+
+To solve this, we first transform the problem into a system of first order differential equations:
+
+.. math:: Let v = \frac{dy}{dt};
+hence
+.. math:: \frac{dv}{dt} = -4y;
+.. math:: y_0 = 0; v_0 = 5; 
+
+Now we have 2 equations
+.. math:: \frac{dy}{dt} = v;
+.. math:: \frac{dv}{dt} = -4y;
+.. math:: y_0 = 0; v_0 = 5; 
+
+
+.. tabs::
+
+   .. tab:: CCL-Math
+      CCL-Math Implementation
+
+      .. code-block:: C#
+         
+         // import libraries
+         using CypherCrescent.MathematicsLibrary;
+         using static MathsChart.Chart;
+
+         // define the ODE
+         ColVec dzdt(double t, ColVec z) 
+         {
+            double y = z[0], v = z[1];
+            double[] dz = [v, -4*y];
+            return dz;
+         }
+
+         // set initial condition
+         double[] z0 = [0, 5];
+
+         // set time span
+         double[] t_span = [0, 3];
+
+         // solve ODE 
+         Ode.Result result = Ode.Ode23(dzdt, z0, t_span);
+
+         // plot the result
+         var plt = Plot(result.X, result.Y, "-o");
+         plt.XLabel = "t";
+         plt.YLabel = "y";
+         plt.Title = "Solving-SHO-with-CCLMath-Ode45";
+         plt.SaveFig("Solving-SHO-with-CCLMath-Ode45.png");
+         plt.Show();
+
+      .. figure:: images/Solving-SHO-with-CCLMath-Ode45.png
+         :width: 80%
+         :align: center
+         :alt: Solving-SHO-with-CCLMath-Ode45.png
+     
+
+   .. tab:: Python
+
+      Python Implementation
+
+      .. code-block:: python
+
+         
+
+      
+   .. tab:: Matlab
+
+      Matlab Implementation
+
+      .. code-block:: matlab
+
+         % define the function handle
+         dzdt = @(t,z) [z(2); -4*z(1)];
+         
+         % set initial condition
+         z0 = [0, 5];
+
+         % set time span
+         t_span = [0, 10];
+         
+         % call the solver
+         [T, Z] = ode45(dzdt, t_span, z0);
+         
+         % display the result
+         plot(T, Z, '-o');
+         xlabel('t')
+         ylabel('y')
+         title('Solving-SHO-with-Matlab-Ode45')
+         saveas(gcf, 'Solving-SHO-with-Matlab-Ode45', 'png')
+
+      .. figure:: images/Solving-SHO-with-Matlab-Ode45.png
+         :width: 80%
+         :align: center
+         :alt: Solving-SHO-with-Matlab-Ode45.png
