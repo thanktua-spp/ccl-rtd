@@ -95,8 +95,6 @@ You can use tabs to display code in multiple languages. For example:
          :width: 80%
          :align: center
          :alt: Solving-with-CCLMath-Ode23.png
-
-       Solving-with-CCLMath-Ode23
      
 
    .. tab:: Python
@@ -137,8 +135,6 @@ You can use tabs to display code in multiple languages. For example:
          :align: center
          :alt: Solving-with-Python-Ode23.png
 
-      Solving-with-Python-Ode23
-
 
    .. tab:: Matlab
 
@@ -167,5 +163,3 @@ You can use tabs to display code in multiple languages. For example:
          :width: 80%
          :align: center
          :alt: Solving-with-Matlab-Ode23.png
-
-      Solving-with-Matlab-Ode23
