@@ -88,7 +88,7 @@ You can use tabs to display code in multiple languages. For example:
       .. figure:: images/Solving-with-CCLMath-Ode23.png
          :width: 80%
          :align: center
-         :alt: Tesing-Ode23.png
+         :alt: Solving-with-CCLMath-Ode23.png
 
        Solving-with-CCLMath-Ode23
      
