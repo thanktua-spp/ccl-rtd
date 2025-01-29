@@ -46,7 +46,7 @@ Visualizing Solutions:
 First Order ODE
 ------------
 
-.. math:: \frac{dy}{dt} = 2 * (a - t) * y * y;
+.. math:: \frac{dy}{dt} = 2(a - t)y^2;
 .. math:: a = 0.25; y0 = 15.9; t = [0, 1]
 
 
