@@ -1,5 +1,5 @@
 Welcome to CypherCrescent Mathematics Library documentation!
-===========================================================
+============================================================
 
 CCL-Math - A Comprehensive C# Mathematics Library
 
