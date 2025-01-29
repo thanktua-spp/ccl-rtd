@@ -4,19 +4,18 @@ Ordinary Differential Equation
 Ordinary Differential Equations (ODEs) are equations that relate a function to its derivatives. In simpler terms, they describe how a quantity changes with respect to another. These equations are fundamental in various fields of science and engineering, from physics and biology to economics and finance.   
 
 Key Concepts:
+    1. Independent Variable: The variable that the function depends on (often denoted by x or t).   
+    2. Dependent Variable: The function itself (often denoted by y).
+    3. Derivative: The rate of change of the dependent variable with respect to the independent variable.   
     
-Independent Variable: The variable that the function depends on (often denoted by x or t).   
-Dependent Variable: The function itself (often denoted by y).
-Derivative: The rate of change of the dependent variable with respect to the independent variable.   
-    
-    Why are ODEs important?
-    ODEs provide a powerful framework for modeling real-world phenomena. 
-    
-    They can help us understand:   
-        Growth and Decay: Population growth, radioactive decay, and chemical reactions.
-        Motion: The movement of objects under the influence of forces (Newton's laws of motion).   
-        Electrical Circuits: The flow of current and voltage in circuits.   
-        Heat Transfer: The distribution of heat in a material.   
+Why are ODEs important?
+ODEs provide a powerful framework for modeling real-world phenomena. 
+
+They can help us understand:   
+Growth and Decay: Population growth, radioactive decay, and chemical reactions.
+Motion: The movement of objects under the influence of forces (Newton's laws of motion).   
+Electrical Circuits: The flow of current and voltage in circuits.   
+Heat Transfer: The distribution of heat in a material.   
     
     Types of ODEs:
     --------------
