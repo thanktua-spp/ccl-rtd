@@ -106,24 +106,24 @@ You can use tabs to display code in multiple languages. For example:
          import numpy as np
          from scipy.integrate import solve_ivp
          import matplotlib.pyplot as plt
-
+         
          # define function
          def dydt(t, y):
-             a = 0.25
-             return 2 * (a - t) * y **2;
-
-
+           a = 0.25
+           return 2 * (a - t) * y **2;
+         
+         
          # set inigial condition
-         y0 = 15.9
-
+         y0 = [15.9]
+         
          # set time span
-         t_span = [0, 10] 
-
+         t_span = [0, 1] 
+         
          # call the solver
          sol = solve_ivp(dydt, t_span, y0)
-            
+                     
          # display the result
-         plt.plot(t, y)
+         plt.plot(sol.t, sol.y[0],  marker='o', linestyle='-')
          plt.xlabel('Time (t)')
          plt.ylabel('y(t)')
          plt.title('Solving-with-Python-Ode23')
