@@ -1,4 +1,4 @@
-Non Linear System
+NonLinear System
 =================
 
 .. _installation:
@@ -77,3 +77,10 @@ You can use tabs to display code in multiple languages. For example:
 
          % call the solver
          x = fsolve(f, x0);
+
+         # Output: 
+         x =
+
+             0.5000
+             0.0000
+            -0.5236
