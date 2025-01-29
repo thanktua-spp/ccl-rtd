@@ -82,7 +82,6 @@ First Order ODE
          plt.Show();
 
       .. figure:: images/Solving-with-CCLMath-Ode23.png
-         :width: 80%
          :align: center
          :alt: Solving-with-CCLMath-Ode23.png
      
@@ -121,7 +120,6 @@ First Order ODE
          plt.show()
 
       .. figure:: images/Solving-with-Python-Ode23.png
-         :width: 80%
          :align: center
          :alt: Solving-with-Python-Ode23.png
 
@@ -153,7 +151,6 @@ First Order ODE
          saveas(gcf, 'Solving-with-Matlab-Ode23', 'png')
 
       .. figure:: images/Solving-with-Matlab-Ode23.png
-         :width: 80%
          :align: center
          :alt: Solving-with-Matlab-Ode23.png
 
@@ -218,7 +215,6 @@ Now we have 2 equations
          plt.Show();
 
       .. figure:: images/Solving-SHO-with-CCLMath-Ode45.png
-         :width: 80%
          :align: center
          :alt: Solving-SHO-with-CCLMath-Ode45.png
      
@@ -258,6 +254,5 @@ Now we have 2 equations
          saveas(gcf, 'Solving-SHO-with-Matlab-Ode45', 'png')
 
       .. figure:: images/Solving-SHO-with-Matlab-Ode45.png
-         :width: 80%
          :align: center
          :alt: Solving-SHO-with-Matlab-Ode45.png
