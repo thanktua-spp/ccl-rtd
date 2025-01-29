@@ -57,9 +57,9 @@ You can use tabs to display code in multiple languages. For example:
 
 .. tabs::
 
-   .. tab:: CCL-Maths
+   .. tab:: CCL-Math
 
-      CCL-maths Implementation
+      CCL-math Implementation
 
       .. code-block:: C#
          
