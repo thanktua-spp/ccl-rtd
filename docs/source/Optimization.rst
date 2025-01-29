@@ -76,7 +76,7 @@ Root of System of Nonlinear Equation
          // display the result
          Console.WriteLine(x);
 
-         # Output: 
+         // Output: 
             0.5000
             0.0000
            -0.5236
@@ -130,7 +130,7 @@ Root of System of Nonlinear Equation
          % display the result
          disp(x);
 
-         # Output: 
+         % Output: 
 
              0.5000
              0.0000
@@ -145,4 +145,3 @@ Sequential Quadratic Programming
 
 Least Square Fitting
 ---------------------
-
