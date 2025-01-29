@@ -15,6 +15,7 @@ CCL-Math is a powerful and versatile C# library designed to provide a wide range
 
 CCL-Math is built with a focus on performance, accuracy, and ease of use. It provides a well-documented API and is designed to be easily integrated into your C# projects. Whether you're working on scientific research, engineering simulations, or data analysis, CCL-Math can significantly enhance your productivity and accelerate your mathematical computations.
 
+This document is designed t demonstract how to use the CCL-Math to solve commnom science and engineering problems
 
 .. note::
 
