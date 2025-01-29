@@ -1,81 +1,16 @@
-Usage
-=====
+Introduction
+=============
 
-.. _installation:
+CCL-Math - A Comprehensive C# Mathematics Library
 
-Installation
-------------
+CCL-Math is a powerful and versatile C# library designed to provide a wide range of mathematical functionalities for researchers, engineers, and developers. It encompasses a comprehensive collection of algorithms and tools spanning various domains of mathematics, including:
 
-To use Lumache, first install it using pip:
+- Linear Algebra: Efficient handling of dense and sparse matrices, enabling operations such as matrix multiplication, inversion, eigenvalue/eigenvector decomposition, and more.
+- Special Functions: Access to a rich set of special functions, including Bessel functions, Gamma function, error function, and many others, for advanced mathematical modeling.
+- Numerical Integration: Implementations of various numerical integration methods, such as trapezoidal rule, Simpson's rule, and more, for accurate approximation of definite integrals.
+- Ordinary Differential Equation (ODE) Solvers: Robust solvers for both initial value problems and boundary value problems, allowing you to model and analyze dynamic systems.
+- Numerical Laplace Transform Inversion: Efficient algorithms for inverting Laplace transforms, enabling the analysis of systems in the time domain.
+- Polynomial Arithmetic: Comprehensive support for polynomial operations, including convolution, deconvolution, root finding, and more, for signal processing and other applications.
+- Optimization: A suite of optimization algorithms, including linear and non-linear optimization methods, genetic algorithms, and particle swarm optimization, to find optimal solutions for various problems.
 
-.. code-block:: console
-
-   (.venv) $ pip install lumache
-
-Creating recipes
-----------------
-
-To retrieve a list of random ingredients,
-you can use the ``lumache.get_random_ingredients()`` function:
-
-.. autofunction:: lumache.get_random_ingredients
-
-The ``kind`` parameter should be either ``"meat"``, ``"fish"``,
-or ``"veggies"``. Otherwise, :py:func:`lumache.get_random_ingredients`
-will raise an exception.
-
-.. autoexception:: lumache.InvalidKindError
-
-For example:
-
->>> import lumache
->>> lumache.get_random_ingredients()
-['shells', 'gorgonzola', 'parsley']
-
-
-
-Writing Eqautions
------------------
-
-You can also write equations in your documentation. For example, here's a
-
-.. math::
-
-   \int_{-\infty}^{\infty} e^{-x^2} dx = \sqrt{\pi}
-
-
-
-Using tabs
-----------
-
-You can use tabs to display code in multiple languages. For example:
-
-.. tabs::
-
-   .. tab:: CCL-Maths
-
-      This is how to write code in CCL-Maths.
-
-      .. code-block:: python
-
-         import lumache
-         lumache.get_random_ingredients()
-         # Output: ['shells', 'gorgonzola', 'parsley']
-
-   .. tab:: Python
-
-      This is how to write code in Python.
-
-      .. code-block:: python
-
-         import lumache
-         lumache.get_random_ingredients()
-         # Output: ['shells', 'gorgonzola', 'parsley']
-
-   .. tab:: Matlab
-
-      This is how to write code in Matlab.
-
-      .. code-block:: matlab
-
-         disp('This is an example of Matlab code.')
+CCL-Math is built with a focus on performance, accuracy, and ease of use. It provides a well-documented API and is designed to be easily integrated into your C# projects. Whether you're working on scientific research, engineering simulations, or data analysis, CCL-Math can significantly enhance your productivity and accelerate your mathematical computations.
