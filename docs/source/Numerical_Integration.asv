@@ -16,7 +16,6 @@ Common Methods:
 -Trapezoidal Rule: Approximates the curve with straight lines.   
 -Simpson's Rule: Approximates the curve with parabolic arcs.
 -Gaussian Quadrature: Uses strategically placed points for higher accuracy.   
-
 Applications:
 
 Engineering: Calculating work done by a variable force, determining the volume of irregular shapes.
