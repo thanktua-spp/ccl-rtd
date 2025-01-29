@@ -21,7 +21,7 @@ You can use tabs to display code in multiple languages. For example:
 
    .. tab:: CCL-Maths
 
-      This is how to write code in CCL-Maths.
+      CCL-maths Implementation
 
       .. code-block:: C#
 
@@ -58,7 +58,7 @@ You can use tabs to display code in multiple languages. For example:
 
    .. tab:: Python
 
-      This is how to write code in Python.
+      Python Implementation
 
       .. code-block:: python
 
@@ -86,6 +86,8 @@ You can use tabs to display code in multiple languages. For example:
          [ 5.00000000e-01  1.38102142e-13 -5.23598776e-01]
 
    .. tab:: Matlab
+
+      Matlab Implementation
 
       .. code-block:: matlab
 
