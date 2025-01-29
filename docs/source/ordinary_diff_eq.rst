@@ -173,7 +173,6 @@ hence
 
 .. math:: \frac{dv}{dt} = -4y
 .. math:: y_0 = 0; v_0 = 5; 
-
 Now we have 2 equations
 
 .. math:: \frac{dy}{dt} = v
@@ -204,10 +203,10 @@ Now we have 2 equations
          double[] z0 = [0, 5];
 
          // set time span
-         double[] t_span = [0, 3];
+         double[] t_span = [0, 10];
 
          // solve ODE 
-         Ode.Result result = Ode.Ode23(dzdt, z0, t_span);
+         Ode.Result result = Ode.Ode45(dzdt, z0, t_span);
 
          // plot the result
          var plt = Plot(result.X, result.Y, "-o");
