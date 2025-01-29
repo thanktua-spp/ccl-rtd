@@ -14,5 +14,6 @@
  plot(T, Z, '-o');
  xlabel('t')
  ylabel('y')
+ legend('y_1', 'y_2')
  title('Solving-SHO-with-Matlab-Ode45')
  saveas(gcf, 'Solving-SHO-with-Matlab-Ode45', 'png')
