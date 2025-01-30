@@ -84,23 +84,12 @@ we examine this system in 2D, i.e. :math:`p_i = [x_i, y_i]` and :math:`d_{ij} = 
          plt.Title = "Position of Pleiades Stars, Solved by ODE89";
          plt.XLabel = "X Position";
          plt.YLabel = "y Position";
-         plt.SaveFig("Position-of-Pleiades-Stars-CCL-Math-ODE89.png");
-        
-         for (int i = 0; i < 200; i++)
-         {
-             plt = Plot(result89.Y["", I], result89.Y["", J], "--");
-             for (int j = 0; j < 7; j++)
-                 plt.AddScatter(result89.Y[i, j], 
-                     result89.Y[i, j + 7], "fo", 20);
-             plt.SaveFig("gif_"+i+".png", 500, 500);
-         }
-         Animation.Make(i=> Image.FromFile("gif_" 
-             + i + ".png"), "Position-of-Pleiades-Stars-CCL-Math-ODE89.gif", 10, 200);
+         plt.SaveFig("Position-of-Pleiades-Stars-CCL-Math-Ode89.png");
         
 
-      .. figure:: images/Position-of-Pleiades-Stars-CCL-Math-ODE89.png
+      .. figure:: images/Position-of-Pleiades-Stars-CCL-Math-Ode89.png
          :align: center
-         :alt: Position-of-Pleiades-Stars-CCL-Math-ODE89.png
+         :alt: Position-of-Pleiades-Stars-CCL-Math-Ode89.png
 
    .. tab:: Python
 
@@ -183,9 +172,9 @@ we can add animation of the solution
                  "Position-of-Pleiades-Stars-CCL-Math-Ode89.gif", 10, 200);
         
 
-      .. figure:: images/Position-of-Pleiades-Stars-CCL-Math-ODE89.gif
+      .. figure:: images/Position-of-Pleiades-Stars-CCL-Math-Ode89.gif
          :align: center
-         :alt: Position-of-Pleiades-Stars-CCL-Math-ODE89.gif
+         :alt: Position-of-Pleiades-Stars-CCL-Math-Ode89.gif
 
    .. tab:: Python
 
