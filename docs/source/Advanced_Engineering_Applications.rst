@@ -37,6 +37,7 @@ The dynamics of the system can then be modelled as:
       .. code-block:: C#
          
          // import libraries
+         using static System.Math;
          using CypherCrescent.MathematicsLibrary;
          using static MathsChart.Chart;
 
