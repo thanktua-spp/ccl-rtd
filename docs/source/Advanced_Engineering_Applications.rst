@@ -102,36 +102,7 @@ The goal is to solve for the output voltage through node 5, :math:`U_5(t)`.
 
       .. code-block:: python
 
-         import numpy as np
-         from scipy.integrate import solve_ivp
-         import matplotlib.pyplot as plt
-         
-         # define function
-         def dydt(t, y):
-           a = 0.25
-           return 2 * (a - t) * y **2;
-         
-         
-         # set initial condition
-         y0 = [15.9]
-         
-         # set time span
-         t_span = [0, 1] 
-         
-         # call the solver
-         sol = solve_ivp(dydt, t_span, y0)
-                     
-         # display the result
-         plt.plot(sol.t, sol.y[0],  marker='o', linestyle='-')
-         plt.xlabel('Time (t)')
-         plt.ylabel('y(t)')
-         plt.title('Solving-with-Python-Ode23')
-         plt.savefig('Solving-with-Python-Ode23.png') 
-         plt.show()
-
-      .. figure:: images/Solving-with-Python-Ode23.png
-         :align: center
-         :alt: Solving-with-Python-Ode23.png
+      
 
 
    .. tab:: Matlab
