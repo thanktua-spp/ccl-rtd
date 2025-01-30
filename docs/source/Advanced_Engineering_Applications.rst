@@ -23,6 +23,8 @@ Celestial mechanics is basically an interplay between Newton's law of gravitatio
 
 The positions determine the gravitational forces acting on the bodies, but the net force on each of the bodies determines its acceleration (i.e. changes its position from the second order).
 
+we examine this system in 2D, i.e. :math:`p_i = [x_i, y_i]` and :math:`d_{ij} = \cfrac{(p_j - p_i)}{||p_j - p_i||}`
+
 
 Baton Mechanics
 ---------------
