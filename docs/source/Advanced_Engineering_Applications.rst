@@ -179,8 +179,8 @@ we can add animation of the solution
                      result89.Y[i, j + 7], "fo", 20);
              plt.SaveFig("gif_"+i+".png", 500, 500);
          }
-         Animation.Make(i=> Image.FromFile("gif_" 
-             + i + ".png"), "Position-of-Pleiades-Stars-CCL-Math-ODE89.gif", 10, 200);
+         Animation.Make(i=> Image.FromFile("gif_" + i + ".png"),
+                 "Position-of-Pleiades-Stars-CCL-Math-Ode89.gif", 10, 200);
         
 
       .. figure:: images/Position-of-Pleiades-Stars-CCL-Math-ODE89.gif
