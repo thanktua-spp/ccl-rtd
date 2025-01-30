@@ -25,7 +25,9 @@ The positions determine the gravitational forces acting on the bodies, but the n
 
 we examine this system in 2D, i.e. :math:`p_i = [x_i, y_i]`,  :math:`d_{ij} = \cfrac{(p_j - p_i)}{r_{ij}}` and :math:`r_{ij} = ||p_j - p_i||`
 
+The dynamics of the system can then be modelled as:
 
+ .. math:: \cfrac{d^2p_i}{dt^2} = \sum_{i \neq j} g \cfrac{m_j(p_j - p_i)}{r_{ij}^3}`. 
 
 .. tabs::
 
@@ -45,7 +47,7 @@ we examine this system in 2D, i.e. :math:`p_i = [x_i, y_i]`,  :math:`d_{ij} = \c
          ColVec pleiades(double t, ColVec q)
          {
              double[] dqdt = new double[28];
-             double x1, x2, y1, y2, dx, dy, r;
+             double x1, x2, y1, y2, dx, dy, r3;
              for (int i = 0; i < 7; i++)
              {
                  // x- velocity of star i
@@ -59,11 +61,11 @@ we examine this system in 2D, i.e. :math:`p_i = [x_i, y_i]`,  :math:`d_{ij} = \c
                      if (j != i)// The star does not attract itself
                      {
                          dx = x2 - x1; dy = y2 - y1;
-                         r = Pow(dx * dx + dy * dy, 1.5);
+                         r3 = Pow(dx * dx + dy * dy, 1.5);
                          //impact of star j on x-acceleration of star i 
-                         dqdt[i + 14] += m[j] * dx / r;
+                         dqdt[i + 14] += m[j] * dx / r3;
                          //impact of star j on y-acceleration of star i 
-                         dqdt[i + 21] += m[j] * dy / r;
+                         dqdt[i + 21] += m[j] * dy / r3;
                      }
                  }
              }
