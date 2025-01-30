@@ -91,9 +91,9 @@ The goal is to solve for the output voltage through node 5, :math:`U_5(t)`.
         plt.Show();
         
 
-      .. figure:: images/One Transistor Amplifier DAE Problem-CCL-Math-DAE45.png
+      .. figure:: images/One-Transistor-Amplifier-DAE-Problem-CCL-Math-DAE45.png
          :align: center
-         :alt: One Transistor Amplifier DAE Problem-CCL-Math-DAE45.png
+         :alt: One-Transistor-Amplifier-DAE-Problem-CCL-Math-DAE45.png
      
 
    .. tab:: Python
@@ -172,8 +172,8 @@ The goal is to solve for the output voltage through node 5, :math:`U_5(t)`.
          ylabel('y')
          legend("Input Voltage U_e(t)","Output Voltage U_5(t)",Location="NorthWest");
          title("One Transistor Amplifier DAE Problem-Matlab-ODE23T");
-         saveas(gcf, 'One Transistor Amplifier DAE Problem-Matlab-ODE23T', 'png')
+         saveas(gcf, 'One-Transistor-Amplifier-DAE-Problem-Matlab-ODE23T', 'png')
 
-      .. figure:: images/One Transistor Amplifier DAE Problem-Matlab-ODE23T.png
+      .. figure:: images/One-Transistor-Amplifier-DAE-Problem-Matlab-ODE23T.png
          :align: center
-         :alt: One Transistor Amplifier DAE Problem-Matlab-ODE23T.png
+         :alt: One-Transistor-Amplifier-DAE-Problem-Matlab-ODE23T.png

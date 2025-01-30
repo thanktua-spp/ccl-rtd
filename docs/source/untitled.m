@@ -25,9 +25,9 @@
  [t, u] = ode23t(dudt, t_span, u0, options);
  
  % display the result
- plot(t, Ue(t), 'bo', t, u(:,5), '.r');
+ plot(t, Ue(t), 'bo', t, u(:,5), '--r');
  xlabel('t')
  ylabel('y')
  legend("Input Voltage U_e(t)","Output Voltage U_5(t)",Location="NorthWest");
  title("One Transistor Amplifier DAE Problem Solved by ODE23T");
- saveas(gcf, 'One Transistor Amplifier DAE Problem Solved by ODE23T', 'png')
+ saveas(gcf, 'One-Transistor-Amplifier-DAE-Problem-Matlab-ODE23T', 'png')
