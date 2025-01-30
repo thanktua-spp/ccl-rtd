@@ -31,6 +31,15 @@ The transistor amplifier circuit contains six resistors, three capacitors, and a
          :align: center
          :alt: Transistor.png
 
+- The initial voltage signal is :math:`U_e(t) = 0.4\sin(200\pi t)`.
+- The operating voltage is :math:`U_b = 6`.
+- The voltages at the nodes are given by :math:`U_i(t) (i = 1,2,3,4,5)`.
+- The values of the resistors  :math:`R_i(t) (i = 1,2,3,4,5)`. are constant, and the current through each resistor satisfies :math:`I = U/R`.
+- The values of the capacitors :math:`C_i (i = 1,2,3)` are constant, and the current through each capacitor satisfies :math:`I=C⋅dU/dt`.
+
+The goal is to solve for the output voltage through node 5, :math:`U_5(t)`.
+
+To solve this equation in MATLAB®, you can use an ode object and set properties of the object to define the equations, mass matrix, and initial conditions. Then, use the solve method to simulate the system over time. You can either include the required functions as functions within a script (as done here), or save them as separate, named files in a directory on the MATLAB path.
 
 .. tabs::
 
