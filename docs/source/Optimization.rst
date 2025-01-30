@@ -1,4 +1,4 @@
-Optimzation
+Optimization
 ============
 
 Optimization is a fundamental area of mathematics and computer science that deals with finding the best possible solution to a given problem. This often involves maximizing or minimizing an objective function subject to certain constraints.
