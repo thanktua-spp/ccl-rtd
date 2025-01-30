@@ -21,7 +21,7 @@ The Pleiades, also known as the Seven Sisters (M45)[1], is a prominent open star
 
 Celestial mechanics is basically an interplay between Newton's law of gravitation :math:`F_i = \sum_{i \neq j} g \cfrac{m_i m_j}{||p_j - p_i||^2}d_{ij}` and Newton's second law of motion :math:`F_i = \cfrac{d}{dt}P_i`. 
 
-
+The positions determine the gravitational forces acting on the bodies, but the net force on each of the bodies determines its acceleration (i.e. changes its position from the second order).
 
 
 Baton Mechanics
