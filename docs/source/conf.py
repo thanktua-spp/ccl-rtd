@@ -19,7 +19,6 @@ extensions = [
     'sphinx.ext.intersphinx',
     'sphinx.ext.mathjax',
     'sphinx_tabs.tabs'
-    'sphinx_math_dollar'
 ]
 
 intersphinx_mapping = {

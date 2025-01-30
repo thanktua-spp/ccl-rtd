@@ -32,7 +32,6 @@ The transistor amplifier circuit contains six resistors, three capacitors, and a
          :alt: Transistor.png
 
 - The initial voltage signal is :math:`U_e(t) = 0.4\sin(200\pi t)`.
-- The initial voltage signal is $U_e(t) = 0.4\sin(200\pi t)$.
 - The operating voltage is :math:`U_b = 6`.
 - The voltages at the nodes are given by :math:`U_i(t) (i = 1,2,3,4,5)`.
 - The values of the resistors  :math:`R_i(t) (i = 1,2,3,4,5)`. are constant, and the current through each resistor satisfies :math:`I = U/R`.
