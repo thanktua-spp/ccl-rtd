@@ -17,7 +17,7 @@ Howarth's Transformation
 
 Pleiades System
 ---------------
-The Pleiades problem is a celestial mechanics problem describing the gravitational interactions of seven stars [1]. This cluster of stars is also referred to as The Seven Sisters, and it is visible to the human eye in the night sky due to its proximity to Earth [2]. The system of equations describing the motion of the stars in the cluster consists of 14 nonstiff second-order differential equations, which produce a system of 28 equations when rewritten in first-order form.
+The Pleiades, also known as the Seven Sisters (M45)[1], is a prominent open star cluster located in the constellation Taurus. It's one of the closest and most easily visible star clusters to Earth[2], making it a favorite target for stargazers and a subject of fascination across cultures. The system of equations describing the motion of the stars in the cluster consists of 14 nonstiff second-order differential equations, which produce a system of 28 equations when rewritten in first-order form.
 
 
 Baton Mechanics
