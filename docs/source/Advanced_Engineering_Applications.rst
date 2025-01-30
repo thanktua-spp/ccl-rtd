@@ -84,7 +84,7 @@ we examine this system in 2D, i.e. :math:`p_i = [x_i, y_i]` and :math:`d_{ij} = 
          plt.Title = "Position of Pleiades Stars, Solved by ODE89";
          plt.XLabel = "X Position";
          plt.YLabel = "y Position";
-         plt.SaveFig("Pleiades-CCL-Math-Ode89.png");
+         plt.SaveFig("Position-of-Pleiades-Stars-CCL-Math-ODE89.png");
         
          for (int i = 0; i < 200; i++)
          {
@@ -95,7 +95,7 @@ we examine this system in 2D, i.e. :math:`p_i = [x_i, y_i]` and :math:`d_{ij} = 
              plt.SaveFig("gif_"+i+".png", 500, 500);
          }
          Animation.Make(i=> Image.FromFile("gif_" 
-             + i + ".png"), "Pleiades-Animation-CCL-Math.gif", 10, 200);
+             + i + ".png"), "Position-of-Pleiades-Stars-CCL-Math-ODE89.gif", 10, 200);
         
 
       .. figure:: images/Position-of-Pleiades-Stars-CCL-Math-ODE89.png
