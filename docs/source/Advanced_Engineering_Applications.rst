@@ -166,7 +166,7 @@ we can add animation of the solution
              for (int j = 0; j < 7; j++)
                  plt.AddScatter(result89.Y[i, j], 
                      result89.Y[i, j + 7], "fo", 20);
-             plt.SaveFig("gif_"+i+".png", 500, 500);
+             plt.SaveFig("gif_"+i+".png", 700, 700);
          }
          Animation.Make(i=> Image.FromFile("gif_" + i + ".png"),
                  "Position-of-Pleiades-Stars-CCL-Math-Ode89.gif", 10, 200);
