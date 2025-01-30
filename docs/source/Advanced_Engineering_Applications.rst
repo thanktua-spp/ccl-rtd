@@ -172,9 +172,9 @@ The goal is to solve for the output voltage through node 5, :math:`U_5(t)`.
          xlabel('t')
          ylabel('y')
          legend("Input Voltage U_e(t)","Output Voltage U_5(t)",Location="NorthWest");
-         title("One Transistor Amplifier DAE Problem Solved by ODE23T");
-         saveas(gcf, 'One Transistor Amplifier DAE Problem Solved by ODE23T', 'png')
+         title("One Transistor Amplifier DAE Problem-Matlab-ODE23T");
+         saveas(gcf, 'One Transistor Amplifier DAE Problem-Matlab-ODE23T', 'png')
 
-      .. figure:: images/One Transistor Amplifier DAE Problem Solved by ODE23T.png
+      .. figure:: images/One Transistor Amplifier DAE Problem-Matlab-ODE23T.png
          :align: center
-         :alt: One Transistor Amplifier DAE Problem Solved by ODE23T.png
+         :alt: One Transistor Amplifier DAE Problem-Matlab-ODE23T.png
