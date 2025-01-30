@@ -180,7 +180,7 @@ we can add animation of the solution
              plt.SaveFig("gif_"+i+".png", 500, 500);
          }
          Animation.Make(i=> Image.FromFile("gif_" 
-             + i + ".png"), "Pleiades-Animation-CCL-Math.gif", 10, 200);
+             + i + ".png"), "Position-of-Pleiades-Stars-CCL-Math-ODE89.gif", 10, 200);
         
 
       .. figure:: images/Position-of-Pleiades-Stars-CCL-Math-ODE89.gif
