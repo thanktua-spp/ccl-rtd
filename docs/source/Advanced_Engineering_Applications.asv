@@ -17,6 +17,8 @@ Howarth's Transformation
 
 Pleades System
 ---------------
+The Pleiades problem is a celestial mechanics problem describing the gravitational interactions of seven stars [1]. This cluster of stars is also referred to as The Seven Sisters, and it is visible to the human eye in the night sky due to its proximity to Earth [2]. The system of equations describing the motion of the stars in the cluster consists of 14 nonstiff second-order differential equations, which produce a system of 28 equations when rewritten in first-order form.
+
 
 Baton Mechanics
 ---------------
@@ -32,7 +34,6 @@ The transistor amplifier circuit contains six resistors, three capacitors, and a
          :alt: Transistor.png
 
 - The initial voltage signal is :math:`U_e(t) = 0.4\sin(200\pi t)`.
-- The initial voltage signal is $U_e(t) = 0.4\sin(200\pi t)$.
 - The operating voltage is :math:`U_b = 6`.
 - The voltages at the nodes are given by :math:`U_i(t) (i = 1,2,3,4,5)`.
 - The values of the resistors  :math:`R_i(t) (i = 1,2,3,4,5)`. are constant, and the current through each resistor satisfies :math:`I = U/R`.
@@ -92,9 +93,9 @@ The goal is to solve for the output voltage through node 5, :math:`U_5(t)`.
         plt.Show();
         
 
-      .. figure:: images/One Transistor Amplifier DAE Problem-CCL-Math-DAE45.png
+      .. figure:: images/One-Transistor-Amplifier-DAE-Problem-CCL-Math-DAE45.png
          :align: center
-         :alt: One Transistor Amplifier DAE Problem-CCL-Math-DAE45.png
+         :alt: One-Transistor-Amplifier-DAE-Problem-CCL-Math-DAE45.png
      
 
    .. tab:: Python
@@ -103,36 +104,7 @@ The goal is to solve for the output voltage through node 5, :math:`U_5(t)`.
 
       .. code-block:: python
 
-         import numpy as np
-         from scipy.integrate import solve_ivp
-         import matplotlib.pyplot as plt
-         
-         # define function
-         def dydt(t, y):
-           a = 0.25
-           return 2 * (a - t) * y **2;
-         
-         
-         # set initial condition
-         y0 = [15.9]
-         
-         # set time span
-         t_span = [0, 1] 
-         
-         # call the solver
-         sol = solve_ivp(dydt, t_span, y0)
-                     
-         # display the result
-         plt.plot(sol.t, sol.y[0],  marker='o', linestyle='-')
-         plt.xlabel('Time (t)')
-         plt.ylabel('y(t)')
-         plt.title('Solving-with-Python-Ode23')
-         plt.savefig('Solving-with-Python-Ode23.png') 
-         plt.show()
-
-      .. figure:: images/Solving-with-Python-Ode23.png
-         :align: center
-         :alt: Solving-with-Python-Ode23.png
+      
 
 
    .. tab:: Matlab
@@ -142,23 +114,23 @@ The goal is to solve for the output voltage through node 5, :math:`U_5(t)`.
       .. code-block:: matlab
 
          % define the function handle
-         Ub = 6, R0 = 1000, R15 = 9000, alpha = 0.99, beta = 1e-6, 
-         Uf = 0.026, c1 = 1e-6, c2 = 2e-6, c3 = 3e-6;
+         Ub = 6; R0 = 1000; R15 = 9000; alpha = 0.99; beta = 1e-6; 
+         Uf = 0.026; c1 = 1e-6; c2 = 2e-6; c3 = 3e-6;
          M = [-c1,  c1,   0,   0,   0
                c1, -c1,   0,   0,   0
                 0,   0, -c2,   0,   0
                 0,   0,   0, -c3,  c3
                 0,   0,   0,  c3, -c3];
-
+        
          Ue = @(t) 0.4 * sin(200 * pi * t);
          f23 = @(u) beta * (exp((u(2) - u(3)) / Uf) - 1);
-         dudt = @(t, u)[-(Ue(t) - u(1))/R0,
-                        -(Ub/R15 - u(2)*2/R15 - (1-alpha)*f23(u)),
-                        -(f23(u) - u(3)/R15),
-                        -((Ub - u(4))/R15 - alpha*f23(u)),
+         dudt = @(t, u)[-(Ue(t) - u(1))/R0
+                        -(Ub/R15 - u(2)*2/R15 - (1-alpha)*f23(u))
+                        -(f23(u) - u(3)/R15)
+                        -((Ub - u(4))/R15 - alpha*f23(u))
                         u(5)/R15];
          % set initial condition
-         u0 = [0, Ub / 2, Ub / 2, Ub, 0];;
+         u0 = [0, Ub / 2, Ub / 2, Ub, 0];
          
          % set time span
          t_span = [0, 0.1];
@@ -168,13 +140,24 @@ The goal is to solve for the output voltage through node 5, :math:`U_5(t)`.
          [t, u] = ode23t(dudt, t_span, u0, options);
          
          % display the result
-         plot(t, Ue(t), ':r', t, u(:,5), 'bo');
+         plot(t, Ue(t), 'bo', t, u(:,5), '.r');
          xlabel('t')
          ylabel('y')
          legend("Input Voltage U_e(t)","Output Voltage U_5(t)",Location="NorthWest");
-         title("One Transistor Amplifier DAE Problem Solved by ODE23T");
-         saveas(gcf, 'Solving-with-Matlab-Ode23', 'png')
+         title("One Transistor Amplifier DAE Problem-Matlab-ODE23T");
+         saveas(gcf, 'One-Transistor-Amplifier-DAE-Problem-Matlab-ODE23T', 'png')
 
-      .. figure:: images/Solving-with-Matlab-Ode23.png
+      .. figure:: images/One-Transistor-Amplifier-DAE-Problem-Matlab-ODE23T.png
          :align: center
-         :alt: Solving-with-Matlab-Ode23.png
+         :alt: One-Transistor-Amplifier-DAE-Problem-Matlab-ODE23T.png
+
+
+
+Reference
+---------
+
+1. Hairer, E., et al. Solving Ordinary Differential Equations I: Nonstiff Problems. 2nd rev. ed, Springer, 2009.
+
+2. “Pleiades.” Wikipedia, 21 June 2021. Wikipedia, https://en.wikipedia.org/wiki/Pleiades.
+
+3. “Pleiades.” Wikipedia, 21 June 2021. Wikipedia, https://en.wikipedia.org/wiki/Pleiades.

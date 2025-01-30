@@ -15,7 +15,7 @@ Compressibility of Natural Gas
 Howarth's Transformation
 ------------------------
 
-Pleades System
+Pleiades System
 ---------------
 The Pleiades problem is a celestial mechanics problem describing the gravitational interactions of seven stars [1]. This cluster of stars is also referred to as The Seven Sisters, and it is visible to the human eye in the night sky due to its proximity to Earth [2]. The system of equations describing the motion of the stars in the cluster consists of 14 nonstiff second-order differential equations, which produce a system of 28 equations when rewritten in first-order form.
 
@@ -156,8 +156,8 @@ The goal is to solve for the output voltage through node 5, :math:`U_5(t)`.
 Reference
 ---------
 
-“Pleiades.” Wikipedia, 21 June 2021. Wikipedia, https://en.wikipedia.org/wiki/Pleiades.
+1. Hairer, E., et al. Solving Ordinary Differential Equations I: Nonstiff Problems. 2nd rev. ed, Springer, 2009.
 
-“Pleiades.” Wikipedia, 21 June 2021. Wikipedia, https://en.wikipedia.org/wiki/Pleiades.
+2. “Pleiades.” Wikipedia, 21 June 2021. Wikipedia, https://en.wikipedia.org/wiki/Pleiades.
 
-“Pleiades.” Wikipedia, 21 June 2021. Wikipedia, https://en.wikipedia.org/wiki/Pleiades.
+3. “Pleiades.” Wikipedia, 21 June 2021. Wikipedia, https://en.wikipedia.org/wiki/Pleiades.
