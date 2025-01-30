@@ -75,11 +75,9 @@ To solve this equation in MATLAB®, you can use an ode object and set properties
         double[] tspan = [0, 0.1];
         double[] y0 = [0, Ub / 2, Ub / 2, Ub, 0];
         
-        Ode.Set options = new() { Stats = true, RelTol = 1e-3, MassType = Ode.MassType.Constant };
+        Ode.Set options = new() { RelTol = 1e-3, MassType = Ode.MassType.Constant };
         
         var TY = Ode.Dae45(dudt, Mass, y0, tspan, options);
-        Console.WriteLine(TY.Statistics);
-        
         ColVec X = TY.X, U5 = TY.Y["", 4];
         var plt = Scatter(X, 0.4 * Maths.Sin(200 * pi * X), "o");
         plt.AddPlot(X, U5, "--r");
@@ -95,9 +93,9 @@ To solve this equation in MATLAB®, you can use an ode object and set properties
         plt.Show();
         
 
-      .. figure:: images/Solving-with-CCLMath-Ode23.png
+      .. figure:: images/One Transistor Amplifier DAE Problem-CCL-Math-DAE45.png
          :align: center
-         :alt: Solving-with-CCLMath-Ode23.png
+         :alt: One Transistor Amplifier DAE Problem-CCL-Math-DAE45.png
      
 
    .. tab:: Python
