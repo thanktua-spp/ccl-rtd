@@ -26,6 +26,215 @@ The positions determine the gravitational forces acting on the bodies, but the n
 we examine this system in 2D, i.e. :math:`p_i = [x_i, y_i]` and :math:`d_{ij} = \cfrac{(p_j - p_i)}{||p_j - p_i||}`
 
 
+.. tabs::
+
+   .. tab:: CCL-Math
+      CCL-Math Implementation
+
+      .. code-block:: C#
+         
+         // import libraries
+         using CypherCrescent.MathematicsLibrary;
+         using static MathsChart.Chart;
+
+         // define masses
+         double[] m = [1, 2, 3, 4, 5, 6, 7];
+
+         // define function
+         ColVec pleiades(double t, ColVec q)
+         {
+             double[] dqdt = new double[28];
+             double x1, x2, y1, y2, dx, dy, r;
+             for (int i = 0; i < 7; i++)
+             {
+                 // x- velocity of star i
+                 dqdt[i + 0] = q[i + 14];
+                 // y- velocity of star j
+                 dqdt[i + 7] = q[i + 21]; 
+                 x1 = q[i]; y1 = q[i + 7];
+                 for (int j = 0; j < 7; j++)
+                 {
+                     x2 = q[j]; y2 = q[j + 7];
+                     if (j != i)// The star does not attract itself
+                     {
+                         dx = x2 - x1; dy = y2 - y1;
+                         r = Pow(dx * dx + dy * dy, 1.5);
+                         //impact of star j on x-acceleration of star i 
+                         dqdt[i + 14] += m[j] * dx / r;
+                         //impact of star j on y-acceleration of star i 
+                         dqdt[i + 21] += m[j] * dy / r;
+                     }
+                 }
+             }
+             return dqdt;
+         }
+        
+         double[] init = [3, 3,-1, -3, 2, -2, 2, 
+                          3, -3, 2, 0, 0, -4, 4,
+                          0, 0, 0, 0, 0, 1.75, -1.5,
+                          0, 0, 0, -1.25, 1, 0, 0];
+        
+         Indexer I = new(0, 7), J = I + 7;
+         double[] tspan = [..ColVec.Linspace(1, 15, 200)];
+         var opts = new Ode.Set() {AbsTol = 1e-15, RelTol = 1e-13};
+        
+         Ode.Result result89 = Ode.Ode89(pleiades, 
+             init, tspan, opts);
+         var plt = Plot(result89.Y["", I], result89.Y["", J], "--");
+         plt.Title = "Position of Pleiades Stars, Solved by ODE89";
+         plt.XLabel = "X Position";
+         plt.YLabel = "y Position";
+         plt.SaveFig("Pleiades-CCL-Math-Ode89.png");
+        
+         for (int i = 0; i < 200; i++)
+         {
+             plt = Plot(result89.Y["", I], result89.Y["", J], "--");
+             for (int j = 0; j < 7; j++)
+                 plt.AddScatter(result89.Y[i, j], 
+                     result89.Y[i, j + 7], "fo", 20);
+             plt.SaveFig("gif_"+i+".png", 500, 500);
+         }
+         Animation.Make(i=> Image.FromFile("gif_" 
+             + i + ".png"), "Pleiades-Animation-CCL-Math.gif", 10, 200);
+        
+
+      .. figure:: images/Position-of-Pleiades-Stars-CCL-Math-ODE89.png
+         :align: center
+         :alt: Position-of-Pleiades-Stars-CCL-Math-ODE89.png
+
+   .. tab:: Python
+
+      Python Implementation
+
+      .. code-block:: python
+
+      
+
+
+   .. tab:: Matlab
+
+      Matlab Implementation
+
+      .. code-block:: matlab
+
+         % define the function handle
+         dqdt = @(t, q) pleiades(t,q);
+
+         % set initial condition
+         q0 = [3 3 -1 -3 2 -2 2 ...
+               3 -3 2 0 0 -4 4 ...
+               0 0 0 0 0 1.75 -1.5 ...
+               0 0 0 -1.25 1 0 0]';
+         
+         % set time span
+         t_span = linspace(1,15,200);
+         
+         % call the solver
+         opts = odeset("RelTol",1e-13,"AbsTol",1e-15);
+         [t, q89] = ode89(dqdt, t_span, q0, opts);
+         
+         % display the result
+         plot(q89(:,1:7),q89(:,8:14),'--')
+         title('Position of Pleiades Stars, Solved by ODE89')
+         xlabel('X Position')
+         ylabel('Y Position')
+         saveas(gcf, 'Position-of-Pleiades-Stars-Matlab-ODE89', 'png')
+
+         function dqdt = pleiades(t,q)
+            x = q(1:7);
+            y = q(8:14);
+            xDist = (x - x.');
+            yDist = (y - y.');
+            r = (xDist.^2+yDist.^2).^(3/2);
+            m = (1:7)';
+            dqdt = [q(15:28);
+                    sum(xDist.*m./r,1,'omitnan').';
+                    sum(yDist.*m./r,1,'omitnan').'];
+          end
+
+      .. figure:: images/Position-of-Pleiades-Stars-Matlab-ODE89.png
+         :align: center
+         :alt: Position-of-Pleiades-Stars-Matlab-ODE89.png
+
+
+we can add animation of the solution
+
+.. tabs::
+
+   .. tab:: CCL-Math
+      CCL-Math Implementation
+
+      .. code-block:: C#
+         
+         // import libraries
+         using CypherCrescent.MathematicsLibrary;
+         using static MathsChart.Chart;
+
+         
+         for (int i = 0; i < 200; i++)
+         {
+             plt = Plot(result89.Y["", I], result89.Y["", J], "--");
+             for (int j = 0; j < 7; j++)
+                 plt.AddScatter(result89.Y[i, j], 
+                     result89.Y[i, j + 7], "fo", 20);
+             plt.SaveFig("gif_"+i+".png", 500, 500);
+         }
+         Animation.Make(i=> Image.FromFile("gif_" 
+             + i + ".png"), "Pleiades-Animation-CCL-Math.gif", 10, 200);
+        
+
+      .. figure:: images/Position-of-Pleiades-Stars-CCL-Math-ODE89.gif
+         :align: center
+         :alt: Position-of-Pleiades-Stars-CCL-Math-ODE89.gif
+
+   .. tab:: Python
+
+      Python Implementation
+
+      .. code-block:: python
+
+      
+
+
+   .. tab:: Matlab
+
+      Matlab Implementation
+
+      .. code-block:: matlab
+
+         % generate animation
+         AnimateOrbits(t89,q89);
+
+         function AnimateOrbits(t,q)
+            sz = 15; clrs = 'rkbmcyg';
+            for k = 1:length(t)
+                plot(q(:,1:7),q(:,8:14),'--'); hold on
+                xlim([-20 20]);  ylim([-10 10]);
+                arrayfun(@(i) plot(q(k,i), q(k,i+7),'o','MarkerSize',sz,...
+                         'MarkerFaceColor',clrs(i)), 1:7);
+                hold off
+                drawnow
+                M(k) = getframe(gca);
+                im{k} = frame2im(M(k));
+            end
+            
+            filename = "orbits.gif";
+            for idx = 1:length(im)
+                [A,map] = rgb2ind(im{idx},256);
+                if idx == 1
+                    imwrite(A,map,filename,'gif','LoopCount',Inf,'DelayTime',0);
+                else
+                    imwrite(A,map,filename,'gif','WriteMode','append','DelayTime',0);
+                end
+            end
+            close all
+         end
+
+      .. figure:: images/Position-of-Pleiades-Stars-Matlab-ODE89.gif
+         :align: center
+         :alt: Position-of-Pleiades-Stars-Matlab-ODE89.gif
+
+
 Baton Mechanics
 ---------------
 
