@@ -27,7 +27,7 @@ we examine this system in 2D, i.e. :math:`p_i = [x_i, y_i]`,  :math:`d_{ij} = \c
 
 The dynamics of the system can then be modelled as:
 
- .. math:: \cfrac{d^2p_i}{dt^2} = \sum_{i \neq j} g \cfrac{m_j(p_j - p_i)}{r_{ij}^3}. 
+ .. math:: \cfrac{d^2p_i}{dt^2} = \sum_{i \neq j} g \cfrac{m_j(p_j - p_i)}{r_{ij}^3}
 
 .. tabs::
 
@@ -37,7 +37,6 @@ The dynamics of the system can then be modelled as:
       .. code-block:: C#
          
          // import libraries
-         using static System.Math;
          using CypherCrescent.MathematicsLibrary;
          using static MathsChart.Chart;
 
@@ -257,6 +256,7 @@ The goal is to solve for the output voltage through node 5, :math:`U_5(t)`.
       .. code-block:: C#
          
          // import libraries
+         using static System.Math;
          using CypherCrescent.MathematicsLibrary;
          using static MathsChart.Chart;
 
