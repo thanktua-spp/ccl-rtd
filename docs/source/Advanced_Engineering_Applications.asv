@@ -32,23 +32,13 @@ The transistor amplifier circuit contains six resistors, three capacitors, and a
          :alt: Transistor.png
 
 - The initial voltage signal is :math:`U_e(t) = 0.4\sin(200\pi t)`.
+- The initial voltage signal is $U_e(t) = 0.4\sin(200\pi t)$.
 - The operating voltage is :math:`U_b = 6`.
-
 - The voltages at the nodes are given by :math:`U_i(t) (i = 1,2,3,4,5)`.
+- The values of the resistors  :math:`R_i(t) (i = 1,2,3,4,5)`. are constant, and the current through each resistor satisfies :math:`I = U/R`.
+- The values of the capacitors :math:`C_i (i = 1,2,3)` are constant, and the current through each capacitor satisfies :math:`I=C⋅dU/dt`.
 
-The values of the resistors R
-i
-  (i=1,2,3,4,5,6) are constant, and the current through each resistor satisfies I=U/R.
-
-The values of the capacitors C
-i
-  (i=1,2,3) are constant, and the current through each capacitor satisfies I=C⋅dU/dt.
-
-The goal is to solve for the output voltage through node 5, U
-5
-(t).
-
-To solve this equation in MATLAB®, you can use an ode object and set properties of the object to define the equations, mass matrix, and initial conditions. Then, use the solve method to simulate the system over time. You can either include the required functions as functions within a script (as done here), or save them as separate, named files in a directory on the MATLAB path.
+The goal is to solve for the output voltage through node 5, :math:`U_5(t)`.
 
 .. tabs::
 
@@ -84,11 +74,9 @@ To solve this equation in MATLAB®, you can use an ode object and set properties
         double[] tspan = [0, 0.1];
         double[] y0 = [0, Ub / 2, Ub / 2, Ub, 0];
         
-        Ode.Set options = new() { Stats = true, RelTol = 1e-3, MassType = Ode.MassType.Constant };
+        Ode.Set options = new() { RelTol = 1e-3, MassType = Ode.MassType.Constant };
         
         var TY = Ode.Dae45(dudt, Mass, y0, tspan, options);
-        Console.WriteLine(TY.Statistics);
-        
         ColVec X = TY.X, U5 = TY.Y["", 4];
         var plt = Scatter(X, 0.4 * Maths.Sin(200 * pi * X), "o");
         plt.AddPlot(X, U5, "--r");
@@ -104,9 +92,9 @@ To solve this equation in MATLAB®, you can use an ode object and set properties
         plt.Show();
         
 
-      .. figure:: images/Solving-with-CCLMath-Ode23.png
+      .. figure:: images/One Transistor Amplifier DAE Problem-CCL-Math-DAE45.png
          :align: center
-         :alt: Solving-with-CCLMath-Ode23.png
+         :alt: One Transistor Amplifier DAE Problem-CCL-Math-DAE45.png
      
 
    .. tab:: Python
@@ -154,23 +142,37 @@ To solve this equation in MATLAB®, you can use an ode object and set properties
       .. code-block:: matlab
 
          % define the function handle
-         a = 0.25;
-         dydt = @(t,y) 2*(a - t)*y^2;
-         
+         Ub = 6, R0 = 1000, R15 = 9000, alpha = 0.99, beta = 1e-6, 
+         Uf = 0.026, c1 = 1e-6, c2 = 2e-6, c3 = 3e-6;
+         M = [-c1,  c1,   0,   0,   0
+               c1, -c1,   0,   0,   0
+                0,   0, -c2,   0,   0
+                0,   0,   0, -c3,  c3
+                0,   0,   0,  c3, -c3];
+
+         Ue = @(t) 0.4 * sin(200 * pi * t);
+         f23 = @(u) beta * (exp((u(2) - u(3)) / Uf) - 1);
+         dudt = @(t, u)[-(Ue(t) - u(1))/R0,
+                        -(Ub/R15 - u(2)*2/R15 - (1-alpha)*f23(u)),
+                        -(f23(u) - u(3)/R15),
+                        -((Ub - u(4))/R15 - alpha*f23(u)),
+                        u(5)/R15];
          % set initial condition
-         y0 = 15.9;
+         u0 = [0, Ub / 2, Ub / 2, Ub, 0];;
          
          % set time span
-         t_span = [0, 1];
+         t_span = [0, 0.1];
          
          % call the solver
-         [T, Y] = ode23(dydt, t_span, y0);
+         options = odeset(Mass = M);
+         [t, u] = ode23t(dudt, t_span, u0, options);
          
          % display the result
-         plot(T, Y, '-o');
+         plot(t, Ue(t), ':r', t, u(:,5), 'bo');
          xlabel('t')
          ylabel('y')
-         title('Solving-with-Matlab-Ode23')
+         legend("Input Voltage U_e(t)","Output Voltage U_5(t)",Location="NorthWest");
+         title("One Transistor Amplifier DAE Problem Solved by ODE23T");
          saveas(gcf, 'Solving-with-Matlab-Ode23', 'png')
 
       .. figure:: images/Solving-with-Matlab-Ode23.png
