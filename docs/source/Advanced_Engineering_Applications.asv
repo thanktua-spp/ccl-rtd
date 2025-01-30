@@ -26,6 +26,7 @@ The positions determine the gravitational forces acting on the bodies, but the n
 we examine this system in 2D, i.e. :math:`p_i = [x_i, y_i]` and :math:`d_{ij} = \cfrac{(p_j - p_i)}{||p_j - p_i||}`
 
 
+
 .. tabs::
 
    .. tab:: CCL-Math
@@ -84,23 +85,12 @@ we examine this system in 2D, i.e. :math:`p_i = [x_i, y_i]` and :math:`d_{ij} = 
          plt.Title = "Position of Pleiades Stars, Solved by ODE89";
          plt.XLabel = "X Position";
          plt.YLabel = "y Position";
-         plt.SaveFig("Pleiades-CCL-Math-Ode89.png");
-        
-         for (int i = 0; i < 200; i++)
-         {
-             plt = Plot(result89.Y["", I], result89.Y["", J], "--");
-             for (int j = 0; j < 7; j++)
-                 plt.AddScatter(result89.Y[i, j], 
-                     result89.Y[i, j + 7], "fo", 20);
-             plt.SaveFig("gif_"+i+".png", 500, 500);
-         }
-         Animation.Make(i=> Image.FromFile("gif_" 
-             + i + ".png"), "Pleiades-Animation-CCL-Math.gif", 10, 200);
+         plt.SaveFig("Position-of-Pleiades-Stars-CCL-Math-Ode89.png");
         
 
-      .. figure:: images/One-Transistor-Amplifier-DAE-Problem-CCL-Math-DAE45.png
+      .. figure:: images/Position-of-Pleiades-Stars-CCL-Math-Ode89.png
          :align: center
-         :alt: One-Transistor-Amplifier-DAE-Problem-CCL-Math-DAE45.png
+         :alt: Position-of-Pleiades-Stars-CCL-Math-Ode89.png
 
    .. tab:: Python
 
@@ -138,7 +128,7 @@ we examine this system in 2D, i.e. :math:`p_i = [x_i, y_i]` and :math:`d_{ij} = 
          title('Position of Pleiades Stars, Solved by ODE89')
          xlabel('X Position')
          ylabel('Y Position')
-         saveas(gcf, 'One-Transistor-Amplifier-DAE-Problem-Matlab-ODE23T', 'png')
+         saveas(gcf, 'Position-of-Pleiades-Stars-Matlab-ODE89', 'png')
 
          function dqdt = pleiades(t,q)
             x = q(1:7);
@@ -152,9 +142,9 @@ we examine this system in 2D, i.e. :math:`p_i = [x_i, y_i]` and :math:`d_{ij} = 
                     sum(yDist.*m./r,1,'omitnan').'];
           end
 
-      .. figure:: images/One-Transistor-Amplifier-DAE-Problem-Matlab-ODE23T.png
+      .. figure:: images/Position-of-Pleiades-Stars-Matlab-ODE89.png
          :align: center
-         :alt: One-Transistor-Amplifier-DAE-Problem-Matlab-ODE23T.png
+         :alt: Position-of-Pleiades-Stars-Matlab-ODE89.png
 
 
 we can add animation of the solution
@@ -177,15 +167,15 @@ we can add animation of the solution
              for (int j = 0; j < 7; j++)
                  plt.AddScatter(result89.Y[i, j], 
                      result89.Y[i, j + 7], "fo", 20);
-             plt.SaveFig("gif_"+i+".png", 500, 500);
+             plt.SaveFig("gif_"+i+".png", 700, 700);
          }
-         Animation.Make(i=> Image.FromFile("gif_" 
-             + i + ".png"), "Pleiades-Animation-CCL-Math.gif", 10, 200);
+         Animation.Make(i=> Image.FromFile("gif_" + i + ".png"),
+                 "Position-of-Pleiades-Stars-CCL-Math-Ode89.gif", 10, 200);
         
 
-      .. figure:: images/One-Transistor-Amplifier-DAE-Problem-CCL-Math-DAE45.png
+      .. figure:: images/Position-of-Pleiades-Stars-CCL-Math-Ode89.gif
          :align: center
-         :alt: One-Transistor-Amplifier-DAE-Problem-CCL-Math-DAE45.png
+         :alt: Position-of-Pleiades-Stars-CCL-Math-Ode89.gif
 
    .. tab:: Python
 
@@ -202,34 +192,37 @@ we can add animation of the solution
 
       .. code-block:: matlab
 
-         % define the function handle
-         dqdt = @(t, q) pleiades(t,q);
+         % generate animation
+         AnimateOrbits(t89,q89);
 
-         % set initial condition
-         q0 = [3 3 -1 -3 2 -2 2 ...
-               3 -3 2 0 0 -4 4 ...
-               0 0 0 0 0 1.75 -1.5 ...
-               0 0 0 -1.25 1 0 0]';
-         
-         % set time span
-         t_span = linspace(1,15,200);
-         
-         % call the solver
-         opts = odeset("RelTol",1e-13,"AbsTol",1e-15);
-         [t, q89] = ode89(dqdt, t_span, q0, opts);
-         
-         % display the result
-         plot(q89(:,1:7),q89(:,8:14),'--')
-         title('Position of Pleiades Stars, Solved by ODE89')
-         xlabel('X Position')
-         ylabel('Y Position')
-         saveas(gcf, 'One-Transistor-Amplifier-DAE-Problem-Matlab-ODE23T', 'png')
+         function AnimateOrbits(t,q)
+            sz = 15; clrs = 'rkbmcyg';
+            for k = 1:length(t)
+                plot(q(:,1:7),q(:,8:14),'--'); hold on
+                xlim([-20 20]);  ylim([-10 10]);
+                arrayfun(@(i) plot(q(k,i), q(k,i+7),'o','MarkerSize',sz,...
+                         'MarkerFaceColor',clrs(i)), 1:7);
+                hold off
+                drawnow
+                M(k) = getframe(gca);
+                im{k} = frame2im(M(k));
+            end
+            
+            filename = "orbits.gif";
+            for idx = 1:length(im)
+                [A,map] = rgb2ind(im{idx},256);
+                if idx == 1
+                    imwrite(A,map,filename,'gif','LoopCount',Inf,'DelayTime',0);
+                else
+                    imwrite(A,map,filename,'gif','WriteMode','append','DelayTime',0);
+                end
+            end
+            close all
+         end
 
-         
-
-      .. figure:: images/One-Transistor-Amplifier-DAE-Problem-Matlab-ODE23T.png
+      .. figure:: images/Position-of-Pleiades-Stars-Matlab-ODE89.gif
          :align: center
-         :alt: One-Transistor-Amplifier-DAE-Problem-Matlab-ODE23T.png
+         :alt: Position-of-Pleiades-Stars-Matlab-ODE89.gif
 
 
 Baton Mechanics
