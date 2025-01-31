@@ -7,7 +7,7 @@ Dimensionless Water Influx Estimation
 -------------------------------------
 Water influx in an oil reservoir is the migration of water from an aquifer into the pore spaces of the reservoir rock containing oil.  This water movement is primarily driven by pressure differences between the aquifer and the reservoir as the oil is produced and reservoir pressure declines.  The water influx can provide pressure support, helping to maintain reservoir pressure and sustain oil production. Hence, understanding and accurate estimation of water influx is crucial for optimizing oil recovery strategies and the long-term economic viability of an oil field.
 
-In a closed boundary situation, the governing equation gives:
+In an edge drive configuration with the aquifer closed at its outer boundary, the governing equation gives:
 
 .. math:: 
    \cfrac{\partial P}{\partial t} = \cfrac{1}{r}\cfrac{\partial}{\partial r}\left(r \cfrac{\partial P}{\partial r} \right)
@@ -40,7 +40,126 @@ This can be accomplised by performing the integration in laplace space before in
    W(t) = \mathcal{L}\left(\frac{1}{s\sqrt{s}} \cfrac{K_1(r_D\sqrt{s}) I_1(\sqrt{s}) - I_1(r_D\sqrt{s}) K_1(\sqrt{s})}{(K_1(r_D\sqrt{s}) I_0(\sqrt{s}) + I_1(r_D\sqrt{s}) K_0(\sqrt{s}))} \right)
 
 
+Lets see how to compute water influx
 
+.. tabs::
+
+   .. tab:: CCL-Math
+      CCL-Math Implementation
+
+      .. code-block:: C#
+         
+         // import libraries
+         using CypherCrescent.MathematicsLibrary;
+         using static MathsChart.Chart;
+
+         // define masses
+         double[] m = [1, 2, 3, 4, 5, 6, 7];
+
+         // define function
+         ColVec pleiades(double t, ColVec q)
+         {
+             double[] dqdt = new double[28];
+             double x1, x2, y1, y2, dx, dy, r3;
+             for (int i = 0; i < 7; i++)
+             {
+                 // x- velocity of star i
+                 dqdt[i + 0] = q[i + 14];
+                 // y- velocity of star j
+                 dqdt[i + 7] = q[i + 21]; 
+                 x1 = q[i]; y1 = q[i + 7];
+                 for (int j = 0; j < 7; j++)
+                 {
+                     x2 = q[j]; y2 = q[j + 7];
+                     if (j != i)// The star does not attract itself
+                     {
+                         dx = x2 - x1; dy = y2 - y1;
+                         r3 = Pow(dx * dx + dy * dy, 1.5);
+                         //impact of star j on x-acceleration of star i 
+                         dqdt[i + 14] += m[j] * dx / r3;
+                         //impact of star j on y-acceleration of star i 
+                         dqdt[i + 21] += m[j] * dy / r3;
+                     }
+                 }
+             }
+             return dqdt;
+         }
+        
+         double[] init = [3, 3,-1, -3, 2, -2, 2, 
+                          3, -3, 2, 0, 0, -4, 4,
+                          0, 0, 0, 0, 0, 1.75, -1.5,
+                          0, 0, 0, -1.25, 1, 0, 0];
+        
+         Indexer I = new(0, 7), J = I + 7;
+         double[] tspan = [..ColVec.Linspace(1, 15, 200)];
+         var opts = new Ode.Set() {AbsTol = 1e-15, RelTol = 1e-13};
+        
+         Ode.Result result89 = Ode.Ode89(pleiades, 
+             init, tspan, opts);
+         var plt = Plot(result89.Y["", I], result89.Y["", J], "--");
+         plt.Title = "Position of Pleiades Stars, Solved by ODE89";
+         plt.XLabel = "X Position";
+         plt.YLabel = "y Position";
+         plt.SaveFig("Position-of-Pleiades-Stars-CCL-Math-Ode89.png");
+        
+
+      .. figure:: images/Position-of-Pleiades-Stars-CCL-Math-Ode89.png
+         :align: center
+         :alt: Position-of-Pleiades-Stars-CCL-Math-Ode89.png
+
+   .. tab:: Python
+
+      Python Implementation
+
+      .. code-block:: python
+
+      
+
+
+   .. tab:: Matlab
+
+      Matlab Implementation
+
+      .. code-block:: matlab
+
+         % define the function handle
+         dqdt = @(t, q) pleiades(t,q);
+
+         % set initial condition
+         q0 = [3 3 -1 -3 2 -2 2 ...
+               3 -3 2 0 0 -4 4 ...
+               0 0 0 0 0 1.75 -1.5 ...
+               0 0 0 -1.25 1 0 0]';
+         
+         % set time span
+         t_span = linspace(1,15,200);
+         
+         % call the solver
+         opts = odeset("RelTol",1e-13,"AbsTol",1e-15);
+         [t, q89] = ode89(dqdt, t_span, q0, opts);
+         
+         % display the result
+         plot(q89(:,1:7),q89(:,8:14),'--')
+         title('Position of Pleiades Stars, Solved by ODE89')
+         xlabel('X Position')
+         ylabel('Y Position')
+         saveas(gcf, 'Position-of-Pleiades-Stars-Matlab-ODE89', 'png')
+
+         function dqdt = pleiades(t,q)
+            x = q(1:7);
+            y = q(8:14);
+            xDist = (x - x.');
+            yDist = (y - y.');
+            r = (xDist.^2+yDist.^2).^(3/2);
+            m = (1:7)';
+            dqdt = [q(15:28);
+                    sum(xDist.*m./r,1,'omitnan').';
+                    sum(yDist.*m./r,1,'omitnan').'];
+          end
+
+      .. figure:: images/Position-of-Pleiades-Stars-Matlab-ODE89.png
+         :align: center
+         :alt: Position-of-Pleiades-Stars-Matlab-ODE89.png
 
 Specific Heat Capacity of Natural Gas
 -------------------------------------
@@ -438,4 +557,4 @@ Reference
 
 2. “Pleiades.” Wikipedia, 21 June 2021. Wikipedia, https://en.wikipedia.org/wiki/Pleiades.
 
-3. “Pleiades.” Wikipedia, 21 June 2021. Wikipedia, https://en.wikipedia.org/wiki/Pleiades.
+3. Lateef Adewale Kareem (2025). Numerical Inversion of Laplace Transform (https://www.mathworks.com/matlabcentral/fileexchange/179769-numerical-inversion-of-laplace-transform), MATLAB Central File Exchange. Retrieved January 30, 2025.
