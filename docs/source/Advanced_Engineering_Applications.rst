@@ -253,7 +253,11 @@ Using Kirchoff's law to equalize the current through each node (1 through 5), yo
 .. math::
 
    C_1(U'_2 - U'_1) = (U_1 - U_e(t))/R_0
+.. math::
+
    C_1(U'_1 - U'_2) = (U_2 - U_b)/R_1 + U_2/R_1 + 0.01f(U_2 - U_3)
+.. math::
+
    -C_2U'_3 = U_3/R_3 - f(U_2 - U_3)
     
    
