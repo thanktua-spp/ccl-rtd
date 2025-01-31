@@ -66,8 +66,10 @@ Lets see how to compute water influx, and generate the started water influx plot
          double I(int n, double x) => SpecialFunctions.BesselI(n, x);
          double K(int n, double x) => SpecialFunctions.BesselK(n, x);
 
+         // define Wd function in time space. 
          double EdgeClosedBoundaryRadial_Wd(double tD, double rD)
          {
+             // define the embedded laplace space solution
              Func<double, double> lapW = new(s =>
              {
                  double sqrts, sqrts3, rDsqrts, Num, Den;
@@ -82,8 +84,11 @@ Lets see how to compute water influx, and generate the started water influx plot
              return tD == 0 || rD == 1 ? 0 : niLaplace(lapW, tD);
          }
         
+         // define the time and radial mesh
          int[] Rd = [2, 4, 6, 8, 10];
          ColVec Td = ColVec.Logspace(-2, 4), Wd;
+         
+         // compute the water influx and plot
          var plt = new ChartHandle();
          foreach (int rD in Rd)
          {
@@ -120,11 +125,13 @@ Lets see how to compute water influx, and generate the started water influx plot
 
       .. code-block:: matlab
          
-
+         % define time and radial mesh
          Rd = [2, 4, 6, 8, 10];
          Td = logspace(-2, 4);
+
+         % compute the water influx and plot them for reach rD
          for rD = Rd 
-            Wd = arrayfun(@(tD)EdgeClosedBoundaryRadial_Wd(tD, rD), Td);
+            Wd = arrayfun(@(tD) EdgeClosedBoundaryRadial_Wd(tD, rD), Td);
             semilogx(Td, Wd, linewidth = 2); hold on;
          end
          grid on;
@@ -135,6 +142,7 @@ Lets see how to compute water influx, and generate the started water influx plot
          title("Dimensionless Water Influx");
          saveas(gcf, "Dimensionless-Water-Influx-Matlab.png");
             
+         % define the solution in laplace space
          function ws = lapW(s, rD)
             sqrts = sqrt(s); sqrts3 = s * sqrts; rDsqrts = rD * sqrts;
             Num = besseli(1, rDsqrts) * besselk(1, sqrts) - besselk(1, rDsqrts) * besseli(1, sqrts);
@@ -145,7 +153,8 @@ Lets see how to compute water influx, and generate the started water influx plot
                ws = Num / (sqrts3 * Den);
             end
          end
-            
+         
+         % define the solution in time space 
          function wt = EdgeClosedBoundaryRadial_Wd(tD, rD)
             if(tD == 0 || rD == 1)
                wt =  0;
