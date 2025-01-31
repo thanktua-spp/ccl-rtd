@@ -18,12 +18,24 @@ In a closed boundary situation, the governing equation gives:
 The solution in laplace space:
 
 .. math:: 
-   P_D(s, r) = \Phi_1 I_0(r\sqrt{s}) + \Phi_2 K_0(r\sqrt{s})
+   P(s, r) = \Phi_1 I_0(r\sqrt{s}) + \Phi_2 K_0(r\sqrt{s})
 
 Using the boundary conditions to evaluate the constants and substitute them:
 
 .. math:: 
-   P_D(s, r) = \cfrac{K_1(r_D\sqrt{s}) I_0(r\sqrt{s}) + I_1(r_D\sqrt{s}) K_0(r\sqrt{s})}{s(K_1(r_D\sqrt{s}) I_0(\sqrt{s}) + I_1(r_D\sqrt{s}) K_0(\sqrt{s}))}
+   P(s, r) = \cfrac{K_1(r_D\sqrt{s}) I_0(r\sqrt{s}) + I_1(r_D\sqrt{s}) K_0(r\sqrt{s})}{s(K_1(r_D\sqrt{s}) I_0(\sqrt{s}) + I_1(r_D\sqrt{s}) K_0(\sqrt{s}))}
+
+Rate of water influx is proportional to rate of change of pressure with respect to radial position at the reservoir aquifer boundary, hence total water influx after a time t is thus:
+
+.. math:: 
+   W(t) = \int_0^t_D \cfrac{\partial P}{\partial r} (\tau, r = 1) \partial \tau
+
+This can be accomplised by performing the integration in laplace space before inverting to time space. 
+
+.. math:: 
+   W(t) = LaplaceInverse\left\frac{1}{s} \cfrac{\partial P}{\partial r} (\tau, r = 1) \right)
+
+
 
 
 Specific Heat Capacity of Natural Gas
