@@ -20,6 +20,10 @@ The solution in laplace space:
 .. math:: 
    P_D(s, r) = \Phi_1 I_0(r\sqrt{s}) + \Phi_2 K_0(r\sqrt{s})
 
+Using the boundary conditions to evaluate the constants and substitute them:
+
+.. math:: 
+   P_D(s, r) = \cfrac{I_1(r_D\sqrt{s}) I_0(r\sqrt{s})  + I_1() K_0(r\sqrt{s})}{}
 
 
 Specific Heat Capacity of Natural Gas

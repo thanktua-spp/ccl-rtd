@@ -8,9 +8,22 @@ Dimensionless Water Influx Estimation
 Water influx in an oil reservoir is the migration of water from an aquifer into the pore spaces of the reservoir rock containing oil.  This water movement is primarily driven by pressure differences between the aquifer and the reservoir as the oil is produced and reservoir pressure declines.  The water influx can provide pressure support, helping to maintain reservoir pressure and sustain oil production. Hence, understanding and accurate estimation of water influx is crucial for optimizing oil recovery strategies and the long-term economic viability of an oil field.
 
 In a closed boundary situation, the governing equation gives:
-..math::
 
-    \cfrac{\partial P}{\partial t} = \cfrac{1}{r}\cfrac{\partial}{\partial r}\left(r \cfrac{\partial P}{\partial r} \right)
+.. math:: 
+   \cfrac{\partial P}{\partial t} = \cfrac{1}{r}\cfrac{\partial}{\partial r}\left(r \cfrac{\partial P}{\partial r} \right)
+
+.. math:: 
+   P(t = 0, r) = 0, P(t, r = 1) = 1, \cfrac{\partial P}{\partial r}(t, r = r_D) = 0
+
+The solution in laplace space:
+
+.. math:: 
+   P_D(s, r) = \Phi_1 I_0(r\sqrt{s}) + \Phi_2 K_0(r\sqrt{s})
+
+Using the boundary conditions to evaluate the constants and substitute them:
+
+.. math:: 
+   P_D(s, r) = K_1(\sqrt{s}) I_0(r\sqrt{s}) + \Phi_2 K_0(r\sqrt{s})
 
 
 Specific Heat Capacity of Natural Gas
