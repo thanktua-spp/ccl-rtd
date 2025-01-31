@@ -39,7 +39,8 @@ This can be accomplised by performing the integration in laplace space before in
    W(t) = \mathcal{L}\left(\frac{1}{s\sqrt{s}} \cfrac{I_1(r_D\sqrt{s}) K_1(\sqrt{s}) - K_1(r_D\sqrt{s}) I_1(\sqrt{s})}{(I_1(r_D\sqrt{s}) K_0(\sqrt{s}) + K_1(r_D\sqrt{s}) I_0(\sqrt{s}))} \right)
 
 
-Lets see how to compute water influx
+Lets see how to compute water influx, and generate the started water influx plot found in many reservoir engineering text books
+
 
 .. tabs::
 
@@ -52,59 +53,54 @@ Lets see how to compute water influx
          using CypherCrescent.MathematicsLibrary;
          using static MathsChart.Chart;
 
-         // define masses
-         double[] m = [1, 2, 3, 4, 5, 6, 7];
+         // expose the numerical laplace transform
+         double niLaplace(Func<double, double> Lapfun, double t) 
+            => Transform.InverseLaplaceGavSteh(Lapfun, t);
+         
+         // expose special functions
+         double J(int n, double x) => SpecialFunctions.BesselJ(n, x);
+         double Y(int n, double x) => SpecialFunctions.BesselY(n, x);
+         double I(int n, double x) => SpecialFunctions.BesselI(n, x);
+         double K(int n, double x) => SpecialFunctions.BesselK(n, x);
 
-         // define function
-         ColVec pleiades(double t, ColVec q)
+         double EdgeClosedBoundaryRadial_Wd(double tD, double rD)
          {
-             double[] dqdt = new double[28];
-             double x1, x2, y1, y2, dx, dy, r3;
-             for (int i = 0; i < 7; i++)
+             Func<double, double> lapW = new(s =>
              {
-                 // x- velocity of star i
-                 dqdt[i + 0] = q[i + 14];
-                 // y- velocity of star j
-                 dqdt[i + 7] = q[i + 21]; 
-                 x1 = q[i]; y1 = q[i + 7];
-                 for (int j = 0; j < 7; j++)
-                 {
-                     x2 = q[j]; y2 = q[j + 7];
-                     if (j != i)// The star does not attract itself
-                     {
-                         dx = x2 - x1; dy = y2 - y1;
-                         r3 = Pow(dx * dx + dy * dy, 1.5);
-                         //impact of star j on x-acceleration of star i 
-                         dqdt[i + 14] += m[j] * dx / r3;
-                         //impact of star j on y-acceleration of star i 
-                         dqdt[i + 21] += m[j] * dy / r3;
-                     }
-                 }
-             }
-             return dqdt;
+                 double sqrts, sqrts3, rDsqrts, Num, Den;
+                 sqrts = Sqrt(s); sqrts3 = s * sqrts; rDsqrts = rD * sqrts;
+                 Num = I(1, rDsqrts) * K(1, sqrts) - K(1, rDsqrts) * I(1, sqrts);
+                 Den = I(1, rDsqrts) * K(0, sqrts) + K(1, rDsqrts) * I(0, sqrts);
+                 if (double.IsInfinity(Num) || double.IsInfinity(Den))
+                     return 1 / sqrts3;
+                 else
+                     return Num / (sqrts3 * Den);
+             });
+             return tD == 0 || rD == 1 ? 0 : niLaplace(lapW, tD);
          }
         
-         double[] init = [3, 3,-1, -3, 2, -2, 2, 
-                          3, -3, 2, 0, 0, -4, 4,
-                          0, 0, 0, 0, 0, 1.75, -1.5,
-                          0, 0, 0, -1.25, 1, 0, 0];
-        
-         Indexer I = new(0, 7), J = I + 7;
-         double[] tspan = [..ColVec.Linspace(1, 15, 200)];
-         var opts = new Ode.Set() {AbsTol = 1e-15, RelTol = 1e-13};
-        
-         Ode.Result result89 = Ode.Ode89(pleiades, 
-             init, tspan, opts);
-         var plt = Plot(result89.Y["", I], result89.Y["", J], "--");
-         plt.Title = "Position of Pleiades Stars, Solved by ODE89";
-         plt.XLabel = "X Position";
-         plt.YLabel = "y Position";
-         plt.SaveFig("Position-of-Pleiades-Stars-CCL-Math-Ode89.png");
-        
+         int[] Rd = [2, 4, 6, 8, 10];
+         ColVec Td = ColVec.Logspace(-2, 4), Wd;
+         var plt = new ChartHandle();
+         foreach (int rD in Rd)
+         {
+             Wd = Td.Select(tD => EdgeClosedBoundaryRadial_Wd(tD, rD)).ToList();
+             plt.AddSemiLogx(Td, Wd, linewidth: 2);
+         }
+         plt.XLabel = "tD";
+         plt.YLabel = "WD";
+         plt.Legend = new()
+         {
+             labels = ["rD = 2", "rD = 4", "rD = 6", "rD = 8", "rD = 10"],
+             alignment = "upperleft"
+         };
+         plt.Title = "Dimensionless Water Influx";
+         plt.SaveFig("Dimensionless Water Influx-CCL-Math.png");
+         
 
-      .. figure:: images/Position-of-Pleiades-Stars-CCL-Math-Ode89.png
+      .. figure:: images/Dimensionless Water Influx-CCL-Math.png
          :align: center
-         :alt: Position-of-Pleiades-Stars-CCL-Math-Ode89.png
+         :alt: Dimensionless Water Influx-CCL-Math.png
 
    .. tab:: Python
 
