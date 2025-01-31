@@ -100,7 +100,7 @@ Lets see how to compute water influx, and generate the started water influx plot
 
       .. figure:: images/Dimensionless Water Influx-CCL-Math.png
          :align: center
-         :alt: Dimensionless Water Influx-CCL-Math.png
+         :alt: Dimensionless-Water-Influx-CCL-Math.png
 
    .. tab:: Python
 
