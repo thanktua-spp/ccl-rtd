@@ -272,7 +272,7 @@ By extracting the coeeficients of the derivatives into a matrix, we have:
       0    &   0    &    0   & -c_{3} &  c_{3} \\
       0    &   0    &    0   &  c_{3} & -c_{3}
    \end{pmatrix}
-   \begin{pmatrix} U_1 \\  U_2 \\ U_3 \\ U_4 \\ U_5 \end{pmatrix} = 
+   \begin{pmatrix} U_1 \\  U_2 \\ U_3 \\ U_4 \\ U_5 \end{pmatrix}' = 
    \begin{pmatrix} 
         (U_1 - U_e(t))/R_0 \\  
         (U_2 - U_b)/R_1 + U_2/R_1 + 0.01f(U_2 - U_3) \\ 
