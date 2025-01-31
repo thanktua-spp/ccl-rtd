@@ -250,18 +250,19 @@ The goal is to solve for the output voltage through node 5, :math:`U_5(t)`.
 
 Using Kirchoff's law to equalize the current through each node (1 through 5), you can obtain a system of five equations describing the circuit:
 
-Node 1 :math:`C_1(U'_2 - U'_1) = (U_1 - U_e(t))/R_0`
+Node 1: :math:`C_1(U'_2 - U'_1) = (U_1 - U_e(t))/R_0`
 
-Node 2 :math:`C_1(U'_1 - U'_2) = (U_2 - U_b)/R_1 + U_2/R_1 + 0.01f(U_2 - U_3)`
+Node 2: :math:`C_1(U'_1 - U'_2) = (U_2 - U_b)/R_1 + U_2/R_1 + 0.01f(U_2 - U_3)`
 
-Node 3 :math:`-C_2U'_3 = U_3/R_3 - f(U_2 - U_3)`
+Node 3: :math:`-C_2U'_3 = U_3/R_3 - f(U_2 - U_3)`
 
-Node 4 :math:`C_3(U'_5 - U'_4) = (U_4 - U_b)/R_4 + 0.99f(U_2 - U_3)`
+Node 4: :math:`C_3(U'_5 - U'_4) = (U_4 - U_b)/R_4 + 0.99f(U_2 - U_3)`
 
-Node 5 :math:`C_3(U'_4 - U'_5) = -U_5/R_5`
+Node 5: :math:`C_3(U'_4 - U'_5) = -U_5/R_5`
 
 
 By extracting the coeeficients of the derivatives into a matrix, we have:
+
 .. math::
 
    \begin{pmatrix}
