@@ -5,7 +5,7 @@ In this chapter we present pratical engineering problems solved with combination
 
 Dimensionless Water Influx Estimation
 -------------------------------------
-
+Water influx in an oil reservoir is the migration of water from an aquifer into the pore spaces of the reservoir rock containing oil.  This water movement is primarily driven by pressure differences between the aquifer and the reservoir as the oil is produced and reservoir pressure declines.  The water influx can provide pressure support, helping to maintain reservoir pressure and sustain oil production. However, it can also lead to complications such as premature water breakthrough (where water is produced along with the oil), which can reduce the ultimate oil recovery and increase production costs.  Understanding and managing water influx is crucial for optimizing oil recovery strategies and the long-term economic viability of an oil field.
 Specific Heat Capacity of Natural Gas
 -------------------------------------
 
