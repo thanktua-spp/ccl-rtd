@@ -28,7 +28,7 @@ Using the boundary conditions to evaluate the constants and substitute them:
 Rate of water influx is proportional to rate of change of pressure with respect to radial position at the reservoir aquifer boundary, hence total water influx after a time t is thus:
 
 .. math:: 
-   W(t) = \int_0^{t_D} \cfrac{\partial P}{\partial r} (\tau, r = 1) \partial \tau
+   W(t) = \int_{0}^{t_D} \cfrac{\partial P}{\partial r} (\tau, r = 1) \partial \tau
 
 This can be accomplised by performing the integration in laplace space before inverting to time space. 
 
