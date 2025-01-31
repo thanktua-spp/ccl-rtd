@@ -23,7 +23,7 @@ The solution in laplace space:
 Using the boundary conditions to evaluate the constants and substitute them:
 
 .. math:: 
-   P_D(s, r) = \cfrac{I_1(r_D\sqrt{s}) I_0(r\sqrt{s})  + I_1() K_0(r\sqrt{s})}{}
+   P_D(s, r) = \cfrac{K_1(r_D\sqrt{s}) I_0(r\sqrt{s}) + I_1(r_D\sqrt{s}) K_0(r\sqrt{s})}{s(K_1(r_D\sqrt{s}) I_0(\sqrt{s}) + I_1(r_D\sqrt{s}) K_0(\sqrt{s}))}
 
 
 Specific Heat Capacity of Natural Gas
