@@ -255,7 +255,9 @@ Node 2 :math:`C_1(U'_1 - U'_2) = (U_2 - U_b)/R_1 + U_2/R_1 + 0.01f(U_2 - U_3)`
 Node 3 :math:`-C_2U'_3 = U_3/R_3 - f(U_2 - U_3)`
 Node 4 :math:`C_3(U'_5 - U'_4) = (U_4 - U_b)/R_4 + 0.99f(U_2 - U_3)`
 Node 5 :math:`C_3(U'_4 - U'_5) = - U_5/R_5`
-    
+
+
+By extracting the coeeficients of the derivatives into a matrix, we have:
 .. math::
 
    M = \begin{pmatrix}
@@ -266,6 +268,18 @@ Node 5 :math:`C_3(U'_4 - U'_5) = - U_5/R_5`
       0    &   0    &    0   &  c_{3} & -c_{3}
    \end{pmatrix}
 
+Hence the dynamics can be written as:
+
+.. math::
+
+   \begin{pmatrix}
+   -c_{1}  &  c_{1} &    0   &    0   &   0    \\
+    c_{1}  & -c_{1} &    0   &    0   &   0    \\
+      0    &   0    & -c_{2} &    0   &   0    \\
+      0    &   0    &    0   & -c_{3} &  c_{3} \\
+      0    &   0    &    0   &  c_{3} & -c_{3}
+   \end{pmatrix}
+   \begin{pmatrix} U_1 \\  U_2 \\ U_3 \\ U_4 \\ U_5 \end{pmatrix}
 .. tabs::
 
    .. tab:: CCL-Math
