@@ -95,7 +95,7 @@ Lets see how to compute water influx, and generate the started water influx plot
              alignment = "upperleft"
          };
          plt.Title = "Dimensionless Water Influx";
-         plt.SaveFig("Dimensionless Water Influx-CCL-Math.png");
+         plt.SaveFig("Dimensionless-Water-Influx-CCL-Math.png");
          
 
       .. figure:: images/Dimensionless-Water-Influx-CCL-Math.png
