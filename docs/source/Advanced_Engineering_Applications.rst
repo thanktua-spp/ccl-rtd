@@ -41,6 +41,9 @@ This can be accomplised by performing the integration in laplace space before in
 
 Lets see how to compute water influx, and generate the started water influx plot found in many reservoir engineering text books
 
+.. note::
+   The matlab implementation uses the numerical laplace inversion code from matlab file exchange[3]
+
 
 .. tabs::
 
