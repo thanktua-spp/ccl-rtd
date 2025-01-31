@@ -119,45 +119,46 @@ Lets see how to compute water influx, and generate the started water influx plot
       Matlab Implementation
 
       .. code-block:: matlab
-
-         % define the function handle
-         dqdt = @(t, q) pleiades(t,q);
-
-         % set initial condition
-         q0 = [3 3 -1 -3 2 -2 2 ...
-               3 -3 2 0 0 -4 4 ...
-               0 0 0 0 0 1.75 -1.5 ...
-               0 0 0 -1.25 1 0 0]';
          
-         % set time span
-         t_span = linspace(1,15,200);
-         
-         % call the solver
-         opts = odeset("RelTol",1e-13,"AbsTol",1e-15);
-         [t, q89] = ode89(dqdt, t_span, q0, opts);
-         
-         % display the result
-         plot(q89(:,1:7),q89(:,8:14),'--')
-         title('Position of Pleiades Stars, Solved by ODE89')
-         xlabel('X Position')
-         ylabel('Y Position')
-         saveas(gcf, 'Position-of-Pleiades-Stars-Matlab-ODE89', 'png')
 
-         function dqdt = pleiades(t,q)
-            x = q(1:7);
-            y = q(8:14);
-            xDist = (x - x.');
-            yDist = (y - y.');
-            r = (xDist.^2+yDist.^2).^(3/2);
-            m = (1:7)';
-            dqdt = [q(15:28);
-                    sum(xDist.*m./r,1,'omitnan').';
-                    sum(yDist.*m./r,1,'omitnan').'];
-          end
+         Rd = [2, 4, 6, 8, 10];
+         Td = logspace(-2, 4);
+         for rD = Rd 
+            Wd = arrayfun(@(tD)EdgeClosedBoundaryRadial_Wd(tD, rD), Td);
+            semilogx(Td, Wd, linewidth = 2); hold on;
+         end
+         grid on;
+         xlabel("tD");
+         ylabel("WD");
+         legend("rD = 2", "rD = 4", "rD = 6", "rD = 8", "rD = 10", location = "northwest")
+            
+         title("Dimensionless Water Influx");
+         saveas(gcf, "Dimensionless-Water-Influx-Matlab.png");
+            
+         function ws = lapW(s, rD)
+            sqrts = sqrt(s); sqrts3 = s * sqrts; rDsqrts = rD * sqrts;
+            Num = besseli(1, rDsqrts) * besselk(1, sqrts) - besselk(1, rDsqrts) * besseli(1, sqrts);
+            Den = besseli(1, rDsqrts) * besselk(0, sqrts) + besselk(1, rDsqrts) * besseli(0, sqrts);
+            if (isinf(Num) || isinf(Den))
+               ws = 1 / sqrts3;
+            else
+               ws = Num / (sqrts3 * Den);
+            end
+         end
+            
+         function wt = EdgeClosedBoundaryRadial_Wd(tD, rD)
+            if(tD == 0 || rD == 1)
+               wt =  0;
+            else
+               wt = niLaplace(@(s)lapW(s, rD), tD);
+            end
+         end
 
-      .. figure:: images/Position-of-Pleiades-Stars-Matlab-ODE89.png
+      .. figure:: images/Dimensionless-Water-Influx-Matlab.png
          :align: center
-         :alt: Position-of-Pleiades-Stars-Matlab-ODE89.png
+         :alt: Dimensionless-Water-Influx-Matlab.png
+
+
 
 Specific Heat Capacity of Natural Gas
 -------------------------------------
