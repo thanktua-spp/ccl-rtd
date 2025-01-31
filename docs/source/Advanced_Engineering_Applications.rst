@@ -33,7 +33,7 @@ Rate of water influx is proportional to rate of change of pressure with respect 
 This can be accomplised by performing the integration in laplace space before inverting to time space. 
 
 .. math:: 
-   W(t) = LaplaceInverse\left\frac{1}{s} \cfrac{\partial P}{\partial r} (\tau, r = 1) \right)
+   W(t) = \mathcal{L}\left\frac{1}{s} \cfrac{\partial P}{\partial r} (\tau, r = 1) \right)
 
 
 
