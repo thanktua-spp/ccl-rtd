@@ -9,6 +9,7 @@ Water influx in an oil reservoir is the migration of water from an aquifer into 
 
 In a closed boundary situation, the governing equation gives:
 ..math::
+
     \cfrac{\partial P}{\partial t} = \cfrac{1}{r}\cfrac{\partial}{\partial r}\left(r \cfrac{\partial P}{\partial r} \right)
 
 
