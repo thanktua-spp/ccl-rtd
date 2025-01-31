@@ -1,16 +1,18 @@
-            Rd = [2, 4, 6, 8, 10];
-            Td = logspace(-2, 4);
+            Rd = [2, 2.5, 3, 3.5, 4];
+            Td = logspace(-1, 2);
+            lgd = {};
             for rD = Rd 
                Wd = arrayfun(@(tD)EdgeClosedBoundaryRadial_Wd(tD, rD), Td);
                semilogx(Td, Wd, linewidth = 2); hold on;
+               lgd = [lgd, "rD = " + num2str(rD)];
             end
             grid on;
             xlabel("tD");
             ylabel("WD");
-            legend("rD = 2", "rD = 4", "rD = 6", "rD = 8", "rD = 10", location = "northwest")
-            
+            legend(lgd, location = "northwest")
+            axis([0.1,100,1,8]);
             title("Dimensionless Water Influx");
-            saveas(gcf, "Dimensionless-Water-Influx-Matlab.png");
+            saveas(gcf, "Dimensionless-Water-Influx-Matlab (r2-4).png");
             
             function ws = lapW(s, rD)
                sqrts = sqrt(s); sqrts3 = s * sqrts; rDsqrts = rD * sqrts;
