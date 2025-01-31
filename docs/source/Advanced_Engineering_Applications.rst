@@ -25,19 +25,18 @@ Using the boundary conditions to evaluate the constants and substitute them:
 .. math:: 
    P(s, r) = \cfrac{K_1(r_D\sqrt{s}) I_0(r\sqrt{s}) + I_1(r_D\sqrt{s}) K_0(r\sqrt{s})}{s(K_1(r_D\sqrt{s}) I_0(\sqrt{s}) + I_1(r_D\sqrt{s}) K_0(\sqrt{s}))}
 
-Rate of water influx is proportional to rate of change of pressure with respect to radial position at the reservoir aquifer boundary, hence total water influx after a time t is thus:
+From Darcy law, we know that the rate of water influx is proportional to the negative rate of change of pressure with respect to radial position at the reservoir aquifer boundary, hence total water influx after a time t is thus:
 
 .. math:: 
-   W(t) = \int_{0}^{t_D} \cfrac{\partial P}{\partial r} (\tau, r = 1) \partial \tau
+   W(t) = \int_{0}^{t_D} -\cfrac{\partial P}{\partial r} (\tau, r = 1) \partial \tau
 
 This can be accomplised by performing the integration in laplace space before inverting to time space. 
 
 .. math:: 
-   W(t) = \mathcal{L}\left(\frac{1}{s} \cfrac{\partial P}{\partial r} (s, r = 1) \right)
-
+   W(t) = \mathcal{L}\left(\frac{-1}{s} \cfrac{\partial P}{\partial r} (s, r = 1) \right)
 
 .. math:: 
-   W(t) = \mathcal{L}\left(\frac{1}{s\sqrt{s}} \cfrac{K_1(r_D\sqrt{s}) I_1(\sqrt{s}) - I_1(r_D\sqrt{s}) K_1(\sqrt{s})}{(K_1(r_D\sqrt{s}) I_0(\sqrt{s}) + I_1(r_D\sqrt{s}) K_0(\sqrt{s}))} \right)
+   W(t) = \mathcal{L}\left(\frac{1}{s\sqrt{s}} \cfrac{K_0(r_D\sqrt{s}) I_1(\sqrt{s}) - I_0(r_D\sqrt{s}) K_1(\sqrt{s})}{(K_1(r_D\sqrt{s}) I_0(\sqrt{s}) + I_1(r_D\sqrt{s}) K_0(\sqrt{s}))} \right)
 
 
 Lets see how to compute water influx
