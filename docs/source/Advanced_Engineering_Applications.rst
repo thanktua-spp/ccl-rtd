@@ -37,7 +37,7 @@ This can be accomplised by performing the integration in laplace space before in
 
 
 .. math:: 
-   W(t) = \mathcal{L}\left(\frac{1}{s} \cfrac{\partial P}{\partial r} (\tau, r = 1) \right)
+   W(t) = \mathcal{L}\left(\frac{1}{s\sqrt{s}} \cfrac{K_1(r_D\sqrt{s}) I_1(\sqrt{s}) - I_1(r_D\sqrt{s}) K_1(\sqrt{s})}{(K_1(r_D\sqrt{s}) I_0(\sqrt{s}) + I_1(r_D\sqrt{s}) K_0(\sqrt{s}))} \right)
 
 
 
