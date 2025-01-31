@@ -12,6 +12,9 @@ In a closed boundary situation, the governing equation gives:
 .. math:: 
    \cfrac{\partial P}{\partial t} = \cfrac{1}{r}\cfrac{\partial}{\partial r}\left(r \cfrac{\partial P}{\partial r} \right)
 
+.. math:: 
+   P(t = 0, r) = 0, P(t, r = 1) = 1, \cfrac{\partial P}{\partial r}(t, r = r_D) = 0
+
 
 Specific Heat Capacity of Natural Gas
 -------------------------------------
