@@ -15,6 +15,12 @@ In a closed boundary situation, the governing equation gives:
 .. math:: 
    P(t = 0, r) = 0, P(t, r = 1) = 1, \cfrac{\partial P}{\partial r}(t, r = r_D) = 0
 
+The solution in laplace space:
+
+.. math:: 
+   P_D(s, r) = \Phi_1 I_0(r\sqrt{s}) + \Phi_2 K_0(r\sqrt{s})
+
+
 
 Specific Heat Capacity of Natural Gas
 -------------------------------------
