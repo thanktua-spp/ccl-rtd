@@ -265,6 +265,7 @@ Additional Points
 Z-factor
 ~~~~~~~~
 Here we show how to compute Z factor from Hall and Yarborough Ea derivative of Starline Carnahan's Equation of state:
+
 .. math::
    A = 0.06125t\exp(-1.2(1-t)^2);
    B = 14.76t - 9.76t^2 + 4.58t^3;
