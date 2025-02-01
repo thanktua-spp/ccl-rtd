@@ -418,7 +418,7 @@ And then compute:
 
 
 Specific Heat Capacity of Natural Gas
--------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 
