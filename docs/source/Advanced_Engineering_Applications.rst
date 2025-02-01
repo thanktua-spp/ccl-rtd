@@ -476,8 +476,8 @@ Using Hall and Yarborough Correlation, we can evaluate the reduced compressibili
              // compute the z factor
              double y = sol;
              y2 = y * y; y3 = y2 * y; y4 = y3 * y; ym1p4 = Pow(1 - y, 4); yDm1 = Pow(y, D - 1);
-             Den = (1 + 4 * y + 4 * y2 - 4 * y3 + y4) /  ym1p4 - 2 * B * y + C * D * yDm1;
-             return A*Tr/(y*Den);
+             X = (1 + 4 * y + 4 * y2 - 4 * y3 + y4) /  ym1p4 - 2 * B * y + C * D * yDm1;
+             return A*Tr/(y*X);
          }
 
          // set up ressure and temperature mesh
