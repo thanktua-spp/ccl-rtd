@@ -402,12 +402,15 @@ To solve system of ordinary differential equation, you need the initial conditio
          :alt: Blasius-Boundary-Layer-Matlab.png
 
 
-## Howarth’s Transformation
+Howarth’s Transformation
+~~~~~~~~~~~~~~~~~~~~~~~~
 
-Introducing the **Howarth–Dorodnitsyn transformation** (or **Dorodnitsyn-Howarth transformation**) is a density-weighted coordinate transformation, which reduces variable-density flow conservation equations to simpler form (in most cases, to incompressible form), allows us to model the temperature within the boundary layer. 
+Introducing the **Howarth–Dorodnitsyn transformation** (or **Dorodnitsyn-Howarth transformation**) is a density-weighted[4] coordinate transformation, which reduces variable-density flow conservation equations to simpler form (in most cases, to incompressible form), allows us to model the temperature within the boundary layer. 
 
 Introducing the self-similar variables
 
+.. math:
+   \eta = \sqrt{\cfrac{U}{2\nu_{\infy}x}} \int_0^y \frac{\rho}{\rho_{\infty}}dy,
 
 Pleiades System
 ---------------
