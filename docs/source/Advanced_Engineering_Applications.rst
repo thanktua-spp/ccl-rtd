@@ -428,10 +428,10 @@ Using Hall and Yarborough Correlation, we can evaluate the reduced compressibili
 
 
 .. math::
-   \Pi = \cfrac{1 + 4y + 4y^2 - 4y^3 + y^4}{(1 - y)^4} - 2By + CDy^{(D - 1)}
+   \Xi = \cfrac{1 + 4y + 4y^2 - 4y^3 + y^4}{(1 - y)^4} - 2By + CDy^{(D - 1)}
    
 .. math::
-   c_rT_r = \cfrac{A Tr}{y\Pi};
+   c_rT_r = \cfrac{A Tr}{y\Xi};
    
 
 .. tabs::
