@@ -274,10 +274,10 @@ So, the system of first order differential equation is thus:
 Subject to the following initial and terminal conditions. 
 
 .. math:: 
-   y_1(0) = 0, y_2(0) = 0, y_2(\inf) = 1
+   y_1(0) = 0, y_2(0) = 0, y_2(\infty) = 1
 
 
-To solve system of ordinary differential equation, you need the initial conditions, but when one of the initial conditions is missing, and we have a terminal condition instead, we can solve for the initial condition we do not have using the terminal condition we have, just like finding the root of a nonlinear function. But to evaluate the value of the function that you want to be zero, you have to perform the integration of the ode, using the guess given by the nonlinear solver and then return the function value which is the difference between the terminal value you obtained from the integration and the desired value. In this case the unknown value is :math:'y_3(0)', and the function value is :math:'y_2(\infty) - 1'.
+To solve system of ordinary differential equation, you need the initial conditions, but when one of the initial conditions is missing, and we have a terminal condition instead, we can solve for the initial condition we do not have using the terminal condition we have, just like finding the root of a nonlinear function. But to evaluate the value of the function that you want to be zero, you have to perform the integration of the ode, using the guess given by the nonlinear solver and then return the function value which is the difference between the terminal value you obtained from the integration and the desired value. In this case the unknown value is :math:`y_3(0)`, and the function value is :math:`y_2(\infty) - 1`.
 
 
 Pleiades System
