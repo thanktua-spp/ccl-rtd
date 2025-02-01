@@ -318,9 +318,9 @@ To solve system of ordinary differential equation, you need the initial conditio
          plt.SaveFig("Blasius-Boundary-Layer-CCL-Math.png");
          
 
-      .. figure:: images/Position-of-Pleiades-Stars-CCL-Math-Ode89.png
+      .. figure:: images/Blasius-Boundary-Layer-CCL-Math.png
          :align: center
-         :alt: Position-of-Pleiades-Stars-CCL-Math-Ode89.png
+         :alt: Blasius-Boundary-Layer-CCL-Math.png
 
 
    .. tab:: Python
