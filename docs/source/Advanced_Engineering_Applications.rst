@@ -159,22 +159,23 @@ Lets see how to compute water influx, and generate the started water influx plot
 
       .. code-block:: matlab
          
-         % define time and radial mesh
-         Rd = [2, 4, 6, 8, 10];
-         Td = logspace(-2, 4);
-
-         % compute the water influx and plot them for reach rD
-         for rD = Rd 
-            Wd = arrayfun(@(tD) EdgeClosedBoundaryRadial_Wd(tD, rD), Td);
-            semilogx(Td, Wd, linewidth = 2); hold on;
-         end
-         grid on;
-         xlabel("tD");
-         ylabel("WD");
-         legend("rD = 2", "rD = 4", "rD = 6", "rD = 8", "rD = 10", location = "northwest")
+         % define the time and radial mesh
+         Rd = [2, 2.5, 3, 3.5, 4, 50];
+         Td = logspace(-1, 2);
             
+         % compute the water influx and plot
+         figure(Color='w'); lgd = {};
+         for rD = Rd 
+            Wd = arrayfun(@(tD)EdgeClosedBoundaryRadial_Wd(tD, rD), Td);
+            semilogx(Td, Wd, linewidth = 2); hold on;
+            lgd = [lgd, "rD = " + num2str(rD)];
+         end
+         lgd(end) = 'rD = ∞'; grid on;
+         xlabel("tD"); ylabel("WD");
+         legend(lgd, location = "northwest")
+         axis([0.1, 100, 1, 8]);
          title("Dimensionless Water Influx");
-         saveas(gcf, "Dimensionless-Water-Influx-Matlab.png");
+         saveas(gcf, "Dimensionless-Water-Influx-Matlab-4dn.png");
             
          % define the solution in laplace space
          function ws = lapW(s, rD)
@@ -201,6 +202,25 @@ Lets see how to compute water influx, and generate the started water influx plot
          :align: center
          :alt: Dimensionless-Water-Influx-Matlab-4dn.png
 
+
+      .. code-block:: matlab
+         % define the time and radial mesh
+         Rd = [5,6,7,8,9,10, 50];
+         Td = logspace(0, 3);
+            
+         % compute the water influx and plot
+         figure(Color='w'); lgd = {};
+         for rD = Rd 
+            Wd = arrayfun(@(tD)EdgeClosedBoundaryRadial_Wd(tD, rD), Td);
+            semilogx(Td, Wd, linewidth = 2); hold on;
+            lgd = [lgd, "rD = " + num2str(rD)];
+         end
+         lgd(end) = 'rD = ∞'; grid on;
+         xlabel("tD"); ylabel("WD");
+         legend(lgd, location = "northwest")
+         axis([1,1000,0, 70]);
+         title("Dimensionless Water Influx");
+         saveas(gcf, "Dimensionless-Water-Influx-Matlab-5up.png");
 
       .. figure:: images/Dimensionless-Water-Influx-Matlab-5up.png
          :align: center
