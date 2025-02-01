@@ -12,5 +12,6 @@ figure(Color = 'w')
 plt = plot(T, Y, linewidth = 2);
 axis([0,6,0,2])
 xlabel("η"); 
+legend("f", "f'", "f''");
 title("Blasius Boundary layer");
 saveas(gcf, 'Blasius-Boundary-Layer-Matlab', 'png')
