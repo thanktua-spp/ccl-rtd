@@ -404,7 +404,7 @@ To solve system of ordinary differential equation, you need the initial conditio
 
 ## Howarth’s Transformation
 
-Introducing the **Howarth–Dorodnitsyn transformation** (or **Dorodnitsyn-Howarth transformation**) is a [density](https://en.wikipedia.org/wiki/Density)-weighted coordinate transformation, which reduces variable-density flow conservation equations to simpler form (in most cases, to incompressible form), allows us to model the temperature within the boundary layer. 
+Introducing the **Howarth–Dorodnitsyn transformation** (or **Dorodnitsyn-Howarth transformation**) is a density-weighted[4] coordinate transformation, which reduces variable-density flow conservation equations to simpler form (in most cases, to incompressible form), allows us to model the temperature within the boundary layer. 
 
 Introducing the self-similar variables
 
@@ -797,3 +797,4 @@ Reference
 2. “Pleiades.” Wikipedia, 21 June 2021. Wikipedia, https://en.wikipedia.org/wiki/Pleiades.
 
 3. Lateef Adewale Kareem (2025). Numerical Inversion of Laplace Transform (https://www.mathworks.com/matlabcentral/fileexchange/179769-numerical-inversion-of-laplace-transform), MATLAB Central File Exchange. Retrieved January 30, 2025.
+4. https://en.wikipedia.org/wiki/Density

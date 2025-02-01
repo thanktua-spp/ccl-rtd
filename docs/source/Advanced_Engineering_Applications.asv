@@ -231,33 +231,30 @@ Compressibility of Natural Gas
 ------------------------------
 Natural gas compressibility is a measure of how much the volume of a given amount of natural gas decreases when pressure is applied to it. It is an important property to understand because it affects how much gas can be stored in a given space, and how easily the gas can be transported through pipelines.   
 
-Here's a breakdown of key aspects:
-
 Why Compressibility Matters
+- Storage: Natural gas is often stored in underground reservoirs or tanks. The compressibility of the gas determines how much gas can be packed into these storage spaces at a given pressure.   
+- Transportation: In pipelines, higher pressure helps move gas efficiently. Compressibility affects how much pressure is needed to transport a certain amount of gas.   
+- Metering: Accurate measurement of natural gas flow relies on understanding its compressibility, as the volume of gas changes with pressure and temperature.   
+- Reservoir Engineering: In oil and gas reservoirs, compressibility is crucial for estimating gas reserves and predicting how the reservoir will perform under production.   
 
-Storage: Natural gas is often stored in underground reservoirs or tanks. The compressibility of the gas determines how much gas can be packed into these storage spaces at a given pressure.   
-Transportation: In pipelines, higher pressure helps move gas efficiently. Compressibility affects how much pressure is needed to transport a certain amount of gas.   
-Metering: Accurate measurement of natural gas flow relies on understanding its compressibility, as the volume of gas changes with pressure and temperature.   
-Reservoir Engineering: In oil and gas reservoirs, compressibility is crucial for estimating gas reserves and predicting how the reservoir will perform under production.   
 Factors Affecting Compressibility
+- Pressure: As pressure increases, the volume of natural gas decreases, meaning compressibility increases.   
+- Temperature: Higher temperatures generally decrease compressibility, as the gas molecules have more energy and resist being forced closer together.   
+- Gas Composition: Natural gas is a mixture of hydrocarbons, primarily methane. The exact composition affects compressibility, as different gases have different compressibility factors.   
 
-Pressure: As pressure increases, the volume of natural gas decreases, meaning compressibility increases.   
-Temperature: Higher temperatures generally decrease compressibility, as the gas molecules have more energy and resist being forced closer together.   
-Gas Composition: Natural gas is a mixture of hydrocarbons, primarily methane. The exact composition affects compressibility, as different gases have different compressibility factors.   
 Calculating Compressibility
+- Ideal Gas Law: At low pressures and high temperatures, natural gas behaves close to an ideal gas, and its compressibility can be estimated using the ideal gas law.   
+- Real Gas Equations: At higher pressures and lower temperatures, deviations from ideal behavior become significant. More complex equations, like the Peng-Robinson or Soave-Redlich-Kwong equations, are used to account for real gas behavior.
+- Compressibility Factor (Z-factor): This factor corrects the ideal gas law for real gas behavior. It is often determined using charts or correlations based on pressure, temperature, and gas composition.   
 
-Ideal Gas Law: At low pressures and high temperatures, natural gas behaves close to an ideal gas, and its compressibility can be estimated using the ideal gas law.   
-Real Gas Equations: At higher pressures and lower temperatures, deviations from ideal behavior become significant. More complex equations, like the Peng-Robinson or Soave-Redlich-Kwong equations, are used to account for real gas behavior.
-Compressibility Factor (Z-factor): This factor corrects the ideal gas law for real gas behavior. It is often determined using charts or correlations based on pressure, temperature, and gas composition.   
 Importance of Accurate Compressibility Calculations
+- Safety: Inaccurate compressibility calculations can lead to over-pressurization of storage vessels or pipelines, posing safety risks.
+- Economic Efficiency: Optimizing pipeline and storage design, as well as accurately metering gas flow, requires precise compressibility data to ensure cost-effectiveness.
+- Environmental Impact: Understanding gas behavior is essential for preventing leaks and ensuring the safe handling of natural gas, reducing its environmental impact.
 
-Safety: Inaccurate compressibility calculations can lead to over-pressurization of storage vessels or pipelines, posing safety risks.
-Economic Efficiency: Optimizing pipeline and storage design, as well as accurately metering gas flow, requires precise compressibility data to ensure cost-effectiveness.
-Environmental Impact: Understanding gas behavior is essential for preventing leaks and ensuring the safe handling of natural gas, reducing its environmental impact.
 Additional Points
-
-Isothermal Compressibility: This refers to compressibility measured at a constant temperature.
-Compressibility of Gas Mixtures: When dealing with natural gas, which is a mixture, the compressibility of the mixture needs to be determined based on the individual components and their proportions.
+- Isothermal Compressibility: This refers to compressibility measured at a constant temperature.
+- Compressibility of Gas Mixtures: When dealing with natural gas, which is a mixture, the compressibility of the mixture needs to be determined based on the individual components and their proportions.
 
 
 Specific Heat Capacity of Natural Gas
@@ -269,7 +266,8 @@ Specific Heat Capacity of Natural Gas
 Blasius Boundary Layer and Howarth's Transformation
 ---------------------------------------------------
 
-*Background*
+Background
+~~~~~~~~~~~
 The Blasius Boundary Layer refers to a boundary layer of fluid in the vicinity of a flat plate that moves steadily in its own plane. This concept was first introduced by German mathematician Heinrich Blasius. This solution is important in the field of fluid dynamics, particularly in the area of laminar flow. In this solution, the flow velocity outside the boundary layer is assumed to be uniform. Inside the boundary layer, the fluid's velocity changes from zero at the plate surface to the free stream velocity at the edge of the boundary layer. This concept plays a significant role in understanding and predicting the behavior of fluid flow in various engineering and scientific applications.
 
 The solutions to the Blasius equation provide valuable insights into the behavior of fluid flow near a boundary. For instance, it demonstrates that the boundary layer thickness grows as the square root of the distance along the plate. Also, it reveals that the shear stress at the plate surface is proportional to the square root of the free stream velocity, among other observations.
@@ -402,6 +400,13 @@ To solve system of ordinary differential equation, you need the initial conditio
       .. figure:: images/Blasius-Boundary-Layer-Matlab.png
          :align: center
          :alt: Blasius-Boundary-Layer-Matlab.png
+
+
+## Howarth’s Transformation
+
+Introducing the **Howarth–Dorodnitsyn transformation** (or **Dorodnitsyn-Howarth transformation**) is a density-weighted coordinate transformation, which reduces variable-density flow conservation equations to simpler form (in most cases, to incompressible form), allows us to model the temperature within the boundary layer. 
+
+Introducing the self-similar variables
 
 
 Pleiades System
@@ -792,3 +797,4 @@ Reference
 2. “Pleiades.” Wikipedia, 21 June 2021. Wikipedia, https://en.wikipedia.org/wiki/Pleiades.
 
 3. Lateef Adewale Kareem (2025). Numerical Inversion of Laplace Transform (https://www.mathworks.com/matlabcentral/fileexchange/179769-numerical-inversion-of-laplace-transform), MATLAB Central File Exchange. Retrieved January 30, 2025.
+4. https://en.wikipedia.org/wiki/Density
