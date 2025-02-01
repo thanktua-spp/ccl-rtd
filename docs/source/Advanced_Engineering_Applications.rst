@@ -7,6 +7,18 @@ Dimensionless Water Influx Estimation
 -------------------------------------
 Water influx in an oil reservoir is the migration of water from an aquifer into the pore spaces of the reservoir rock containing oil.  This water movement is primarily driven by pressure differences between the aquifer and the reservoir as the oil is produced and reservoir pressure declines.  The water influx can provide pressure support, helping to maintain reservoir pressure and sustain oil production. Hence, understanding and accurate estimation of water influx is crucial for optimizing oil recovery strategies and the long-term economic viability of an oil field.
 
+For use in material balance computation in edge drive configuration, reservoir engneering books provide plots for Wd as a function of dimensionless radius and time
+
+For :math:'Rd <= 4'
+.. figure:: images/Water-Influx-from-Craft-and-Hawkins_4dn.png
+         :align: center
+         :alt: Water-Influx-from-Craft-and-Hawkins_4dn.png
+
+For :math:'5 <=Rd <= 10'
+.. figure:: images/Water-Influx-from-Craft-and-Hawkins_5up.png
+         :align: center
+         :alt: Water-Influx-from-Craft-and-Hawkins_5up.png
+
 In an edge drive configuration with the aquifer closed at its outer boundary, the governing equation gives:
 
 .. math:: 
