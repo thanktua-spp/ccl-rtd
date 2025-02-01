@@ -202,7 +202,6 @@ Lets see how to compute water influx, and generate the started water influx plot
          :align: center
          :alt: Dimensionless-Water-Influx-Matlab-4dn.png
 
-
       .. code-block:: matlab
 
          % define the time and radial mesh
@@ -222,7 +221,6 @@ Lets see how to compute water influx, and generate the started water influx plot
          axis([1,1000,0, 70]);
          title("Dimensionless Water Influx");
          saveas(gcf, "Dimensionless-Water-Influx-Matlab-5up.png");
-
 
       .. figure:: images/Dimensionless-Water-Influx-Matlab-5up.png
          :align: center
