@@ -448,36 +448,57 @@ Here we present the solution for the model when :math:`M = 0` and :math:`5`.
          using static MathsChart.Chart;
 
          // define function
-         ColVec dydt(double t, ColVec y)
+         double rhomu_h, drhomu_h_eta, gamma, Pr, C;
+         Func<double, double> rho, drhodh, mu, dmudh, rhomu;
+         Func<double, double, double> drhomu;
+         double[] tspan, y0, y35guess;
+         Indexer I = new int[] { 1, 3 };
+         Ode.Result HowarthTransform(double M)
          {
-            double[] dy = [y[1], y[2], -0.5 * y[2] * y[0]];
-            return dy;
+             gamma = 1.4; Pr = 0.7; C = Pr * (gamma - 1) * M * M;
+             rho = h => Pow(h, -1);
+             drhodh = h => -1 * Pow(h, -2);
+             mu = h => Pow(h, 2.0 / 3);
+             dmudh = h => 2.0 / 3 * Pow(h, -1.0 / 3);
+             rhomu = h => rho(h) * mu(h);
+             drhomu = (h, dh) => (rho(h) * dmudh(h) + drhodh(h) * mu(h)) * dh;
+             ColVec dydt(double t, ColVec y)
+             {
+                 rhomu_h = rhomu(y[3]);
+                 drhomu_h_eta = drhomu(y[3], y[4]);
+                 double[] dy = [y[1], y[2], -(2*drhomu_h_eta + y[0])*y[2]/(2*rhomu_h), y[4],
+                                -(drhomu_h_eta*y[4] + Pr*y[0]*y[4] + C*rhomu_h*y[2]*y[2])/rhomu_h ];
+                 return dy;
+             }
+             tspan = [0, 6]; y35guess = [0.1, 0.2];
+             Ode.Set options = new() { RelTol = 1e-6 };
+             Ode.Result TY = null;
+             ColVec fun(ColVec y35_0)
+             {
+                 y0 = [0, 0, y35_0[0], 2, y35_0[1]];
+                 TY = Ode.Ode45(dydt, y0, tspan, options);
+                 return TY.Y[TY.Y.Rows - 1, I].T - 1;
+             }
+             Solvers.Result Solved = Solvers.FSolve(fun, y35guess);
+             return TY;
          }
+         Ode.Result TY = HowarthTransform(0);
+         var plt = Plot(TY.X, TY.Y["", 1], "b", 2);
+         plt.AddPlot(TY.X, TY.Y["", 3] - 1, "r", 2);
+        
+         TY = HowarthTransform(5);
+         plt.AddPlot(TY.X, TY.Y["", 1], "b", 2);
+         plt.AddPlot(TY.X, TY.Y["", 3] - 1, "r", 2);
          
-         // set time span
-         double[] tspan = [0, 6]; Ode.Result TY = null;
+         plt.Legend = new() { labels = ["f'", "h-1"], alignment = "upperright" };
+         plt.XLabel = "η"; plt.Title = "Howarth Transformation";
+         plt.AxisLim = [0, 6, 0, 2];
+         plt.SaveFig("Howarth-Transformation-CCL-Math.png");
+          
 
-         // define nonlinear function to shooting for terminal boundary
-         double fun(double y3_0)
-         {
-             double[] y0 = [0, 0, y3_0];
-             TY = Ode.Ode45(dydt, y0, tspan);
-             return TY.Y[TY.X.Numel - 1, 1] - 1;
-         }
-
-         // solve for unknown initial condition
-         Solvers.Result y3_0 = Solvers.FSolve(fun, 0.5);
-
-         // plot the result
-         var plt = Plot(TY.X, TY.Y, linewidth: 2);
-         plt.Legend = new() { labels = ["f", "f'", "f''"], alignment = "upperleft" };
-         plt.Axis([0, 6, 0, 2]); plt.XLabel = "η"; plt.Title = "Blasius Boundary layer";
-         plt.SaveFig("Blasius-Boundary-Layer-CCL-Math.png");
-         
-
-      .. figure:: images/Blasius-Boundary-Layer-CCL-Math.png
+      .. figure:: images/Howarth-Transformation-CCL-Math.png
          :align: center
-         :alt: Blasius-Boundary-Layer-CCL-Math.png
+         :alt: Howarth-Transformation-CCL-Math.png
 
 
    .. tab:: Python
