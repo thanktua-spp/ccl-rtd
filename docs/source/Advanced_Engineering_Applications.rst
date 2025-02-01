@@ -253,8 +253,8 @@ Importance of Accurate Compressibility Calculations
 - Environmental Impact: Understanding gas behavior is essential for preventing leaks and ensuring the safe handling of natural gas, reducing its environmental impact.
 
 Additional Points
-Isothermal Compressibility: This refers to compressibility measured at a constant temperature.
-Compressibility of Gas Mixtures: When dealing with natural gas, which is a mixture, the compressibility of the mixture needs to be determined based on the individual components and their proportions.
+- Isothermal Compressibility: This refers to compressibility measured at a constant temperature.
+- Compressibility of Gas Mixtures: When dealing with natural gas, which is a mixture, the compressibility of the mixture needs to be determined based on the individual components and their proportions.
 
 
 Specific Heat Capacity of Natural Gas
@@ -266,7 +266,8 @@ Specific Heat Capacity of Natural Gas
 Blasius Boundary Layer and Howarth's Transformation
 ---------------------------------------------------
 
-*Background*
+Background
+~~~~~~~~~~~
 The Blasius Boundary Layer refers to a boundary layer of fluid in the vicinity of a flat plate that moves steadily in its own plane. This concept was first introduced by German mathematician Heinrich Blasius. This solution is important in the field of fluid dynamics, particularly in the area of laminar flow. In this solution, the flow velocity outside the boundary layer is assumed to be uniform. Inside the boundary layer, the fluid's velocity changes from zero at the plate surface to the free stream velocity at the edge of the boundary layer. This concept plays a significant role in understanding and predicting the behavior of fluid flow in various engineering and scientific applications.
 
 The solutions to the Blasius equation provide valuable insights into the behavior of fluid flow near a boundary. For instance, it demonstrates that the boundary layer thickness grows as the square root of the distance along the plate. Also, it reveals that the shear stress at the plate surface is proportional to the square root of the free stream velocity, among other observations.
