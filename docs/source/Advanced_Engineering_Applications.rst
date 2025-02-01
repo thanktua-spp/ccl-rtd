@@ -428,8 +428,10 @@ Using Hall and Yarborough Correlation, we can evaluate the reduced compressibili
 
 
 .. math::
-   Den = \frac{1 + 4 * y + 4 * y^2 - 4 * y^3 + y^4} / {(1 - y)^4} - 2 * B * y + C * D * y^(D - 1);
-   c_rT_r = A*Tr/(y*Den);
+   \begin{array}{c}
+   Den = \frac{1 + 4y + 4y^2 - 4y^3 + y^4} / {(1 - y)^4} - 2By + CDy^{(D - 1)}\\
+   c_rT_r = \frac{A Tr}/{yDen};
+   \end{array}
 
 
 .. tabs::
