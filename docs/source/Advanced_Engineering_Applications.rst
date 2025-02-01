@@ -120,9 +120,14 @@ Lets see how to compute water influx, and generate the started water influx plot
          plt.SaveFig("Dimensionless-Water-Influx-CCL-Math.png");
          
 
-      .. figure:: images/Dimensionless-Water-Influx-CCL-Math.png
+      .. figure:: images/Dimensionless-Water-Influx-CCL-Math-4dn.png
          :align: center
-         :alt: Dimensionless-Water-Influx-CCL-Math.png
+         :alt: Dimensionless-Water-Influx-CCL-Math-4dn.png
+
+
+      .. figure:: images/Dimensionless-Water-Influx-CCL-Math-5up.png
+         :align: center
+         :alt: Dimensionless-Water-Influx-CCL-Math-5up.png
 
    .. tab:: Python
 
