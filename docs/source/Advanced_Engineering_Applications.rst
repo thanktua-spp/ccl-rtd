@@ -249,22 +249,26 @@ The Blasius Boundary Layer solution, despite its simplifications, offers a good 
 This equation can be solved by transforming it into a system of 1st order differential equations.
 
 Let:
+
 .. math:: 
    y_1 = f, y_2 = f', y_3 = f''
 
 hence
+
 .. math:: 
    y'_1 = f' = y_2
    y'_2 = f'' = y_3 
    y'_3 = f''' = -0.5f''f = -0.5y_3y_1
 
 So, the system of first order differential equation is thus:
+
 .. math:: 
    y'_1 = y_2
    y'_2 = y_3 
    y'_3 = -0.5y_3y_1
 
 Subject to the following initial and terminal conditions. 
+
 .. math:: 
    y_1(0) = 0, y_2(0) = 0, y_2(\inf) = 1
 
