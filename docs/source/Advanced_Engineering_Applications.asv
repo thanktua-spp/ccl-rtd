@@ -232,29 +232,44 @@ Compressibility of Natural Gas
 Natural gas compressibility is a measure of how much the volume of a given amount of natural gas decreases when pressure is applied to it. It is an important property to understand because it affects how much gas can be stored in a given space, and how easily the gas can be transported through pipelines.   
 
 Why Compressibility Matters
+
 - Storage: Natural gas is often stored in underground reservoirs or tanks. The compressibility of the gas determines how much gas can be packed into these storage spaces at a given pressure.   
 - Transportation: In pipelines, higher pressure helps move gas efficiently. Compressibility affects how much pressure is needed to transport a certain amount of gas.   
 - Metering: Accurate measurement of natural gas flow relies on understanding its compressibility, as the volume of gas changes with pressure and temperature.   
 - Reservoir Engineering: In oil and gas reservoirs, compressibility is crucial for estimating gas reserves and predicting how the reservoir will perform under production.   
 
 Factors Affecting Compressibility
+
 - Pressure: As pressure increases, the volume of natural gas decreases, meaning compressibility increases.   
 - Temperature: Higher temperatures generally decrease compressibility, as the gas molecules have more energy and resist being forced closer together.   
 - Gas Composition: Natural gas is a mixture of hydrocarbons, primarily methane. The exact composition affects compressibility, as different gases have different compressibility factors.   
 
 Calculating Compressibility
+
 - Ideal Gas Law: At low pressures and high temperatures, natural gas behaves close to an ideal gas, and its compressibility can be estimated using the ideal gas law.   
 - Real Gas Equations: At higher pressures and lower temperatures, deviations from ideal behavior become significant. More complex equations, like the Peng-Robinson or Soave-Redlich-Kwong equations, are used to account for real gas behavior.
 - Compressibility Factor (Z-factor): This factor corrects the ideal gas law for real gas behavior. It is often determined using charts or correlations based on pressure, temperature, and gas composition.   
 
 Importance of Accurate Compressibility Calculations
+
 - Safety: Inaccurate compressibility calculations can lead to over-pressurization of storage vessels or pipelines, posing safety risks.
 - Economic Efficiency: Optimizing pipeline and storage design, as well as accurately metering gas flow, requires precise compressibility data to ensure cost-effectiveness.
 - Environmental Impact: Understanding gas behavior is essential for preventing leaks and ensuring the safe handling of natural gas, reducing its environmental impact.
 
 Additional Points
+
 - Isothermal Compressibility: This refers to compressibility measured at a constant temperature.
 - Compressibility of Gas Mixtures: When dealing with natural gas, which is a mixture, the compressibility of the mixture needs to be determined based on the individual components and their proportions.
+
+
+Z-factor
+~~~~~~~~
+Here we show how to compute Z factor from Hall and Yarborough Ea derivative of Starline Carnahan's Equation of state:
+.. math::
+   A = 0.06125t\exp(-1.2(1-t)^2);
+B = 14.76t - 9.76 * t2 + 4.58 * t3;
+C = 90.7 * t - 242.2 * t2 + 42.4 * t3;
+D = 2.18 + 2.82 * t; r = A * Pr
 
 
 Specific Heat Capacity of Natural Gas
@@ -588,19 +603,19 @@ Here we present the solution for the model when :math:`M = 0` and :math:`5`.
          [T, Y] = HowarthTransform(0); 
          figure(color='w'); hold on; 
          plot(T, Y(:, 2), 'b', linewidth = 2);
-        plot(T, Y(:, 4), 'r', linewidth = 2);
+         plot(T, Y(:, 4), 'r', linewidth = 2);
+         
+         % generator solution for M = 5 and plot
+         [T, Y] = HowarthTransform(5);
+         plot(T, Y(:, 2), 'b', linewidth = 2);
+         plot(T, Y(:, 4), 'r', linewidth = 2);
         
-        % generator solution for M = 5 and plot
-        [T, Y] = HowarthTransform(5);
-        plot(T, Y(:, 2), 'b', linewidth = 2);
-        plot(T, Y(:, 4), 'r', linewidth = 2);
-        
-        % add legend, axis label and title
-        legend("f'", "h-1");
-        xlabel("η"); 
-        title("Howarth Transformation");
-        axis([0,5,0,2]); box on;
-        saveas(gcf, 'Howarth-Transformation-Matlab', 'png');
+         % add legend, axis label and title
+         legend("f'", "h-1");
+         xlabel("η"); 
+         title("Howarth Transformation");
+         axis([0,5,0,2]); box on;
+         saveas(gcf, 'Howarth-Transformation-Matlab', 'png');
 
       .. figure:: images/Howarth-Transformation-Matlab.png
          :align: center
