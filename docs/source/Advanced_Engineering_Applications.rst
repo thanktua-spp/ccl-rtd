@@ -256,15 +256,15 @@ Let:
 hence
 
 .. math:: 
-   y'_1 = f' = y_2
-   y'_2 = f'' = y_3 
+   y'_1 = f' = y_2,
+   y'_2 = f'' = y_3,
    y'_3 = f''' = -0.5f''f = -0.5y_3y_1
 
 So, the system of first order differential equation is thus:
 
 .. math:: 
-   y'_1 = y_2
-   y'_2 = y_3 
+   y'_1 = y_2,
+   y'_2 = y_3,
    y'_3 = -0.5y_3y_1
 
 Subject to the following initial and terminal conditions. 
