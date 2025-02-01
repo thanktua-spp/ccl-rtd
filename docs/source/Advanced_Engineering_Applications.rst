@@ -417,8 +417,12 @@ Introducing the self-similar variables
    \tilde{\rho}_w = \frac{\rho}{\rho_{\infty}}
 
 the equations reduce to:
-.. math:: 2(\tilde{\rho}\tilde{\mu}f'')' + ff'' = 0, \newline
-(\tilde{\rho}\tilde{\mu}\tilde{h}')' + Pr f \tilde{h}' + Pr(\gamma - 1)M^2\tilde{\rho}\tilde{\mu}f''^2 = 0
+
+.. math:: 
+   2(\tilde{\rho}\tilde{\mu}f'')' + ff'' = 0,
+
+.. math::
+   (\tilde{\rho}\tilde{\mu}\tilde{h}')' + Pr f \tilde{h}' + Pr(\gamma - 1)M^2\tilde{\rho}\tilde{\mu}f''^2 = 0,
 
 
 Pleiades System
