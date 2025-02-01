@@ -53,7 +53,7 @@ This can be accomplised by performing the integration in laplace space before in
    W(t) = \mathcal{L}\left(\frac{1}{s\sqrt{s}} \cfrac{I_1(r_D\sqrt{s}) K_1(\sqrt{s}) - K_1(r_D\sqrt{s}) I_1(\sqrt{s})}{(I_1(r_D\sqrt{s}) K_0(\sqrt{s}) + K_1(r_D\sqrt{s}) I_0(\sqrt{s}))} \right)
 
 
-Lets see how to compute water influx, and generate the started water influx plot found in many reservoir engineering text books
+Lets see how to compute water influx, and generate the started water influx plot as shown above
 
 .. note::
    The matlab implementation uses the numerical laplace inversion code from matlab file exchange[3]
