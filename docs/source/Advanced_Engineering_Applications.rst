@@ -410,7 +410,7 @@ Introducing the **Howarth–Dorodnitsyn transformation** (or **Dorodnitsyn-How
 Introducing the self-similar variables
 
 .. math::
-   \eta = \sqrt{\cfrac{U}{2\nu_{\infy}x}} \int_0^y \frac{\rho}{\rho_{\infty}}dy,
+   \eta = \sqrt{\cfrac{U}{2\nu_{\infty}x}} \int_0^y \frac{\rho}{\rho_{\infty}}dy,
 
 Pleiades System
 ---------------
