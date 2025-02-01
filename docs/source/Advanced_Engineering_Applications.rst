@@ -367,38 +367,55 @@ And then compute:
 
       .. code-block:: matlab
 
-         % define the function handle
-         dydt = @(t, y)[y(2); y(3); -0.5*y(3)*y(1)];
+                  % define zfunction
+         function z =  ZfactorHY(Pr, Tr)
          
-         % set time span
-         tspan = [0,6]; 
+             % define density equation
+             function yres = yfunc(y, A, B, C, D, Pr)
+                  y2 = y * y; y3 = y2 * y; y4 = y3 * y; Den = (1 - y)^3;
+                  yres = -A * Pr + (y + y2 + y3 - y4) / Den - B * y2 + C * y^D;
+             end
 
-         % define function for shooting
-         function res = fun(y3_0, dydt, tspan)
-             y0 = [0, 0, y3_0];
-             [~, Y] = ode45(dydt, tspan, y0);
-             res = Y(end, 2) - 1;
+             z = 1;
+             % avoid computing z when Pr = 0.
+             if (Pr ~= 0)
+                 t = 1 / Tr; t2 = t * t; t3 = t2 * t;
+                 tm1 = 1 - t; tm1e2 = tm1 * tm1;
+                 A = 0.06125 * t * exp(-1.2 * tm1e2);
+                 B = 14.76 * t - 9.76 * t2 + 4.58 * t3;
+                 C = 90.7 * t - 242.2 * t2 + 42.4 * t3;
+                 D = 2.18 + 2.82 * t; r = A * Pr;
+
+                 % solve the density equation
+                 s = fsolve(@(y) yfunc(y, A, B, C, D, Pr), r);
+
+                 % compute the z factor
+                 z = A * Pr / s;
+             end
          end
 
-         % solve the nonlinear equation for y_3(0)
-         y3_0 = fzero(@(y3_0)fun(y3_0, dydt, tspan), 0.5);
+         % set up ressure and temperature mesh
+         Pr = (0:300) * 0.05;
+         Tr = [1.05,    1.08,   1.12,   1.18,   1.26,   1.35,   1.47, ...
+               1.61,    1.75,   1.91,   2.09,   2.29,   2.62,   3.00];
          
-         % recompute the solution of the ode system using the new initial condition
-         y0 = [0, 0, y3_0];
-         [T, Y] = ode45(dydt, tspan, y0);
+         % compute z factors and plot them
+         Tlabels = {};
+         for tr = Tr
+             plot(Pr, arrayfun(@(pr) ZfactorHY(pr, tr), Pr)); hold on;
+             Tlabels = [Tlabels, "Tr = " + tr];
+         end
 
-         % plot the result
-         figure(Color = 'w')
-         plt = plot(T, Y, linewidth = 2);
-         axis([0,6,0,2])
-         xlabel("η"); 
-         legend("f", "f'", "f''")
-         title("Blasius Boundary layer");
-         saveas(gcf, 'Blasius-Boundary-Layer-Matlab', 'png')
+         % add legend, axis label and title
+         legend(Tlabels, location = "southeast");
+         xlabel("Pr"); 
+         title("Zfactor Hall Yarborough"); box on;
+         saveas(gcf, 'Zfactor-Hall-Yarborough-Matlab', 'png');
 
-      .. figure:: images/Blasius-Boundary-Layer-Matlab.png
+      .. figure:: images/Zfactor-Hall-Yarborough-Matlab.png
          :align: center
-         :alt: Blasius-Boundary-Layer-Matlab.png
+         :alt: Zfactor-Hall-Yarborough-Matlab.png
+
 
 Specific Heat Capacity of Natural Gas
 -------------------------------------

@@ -1,60 +1,44 @@
-function [T, Y] = HowarthTransform(M)
+         % define zfunction
+         function z =  ZfactorHY(Pr, Tr)
+         
+             % define density equation
+             function yres = yfunc(y, A, B, C, D, Pr)
+                  y2 = y * y; y3 = y2 * y; y4 = y3 * y; Den = (1 - y)^3;
+                  yres = -A * Pr + (y + y2 + y3 - y4) / Den - B * y2 + C * y^D;
+             end
 
-    % define parameters, functions anf their derivatives
-    gamma = 1.4; 
-    Pr = 0.7; 
-    C = Pr*(gamma - 1)*M^2;
-    rho = @(h) h^(-1); 
-    drhodh = @(h) -1*h^(-2);
-    mu = @(h) h^(2/3); 
-    dmudh = @(h) (2/3)*h^(-1/3);
-    rhomu = @(h)rho(h)*mu(h);
-    drhomu = @(h, dh) (rho(h)*dmudh(h) + drhodh(h)*mu(h))*dh;
+             z = 1;
+             % avoid computing z when Pr = 0.
+             if (Pr ~= 0)
+                 t = 1 / Tr; t2 = t * t; t3 = t2 * t;
+                 tm1 = 1 - t; tm1e2 = tm1 * tm1;
+                 A = 0.06125 * t * exp(-1.2 * tm1e2);
+                 B = 14.76 * t - 9.76 * t2 + 4.58 * t3;
+                 C = 90.7 * t - 242.2 * t2 + 42.4 * t3;
+                 D = 2.18 + 2.82 * t; r = A * Pr;
 
-    % define the differential equation
-    function dy = dydt(~, y)
+                 % solve the density equation
+                 s = fsolve(@(y) yfunc(y, A, B, C, D, Pr), r);
 
-        rhomu_h = rhomu(y(4)); 
-        drhomu_h = drhomu(y(4), y(5));
-        dy = [y(2); 
-              y(3); 
-              -(2*drhomu_h + y(1))*y(3)/(2*rhomu_h); y(5);
-              -(drhomu_h*y(5) + Pr*y(1)*y(5) + C*rhomu_h*y(3)^2)/rhomu_h];
+                 % compute the z factor
+                 z = A * Pr / s;
+             end
+         end
 
-    end
+         % set up ressure and temperature mesh
+         Pr = (0:300) * 0.05;
+         Tr = [1.05,    1.08,   1.12,   1.18,   1.26,   1.35,   1.47, ...
+               1.61,    1.75,   1.91,   2.09,   2.29,   2.62,   3.00];
+         
+         % compute z factors and plot them
+         Tlabels = {};
+         for tr = Tr
+             plot(Pr, arrayfun(@(pr) ZfactorHY(pr, tr), Pr)); hold on;
+             Tlabels = [Tlabels, "Tr = " + tr];
+         end
 
-    % set time span and intial guess
-    tspan = [0, 5]; 
-    y35guess = [0.5; 1];
-
-    % define the nonlinear system to compute the initial condition
-    function res = fun(y35_0)
-
-        y0 = [0, 0, y35_0(1), 2, y35_0(2)];
-        [T, Y] = ode45(@dydt, tspan, y0);
-        res = Y(end, [2,4])' - 1;
-
-    end
-    
-    % solve for the unknown initial conditions
-    fsolve(@fun, y35guess);
-    Y(:,4) = Y(:,4)-1;
-end
-
-% generator solution for M = 5 and plot
-[T, Y] = HowarthTransform(0); 
-figure(color='w'); hold on; 
-plot(T, Y(:, 2), 'b', linewidth = 2);
-plot(T, Y(:, 4), 'r', linewidth = 2);
-
-% generator solution for M = 5 and plot
-[T, Y] = HowarthTransform(5);
-plot(T, Y(:, 2), 'b', linewidth = 2);
-plot(T, Y(:, 4), 'r', linewidth = 2);
-
-% add legend, axis label and title
-legend("f'", "h-1");
-xlabel("η"); 
-title("Howarth Transformation");
-axis([0,5,0,2]); box on;
-saveas(gcf, 'Howarth-Transformation-Matlab', 'png');
+         % add legend, axis label and title
+         legend(Tlabels, location = "southeast");
+         xlabel("Pr"); 
+         title("Zfactor Hall Yarborough"); box on;
+         saveas(gcf, 'Zfactor-Hall-Yarborough-Matlab', 'png');
