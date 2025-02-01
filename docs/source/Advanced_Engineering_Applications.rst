@@ -268,6 +268,7 @@ Here we show how to compute Z factor from Hall and Yarborough Ea derivative of S
 
 .. math:: 
    \begin{array}{c}
+   t = 1/T_{pr}                   \\
    A = 0.06125t\exp(-1.2(1-t)^2)  \\
    B = 14.76t - 9.76t^2 + 4.58t^3 \\
    C = 90.7t - 242.2t^2 + 42.4t^3 \\
@@ -295,37 +296,60 @@ And then compute:
          using CypherCrescent.MathematicsLibrary;
          using static MathsChart.Chart;
 
-         // define function
-         ColVec dydt(double t, ColVec y)
+         // define zfunction
+         static double ZfactorHY(double Pr, double Tr)
          {
-            double[] dy = [y[1], y[2], -0.5 * y[2] * y[0]];
-            return dy;
-         }
-         
-         // set time span
-         double[] tspan = [0, 6]; Ode.Result TY = null;
+             // define variables
+             double z = 1, t, tm1, tm1e2, t2, t3, A, B,
+                 C, D, r, y2, y3, y4, Den;
 
-         // define nonlinear function to shooting for terminal boundary
-         double fun(double y3_0)
+             // avoid computing z when Pr = 0.
+             if (Pr != 0)
+             {
+                 t = 1 / Tr; t2 = t * t; t3 = t2 * t;
+                 tm1 = 1 - t; tm1e2 = tm1 * tm1;
+                 A = 0.06125 * t * Exp(-1.2 * tm1e2);
+                 B = 14.76 * t - 9.76 * t2 + 4.58 * t3;
+                 C = 90.7 * t - 242.2 * t2 + 42.4 * t3;
+                 D = 2.18 + 2.82 * t; r = A * Pr;
+
+                 // define density equation
+                 var yfunc = new Func<double, double>(y =>
+                 {
+                     y2 = y * y; y3 = y2 * y; y4 = y3 * y;
+                     Den = Pow(1 - y, 3);
+                     return -A * Pr + (y + y2 + y3 - y4) / Den - 
+                     B * y2 + C * Pow(y, D);
+                 });
+
+                 // solve the density equation
+                 Solvers.Set options = new() { StepFactor = 0.5 };
+                 Solvers.Result sol = Solvers.FSolve(yfunc, r, options);
+
+                 // compute the z factor
+                 z = A * Pr / sol.Sol;
+             }
+             return z;
+         }
+
+         // set up ressure and temperature mesh
+         double[] Pr = Enumerable.Range(0, 301).Select(i => i * 0.05).ToArray();
+         double[] Tr = [1.05,    1.08,   1.12,   1.18,   1.26,   1.35,   1.47,
+                        1.61,    1.75,   1.91,   2.09,   2.29,   2.62,   3.00];
+         
+         // compute z factors and plot them
+         plt = new ChartHandle(); List<string> Tlabels = [];
+         for (int j = 0; j < Tr.Length; j++)
          {
-             double[] y0 = [0, 0, y3_0];
-             TY = Ode.Ode45(dydt, y0, tspan);
-             return TY.Y[TY.X.Numel - 1, 1] - 1;
+             plt.AddPlot(Pr, Pr.Select(p => ZfactorHY(p, Tr[j])).ToArray());
+             Tlabels.Add("Tr = " + Tr[j]);
          }
+         plt.Legend = new() { labels = Tlabels.ToArray(), alignment = "lowerright" };
+         plt.SaveFig("Zfactor-Hall-Yarborough-CCL-Math.png"); 
 
-         // solve for unknown initial condition
-         Solvers.Result y3_0 = Solvers.FSolve(fun, 0.5);
-
-         // plot the result
-         var plt = Plot(TY.X, TY.Y, linewidth: 2);
-         plt.Legend = new() { labels = ["f", "f'", "f''"], alignment = "upperleft" };
-         plt.Axis([0, 6, 0, 2]); plt.XLabel = "η"; plt.Title = "Blasius Boundary layer";
-         plt.SaveFig("Blasius-Boundary-Layer-CCL-Math.png");
-         
-
-      .. figure:: images/Blasius-Boundary-Layer-CCL-Math.png
+      .. figure:: images/Zfactor-Hall-Yarborough-CCL-Math.png
          :align: center
-         :alt: Blasius-Boundary-Layer-CCL-Math.png
+         :alt: Zfactor-Hall-Yarborough-CCL-Math.png
 
 
    .. tab:: Python
