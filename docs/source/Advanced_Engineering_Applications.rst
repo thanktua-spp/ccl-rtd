@@ -256,7 +256,7 @@ Let:
 hence
 
 .. math:: 
-   \begin{array}{lc}
+   \begin{array}{l|c}
    y'_1 &= f' = y_2, \\
    y'_2 &= f'' = y_3, \\
    y'_3 &= f''' = -0.5f''f = -0.5y_3y_1
