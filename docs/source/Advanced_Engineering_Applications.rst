@@ -99,23 +99,19 @@ Lets see how to compute water influx, and generate the started water influx plot
          }
         
          // define the time and radial mesh
-         int[] Rd = [2, 4, 6, 8, 10];
-         ColVec Td = ColVec.Logspace(-2, 4), Wd;
+         double [] Rd = [2, 2.5, 3, 3.5, 4, 50];
+         ColVec Td = ColVec.Logspace(-1, 2), Wd;
          
          // compute the water influx and plot
          var plt = new ChartHandle();
-         foreach (int rD in Rd)
+         string[] Labels = ["rD = 2", "rD = 2.5", "rD = 3", "rD = 3.5", "rD = 4", "rD = ∞"];
+         foreach (double rD in Rd)
          {
              Wd = Td.Select(tD => EdgeClosedBoundaryRadial_Wd(tD, rD)).ToList();
              plt.AddSemiLogx(Td, Wd, linewidth: 2);
          }
-         plt.XLabel = "tD";
-         plt.YLabel = "WD";
-         plt.Legend = new()
-         {
-             labels = ["rD = 2", "rD = 4", "rD = 6", "rD = 8", "rD = 10"],
-             alignment = "upperleft"
-         };
+         plt.XLabel = "tD"; plt.YLabel = "WD";
+         plt.Legend = new(){ labels = Labels, alignment = "upperleft" };
          plt.Title = "Dimensionless Water Influx";
          plt.SaveFig("Dimensionless-Water-Influx-CCL-Math.png");
          
@@ -124,7 +120,26 @@ Lets see how to compute water influx, and generate the started water influx plot
          :align: center
          :alt: Dimensionless-Water-Influx-CCL-Math-4dn.png
 
+      .. code-block:: C#
 
+         // define the time and radial mesh
+         Rd = [5, 6, 7, 8, 9, 10, 50];
+         Td = ColVec.Logspace(0, 3);
+
+         // compute the water influx and plot
+         plt = new ChartHandle();
+         Labels = ["rD = 5", "rD = 6", "rD = 7", "rD = 8", "rD = 9", "rD = 10", "rD = ∞"];
+         foreach (double rD in Rd)
+         {
+             Wd = Td.Select(tD => EdgeClosedBoundaryRadial_Wd(tD, rD)).ToList();
+             plt.AddSemiLogx(Td, Wd, linewidth: 2);
+         }
+         plt.XLabel = "tD"; plt.YLabel = "WD";
+         plt.Legend = new() { labels = Labels, alignment = "upperleft" };
+         plt.Title = "Dimensionless Water Influx";
+         plt.Axis([1, 1000, 0, 70]); plt.XLogMinor = true;
+         plt.SaveFig("Dimensionless-Water-Influx-CCL-Math-5up.png");
+ 
       .. figure:: images/Dimensionless-Water-Influx-CCL-Math-5up.png
          :align: center
          :alt: Dimensionless-Water-Influx-CCL-Math-5up.png

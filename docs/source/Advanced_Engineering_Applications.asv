@@ -7,10 +7,19 @@ Dimensionless Water Influx Estimation
 -------------------------------------
 Water influx in an oil reservoir is the migration of water from an aquifer into the pore spaces of the reservoir rock containing oil.  This water movement is primarily driven by pressure differences between the aquifer and the reservoir as the oil is produced and reservoir pressure declines.  The water influx can provide pressure support, helping to maintain reservoir pressure and sustain oil production. Hence, understanding and accurate estimation of water influx is crucial for optimizing oil recovery strategies and the long-term economic viability of an oil field.
 
-For use in material balance computation, reservoir engneering books provide plots for Wd as a function of dimensionless radius and time
-.. figure:: images/Dimensionless-Water-Influx-CCL-Math.png
+For use in material balance computation in edge drive configuration, reservoir engneering books provide plots for Wd as a function of dimensionless radius and time
+
+For :math:`Rd \leq 4`
+
+.. figure:: images/Water-Influx-from-Craft-and-Hawkins_4dn.png
          :align: center
-         :alt: Dimensionless-Water-Influx-CCL-Math.png
+         :alt: Water-Influx-from-Craft-and-Hawkins_4dn.png
+
+For :math:`5 \leq Rd \leq 10`
+
+.. figure:: images/Water-Influx-from-Craft-and-Hawkins_5up.png
+         :align: center
+         :alt: Water-Influx-from-Craft-and-Hawkins_5up.png
 
 In an edge drive configuration with the aquifer closed at its outer boundary, the governing equation gives:
 
@@ -38,13 +47,13 @@ From Darcy law, we know that the rate of water influx is proportional to the neg
 This can be accomplised by performing the integration in laplace space before inverting to time space. 
 
 .. math:: 
-   W(t) = \mathcal{L}\left(\frac{-1}{s} \cfrac{\partial P}{\partial r} (s, r = 1) \right)
+   W(t) = \mathcal{L}^{-1}\left(\frac{-1}{s} \cfrac{\partial P}{\partial r} (s, r = 1) \right)
 
 .. math:: 
-   W(t) = \mathcal{L}\left(\frac{1}{s\sqrt{s}} \cfrac{I_1(r_D\sqrt{s}) K_1(\sqrt{s}) - K_1(r_D\sqrt{s}) I_1(\sqrt{s})}{(I_1(r_D\sqrt{s}) K_0(\sqrt{s}) + K_1(r_D\sqrt{s}) I_0(\sqrt{s}))} \right)
+   W(t) = \mathcal{L}^{-1}\left(\frac{1}{s\sqrt{s}} \cfrac{I_1(r_D\sqrt{s}) K_1(\sqrt{s}) - K_1(r_D\sqrt{s}) I_1(\sqrt{s})}{(I_1(r_D\sqrt{s}) K_0(\sqrt{s}) + K_1(r_D\sqrt{s}) I_0(\sqrt{s}))} \right)
 
 
-Lets see how to compute water influx, and generate the started water influx plot found in many reservoir engineering text books
+Lets see how to compute water influx, and generate the started water influx plot as shown above
 
 .. note::
    The matlab implementation uses the numerical laplace inversion code from matlab file exchange[3]
@@ -90,30 +99,55 @@ Lets see how to compute water influx, and generate the started water influx plot
          }
         
          // define the time and radial mesh
-         int[] Rd = [2, 4, 6, 8, 10];
-         ColVec Td = ColVec.Logspace(-2, 4), Wd;
+         double [] Rd = [2, 2.5, 3, 3.5, 4, 50];
+         ColVec Td = ColVec.Logspace(-1, 2), Wd;
          
          // compute the water influx and plot
          var plt = new ChartHandle();
-         foreach (int rD in Rd)
+         string[] Labels = ["rD = 2", "rD = 2.5", "rD = 3", "rD = 3.5", "rD = 4", "rD = ∞"];
+         foreach (double rD in Rd)
          {
              Wd = Td.Select(tD => EdgeClosedBoundaryRadial_Wd(tD, rD)).ToList();
              plt.AddSemiLogx(Td, Wd, linewidth: 2);
          }
-         plt.XLabel = "tD";
-         plt.YLabel = "WD";
-         plt.Legend = new()
-         {
-             labels = ["rD = 2", "rD = 4", "rD = 6", "rD = 8", "rD = 10"],
-             alignment = "upperleft"
-         };
+         plt.XLabel = "tD"; plt.YLabel = "WD";
+         plt.Legend = new(){ labels = Labels, alignment = "upperleft" };
          plt.Title = "Dimensionless Water Influx";
          plt.SaveFig("Dimensionless-Water-Influx-CCL-Math.png");
          
 
-      .. figure:: images/Dimensionless-Water-Influx-CCL-Math.png
+      .. figure:: images/Dimensionless-Water-Influx-CCL-Math-4dn.png
          :align: center
-         :alt: Dimensionless-Water-Influx-CCL-Math.png
+         :alt: Dimensionless-Water-Influx-CCL-Math-4dn.png
+
+      .. code-block:: C#
+
+         // define the time and radial mesh
+         Rd = [5, 6, 7, 8, 9, 10, 50];
+         Td = ColVec.Logspace(0, 3);
+
+         // compute the water influx and plot
+         plt = new ChartHandle();
+         Labels = ["rD = 5", "rD = 6", "rD = 7", "rD = 8", "rD = 9", "rD = 10", "rD = ∞"];
+         foreach (double rD in Rd)
+         {
+             Wd = Td.Select(tD => EdgeClosedBoundaryRadial_Wd(tD, rD)).ToList();
+             plt.AddSemiLogx(Td, Wd, linewidth: 2);
+         }
+         plt.XLabel = "tD"; plt.YLabel = "WD";
+         plt.Legend = new()
+         {
+            labels = Labels,
+            alignment = "upperleft"
+         };
+         plt.Title = "Dimensionless Water Influx";
+         plt.Axis([1, 1000, 0, 70]); plt.XLogMinor = true;
+         plt.SaveFig("Dimensionless-Water-Influx-CCL-Math-5up.png");
+         plt.Show();
+
+      .. figure:: images/Dimensionless-Water-Influx-CCL-Math-5up.png
+         :align: center
+         :alt: Dimensionless-Water-Influx-CCL-Math-5up.png
 
    .. tab:: Python
 
@@ -168,9 +202,14 @@ Lets see how to compute water influx, and generate the started water influx plot
             end
          end
 
-      .. figure:: images/Dimensionless-Water-Influx-Matlab.png
+      .. figure:: images/Dimensionless-Water-Influx-Matlab-4dn.png
          :align: center
-         :alt: Dimensionless-Water-Influx-Matlab.png
+         :alt: Dimensionless-Water-Influx-Matlab-4dn.png
+
+
+      .. figure:: images/Dimensionless-Water-Influx-Matlab-5up.png
+         :align: center
+         :alt: Dimensionless-Water-Influx-Matlab-5up.png
 
 
 
