@@ -234,7 +234,8 @@ Specific Heat Capacity of Natural Gas
 Compressibility of Natural Gas
 ------------------------------
 
- Blasius Boundary Layer and Howarth's Transformation
+
+Blasius Boundary Layer and Howarth's Transformation
 ------------------------
 
 The Blasius Boundary Layer refers to a boundary layer of fluid in the vicinity of a flat plate that moves steadily in its own plane. This concept was first introduced by German mathematician Heinrich Blasius. This solution is important in the field of fluid dynamics, particularly in the area of laminar flow. In this solution, the flow velocity outside the boundary layer is assumed to be uniform. Inside the boundary layer, the fluid's velocity changes from zero at the plate surface to the free stream velocity at the edge of the boundary layer. This concept plays a significant role in understanding and predicting the behavior of fluid flow in various engineering and scientific applications.
@@ -276,8 +277,105 @@ Subject to the following initial and terminal conditions.
 .. math:: 
    y_1(0) = 0, y_2(0) = 0, y_2(\infty) = 1
 
-
 To solve system of ordinary differential equation, you need the initial conditions, but when one of the initial conditions is missing, and we have a terminal condition instead, we can solve for the initial condition we do not have using the terminal condition we have, just like finding the root of a nonlinear function. But to evaluate the value of the function that you want to be zero, you have to perform the integration of the ode, using the guess given by the nonlinear solver and then return the function value which is the difference between the terminal value you obtained from the integration and the desired value. In this case the unknown value is :math:`y_3(0)`, and the function value is :math:`y_2(\infty) - 1`.
+
+.. tabs::
+
+   .. tab:: CCL-Math
+      CCL-Math Implementation
+
+      .. code-block:: C#
+         
+         // import libraries
+         using CypherCrescent.MathematicsLibrary;
+         using static MathsChart.Chart;
+
+         // define function
+         ColVec dydt(double t, ColVec y)
+         {
+            double[] dy = [y[1], y[2], -0.5 * y[2] * y[0]];
+            return dy;
+         }
+         
+         // set time span
+         double[] tspan = [0, 6]; Ode.Result TY = null;
+
+         // define nonlinear function to shooting for terminal boundary
+         double fun(double y3_0)
+         {
+             double[] y0 = [0, 0, y3_0];
+             TY = Ode.Ode45(dydt, y0, tspan);
+             return TY.Y[TY.X.Numel - 1, 1] - 1;
+         }
+
+         // solve for unknown initial condition
+         Solvers.Result y3_0 = Solvers.FSolve(fun, 0.5);
+
+         // plot the result
+         var plt = Plot(TY.X, TY.Y, linewidth: 2);
+         plt.Legend = new() { labels = ["f", "f'", "f''"], alignment = "upperleft" };
+         plt.Axis([0, 6, 0, 2]); plt.XLabel = "η"; plt.Title = "Blasius Boundary layer";
+         plt.SaveFig("Blasius-Boundary-Layer-CCL-Math.png");
+         
+
+      .. figure:: images/Position-of-Pleiades-Stars-CCL-Math-Ode89.png
+         :align: center
+         :alt: Position-of-Pleiades-Stars-CCL-Math-Ode89.png
+
+
+   .. tab:: Python
+
+      Python Implementation
+
+      .. code-block:: python
+
+      
+
+
+   .. tab:: Matlab
+
+      Matlab Implementation
+
+      .. code-block:: matlab
+
+         % define the function handle
+         dqdt = @(t, q) pleiades(t,q);
+
+         % set initial condition
+         q0 = [3 3 -1 -3 2 -2 2 ...
+               3 -3 2 0 0 -4 4 ...
+               0 0 0 0 0 1.75 -1.5 ...
+               0 0 0 -1.25 1 0 0]';
+         
+         % set time span
+         t_span = linspace(1,15,200);
+         
+         % call the solver
+         opts = odeset("RelTol",1e-13,"AbsTol",1e-15);
+         [t, q89] = ode89(dqdt, t_span, q0, opts);
+         
+         % display the result
+         plot(q89(:,1:7),q89(:,8:14),'--')
+         title('Position of Pleiades Stars, Solved by ODE89')
+         xlabel('X Position')
+         ylabel('Y Position')
+         saveas(gcf, 'Position-of-Pleiades-Stars-Matlab-ODE89', 'png')
+
+         function dqdt = pleiades(t,q)
+            x = q(1:7);
+            y = q(8:14);
+            xDist = (x - x.');
+            yDist = (y - y.');
+            r = (xDist.^2+yDist.^2).^(3/2);
+            m = (1:7)';
+            dqdt = [q(15:28);
+                    sum(xDist.*m./r,1,'omitnan').';
+                    sum(yDist.*m./r,1,'omitnan').'];
+          end
+
+      .. figure:: images/Position-of-Pleiades-Stars-Matlab-ODE89.png
+         :align: center
+         :alt: Position-of-Pleiades-Stars-Matlab-ODE89.png
 
 
 Pleiades System
