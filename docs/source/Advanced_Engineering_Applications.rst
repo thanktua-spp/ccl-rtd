@@ -538,9 +538,9 @@ Using Hall and Yarborough Correlation, we can evaluate the reduced compressibili
              disp(y)
              y2 = y * y; y3 = y2 * y; y4 = y3 * y; 
              ym1p4 = (1 - y)^4; yDm1 = y^(D - 1);
-             Den = (1 + 4 * y + 4 * y2 - 4 * y3 + y4) / ym1p4 -...
+             X = (1 + 4 * y + 4 * y2 - 4 * y3 + y4) / ym1p4 -...
                             2 * B * y + C * D * yDm1;
-            crtrhy = A*Tr/(y*Den);
+            crtrhy = A*Tr/(y*X);
              
          end
 
@@ -566,10 +566,6 @@ Using Hall and Yarborough Correlation, we can evaluate the reduced compressibili
       .. figure:: images/Reduced-Compressibility-Hall-Yarborough-Matlab.png
          :align: center
          :alt: Reduced-Compressibility-Hall-Yarborough-Matlab.png
-
-
-Specific Heat Capacity of Natural Gas
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 

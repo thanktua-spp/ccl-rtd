@@ -428,9 +428,11 @@ Using Hall and Yarborough Correlation, we can evaluate the reduced compressibili
 
 
 .. math::
-   Den = \frac{1 + 4 * y + 4 * y^2 - 4 * y^3 + y^4} / {(1 - y)^4} - 2 * B * y + C * D * y^(D - 1);
-   c_rT_r = A*Tr/(y*Den);
-
+   \chi = \cfrac{1 + 4y + 4y^2 - 4y^3 + y^4}{(1 - y)^4} - 2By + CDy^{(D - 1)}
+   
+.. math::
+   c_rT_r = \cfrac{A Tr}{y\chi};
+   
 
 .. tabs::
 
@@ -448,10 +450,9 @@ Using Hall and Yarborough Correlation, we can evaluate the reduced compressibili
          {
              // define variables
              double z = 1, t, tm1, tm1e2, t2, t3, A, B,
-                 C, D, r, y2, y3, y4, Den;
+                    C, D, r, y2, y3, y4, Den;
 
-             // avoid computing z when Pr = 0.
-             
+             // avoid computing intermediate values.
              t = 1 / Tr; t2 = t * t; t3 = t2 * t;
              tm1 = 1 - t; tm1e2 = tm1 * tm1;
              A = 0.06125 * t * Exp(-1.2 * tm1e2);
@@ -468,18 +469,15 @@ Using Hall and Yarborough Correlation, we can evaluate the reduced compressibili
                  B * y2 + C * Pow(y, D);
              });
 
-                 // solve the density equation
-                 Solvers.Set options = new() { StepFactor = 0.5 };
-                 Solvers.Result sol = Solvers.FSolve(yfunc, r, options);
+             // solve the density equation
+             Solvers.Set options = new() { StepFactor = 0.5 };
+             Solvers.Result sol = Solvers.FSolve(yfunc, r, options);
 
-                 // compute the z factor
-                 double y = sol;
-                 y2 = y * y; y3 = y2 * y; y4 = y3 * y; 
-                 ym1p4 = Pow(1 - y, 4); yDm1 = Pow(y, D - 1);
-                 Den = (1 + 4 * y + 4 * y2 - 4 * y3 + y4) / 
-                     ym1p4 - 2 * B * y + C * D * yDm1;
-                 return A*Tr/(y*Den);
-             
+             // compute the z factor
+             double y = sol;
+             y2 = y * y; y3 = y2 * y; y4 = y3 * y; ym1p4 = Pow(1 - y, 4); yDm1 = Pow(y, D - 1);
+             X = (1 + 4 * y + 4 * y2 - 4 * y3 + y4) /  ym1p4 - 2 * B * y + C * D * yDm1;
+             return A*Tr/(y*X);
          }
 
          // set up ressure and temperature mesh
@@ -495,9 +493,9 @@ Using Hall and Yarborough Correlation, we can evaluate the reduced compressibili
          plt.Legend = new() { labels = [..Tlabels], alignment = "lowerleft" };
          plt.SaveFig("Reduced-Compressibility-Hall-Yarborough.png");
 
-      .. figure:: images/Zfactor-Hall-Yarborough-CCL-Math.png
+      .. figure:: images/Reduced-Compressibility-Hall-Yarborough-CCL-Math.png
          :align: center
-         :alt: Zfactor-Hall-Yarborough-CCL-Math.png
+         :alt: Reduced-Compressibility-Hall-Yarborough-CCL-Math.png
 
 
    .. tab:: Python
@@ -524,8 +522,7 @@ Using Hall and Yarborough Correlation, we can evaluate the reduced compressibili
                   yres = -A * Pr + (y + y2 + y3 - y4) / Den - B * y2 + C * y^D;
              end
 
-             % avoid computing z when Pr = 0.
-             
+             % avoid computing intermediate variables.
              t = 1 / Tr; t2 = t * t; t3 = t2 * t;
              tm1 = 1 - t; tm1e2 = tm1 * tm1;
              A = 0.06125 * t * exp(-1.2 * tm1e2);
@@ -541,9 +538,9 @@ Using Hall and Yarborough Correlation, we can evaluate the reduced compressibili
              disp(y)
              y2 = y * y; y3 = y2 * y; y4 = y3 * y; 
              ym1p4 = (1 - y)^4; yDm1 = y^(D - 1);
-             Den = (1 + 4 * y + 4 * y2 - 4 * y3 + y4) / ym1p4 -...
+             X = (1 + 4 * y + 4 * y2 - 4 * y3 + y4) / ym1p4 -...
                             2 * B * y + C * D * yDm1;
-            crtrhy = A*Tr/(y*Den);
+            crtrhy = A*Tr/(y*X);
              
          end
 
