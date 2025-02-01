@@ -417,6 +417,21 @@ And then compute:
          :alt: Zfactor-Hall-Yarborough-Matlab.png
 
 
+Reduced Compressiblity
+~~~~~~~~~~~~~~~~~~~~~~
+Reduced compressibility is given by:
+
+.. math::
+   c_rT_r = \frac{1}{Ppr} - \frac{1}{z}\frac{dz}{dPpr}
+
+Using Hall and Yarborough Correlation, we can evaluate the reduced compressibility as:
+
+
+.. math::
+   Den = \frac{1 + 4 * y + 4 * y^2 - 4 * y^3 + y^4} / {(1 - y)^4} - 2 * B * y + C * D * y^(D - 1);
+   c_rT_r = A*Tr/(y*Den);
+
+
 Specific Heat Capacity of Natural Gas
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
