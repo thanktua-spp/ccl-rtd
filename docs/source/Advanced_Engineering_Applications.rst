@@ -9,12 +9,14 @@ Water influx in an oil reservoir is the migration of water from an aquifer into 
 
 For use in material balance computation in edge drive configuration, reservoir engneering books provide plots for Wd as a function of dimensionless radius and time
 
-For :math:'Rd <= 4'
+For :math:`Rd <= 4`
+
 .. figure:: images/Water-Influx-from-Craft-and-Hawkins_4dn.png
          :align: center
          :alt: Water-Influx-from-Craft-and-Hawkins_4dn.png
 
-For :math:'5 <=Rd <= 10'
+For :math:`5 <=Rd <= 10`
+
 .. figure:: images/Water-Influx-from-Craft-and-Hawkins_5up.png
          :align: center
          :alt: Water-Influx-from-Craft-and-Hawkins_5up.png
