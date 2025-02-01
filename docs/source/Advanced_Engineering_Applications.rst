@@ -416,6 +416,11 @@ Introducing the self-similar variables
    \tilde{h}_w = \frac{h_w}{h_{\infty}},~
    \tilde{\rho}_w = \frac{\rho}{\rho_{\infty}}
 
+the equations reduce to:
+.. math:: 2(\tilde{\rho}\tilde{\mu}f'')' + ff'' = 0, \newline
+(\tilde{\rho}\tilde{\mu}\tilde{h}')' + Pr f \tilde{h}' + Pr(\gamma - 1)M^2\tilde{\rho}\tilde{\mu}f''^2 = 0
+
+
 Pleiades System
 ---------------
 The Pleiades, also known as the Seven Sisters (M45)[1], is a prominent open star cluster located in the constellation Taurus. It's one of the closest and most easily visible star clusters to Earth[2], making it a favorite target for stargazers and a subject of fascination across cultures. The system of equations describing the motion of the stars in the cluster consists of 14 nonstiff second-order differential equations, which produce a system of 28 equations when rewritten in first-order form.
