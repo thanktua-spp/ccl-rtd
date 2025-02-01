@@ -47,10 +47,10 @@ From Darcy law, we know that the rate of water influx is proportional to the neg
 This can be accomplised by performing the integration in laplace space before inverting to time space. 
 
 .. math:: 
-   W(t) = \mathcal{L}\left(\frac{-1}{s} \cfrac{\partial P}{\partial r} (s, r = 1) \right)
+   W(t) = \mathcal{L}^{-1}\left(\frac{-1}{s} \cfrac{\partial P}{\partial r} (s, r = 1) \right)
 
 .. math:: 
-   W(t) = \mathcal{L}\left(\frac{1}{s\sqrt{s}} \cfrac{I_1(r_D\sqrt{s}) K_1(\sqrt{s}) - K_1(r_D\sqrt{s}) I_1(\sqrt{s})}{(I_1(r_D\sqrt{s}) K_0(\sqrt{s}) + K_1(r_D\sqrt{s}) I_0(\sqrt{s}))} \right)
+   W(t) = \mathcal{L}^{-1}\left(\frac{1}{s\sqrt{s}} \cfrac{I_1(r_D\sqrt{s}) K_1(\sqrt{s}) - K_1(r_D\sqrt{s}) I_1(\sqrt{s})}{(I_1(r_D\sqrt{s}) K_0(\sqrt{s}) + K_1(r_D\sqrt{s}) I_0(\sqrt{s}))} \right)
 
 
 Lets see how to compute water influx, and generate the started water influx plot as shown above
