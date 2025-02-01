@@ -422,7 +422,19 @@ the equations reduce to:
    2(\tilde{\rho}\tilde{\mu}f'')' + ff'' = 0,
 
 .. math::
-   (\tilde{\rho}\tilde{\mu}\tilde{h}')' + Pr f \tilde{h}' + Pr(\gamma - 1)M^2\tilde{\rho}\tilde{\mu}f''^2 = 0,
+   (\tilde{\rho}\tilde{\mu}\tilde{h}')' + Pr f \tilde{h}' + Pr(\gamma - 1)M^2\tilde{\rho}\tilde{\mu}f''^2 = 0
+
+
+where :math:`\gamma` is the specific heat ratio and :math:`M = U/c_\infty` is the Mach number[6], where :math:`c_\infty` speed of sound[7]. The equation can be solved once :math:`\tilde{\rho} = \tilde{\rho}(\tilde{h})` and :math:`\tilde{\mu} = \tilde{\mu}(\tilde{h})` are specified.
+
+The boundary conditions are:
+
+.. math::
+   f(0) = f’(0) = \theta(0) - \tilde{h}_w = f’(\infty)-1 = \tilde{h}(\infty)-1 = 0
+
+The temperature inside the boundary layer will increase even though the plate temperature is maintained at the same temperature as ambient, due to dissipative heating and of course, these dissipation effects are only pronounced when the [Mach number](https://en.wikipedia.org/wiki/Mach_number) 𝑀 is large. Here is the solution of the model for M = 0 and 5. 
+
+The Solution using Matlab and the CCLMath Library is shown below.
 
 
 Pleiades System
@@ -815,3 +827,6 @@ Reference
 
 3. Lateef Adewale Kareem (2025). Numerical Inversion of Laplace Transform (https://www.mathworks.com/matlabcentral/fileexchange/179769-numerical-inversion-of-laplace-transform), MATLAB Central File Exchange. Retrieved January 30, 2025.
 4. https://en.wikipedia.org/wiki/Density
+5. https://en.wikipedia.org/wiki/Specific_heat_ratio
+6. https://en.wikipedia.org/wiki/Mach_number
+7. https://en.wikipedia.org/wiki/Speed_of_sound
