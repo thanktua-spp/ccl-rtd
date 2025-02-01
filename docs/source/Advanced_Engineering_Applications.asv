@@ -588,19 +588,19 @@ Here we present the solution for the model when :math:`M = 0` and :math:`5`.
          [T, Y] = HowarthTransform(0); 
          figure(color='w'); hold on; 
          plot(T, Y(:, 2), 'b', linewidth = 2);
-         plot(T, Y(:, 4), 'r', linewidth = 2);
-         
-         % generator solution for M = 5 and plot
-         [T, Y] = HowarthTransform(5);
-         plot(T, Y(:, 2), 'b', linewidth = 2);
-         plot(T, Y(:, 4), 'r', linewidth = 2);
+        plot(T, Y(:, 4), 'r', linewidth = 2);
         
-         % add legend, axis label and title
-         legend("f'", "h-1");
-         xlabel("η"); 
-         title("Howarth Transformation");
-         axis([0,5,0,2]); box on;
-         saveas(gcf, 'Howarth-Transformation-Matlab', 'png');
+        % generator solution for M = 5 and plot
+        [T, Y] = HowarthTransform(5);
+        plot(T, Y(:, 2), 'b', linewidth = 2);
+        plot(T, Y(:, 4), 'r', linewidth = 2);
+        
+        % add legend, axis label and title
+        legend("f'", "h-1");
+        xlabel("η"); 
+        title("Howarth Transformation");
+        axis([0,5,0,2]); box on;
+        saveas(gcf, 'Howarth-Transformation-Matlab', 'png');
 
       .. figure:: images/Howarth-Transformation-Matlab.png
          :align: center
