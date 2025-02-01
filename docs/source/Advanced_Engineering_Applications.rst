@@ -339,43 +339,36 @@ To solve system of ordinary differential equation, you need the initial conditio
       .. code-block:: matlab
 
          % define the function handle
-         dqdt = @(t, q) pleiades(t,q);
-
-         % set initial condition
-         q0 = [3 3 -1 -3 2 -2 2 ...
-               3 -3 2 0 0 -4 4 ...
-               0 0 0 0 0 1.75 -1.5 ...
-               0 0 0 -1.25 1 0 0]';
+         dydt = @(t, y)[y(2); y(3); -0.5*y(3)*y(1)];
          
          % set time span
-         t_span = linspace(1,15,200);
-         
-         % call the solver
-         opts = odeset("RelTol",1e-13,"AbsTol",1e-15);
-         [t, q89] = ode89(dqdt, t_span, q0, opts);
-         
-         % display the result
-         plot(q89(:,1:7),q89(:,8:14),'--')
-         title('Position of Pleiades Stars, Solved by ODE89')
-         xlabel('X Position')
-         ylabel('Y Position')
-         saveas(gcf, 'Position-of-Pleiades-Stars-Matlab-ODE89', 'png')
+         tspan = [0,6]; 
 
-         function dqdt = pleiades(t,q)
-            x = q(1:7);
-            y = q(8:14);
-            xDist = (x - x.');
-            yDist = (y - y.');
-            r = (xDist.^2+yDist.^2).^(3/2);
-            m = (1:7)';
-            dqdt = [q(15:28);
-                    sum(xDist.*m./r,1,'omitnan').';
-                    sum(yDist.*m./r,1,'omitnan').'];
-          end
+         % define function for shooting
+         function res = fun(y3_0, dydt, tspan)
+             y0 = [0, 0, y3_0];
+             [~, Y] = ode45(dydt, tspan, y0);
+             res = Y(end, 2) - 1;
+         end
 
-      .. figure:: images/Position-of-Pleiades-Stars-Matlab-ODE89.png
+         % solve the nonlinear equation for y_3(0)
+         y3_0 = fzero(@(y3_0)fun(y3_0, dydt, tspan), 0.5);
+         
+         % recompute the solution of the ode system using the new initial condition
+         y0 = [0, 0, y3_0];
+         [T, Y] = ode45(dydt, tspan, y0);
+
+         % plot the result
+         figure(Color = 'w')
+         plt = plot(T, Y, linewidth = 2);
+         axis([0,6,0,2])
+         xlabel("η"); 
+         title("Blasius Boundary layer");
+         saveas(gcf, 'Blasius-Boundary-Layer-Matlab', 'png')
+
+      .. figure:: images/Blasius-Boundary-Layer-Matlab.png
          :align: center
-         :alt: Position-of-Pleiades-Stars-Matlab-ODE89.png
+         :alt: Blasius-Boundary-Layer-Matlab.png
 
 
 Pleiades System
