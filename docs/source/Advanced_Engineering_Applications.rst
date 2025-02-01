@@ -266,6 +266,22 @@ Z-factor
 ~~~~~~~~
 Here we show how to compute Z factor from Hall and Yarborough Ea derivative of Starline Carnahan's Equation of state:
 
+.. math:: 
+   \begin{array}{c}
+   A = 0.06125t\exp(-1.2(1-t)^2)  \\
+   B = 14.76t - 9.76t^2 + 4.58t^3 \\
+   C = 90.7t - 242.2t^2 + 42.4t^3 \\
+   D = 2.18 + 2.82t
+   \end{array}
+
+We solve for the root of:
+
+.. math::
+   -AP_{pr} + \frac{y+y^2+y^3-y^4}{(1-y)^3} - By^2+Cy^D = 0
+
+And then compute
+   z = \frac{AP_{pr}}{y}
+
 .. math::
    A = 0.06125t\exp(-1.2(1-t)^2);
    B = 14.76t - 9.76t^2 + 4.58t^3;
