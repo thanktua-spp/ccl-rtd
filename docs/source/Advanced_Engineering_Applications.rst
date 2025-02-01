@@ -237,6 +237,18 @@ Compressibility of Natural Gas
 Howarth's Transformation
 ------------------------
 
+The Blasius Boundary Layer refers to a boundary layer of fluid in the vicinity of a flat plate that moves steadily in its own plane. This concept was first introduced by German mathematician Heinrich Blasius. This solution is important in the field of fluid dynamics, particularly in the area of laminar flow. In this solution, the flow velocity outside the boundary layer is assumed to be uniform. Inside the boundary layer, the fluid's velocity changes from zero at the plate surface to the free stream velocity at the edge of the boundary layer. This concept plays a significant role in understanding and predicting the behavior of fluid flow in various engineering and scientific applications.
+
+The solutions to the Blasius equation provide valuable insights into the behavior of fluid flow near a boundary. For instance, it demonstrates that the boundary layer thickness grows as the square root of the distance along the plate. Also, it reveals that the shear stress at the plate surface is proportional to the square root of the free stream velocity, among other observations.
+
+The Blasius Boundary Layer solution, despite its simplifications, offers a good approximation for real-life engineering problems involving fluid flow over flat surfaces. This understanding is crucial in designing and optimizing various engineering systems, ranging from airfoils in aeronautics to heat exchangers in thermal power plants and thermal shield design on reusable rockets.
+
+.. math:: 
+   2f''' + f''f = 0
+
+This equation can be solved by transforming it into a system of 1st order differential equations.
+
+
 Pleiades System
 ---------------
 The Pleiades, also known as the Seven Sisters (M45)[1], is a prominent open star cluster located in the constellation Taurus. It's one of the closest and most easily visible star clusters to Earth[2], making it a favorite target for stargazers and a subject of fascination across cultures. The system of equations describing the motion of the stars in the cluster consists of 14 nonstiff second-order differential equations, which produce a system of 28 equations when rewritten in first-order form.
