@@ -432,9 +432,102 @@ The boundary conditions are:
 .. math::
    f(0) = f’(0) = \theta(0) - \tilde{h}_w = f’(\infty)-1 = \tilde{h}(\infty)-1 = 0
 
-The temperature inside the boundary layer will increase even though the plate temperature is maintained at the same temperature as ambient, due to dissipative heating and of course, these dissipation effects are only pronounced when the [Mach number](https://en.wikipedia.org/wiki/Mach_number) 𝑀 is large. Here is the solution of the model for M = 0 and 5. 
+The temperature inside the boundary layer will increase even though the plate temperature is maintained at the same temperature as ambient, due to dissipative heating and of course, these dissipation effects are only pronounced when the Mach number :math:`M` is large. 
 
-The Solution using Matlab and the CCLMath Library is shown below.
+Here we present the solution for the model when :math:`M = 0` and :math:`5`. 
+
+.. tabs::
+
+   .. tab:: CCL-Math
+      CCL-Math Implementation
+
+      .. code-block:: C#
+         
+         // import libraries
+         using CypherCrescent.MathematicsLibrary;
+         using static MathsChart.Chart;
+
+         // define function
+         ColVec dydt(double t, ColVec y)
+         {
+            double[] dy = [y[1], y[2], -0.5 * y[2] * y[0]];
+            return dy;
+         }
+         
+         // set time span
+         double[] tspan = [0, 6]; Ode.Result TY = null;
+
+         // define nonlinear function to shooting for terminal boundary
+         double fun(double y3_0)
+         {
+             double[] y0 = [0, 0, y3_0];
+             TY = Ode.Ode45(dydt, y0, tspan);
+             return TY.Y[TY.X.Numel - 1, 1] - 1;
+         }
+
+         // solve for unknown initial condition
+         Solvers.Result y3_0 = Solvers.FSolve(fun, 0.5);
+
+         // plot the result
+         var plt = Plot(TY.X, TY.Y, linewidth: 2);
+         plt.Legend = new() { labels = ["f", "f'", "f''"], alignment = "upperleft" };
+         plt.Axis([0, 6, 0, 2]); plt.XLabel = "η"; plt.Title = "Blasius Boundary layer";
+         plt.SaveFig("Blasius-Boundary-Layer-CCL-Math.png");
+         
+
+      .. figure:: images/Blasius-Boundary-Layer-CCL-Math.png
+         :align: center
+         :alt: Blasius-Boundary-Layer-CCL-Math.png
+
+
+   .. tab:: Python
+
+      Python Implementation
+
+      .. code-block:: python
+
+      
+
+
+   .. tab:: Matlab
+
+      Matlab Implementation
+
+      .. code-block:: matlab
+
+         % define the function handle
+         dydt = @(t, y)[y(2); y(3); -0.5*y(3)*y(1)];
+         
+         % set time span
+         tspan = [0,6]; 
+
+         % define function for shooting
+         function res = fun(y3_0, dydt, tspan)
+             y0 = [0, 0, y3_0];
+             [~, Y] = ode45(dydt, tspan, y0);
+             res = Y(end, 2) - 1;
+         end
+
+         % solve the nonlinear equation for y_3(0)
+         y3_0 = fzero(@(y3_0)fun(y3_0, dydt, tspan), 0.5);
+         
+         % recompute the solution of the ode system using the new initial condition
+         y0 = [0, 0, y3_0];
+         [T, Y] = ode45(dydt, tspan, y0);
+
+         % plot the result
+         figure(Color = 'w')
+         plt = plot(T, Y, linewidth = 2);
+         axis([0,6,0,2])
+         xlabel("η"); 
+         legend("f", "f'", "f''")
+         title("Blasius Boundary layer");
+         saveas(gcf, 'Blasius-Boundary-Layer-Matlab', 'png')
+
+      .. figure:: images/Blasius-Boundary-Layer-Matlab.png
+         :align: center
+         :alt: Blasius-Boundary-Layer-Matlab.png
+
 
 
 Pleiades System
