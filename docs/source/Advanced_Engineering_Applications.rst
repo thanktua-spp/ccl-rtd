@@ -411,7 +411,7 @@ Introducing the self-similar variables
 
 .. math::
    \eta = \sqrt{\frac{U}{2\nu_{\infty}x}} \int_0^y \frac{\rho}{\rho_{\infty}}dy, 
-   f(\eta) = \frac{\xi}{\sqrt{2\nu_{\infty}U_x}},
+   f(\eta) = \frac{\psi}{\sqrt{2\nu_{\infty}U_x}},
    \tilde{h}(\eta) = \frac{h}{h_{\infty}},
    \tilde{h}_w = \frac{h_w}{h_{\infty}}
 
