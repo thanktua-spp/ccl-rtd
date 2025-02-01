@@ -182,9 +182,14 @@ Lets see how to compute water influx, and generate the started water influx plot
             end
          end
 
-      .. figure:: images/Dimensionless-Water-Influx-Matlab.png
+      .. figure:: images/Dimensionless-Water-Influx-Matlab-4dn.png
          :align: center
-         :alt: Dimensionless-Water-Influx-Matlab.png
+         :alt: Dimensionless-Water-Influx-Matlab-4dn.png
+
+
+      .. figure:: images/Dimensionless-Water-Influx-Matlab-5up.png
+         :align: center
+         :alt: Dimensionless-Water-Influx-Matlab-5up.png
 
 
 
