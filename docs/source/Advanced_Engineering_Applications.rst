@@ -267,12 +267,12 @@ Z-factor
 Here we show how to compute Z factor from Hall and Yarborough Ea derivative of Starline Carnahan's Equation of state:
 
 .. math:: 
-   \begin{array}{c}
-   t = 1/T_{pr}                   \\
-   A = 0.06125t\exp(-1.2(1-t)^2)  \\
-   B = 14.76t - 9.76t^2 + 4.58t^3 \\
-   C = 90.7t - 242.2t^2 + 42.4t^3 \\
-   D = 2.18 + 2.82t
+   \begin{array}{rcl}
+   t &=& 1/T_{pr}                   \\
+   A &=& 0.06125t\exp(-1.2(1-t)^2)  \\
+   B &=& 14.76t - 9.76t^2 + 4.58t^3 \\
+   C &=& 90.7t - 242.2t^2 + 42.4t^3 \\
+   D &=& 2.18 + 2.82t
    \end{array}
 
 We solve for the root of:
@@ -594,19 +594,19 @@ Let:
 hence
 
 .. math:: 
-   \begin{array}{c}
-   y'_1 = f' = y_2, \\
-   y'_2 = f'' = y_3, \\
-   y'_3 = f''' = -0.5f''f = -0.5y_3y_1
+   \begin{array}{rcl}
+   y'_1 &=& f' = y_2, \\
+   y'_2 &=& f'' = y_3, \\
+   y'_3 &=& f''' = -0.5f''f = -0.5y_3y_1
    \end{array}
 
 So, the system of first order differential equation is thus:
 
 .. math:: 
-   \begin{array}{c}
-   y'_1 = y_2, \\
-   y'_2 = y_3, \\
-   y'_3 = -0.5y_3y_1
+   \begin{array}{rcl}
+   y'_1 &=& y_2, \\
+   y'_2 &=& y_3, \\
+   y'_3 &=& -0.5y_3y_1
    \end{array}
 
 Subject to the following initial and terminal conditions. 
