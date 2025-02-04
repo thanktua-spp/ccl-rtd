@@ -1,5 +1,4 @@
-Integrators
------------
+
 
 Integrators::
    Description:  Performs numerical evaluation of definite integration of functions
@@ -184,6 +183,39 @@ Integrators::
              double integral = GaussLeg2(f, x_1, x_2, y_1, y_2);
              // Print the result
              Console.WriteLine($"The integral is approximately: {integral}");
+
+
+   GaussLeg3::
+      Description:  Computes the definite triple integral of a function over a rectangular cuboid region using adaptive Gauss-Legendre quadrature.  All bounds are constants.
+          Example usage: Integrate the function f(x, y, z) = x * y * z over the region where x ranges from 0 to 1, y ranges from 1 to 2, and z ranges from 2 to 3, which can be expressed as:
+
+          .. math::
+             \int_{x_1}^{x_2} \int_{y_1}^{y_2}  \int_{z_1}^{z_2} x y z \, dz \, dy \, dx
+
+          .. code-block:: C# 
+
+             // import libraries
+             using CypherCrescent.MathematicsLibrary;
+             using System;
+         
+             // Define the function to integrate
+             Func<double, double, double, double> f = (x, y, z) => x * y * z;
+             // Set the lower bound of x
+             double x_1 = 0;
+             // Set the upper bound of x
+             double x_2 = 1;
+             // Set the lower bound of y
+             double y_1 = 1;
+             // Set the upper bound of y
+             double y_2 = 2;
+             // Set the lower bound of z
+             double z1 = 2;
+             // Set the upper bound of z
+             double z2 = 3;
+             // Calculate the integral
+             double integral = GaussLeg3(f, x_1, x_2, y_1, y_2, z1, z2);
+             // Print the result
+             Console.WriteLine($"The triple integral of x*y*z is approximately: {integral}");
 
 
    GaussLag::
