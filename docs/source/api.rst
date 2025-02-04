@@ -1,7 +1,8 @@
 API
 ===
 
-.. autosummary::
+Classes
+--------
    
 
    .. toctree::

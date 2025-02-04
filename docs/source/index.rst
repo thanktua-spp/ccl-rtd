@@ -35,7 +35,6 @@ Contents
    Numerical_Laplace_Transform_Inversion
    Advanced_Engineering_Applications
    api
-      Integrators
 
 
 Lumache hosts its documentation on Read the Docs.
