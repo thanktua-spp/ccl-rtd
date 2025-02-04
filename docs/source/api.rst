@@ -1,10 +1,3 @@
 API
 ===
 
-Classes
---------
-   
-
-   .. toctree::
-
-      Integrators
