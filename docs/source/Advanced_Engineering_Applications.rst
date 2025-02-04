@@ -12,14 +12,14 @@ For use in material balance computation in edge drive configuration, reservoir e
 For :math:`Rd \leq 4`
 
 .. figure:: images/Water-Influx-from-Craft-and-Hawkins_4dn.png
-         :align: center
-         :alt: Water-Influx-from-Craft-and-Hawkins_4dn.png
+   :align: center
+   :alt: Water-Influx-from-Craft-and-Hawkins_4dn.png
 
 For :math:`5 \leq Rd \leq 10`
 
 .. figure:: images/Water-Influx-from-Craft-and-Hawkins_5up.png
-         :align: center
-         :alt: Water-Influx-from-Craft-and-Hawkins_5up.png
+   :align: center
+   :alt: Water-Influx-from-Craft-and-Hawkins_5up.png
 
 In an edge drive configuration with the aquifer closed at its outer boundary, the governing equation gives:
 
