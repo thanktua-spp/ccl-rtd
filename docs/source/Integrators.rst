@@ -54,6 +54,7 @@ Integrators::
           .. code-block:: C# 
 
              // import libraries
+             using CypherCrescent.MathematicsLibrary;
              using System;
          
              // Define the function to integrate
@@ -80,7 +81,7 @@ Integrators::
              // import libraries
              using CypherCrescent.MathematicsLibrary;
              using System;
-
+         
              // Define the function to integrate
              Func<double, double, double> f = (x, y) => x * y;
              // Set the lower bound of x
@@ -107,6 +108,7 @@ Integrators::
           .. code-block:: C# 
 
              // import libraries
+             using CypherCrescent.MathematicsLibrary;
              using System;
          
              // Define the function to integrate
@@ -135,6 +137,7 @@ Integrators::
           .. code-block:: C# 
 
              // import libraries
+             using CypherCrescent.MathematicsLibrary;
              using System;
          
              // Define the function to integrate
@@ -163,6 +166,7 @@ Integrators::
           .. code-block:: C# 
 
              // import libraries
+             using CypherCrescent.MathematicsLibrary;
              using System;
          
              // Define the function to integrate
