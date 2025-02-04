@@ -52,6 +52,7 @@ Integrators::
              \int_{x_1}^{x_2} x^2 \, dx
 
           .. code-block:: C# 
+
              // import libraries
              using System;
          
@@ -75,10 +76,11 @@ Integrators::
              \int_{x_1}^{x_2} \int_{y_1}^{y_2} x y \, dy \, dx
 
           .. code-block:: C# 
+
              // import libraries
              using CypherCrescent.MathematicsLibrary;
-             // import libraries
              using System;
+
              // Define the function to integrate
              Func<double, double, double> f = (x, y) => x * y;
              // Set the lower bound of x
@@ -103,6 +105,7 @@ Integrators::
              \int_{x_1}^{x_2} \int_{y_1(x)}^{y_2} x y \, dy \, dx
 
           .. code-block:: C# 
+
              // import libraries
              using System;
          
@@ -130,6 +133,7 @@ Integrators::
              \int_{x_1}^{x_2} \int_{y_1}^{y_2(x)} x y \, dy \, dx
 
           .. code-block:: C# 
+
              // import libraries
              using System;
          
@@ -157,6 +161,7 @@ Integrators::
              \int_{x_1}^{x_2} \int_{y_1(x)}^{y_2(x)} x y \, dy \, dx
 
           .. code-block:: C# 
+
              // import libraries
              using System;
          
