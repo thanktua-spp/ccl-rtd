@@ -427,7 +427,7 @@ Integrators::
          
 
           .. math::
-              \int_{0}^{1} \int_{0}^{1} \int_{0}^{1} \sin(x) \cdot \cos(y) \cdot \exp(z) \, dz \, dy \, dx
+             \int_{0}^{1} \int_{0}^{1} \int_{0}^{1} \sin(x) \cdot \cos(y) \cdot \exp(z) \, dz \, dy \, dx
          
 
           .. code-block:: C# 
@@ -458,7 +458,7 @@ Integrators::
          
 
           .. math::
-              \int_{0}^{1} \int_{0}^{1} \int_{0}^{1} \sin(x) \cdot \cos(y) \cdot \exp(z) \, dz \, dy \, dx
+             \int_{0}^{1} \int_{0}^{1} \int_{0}^{1} \sin(x) \cdot \cos(y) \cdot \exp(z) \, dz \, dy \, dx
          
 
           .. code-block:: C# 
@@ -489,7 +489,7 @@ Integrators::
          
 
           .. math::
-              \int_{0}^{1} \int_{0}^{1} \int_{0}^{1} \sin(x) \cdot \cos(y) \cdot \exp(z) \, dz \, dy \, dx
+             \int_{0}^{1} \int_{0}^{1} \int_{0}^{1} \sin(x) \cdot \cos(y) \cdot \exp(z) \, dz \, dy \, dx
          
 
           .. code-block:: C# 
