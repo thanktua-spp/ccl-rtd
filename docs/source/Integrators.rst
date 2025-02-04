@@ -286,6 +286,39 @@ Integrators::
              Console.WriteLine($"The triple integral of x*y*z is approximately: {integral}");
 
 
+   GaussLeg3::
+      Description:  Computes the definite triple integral of a function over a region where the y-bounds are defined by functions of x, and the z-bounds are constants, using adaptive Gauss-Legendre quadrature.
+          Example usage: Integrate the function f(x, y, z) = x * y * z over the region where x ranges from 0 to 1, y ranges from x^2 to sqrt(x), and z ranges from 2 to 3, which can be expressed as:
+
+          .. math::
+             \int_{x_1}^{x_2} \int_{y_1(x)}^{y_2(x)}  \int_{z_1}^{z_2} x y z \, dz \, dy \, dx
+
+          .. code-block:: C# 
+
+             // import libraries
+             using CypherCrescent.MathematicsLibrary;
+             using System;
+         
+             // Define the function to integrate
+             Func<double, double, double, double> f = (x, y, z) => x * y * z;
+             // Define the lower bound of y as a function of x
+             Func<double, double> y_1 = (x) => x * x;
+             // Define the upper bound of y as a function of x
+             Func<double, double> y_2 = (x) => Math.Sqrt(x);
+             // Set the lower bound of z
+             double z_1 = 2;
+             // Set the upper bound of z
+             double z_2 = 3;
+             // Set the lower bound of x
+             double x_1 = 0;
+             // Set the upper bound of x
+             double x_2 = 1;
+             // Calculate the integral
+             double integral = Integrators.GaussLeg3(f, x_1, x_2, y_1, y_2, z_1, z_2);
+             // Print the result
+             Console.WriteLine($"The triple integral of x*y*z is approximately: {integral}");
+
+
    GaussLag::
       Description:  Integration via Gause Laguerre method
 
