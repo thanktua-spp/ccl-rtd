@@ -507,8 +507,14 @@ Integrators::
 
 
    GaussLeg3::
-      Description:  Computes the definite triple integral of a function over a region where both Y and Z bounds are described by functions, and where the Y bounds are functions of X and the Z bounds are functions of X and Y.
-          <code>
+      Description:  Computes the definite triple integral of a function over a region where the y-bounds are defined by functions of x, and the z-bounds are defined by functions of x and y, using adaptive Gauss-Legendre quadrature.
+          Example usage: Integrate the function f(x, y, z) = x * y * z over the region where x ranges from 0 to 1, y ranges from x^2 to sqrt(x), and z ranges from x*y to x+y, which can be expressed as:
+
+          .. math::
+             \int_{x_1}^{x_2} \int_{y_1(x)}^{y_2(x)}  \int_{z_1(x,y)}^{z_2(x,y)} x y z \, dz \, dy \, dx
+
+          .. code-block:: C# 
+
              // import libraries
              using CypherCrescent.MathematicsLibrary;
              using System;
@@ -518,11 +524,11 @@ Integrators::
              // Define the lower bound of y as a function of x
              Func<double, double> y_1 = (x) => x * x;
              // Define the upper bound of y as a function of x
-              Func<double, double> y_2 = (x) => Math.Sqrt(x);
+             Func<double, double> y_2 = (x) => Math.Sqrt(x);
              // Define the lower bound of z as a function of x and y
              Func<double, double, double> z_1 = (x, y) => x * y;
-             // Define the upper bound of z
-              Func<double, double, double> z_2 = (x, y) => x+y;
+             // Define the upper bound of z as a function of x and y
+             Func<double, double, double> z_2 = (x, y) => x + y;
              // Set the lower bound of x
              double x_1 = 0;
              // Set the upper bound of x
@@ -531,7 +537,6 @@ Integrators::
              double integral = Integrators.GaussLeg3(f, x_1, x_2, y_1, y_2, z_1, z_2);
              // Print the result
              Console.WriteLine($"The triple integral of x*y*z is approximately: {integral}");
-          </code>
 
 
    GaussLag::
