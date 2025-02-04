@@ -418,6 +418,132 @@ Integrators::
 
 
    GaussLeg3::
+      Description:  Calculates the integral of a function using a 3-dimensional Gauss-Legendre quadrature method.
+          This method calculates the integral of a function \( f(x, y, z) \) over a 3-dimensional region defined by the limits [x_1, x_2], [y_1, y_2], and [z_1, z_2(x, y)] using the Gauss-Legendre quadrature method.
+         
+          Example usage:
+         
+          The integral we are trying to calculate is:
+         
+
+          .. math::
+              \int_{0}^{1} \int_{0}^{1} \int_{0}^{1} \sin(x) \cdot \cos(y) \cdot \exp(z) \, dz \, dy \, dx
+         
+
+          .. code-block:: C# 
+
+             // Define the function to integrate
+             Func<double, double, double, double> func = (x, y, z) => Math.Sin(x) * Math.Cos(y) * Math.Exp(z);
+         
+             // Perform the integration using GaussLeg3
+             double result = GaussLeg3(
+                 func,
+                 0, 1,                // Integration limits for x
+                 0, 1,                // Integration limits for y (constant lower and upper limits)
+                 0, (x, y) => 1       // Integration limits for z (constant lower limit and upper limit based on x and y)
+             );
+         
+             // Output the result
+             Console.WriteLine("The integral result is: " + result);
+             This example calculates the integral of the function sin(x) * cos(y) * exp(z) over the range [0, 1] for x, y, and z.
+
+
+   GaussLeg3::
+      Description:  Calculates the integral of a function using a 3-dimensional Gauss-Legendre quadrature method.
+          This method calculates the integral of a function \( f(x, y, z) \) over a 3-dimensional region defined by the limits [x_1, x_2], [y_1(x), y_2], and [z_1, z_2(x, y)] using the Gauss-Legendre quadrature method.
+         
+          Example usage:
+         
+          The integral we are trying to calculate is:
+         
+
+          .. math::
+              \int_{0}^{1} \int_{0}^{1} \int_{0}^{1} \sin(x) \cdot \cos(y) \cdot \exp(z) \, dz \, dy \, dx
+         
+
+          .. code-block:: C# 
+
+             // Define the function to integrate
+             Func<double, double, double, double> func = (x, y, z) => Math.Sin(x) * Math.Cos(y) * Math.Exp(z);
+         
+             // Perform the integration using GaussLeg3
+             double result = GaussLeg3(
+                 func,
+                 0, 1,                // Integration limits for x
+                 x => 0, 1,           // Integration limits for y (lower limit based on x and constant upper limit)
+                 0, (x, y) => 1       // Integration limits for z (constant lower limit and upper limit based on x and y)
+             );
+         
+             // Output the result
+             Console.WriteLine("The integral result is: " + result);
+             This example calculates the integral of the function sin(x) * cos(y) * exp(z) over the range [0, 1] for x, y, and z.
+
+
+   GaussLeg3::
+      Description:  Calculates the integral of a function using a 3-dimensional Gauss-Legendre quadrature method.
+          This method calculates the integral of a function \( f(x, y, z) \) over a 3-dimensional region defined by the limits [x_1, x_2], [y_1, y_2(x)], and [z_1, z_2(x, y)] using the Gauss-Legendre quadrature method.
+         
+          Example usage:
+         
+          The integral we are trying to calculate is:
+         
+
+          .. math::
+              \int_{0}^{1} \int_{0}^{1} \int_{0}^{1} \sin(x) \cdot \cos(y) \cdot \exp(z) \, dz \, dy \, dx
+         
+
+          .. code-block:: C# 
+
+             // Define the function to integrate
+             Func<double, double, double, double> func = (x, y, z) => Math.Sin(x) * Math.Cos(y) * Math.Exp(z);
+         
+             // Perform the integration using GaussLeg3
+             double result = GaussLeg3(
+                 func,
+                 0, 1,                // Integration limits for x
+                 0, x => 1,           // Integration limits for y (constant lower limit and upper limit based on x)
+                 0, (x, y) => 1       // Integration limits for z (constant lower limit and upper limit based on x and y)
+             );
+         
+             // Output the result
+             Console.WriteLine("The integral result is: " + result);
+          This example calculates the integral of the function sin(x) * cos(y) * exp(z) over the range [0, 1] for x, y, and z.
+
+
+   GaussLeg3::
+      Description:  Computes the definite triple integral of a function over a region where the y-bounds are defined by functions of x, the lower z-bound is a constant, and the upper z-bound is a function of x and y, using adaptive Gauss-Legendre quadrature.
+          Example usage: Integrate the function f(x, y, z) = x * y * z over the region where x ranges from 0 to 1, y ranges from x^2 to sqrt(x), and z ranges from 2 to x+y, which can be expressed as:
+
+          .. math::
+             \int_{x_1}^{x_2} \int_{y_1(x)}^{y_2(x)}  \int_{z_1}^{z_2(x,y)} x y z \, dz \, dy \, dx
+
+          .. code-block:: C# 
+
+             // import libraries
+             using CypherCrescent.MathematicsLibrary;
+             using System;
+         
+             // Define the function to integrate
+             Func<double, double, double, double> f = (x, y, z) => x * y * z;
+             // Define the lower bound of y as a function of x
+             Func<double, double> y_1 = (x) => x * x;
+             // Define the upper bound of y as a function of x
+             Func<double, double> y_2 = (x) => Math.Sqrt(x);
+             // Set the lower bound of z
+             double z_1 = 2;
+             // Define the upper bound of z as a function of x and y
+             Func<double, double, double> z_2 = (x, y) => x + y;
+             // Set the lower bound of x
+             double x_1 = 0;
+             // Set the upper bound of x
+             double x_2 = 1;
+             // Calculate the integral
+             double integral = Integrators.GaussLeg3(f, x_1, x_2, y_1, y_2, z_1, z_2);
+             // Print the result
+             Console.WriteLine($"The triple integral of x*y*z is approximately: {integral}");
+
+
+   GaussLeg3::
       Description:  Computes the definite triple integral of a function over a region where the y-bounds are defined by constants, and the z-bounds are defined by functions of x and y, using adaptive Gauss-Legendre quadrature.
           Example usage: Integrate the function f(x, y, z) = x * y * z over the region where x ranges from 0 to 1, y ranges from 1 to 2, and z ranges from x*y to x+y, which can be expressed as:
 
