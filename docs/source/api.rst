@@ -2,6 +2,8 @@ API
 ===
 
 .. autosummary::
-   :toctree: generated
+   
 
-   lumache
+   .. toctree::
+
+      Integrators
