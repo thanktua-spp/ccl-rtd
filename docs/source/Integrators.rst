@@ -66,7 +66,7 @@ Integrators::
              // Set the upper bound of x
              double x_2 = 1;
              // Calculate the integral
-             double integral = GaussLeg(f, x_1, x_2);
+             double integral = Integrators.GaussLeg(f, x_1, x_2);
              // Print the result
              Console.WriteLine($"The integral of x^2 is approximately: {integral}");
 
@@ -95,7 +95,7 @@ Integrators::
              // Set the upper bound of y
              double y_2 = 2;
              // Calculate the integral
-             double integral = GaussLeg2(f, x_1, x_2, y_1, y_2);
+             double integral = Integrators.GaussLeg2(f, x_1, x_2, y_1, y_2);
              // Print the result
              Console.WriteLine($"The integral of x*y is approximately: {integral}");
 
@@ -124,7 +124,7 @@ Integrators::
              // Set the upper bound of y
              double y_2 = 2;
              // Calculate the integral
-             double integral = GaussLeg2(f, x_1, x_2, y_1, y_2);
+             double integral = Integrators.GaussLeg2(f, x_1, x_2, y_1, y_2);
              // Print the result
              Console.WriteLine($"The integral is approximately: {integral}");
 
@@ -153,7 +153,7 @@ Integrators::
              // Set the lower bound of y
              double y_1 = 1;
              // Calculate the integral
-             double integral = GaussLeg2(f, x_1, x_2, y_1, y_2);
+             double integral = Integrators.GaussLeg2(f, x_1, x_2, y_1, y_2);
              // Print the result
              Console.WriteLine($"The integral is approximately: {integral}");
 
@@ -182,7 +182,7 @@ Integrators::
              // Set the upper bound of x
              double x_2 = 1;
              // Calculate the integral
-             double integral = GaussLeg2(f, x_1, x_2, y_1, y_2);
+             double integral = Integrators.GaussLeg2(f, x_1, x_2, y_1, y_2);
              // Print the result
              Console.WriteLine($"The integral is approximately: {integral}");
 
@@ -215,7 +215,7 @@ Integrators::
              // Set the upper bound of z
              double z2 = 3;
              // Calculate the integral
-             double integral = GaussLeg3(f, x_1, x_2, y_1, y_2, z1, z2);
+             double integral = Integrators.GaussLeg3(f, x_1, x_2, y_1, y_2, z1, z2);
              // Print the result
              Console.WriteLine($"The triple integral of x*y*z is approximately: {integral}");
 
