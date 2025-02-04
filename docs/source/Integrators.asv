@@ -1,5 +1,5 @@
 Integrators
-================
+============
 
 Integrators::
    Description:  Performs numerical evaluation of definite integration of functions
@@ -48,9 +48,11 @@ Integrators::
    GaussLeg::
       Description:  Computes the definite integral of a function using adaptive Gauss-Legendre quadrature.
           Example usage: Integrate the function f(x) = x^2, which can be expressed as:
+
           .. math::
              \int_{x_1}^{x_2} x^2 \, dx
-         .. code-block:: C# 
+      
+          .. code-block:: C# 
              // import libraries
              using System;
          
