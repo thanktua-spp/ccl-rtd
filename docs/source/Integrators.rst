@@ -51,18 +51,18 @@ Integrators::
           .. math::
              \int_{x_1}^{x_2} x^2 \, dx
 
-         .. code-block:: C# 
+          .. code-block:: C# 
              // import libraries
              using System;
          
              // Define the function to integrate
              Func<double, double> f = (x) => x * x;
              // Set the lower bound of x
-             double x1 = 0;
+             double x_1 = 0;
              // Set the upper bound of x
-             double x2 = 1;
+             double x_2 = 1;
              // Calculate the integral
-             double integral = GaussLeg(f, x1, x2);
+             double integral = GaussLeg(f, x_1, x_2);
              // Print the result
              Console.WriteLine($"The integral of x^2 is approximately: {integral}");
 
@@ -74,7 +74,7 @@ Integrators::
           .. math::
              \int_{x_1}^{x_2} \int_{y_1}^{y_2} x y \, dy \, dx
 
-         .. code-block:: C# 
+          .. code-block:: C# 
              // import libraries
              using CypherCrescent.MathematicsLibrary;
              // import libraries
@@ -82,15 +82,15 @@ Integrators::
              // Define the function to integrate
              Func<double, double, double> f = (x, y) => x * y;
              // Set the lower bound of x
-             double x1 = 0;
+             double x_1 = 0;
              // Set the upper bound of x
-             double x2 = 1;
+             double x_2 = 1;
              // Set the lower bound of y
-             double y1 = 1;
+             double y_1 = 1;
              // Set the upper bound of y
-             double y2 = 2;
+             double y_2 = 2;
              // Calculate the integral
-             double integral = GaussLeg2(f, x1, x2, y1, y2);
+             double integral = GaussLeg2(f, x_1, x_2, y_1, y_2);
              // Print the result
              Console.WriteLine($"The integral of x*y is approximately: {integral}");
 
@@ -100,24 +100,24 @@ Integrators::
           Example usage: Integrate the function f(x, y) = x * y over the region where x ranges from 0 to 1, and y ranges from x^2 to 2, which can be expressed as:
 
           .. math::
-             \int_{x_1}^{x_2} \int_{y1(x)}^{y_2} x y \, dy \, dx
+             \int_{x_1}^{x_2} \int_{y_1(x)}^{y_2} x y \, dy \, dx
 
-         .. code-block:: C# 
+          .. code-block:: C# 
              // import libraries
              using System;
          
              // Define the function to integrate
              Func<double, double, double> f = (x, y) => x * y;
              // Define the lower bound of y as a function of x
-             Func<double, double> y1 = (x) => x * x;
+             Func<double, double> y_1 = (x) => x * x;
              // Set the lower bound of x
-             double x1 = 0;
+             double x_1 = 0;
              // Set the upper bound of x
-             double x2 = 1;
+             double x_2 = 1;
              // Set the upper bound of y
-             double y2 = 2;
+             double y_2 = 2;
              // Calculate the integral
-             double integral = GaussLeg2(f, x1, x2, y1, y2);
+             double integral = GaussLeg2(f, x_1, x_2, y_1, y_2);
              // Print the result
              Console.WriteLine($"The integral is approximately: {integral}");
 
@@ -127,24 +127,24 @@ Integrators::
           Example usage: Integrate the function f(x, y) = x * y over the region where x ranges from 0 to 1, and y ranges from 1 to x^2, which can be expressed as:
 
           .. math::
-             \int_{x_1}^{x_2} \int_{y_1}^{y2(x)} x y \, dy \, dx
+             \int_{x_1}^{x_2} \int_{y_1}^{y_2(x)} x y \, dy \, dx
 
-         .. code-block:: C# 
+          .. code-block:: C# 
              // import libraries
              using System;
          
              // Define the function to integrate
              Func<double, double, double> f = (x, y) => x * y;
              // Define the upper bound of y as a function of x
-             Func<double, double> y2 = (x) => x * x;
+             Func<double, double> y_2 = (x) => x * x;
              // Set the lower bound of x
-             double x1 = 0;
+             double x_1 = 0;
              // Set the upper bound of x
-             double x2 = 1;
+             double x_2 = 1;
              // Set the lower bound of y
-             double y1 = 1;
+             double y_1 = 1;
              // Calculate the integral
-             double integral = GaussLeg2(f, x1, x2, y1, y2);
+             double integral = GaussLeg2(f, x_1, x_2, y_1, y_2);
              // Print the result
              Console.WriteLine($"The integral is approximately: {integral}");
 
@@ -154,24 +154,24 @@ Integrators::
           Example usage: Integrate the function f(x, y) = x * y over the region where x ranges from 0 to 1, y ranges from x^2 to sqrt(x), which can be expressed as:
 
           .. math::
-             \int_{x_1}^{x_2} \int_{y1(x)}^{y2(x)} x y \, dy \, dx
+             \int_{x_1}^{x_2} \int_{y_1(x)}^{y_2(x)} x y \, dy \, dx
 
-         .. code-block:: C# 
+          .. code-block:: C# 
              // import libraries
              using System;
          
              // Define the function to integrate
              Func<double, double, double> f = (x, y) => x * y;
              // Define the lower bound of y as a function of x
-             Func<double, double> y1 = (x) => x * x;
+             Func<double, double> y_1 = (x) => x * x;
              // Define the upper bound of y as a function of x
-             Func<double, double> y2 = (x) => Math.Sqrt(x);
+             Func<double, double> y_2 = (x) => Math.Sqrt(x);
              // Set the lower bound of x
-             double x1 = 0;
+             double x_1 = 0;
              // Set the upper bound of x
-             double x2 = 1;
+             double x_2 = 1;
              // Calculate the integral
-             double integral = GaussLeg2(f, x1, x2, y1, y2);
+             double integral = GaussLeg2(f, x_1, x_2, y_1, y_2);
              // Print the result
              Console.WriteLine($"The integral is approximately: {integral}");
 
