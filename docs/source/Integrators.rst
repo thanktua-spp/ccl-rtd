@@ -22,30 +22,6 @@ Integrators::
       Description:  Performs numerical interation of a complex function using trapezoidal method
 
 
-   Simps::
-      Description:  Performs numerical integration using Simpson's method
-
-
-   Simps::
-      Description:  Performs numerical interation of a function using Simpson's method
-
-
-   Simps::
-      Description:  Performs numerical interation of a complex function using Simpson's method
-
-
-   Simps38::
-      Description:  Performs numerical integration using Simpson's 3-8 method
-
-
-   Simps38::
-      Description:  Performs numerical interation of a function using Simpson's 3-8 method
-
-
-   Simps38::
-      Description:  Performs numerical interation of a complex function using Simpson's 3-8 method
-
-
    GaussLeg::
       Description:  Computes the definite integral of a function using adaptive Gauss-Legendre quadrature.
           Example usage: Integrate the function f(x) = x^2, which can be expressed as:
@@ -350,6 +326,210 @@ Integrators::
              double integral = Integrators.GaussLeg3(f, x_1, x_2, y_1, y_2, z_1, z_2);
              // Print the result
              Console.WriteLine($"The triple integral of x*y*z is approximately: {integral}");
+
+
+   GaussLeg3::
+      Description:  Computes the definite triple integral of a function over a region where the y-bounds are defined by a function of x and a constant, and the lower z-bound is a function of x and y, and the upper z-bound is a constant, using adaptive Gauss-Legendre quadrature.
+          Example usage: Integrate the function f(x, y, z) = x * y * z over the region where x ranges from 0 to 1, y ranges from x^2 to 2, and z ranges from x*y to 3, which can be expressed as:
+
+          .. math::
+             \int_{x_1}^{x_2} \int_{y_1(x)}^{y_2}  \int_{z_1(x,y)}^{z_2} x y z \, dz \, dy \, dx
+
+          .. code-block:: C# 
+
+             // import libraries
+             using CypherCrescent.MathematicsLibrary;
+             using System;
+         
+             // Define the function to integrate
+             Func<double, double, double, double> f = (x, y, z) => x * y * z;
+             // Define the lower bound of y as a function of x
+             Func<double, double> y_1 = (x) => x * x;
+             // Set the upper bound of y
+             double y_2 = 2;
+             // Define the lower bound of z as a function of x and y
+             Func<double, double, double> z_1 = (x, y) => x * y;
+             // Set the upper bound of z
+             double z_2 = 3;
+             // Set the lower bound of x
+             double x_1 = 0;
+             // Set the upper bound of x
+             double x_2 = 1;
+             // Calculate the integral
+             double integral = Integrators.GaussLeg3(f, x_1, x_2, y_1, y_2, z_1, z_2);
+             // Print the result
+             Console.WriteLine($"The triple integral of x*y*z is approximately: {integral}");
+
+
+   GaussLeg3::
+      Description:  Computes the definite triple integral of a function over a region where the lower y-bound is a constant, the upper y-bound is a function of x, the lower z-bound is a function of x and y and the upper z-bound is a constant, using adaptive Gauss-Legendre quadrature.
+          <code>
+             // import libraries
+             using CypherCrescent.MathematicsLibrary;
+             using System;
+         
+             // Define the function to integrate
+             Func<double, double, double, double> f = (x, y, z) => x * y * z;
+              // Set the lower bound of x
+             double x_1 = 0;
+             // Set the upper bound of x
+             double x_2 = 1;
+              // Set the upper bound of y as a function of x
+             Func<double, double> y_2 = (x) => x * x;
+              // Set the lower bound of y 
+             double y_1 = 1;
+             // Define the lower bound of z as a function of x and y
+             Func<double, double, double> z_1 = (x, y) => x * y;
+             // Set the upper bound of z
+             double z_2 = 3;
+             // Calculate the integral
+             double integral = Integrators.GaussLeg3(f, x_1, x_2,y_1, y_2, z_1, z_2);
+             // Print the result
+             Console.WriteLine($"The triple integral of x*y*z is approximately: {integral}");
+          </code>
+
+
+   GaussLeg3::
+      Description:  Computes the definite triple integral of a function, where the y-bounds are functions of x and the lower z-bound is a function of x and y and the upper z-bound is a constant, using adaptive Gauss-Legendre quadrature.
+          <code>
+             // import libraries
+             using CypherCrescent.MathematicsLibrary;
+             using System;
+         
+             // Define the function to integrate
+             Func<double, double, double, double> f = (x, y, z) => x * y * z;
+             // Define the lower bound of y as a function of x
+             Func<double, double> y_1 = (x) => x * x;
+             // Define the upper bound of y as a function of x
+             Func<double, double> y_2 = (x) => Math.Sqrt(x);
+             // Define the lower bound of z as a function of x and y
+             Func<double, double, double> z_1 = (x, y) => x * y;
+             // Set the upper bound of z
+             double z_2 = 3;
+             // Set the lower bound of x
+             double x_1 = 0;
+             // Set the upper bound of x
+             double x_2 = 1;
+             // Calculate the integral
+             double integral = Integrators.GaussLeg3(f, x_1, x_2, y_1, y_2, z_1, z_2);
+             // Print the result
+             Console.WriteLine($"The triple integral of x*y*z is approximately: {integral}");
+          </code>
+
+
+   GaussLeg3::
+      Description:  Computes the definite triple integral of a function over a region where the y-bounds are constants, and the z bounds consist of a constant lower bound and an upper function of x and y, using adaptive Gauss-Legendre quadrature.
+          <code>
+             // import libraries
+             using CypherCrescent.MathematicsLibrary;
+             using System;
+         
+             // Define the function to integrate
+             Func<double, double, double, double> f = (x, y, z) => x * y * z;
+             // Set the lower bound of y
+             double y_1 = 1;
+             // Set the upper bound of y
+             double y_2 = 2;
+             // Set the lower bound of z
+             double z_1 = 2;
+             // Define the upper bound of z as a function of x and y
+              Func<double, double, double> z_2 = (x, y) => x * y;
+             // Set the lower bound of x
+             double x_1 = 0;
+             // Set the upper bound of x
+             double x_2 = 1;
+             // Calculate the integral
+             double integral = Integrators.GaussLeg3(f, x_1, x_2, y_1, y_2, z_1, z_2);
+             // Print the result
+             Console.WriteLine($"The triple integral of x*y*z is approximately: {integral}");
+          </code>
+
+
+   GaussLeg3::
+      Description:  Computes the definite triple integral of a function where y-bounds are defined by a function of x and an upper constant, and the z bounds consist of a constant lower bound and an upper function of x and y, using adaptive Gauss-Legendre quadrature.
+          <code>
+             // import libraries
+             using CypherCrescent.MathematicsLibrary;
+             using System;
+         
+             // Define the function to integrate
+             Func<double, double, double, double> f = (x, y, z) => x * y * z;
+             // Define the lower bound of y as a function of x
+             Func<double, double> y_1 = (x) => x * x;
+             // Set the upper bound of y
+             double y_2 = 2;
+             // Set the lower bound of z
+             double z_1 = 2;
+             // Define the upper bound of z as a function of x and y
+              Func<double, double, double> z_2 = (x, y) => x * y;
+             // Set the lower bound of x
+             double x_1 = 0;
+             // Set the upper bound of x
+             double x_2 = 1;
+             // Calculate the integral
+             double integral = Integrators.GaussLeg3(f, x_1, x_2, y_1, y_2, z_1, z_2);
+             // Print the result
+             Console.WriteLine($"The triple integral of x*y*z is approximately: {integral}");
+          </code>
+
+
+   GaussLeg3::
+      Description:  Computes the definite triple integral of a function over a region where the lower y-bound is constant, the upper y-bound is a function of x, and the z-bounds are functions of x and y, using adaptive Gauss-Legendre quadrature.
+          <code>
+             // import libraries
+             using CypherCrescent.MathematicsLibrary;
+             using System;
+         
+             // Define the function to integrate
+             Func<double, double, double, double> f = (x, y, z) => x * y * z;
+             // Set the upper bound of x
+             double x_2 = 1;
+             // Set the lower bound of x
+             double x_1 = 0;
+             // Set the lower bound of y
+             double y_1 = 1;
+         
+             // Define the upper bound of y as a function of x
+             Func<double, double> y_2 = (x) => x * x;
+             // Define the upper bound of z as a function of x and y
+             Func<double, double, double> z_2 = (x, y) => x + y;
+             // Define the lower bound of z as a function of x and y
+             Func<double, double, double> z_1 = (x, y) => x * y;
+         
+         
+             // Calculate the integral
+             double integral = Integrators.GaussLeg3(f, x_1, x_2, y_1, y_2, z_1, z_2);
+             // Print the result
+             Console.WriteLine($"The triple integral of x*y*z is approximately: {integral}");
+          </code>
+
+
+   GaussLeg3::
+      Description:  Computes the definite triple integral of a function over a region where both Y and Z bounds are described by functions, and where the Y bounds are functions of X and the Z bounds are functions of X and Y.
+          <code>
+             // import libraries
+             using CypherCrescent.MathematicsLibrary;
+             using System;
+         
+             // Define the function to integrate
+             Func<double, double, double, double> f = (x, y, z) => x * y * z;
+             // Define the lower bound of y as a function of x
+             Func<double, double> y_1 = (x) => x * x;
+             // Define the upper bound of y as a function of x
+              Func<double, double> y_2 = (x) => Math.Sqrt(x);
+             // Define the lower bound of z as a function of x and y
+             Func<double, double, double> z_1 = (x, y) => x * y;
+             // Define the upper bound of z
+              Func<double, double, double> z_2 = (x, y) => x+y;
+             // Set the lower bound of x
+             double x_1 = 0;
+             // Set the upper bound of x
+             double x_2 = 1;
+             // Calculate the integral
+             double integral = Integrators.GaussLeg3(f, x_1, x_2, y_1, y_2, z_1, z_2);
+             // Print the result
+             Console.WriteLine($"The triple integral of x*y*z is approximately: {integral}");
+          </code>
 
 
    GaussLag::
