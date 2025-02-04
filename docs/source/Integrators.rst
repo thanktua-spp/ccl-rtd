@@ -47,6 +47,7 @@ Integrators::
    GaussLeg::
       Description:  Computes the definite integral of a function using adaptive Gauss-Legendre quadrature.
           Example usage: Integrate the function f(x) = x^2, which can be expressed as:
+
           .. math::
              \int_{x_1}^{x_2} x^2 \, dx
 
@@ -69,6 +70,7 @@ Integrators::
    GaussLeg2::
       Description:  Computes the definite double integral of a function over a rectangular region using adaptive Gauss-Legendre quadrature.
           Example usage: Integrate the function f(x, y) = x * y, which can be expressed as:
+
           .. math::
              \int_{x_1}^{x_2} \int_{y_1}^{y_2} x y \, dy \, dx
 
@@ -96,6 +98,7 @@ Integrators::
    GaussLeg2::
       Description:  Computes the definite double integral of a function over a region where the y-bounds are defined by a function and a constant, using adaptive Gauss-Legendre quadrature.
           Example usage: Integrate the function f(x, y) = x * y over the region where x ranges from 0 to 1, and y ranges from x^2 to 2, which can be expressed as:
+
           .. math::
              \int_{x_1}^{x_2} \int_{y1(x)}^{y_2} x y \, dy \, dx
 
@@ -122,6 +125,7 @@ Integrators::
    GaussLeg2::
       Description:  Computes the definite double integral of a function over a region where the y-bounds are defined by a constant and a function, using adaptive Gauss-Legendre quadrature.
           Example usage: Integrate the function f(x, y) = x * y over the region where x ranges from 0 to 1, and y ranges from 1 to x^2, which can be expressed as:
+
           .. math::
              \int_{x_1}^{x_2} \int_{y_1}^{y2(x)} x y \, dy \, dx
 
@@ -148,6 +152,7 @@ Integrators::
    GaussLeg2::
       Description:  Computes the definite double integral of a function over a region where both y-bounds are defined by functions of x, using adaptive Gauss-Legendre quadrature.
           Example usage: Integrate the function f(x, y) = x * y over the region where x ranges from 0 to 1, y ranges from x^2 to sqrt(x), which can be expressed as:
+
           .. math::
              \int_{x_1}^{x_2} \int_{y1(x)}^{y2(x)} x y \, dy \, dx
 
