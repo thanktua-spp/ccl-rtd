@@ -355,7 +355,7 @@ Integrators::
              double integral = Integrators.GaussLeg3(f, x_1, x_2, y_1, y_2, z_1, z_2);
              // Print the result
              Console.WriteLine($"The triple integral of x*y*z is approximately: {integral}");
-             // 
+             // The triple integral of x*y*z is approximately: 2.29166666643309
    |   cref=System.ArgumentNullException is Thrown when the  fun is null.
    |   cref=System.ArgumentNullException is Thrown when the  y_1 is null.
    |   cref=System.Exception is Thrown when the maximum number of iterations is reached without achieving the desired accuracy.
