@@ -1128,8 +1128,6 @@ we can add animation of the solution
          :alt: Position-of-Pleiades-Stars-Matlab-ODE89.gif
 
 
-Baton Mechanics
----------------
 
 One Transistor Amplifier
 ------------------------
