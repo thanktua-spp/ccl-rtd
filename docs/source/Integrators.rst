@@ -609,8 +609,13 @@ Integrators::
 
           .. code-block:: C# 
 
+             // import libraries
+             using CypherCrescent.MathematicsLibrary;
+             using static System.Math;
+             using System;
+             
              // Define the function to integrate
-             Func<double, double, double, double> func = (x, y, z) => Math.Sin(x) * Math.Cos(y) * Math.Exp(z);
+             Func<double, double, double, double> func = (x, y, z) => Sin(x) * Cos(y) * Exp(z);
          
              // Perform the integration using GaussLeg3
              double result = GaussLeg3(
