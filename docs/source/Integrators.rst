@@ -579,160 +579,282 @@ Integrators::
 
    GaussLeg3::
       Description: 
-          Calculates the integral of a function using a 3-dimensional Gauss-Legendre quadrature method.
+          Computes the definite triple integral of a function over a region where the y-bounds are a constant lower bound and a function of x upper bound, and the z-bounds are a function of x and y lower bound and a constant upper bound, using adaptive Gauss-Legendre quadrature.
       Param: 
-         | fun:  A function of three variables to integrate.
-         | x_1:  The lower limit of integration for the x variable.
-         | x_2:  The upper limit of integration for the x variable.
-         | y_1:  The lower limit of integration for the y variable (constant).
-         | y_2:  The upper limit of integration for the y variable (constant).
-         | z_1:  The lower limit of integration for the z variable (constant).
-         | z_2:  A function that provides the upper limit of integration for the z variable based on x and y.
-         | eps:  The desired accuracy of the result. Defaults to 1e-6.
+         | fun:  The function to integrate. The function should accept three doubles (x, y, z) and return a double.
+         | x_1:  The lower bound of the x integration.
+         | x_2:  The upper bound of the x integration.
+         | y_1:  The lower bound of the y integration. This is a constant value.
+         | y_2:  A function that defines the upper bound of the y integration as a function of x. It should accept a double (x) and return a double (y).
+         | z_1:  A function that defines the lower bound of the z integration as a function of x and y. It should accept two doubles (x, y) and return a double (z).
+         | z_2:  The upper bound of the z integration. This is a constant value.
+         | eps:  The desired relative accuracy. The default value is 1e-6.
       Returns: 
-          The approximate value of the integral.
-   |   cref=Exception is 
+          The approximate value of the definite triple integral.
       Remark: 
-         |  This method uses the Gauss-Legendre quadrature method for numerical integration.
-         |  It iterates up to a maximum number of steps to achieve the desired accuracy.
+         |  This method uses adaptive Gauss-Legendre quadrature to approximate the triple integral.
+         |  The integration is performed over the region defined by x_1 <= x <= x_2, y_1 <= y <= y_2(x), and z_1(x, y) <= z <= z_2.
+         |  The number of quadrature points is increased until the desired relative accuracy is achieved or a maximum number of iterations is reached.
+         |  For best results, the function should be smooth within the integration region, and y_2(x) and z_1(x, y) should be smooth functions. The y lower bound and z upper bound are assumed to be constant.
+         |  If x_1 equals x_2 then the method will return 0.
       Example: 
-          This method calculates the integral of a function \( f(x, y, z) \) over a 3-dimensional region defined by the limits [x_1, x_2], [y_1, y_2], and [z_1, z_2(x, y)] using the Gauss-Legendre quadrature method.
-         
-          
-         
-          The integral we are trying to calculate is:
-         
+           Integrate the function f(x, y, z) = x + y + z over the region where x ranges from 0 to 1, y ranges from 1 to x + 2, and z ranges from x*y to 4, which can be expressed as:
 
           .. math::
-              \int_{0}^{1} \int_{0}^{1} \int_{0}^{1} \sin(x) \cdot \cos(y) \cdot \exp(z) \, dz \, dy \, dx
-         
+             \int_{x_1}^{x_2} \int_{y_1}^{y_2(x)}  \int_{z_1(x, y)}^{z_2} (x + y + z) \, dz \, dy \, dx
 
           .. code-block:: CSharp 
 
              // import libraries
              using CypherCrescent.MathematicsLibrary;
-             using static System.Math;
              using System;
-             
+         
              // Define the function to integrate
-             Func<double, double, double, double> func = (x, y, z) => Sin(x) * Cos(y) * Exp(z);
-         
-             // Perform the integration using GaussLeg3
-             double result = GaussLeg3(
-                 func,
-                 0, 1,                // Integration limits for x
-                 0, 1,                // Integration limits for y (constant lower and upper limits)
-                 0, (x, y) => 1       // Integration limits for z (constant lower limit and upper limit based on x and y)
-             );
-         
-             // Output the result
-             Console.WriteLine("The integral result is: " + result);
+             Func<double, double, double, double> f = (x, y, z) => x + y + z;
+             // Define the upper bound of y as a function of x
+             Func<double, double> y_2 = (x) => x + 2;
+             // Set the lower bound of y
+             double y_1 = 1;
+             // Define the lower bound of z as a function of x and y
+             Func<double, double, double> z_1 = (x, y) => x * y;
+             // Set the upper bound of z
+             double z_2 = 4;
+             // Set the lower bound of x
+             double x_1 = 0;
+             // Set the upper bound of x
+             double x_2 = 1;
+             // Calculate the integral
+             double integral = Integrators.GaussLeg3(f, x_1, x_2, y_1, y_2, z_1, z_2);
+             // Print the result
+             Console.WriteLine($"The triple integral of x+y+z is approximately: {integral}");
+   |   cref=System.ArgumentNullException is Thrown when the  fun is null.
+   |   cref=System.ArgumentNullException is Thrown when the  y_2 is null.
+   |   cref=System.ArgumentNullException is Thrown when the  z_1 is null.
+   |   cref=System.Exception is Thrown when the maximum number of iterations is reached without achieving the desired accuracy.
 
 
    GaussLeg3::
       Description: 
-          Calculates the integral of a function using a 3-dimensional Gauss-Legendre quadrature method.
+          Computes the definite triple integral of a function over a region where the y-bounds are defined by functions of x, the lower z-bound is a function of x and y, and the upper z-bound is constant, using adaptive Gauss-Legendre quadrature.
       Param: 
-         | fun:  A function of three variables to integrate.
-         | x_1:  The lower limit of integration for the x variable.
-         | x_2:  The upper limit of integration for the x variable.
-         | y_1:  A function that provides the lower limit of integration for the y variable based on x.
-         | y_2:  The upper limit of integration for the y variable (constant).
-         | z_1:  The lower limit of integration for the z variable (constant).
-         | z_2:  A function that provides the upper limit of integration for the z variable based on x and y.
-         | eps:  The desired accuracy of the result. Defaults to 1e-6.
+         | fun:  The function to integrate. The function should accept three doubles (x, y, z) and return a double.
+         | x_1:  The lower bound of the x integration.
+         | x_2:  The upper bound of the x integration.
+         | y_1:  A function that defines the lower bound of the y integration as a function of x. It should accept a double (x) and return a double (y).
+         | y_2:  A function that defines the upper bound of the y integration as a function of x. It should accept a double (x) and return a double (y).
+         | z_1:  A function that defines the lower bound of the z integration as a function of x and y. It should accept two doubles (x, y) and return a double (z).
+         | z_2:  The upper bound of the z integration. This is a constant value.
+         | eps:  The desired relative accuracy. The default value is 1e-6.
       Returns: 
-          The approximate value of the integral.
-   |   cref=Exception is 
+          The approximate value of the definite triple integral.
       Remark: 
-         |  This method uses the Gauss-Legendre quadrature method for numerical integration.
-         |  It iterates up to a maximum number of steps to achieve the desired accuracy.
+         |  This method uses adaptive Gauss-Legendre quadrature to approximate the triple integral.
+         |  The integration is performed over the region defined by x_1 <= x <= x_2, y_1(x) <= y <= y_2(x), and z_1(x, y) <= z <= z_2.
+         |  The number of quadrature points is increased until the desired relative accuracy is achieved or a maximum number of iterations is reached.
+         |  For best results, the function should be smooth within the integration region, and y_1(x), y_2(x), and z_1(x, y) should be smooth functions. The upper z bound is assumed to be constant.
+         |  If x_1 equals x_2 then the method will return 0.
       Example: 
-          This method calculates the integral of a function \( f(x, y, z) \) over a 3-dimensional region defined by the limits [x_1, x_2], [y_1(x), y_2], and [z_1, z_2(x, y)] using the Gauss-Legendre quadrature method.
-         
-          
-         
-          The integral we are trying to calculate is:
-         
+           Integrate the function f(x, y, z) = x * x + y * y + z * z over the region where x ranges from 0 to 1, y ranges from 0 to sqrt(x), and z ranges from x+y to 5, which can be expressed as:
 
           .. math::
-              \int_{0}^{1} \int_{0}^{1} \int_{0}^{1} \sin(x) \cdot \cos(y) \cdot \exp(z) \, dz \, dy \, dx
-         
+             \int_{x_1}^{x_2} \int_{y_1(x)}^{y_2(x)}  \int_{z_1(x, y)}^{z_2} (x^2 + y^2 + z^2) \, dz \, dy \, dx
 
           .. code-block:: CSharp 
 
              // import libraries
              using CypherCrescent.MathematicsLibrary;
-             using static System.Math;
              using System;
-             
+         
              // Define the function to integrate
-             Func<double, double, double, double> func = (x, y, z) => Math.Sin(x) * Math.Cos(y) * Math.Exp(z);
-         
-             // Perform the integration using GaussLeg3
-             double result = GaussLeg3(
-                 func,
-                 0, 1,                // Integration limits for x
-                 x => 0, 1,           // Integration limits for y (lower limit based on x and constant upper limit)
-                 0, (x, y) => 1       // Integration limits for z (constant lower limit and upper limit based on x and y)
-             );
-         
-             // Output the result
-             Console.WriteLine("The integral result is: " + result);
-             This example calculates the integral of the function sin(x) * cos(y) * exp(z) over the range [0, 1] for x, y, and z.
+             Func<double, double, double, double> f = (x, y, z) => x * x + y * y + z * z;
+             // Define the lower bound of y as a function of x
+             Func<double, double> y_1 = (x) => 0;
+             // Define the upper bound of y as a function of x
+             Func<double, double> y_2 = (x) => Math.Sqrt(x);
+             // Define the lower bound of z as a function of x and y
+             Func<double, double, double> z_1 = (x, y) => x + y;
+             // Set the upper bound of z
+             double z_2 = 5;
+             // Set the lower bound of x
+             double x_1 = 0;
+             // Set the upper bound of x
+             double x_2 = 1;
+             // Calculate the integral
+             double integral = Integrators.GaussLeg3(f, x_1, x_2, y_1, y_2, z_1, z_2);
+             // Print the result
+             Console.WriteLine($"The triple integral of x^2+y^2+z^2 is approximately: {integral}");
+   |   cref=System.ArgumentNullException is Thrown when the  fun is null.
+   |   cref=System.ArgumentNullException is Thrown when the  y_1 is null.
+   |   cref=System.ArgumentNullException is Thrown when the  y_2 is null.
+   |   cref=System.ArgumentNullException is Thrown when the  z_1 is null.
+   |   cref=System.Exception is Thrown when the maximum number of iterations is reached without achieving the desired accuracy.
 
 
    GaussLeg3::
       Description: 
-          Calculates the integral of a function using a 3-dimensional Gauss-Legendre quadrature method.
+          Computes the definite triple integral of a function over a region where the y-bounds are constants, the lower z-bound is constant, and the upper z-bound is a function of x and y, using adaptive Gauss-Legendre quadrature.
       Param: 
-         | fun:  A function of three variables to integrate.
-         | x_1:  The lower limit of integration for the x variable.
-         | x_2:  The upper limit of integration for the x variable.
-         | y_1:  The lower limit of integration for the y variable (constant).
-         | y_2:  A function that provides the upper limit of integration for the y variable based on x.
-         | z_1:  The lower limit of integration for the z variable (constant).
-         | z_2:  A function that provides the upper limit of integration for the z variable based on x and y.
-         | eps:  The desired accuracy of the result. Defaults to 1e-6.
+         | fun:  The function to integrate. The function should accept three doubles (x, y, z) and return a double.
+         | x_1:  The lower bound of the x integration.
+         | x_2:  The upper bound of the x integration.
+         | y_1:  The lower bound of the y integration. This is a constant value.
+         | y_2:  The upper bound of the y integration. This is a constant value.
+         | z_1:  The lower bound of the z integration. This is a constant value.
+         | z_2:  A function that defines the upper bound of the z integration as a function of x and y. It should accept two doubles (x, y) and return a double (z).
+         | eps:  The desired relative accuracy. The default value is 1e-6.
       Returns: 
-          The approximate value of the integral.
-   |   cref=Exception is 
+          The approximate value of the definite triple integral.
       Remark: 
-         |  This method uses the Gauss-Legendre quadrature method for numerical integration.
-         |  It iterates up to a maximum number of steps to achieve the desired accuracy.
+         |  This method uses adaptive Gauss-Legendre quadrature to approximate the triple integral.
+         |  The integration is performed over the region defined by x_1 <= x <= x_2, y_1 <= y <= y_2, and z_1 <= z <= z_2(x, y).
+         |  The number of quadrature points is increased until the desired relative accuracy is achieved or a maximum number of iterations is reached.
+         |  For best results, the function should be smooth within the integration region, and z_2(x, y) should be a smooth function. The y and lower z bounds are assumed to be constant.
+         |  If x_1 equals x_2 then the method will return 0.
       Example: 
-          This method calculates the integral of a function \( f(x, y, z) \) over a 3-dimensional region defined by the limits [x_1, x_2], [y_1, y_2(x)], and [z_1, z_2(x, y)] using the Gauss-Legendre quadrature method.
-         
-          
-         
-          The integral we are trying to calculate is:
-         
+           Integrate the function f(x, y, z) = 1 / (1 + x + y + z) over the region where x ranges from 0 to 1, y ranges from 0 to 2, and z ranges from 1 to x*x + y*y + 3, which can be expressed as:
 
           .. math::
-              \int_{0}^{1} \int_{0}^{1} \int_{0}^{1} \sin(x) \cdot \cos(y) \cdot \exp(z) \, dz \, dy \, dx
-         
+             \int_{x_1}^{x_2} \int_{y_1}^{y_2}  \int_{z_1}^{z_2(x, y)} \frac{1}{1 + x + y + z} \, dz \, dy \, dx
 
           .. code-block:: CSharp 
 
              // import libraries
              using CypherCrescent.MathematicsLibrary;
-             using static System.Math;
              using System;
-             
+         
              // Define the function to integrate
-             Func<double, double, double, double> func = (x, y, z) => Math.Sin(x) * Math.Cos(y) * Math.Exp(z);
+             Func<double, double, double, double> f = (x, y, z) => 1.0 / (1.0 + x + y + z);
+             // Set the lower bound of y
+             double y_1 = 0;
+             // Set the upper bound of y
+             double y_2 = 2;
+             // Set the lower bound of z
+             double z_1 = 1;
+             // Define the upper bound of z as a function of x and y
+             Func<double, double, double> z_2 = (x, y) => x * x + y * y + 3;
+             // Set the lower bound of x
+             double x_1 = 0;
+             // Set the upper bound of x
+             double x_2 = 1;
+             // Calculate the integral
+             double integral = Integrators.GaussLeg3(f, x_1, x_2, y_1, y_2, z_1, z_2);
+             // Print the result
+             Console.WriteLine($"The triple integral of 1/(1+x+y+z) is approximately: {integral}");
+   |   cref=System.ArgumentNullException is Thrown when the  fun is null.
+   |   cref=System.ArgumentNullException is Thrown when the  z_2 is null.
+   |   cref=System.Exception is Thrown when the maximum number of iterations is reached without achieving the desired accuracy.
+
+
+   GaussLeg3::
+      Description: 
+          Computes the definite triple integral of a function over a region where the lower y-bound is a function of x, the upper y-bound is constant, the lower z-bound is constant, and the upper z-bound is a function of x and y, using adaptive Gauss-Legendre quadrature.
+      Param: 
+         | fun:  The function to integrate. The function should accept three doubles (x, y, z) and return a double.
+         | x_1:  The lower bound of the x integration.
+         | x_2:  The upper bound of the x integration.
+         | y_1:  A function that defines the lower bound of the y integration as a function of x. It should accept a double (x) and return a double (y).
+         | y_2:  The upper bound of the y integration. This is a constant value.
+         | z_1:  The lower bound of the z integration. This is a constant value.
+         | z_2:  A function that defines the upper bound of the z integration as a function of x and y. It should accept two doubles (x, y) and return a double (z).
+         | eps:  The desired relative accuracy. The default value is 1e-6.
+      Returns: 
+          The approximate value of the definite triple integral.
+      Remark: 
+         |  This method uses adaptive Gauss-Legendre quadrature to approximate the triple integral.
+         |  The integration is performed over the region defined by x_1 <= x <= x_2, y_1(x) <= y <= y_2, and z_1 <= z <= z_2(x, y).
+         |  The number of quadrature points is increased until the desired relative accuracy is achieved or a maximum number of iterations is reached.
+         |  For best results, the function should be smooth within the integration region, and y_1(x) and z_2(x, y) should be smooth functions. The upper y bound and lower z bound are assumed to be constant.
+         |  If x_1 equals x_2 then the method will return 0.
+      Example: 
+           Integrate the function f(x, y, z) = x * y + z over the region where x ranges from 0 to 2, y ranges from sin(x) to 3, and z ranges from -1 to x*x + y + 2, which can be expressed as:
+
+          .. math::
+             \int_{x_1}^{x_2} \int_{y_1(x)}^{y_2}  \int_{z_1}^{z_2(x, y)} (x y + z) \, dz \, dy \, dx
+
+          .. code-block:: CSharp 
+
+             // import libraries
+             using CypherCrescent.MathematicsLibrary;
+             using System;
          
-             // Perform the integration using GaussLeg3
-             double result = GaussLeg3(
-                 func,
-                 0, 1,                // Integration limits for x
-                 0, x => 1,           // Integration limits for y (constant lower limit and upper limit based on x)
-                 0, (x, y) => 1       // Integration limits for z (constant lower limit and upper limit based on x and y)
-             );
+             // Define the function to integrate
+             Func<double, double, double, double> f = (x, y, z) => x * y + z;
+             // Define the lower bound of y as a function of x
+             Func<double, double> y_1 = (x) => Math.Sin(x);
+             // Set the upper bound of y
+             double y_2 = 3;
+             // Set the lower bound of z
+             double z_1 = -1;
+             // Define the upper bound of z as a function of x and y
+             Func<double, double, double> z_2 = (x, y) => x * x + y + 2;
+             // Set the lower bound of x
+             double x_1 = 0;
+             // Set the upper bound of x
+             double x_2 = 2;
+             // Calculate the integral
+             double integral = Integrators.GaussLeg3(f, x_1, x_2, y_1, y_2, z_1, z_2);
+             // Print the result
+             Console.WriteLine($"The triple integral of xy+z is approximately: {integral}");
+   |   cref=System.ArgumentNullException is Thrown when the  fun is null.
+   |   cref=System.ArgumentNullException is Thrown when the  y_1 is null.
+   |   cref=System.ArgumentNullException is Thrown when the  z_2 is null.
+   |   cref=System.Exception is Thrown when the maximum number of iterations is reached without achieving the desired accuracy.
+
+
+   GaussLeg3::
+      Description: 
+          Computes the definite triple integral of a function over a region where the lower y-bound is constant, the upper y-bound is a function of x, the lower z-bound is constant, and the upper z-bound is a function of x and y, using adaptive Gauss-Legendre quadrature.
+      Param: 
+         | fun:  The function to integrate. The function should accept three doubles (x, y, z) and return a double.
+         | x_1:  The lower bound of the x integration.
+         | x_2:  The upper bound of the x integration.
+         | y_1:  The lower bound of the y integration. This is a constant value.
+         | y_2:  A function that defines the upper bound of the y integration as a function of x. It should accept a double (x) and return a double (y).
+         | z_1:  The lower bound of the z integration. This is a constant value.
+         | z_2:  A function that defines the upper bound of the z integration as a function of x and y. It should accept two doubles (x, y) and return a double (z).
+         | eps:  The desired relative accuracy. The default value is 1e-6.
+      Returns: 
+          The approximate value of the definite triple integral.
+      Remark: 
+         |  This method uses adaptive Gauss-Legendre quadrature to approximate the triple integral.
+         |  The integration is performed over the region defined by x_1 <= x <= x_2, y_1 <= y <= y_2(x), and z_1 <= z <= z_2(x, y).
+         |  The number of quadrature points is increased until the desired relative accuracy is achieved or a maximum number of iterations is reached.
+         |  For best results, the function should be smooth within the integration region, and y_2(x) and z_2(x, y) should be smooth functions. The lower y bound and lower z bound are assumed to be constant.
+         |  If x_1 equals x_2 then the method will return 0.
+      Example: 
+           Integrate the function f(x, y, z) = x - y + 2*z over the region where x ranges from 1 to 3, y ranges from -2 to x*x, and z ranges from 0 to x + y + 1, which can be expressed as:
+
+          .. math::
+             \int_{x_1}^{x_2} \int_{y_1}^{y_2(x)}  \int_{z_1}^{z_2(x, y)} (x - y + 2z) \, dz \, dy \, dx
+
+          .. code-block:: CSharp 
+
+             // import libraries
+             using CypherCrescent.MathematicsLibrary;
+             using System;
          
-             // Output the result
-             Console.WriteLine("The integral result is: " + result);
-          This example calculates the integral of the function sin(x) * cos(y) * exp(z) over the range [0, 1] for x, y, and z.
+             // Define the function to integrate
+             Func<double, double, double, double> f = (x, y, z) => x - y + 2 * z;
+             // Define the upper bound of y as a function of x
+             Func<double, double> y_2 = (x) => x * x;
+             // Set the lower bound of y
+             double y_1 = -2;
+             // Set the lower bound of z
+             double z_1 = 0;
+             // Define the upper bound of z as a function of x and y
+             Func<double, double, double> z_2 = (x, y) => x + y + 1;
+             // Set the lower bound of x
+             double x_1 = 1;
+             // Set the upper bound of x
+             double x_2 = 3;
+             // Calculate the integral
+             double integral = Integrators.GaussLeg3(f, x_1, x_2, y_1, y_2, z_1, z_2);
+             // Print the result
+             Console.WriteLine($"The triple integral of x-y+2z is approximately: {integral}");
+   |   cref=System.ArgumentNullException is Thrown when the  fun is null.
+   |   cref=System.ArgumentNullException is Thrown when the  y_2 is null.
+   |   cref=System.ArgumentNullException is Thrown when the  z_2 is null.
+   |   cref=System.Exception is Thrown when the maximum number of iterations is reached without achieving the desired accuracy.
 
 
    GaussLeg3::
