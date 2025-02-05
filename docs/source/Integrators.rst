@@ -18,10 +18,10 @@ Integrators::
       Returns: 
           The approximate value of the definite integral.
       Remark: 
-          This method uses adaptive Gauss-Legendre quadrature to approximate the definite integral.
-          The number of quadrature points is increased until the desired relative accuracy is achieved or a maximum number of iterations is reached.
-          For best results, the function should be smooth within the integration interval.
-          If x_1 equals x_2 then the method will return 0.
+         |  This method uses adaptive Gauss-Legendre quadrature to approximate the definite integral.
+         |  The number of quadrature points is increased until the desired relative accuracy is achieved or a maximum number of iterations is reached.
+         |  For best results, the function should be smooth within the integration interval.
+         |  If x_1 equals x_2 then the method will return 0.
       Example: 
            Integrate the function f(x) = x^2, which can be expressed as:
 
@@ -44,8 +44,8 @@ Integrators::
              double integral = Integrators.GaussLeg(f, x_1, x_2);
              // Print the result
              Console.WriteLine($"The integral of x^2 is approximately: {integral}");
-     cref=System.ArgumentNullException is Thrown when the  fun is null.
-     cref=System.Exception is Thrown when the maximum number of iterations is reached without achieving the desired accuracy.
+   |   cref=System.ArgumentNullException is Thrown when the  fun is null.
+   |   cref=System.Exception is Thrown when the maximum number of iterations is reached without achieving the desired accuracy.
 
 
    GaussLeg2::
@@ -61,11 +61,11 @@ Integrators::
       Returns: 
           The approximate value of the definite double integral.
       Remark: 
-          This method uses adaptive Gauss-Legendre quadrature to approximate the double integral.
-          The number of quadrature points is increased until the desired relative accuracy is achieved or a maximum number of iterations is reached.
-          The integration is performed over the region defined by x_1 <= x <= x_2 and y_1 <= y <= y_2.
-          For best results, the function should be smooth within the integration region.
-          If x_1 equals x_2 then the method will return 0. The y bounds are assumed to be constant (y_1 and y_2)
+         |  This method uses adaptive Gauss-Legendre quadrature to approximate the double integral.
+         |  The number of quadrature points is increased until the desired relative accuracy is achieved or a maximum number of iterations is reached.
+         |  The integration is performed over the region defined by x_1 <= x <= x_2 and y_1 <= y <= y_2.
+         |  For best results, the function should be smooth within the integration region.
+         |  If x_1 equals x_2 then the method will return 0. The y bounds are assumed to be constant (y_1 and y_2)
       Example: 
            Integrate the function f(x, y) = x * y, which can be expressed as:
 
@@ -92,8 +92,8 @@ Integrators::
              double integral = Integrators.GaussLeg2(f, x_1, x_2, y_1, y_2);
              // Print the result
              Console.WriteLine($"The integral of x*y is approximately: {integral}");
-     cref=System.ArgumentNullException is Thrown when the  fun is null.
-     cref=System.Exception is Thrown when the maximum number of iterations is reached without achieving the desired accuracy.
+   |   cref=System.ArgumentNullException is Thrown when the  fun is null.
+   |   cref=System.Exception is Thrown when the maximum number of iterations is reached without achieving the desired accuracy.
 
 
    GaussLeg2::
@@ -109,11 +109,11 @@ Integrators::
       Returns: 
           The approximate value of the definite double integral.
       Remark: 
-          This method uses adaptive Gauss-Legendre quadrature to approximate the double integral.
-          The integration is performed over the region defined by x_1 <= x <= x_2 and y_1(x) <= y <= y_2.
-          The number of quadrature points is increased until the desired relative accuracy is achieved or a maximum number of iterations is reached.
-          For best results, the function should be smooth within the integration region, and y_1(x) should be a smooth function.
-          If x_1 equals x_2 then the method will return 0.
+         |  This method uses adaptive Gauss-Legendre quadrature to approximate the double integral.
+         |  The integration is performed over the region defined by x_1 <= x <= x_2 and y_1(x) <= y <= y_2.
+         |  The number of quadrature points is increased until the desired relative accuracy is achieved or a maximum number of iterations is reached.
+         |  For best results, the function should be smooth within the integration region, and y_1(x) should be a smooth function.
+         |  If x_1 equals x_2 then the method will return 0.
       Example: 
            Integrate the function f(x, y) = x * y over the region where x ranges from 0 to 1, and y ranges from x^2 to 2, which can be expressed as:
 
@@ -140,9 +140,9 @@ Integrators::
              double integral = Integrators.GaussLeg2(f, x_1, x_2, y_1, y_2);
              // Print the result
              Console.WriteLine($"The integral is approximately: {integral}");
-     cref=System.ArgumentNullException is Thrown when the  fun is null.
-     cref=System.ArgumentNullException is Thrown when the  y_1 is null.
-     cref=System.Exception is Thrown when the maximum number of iterations is reached without achieving the desired accuracy.
+   |   cref=System.ArgumentNullException is Thrown when the  fun is null.
+   |   cref=System.ArgumentNullException is Thrown when the  y_1 is null.
+   |   cref=System.Exception is Thrown when the maximum number of iterations is reached without achieving the desired accuracy.
 
 
    GaussLeg2::
@@ -158,11 +158,11 @@ Integrators::
       Returns: 
           The approximate value of the definite double integral.
       Remark: 
-          This method uses adaptive Gauss-Legendre quadrature to approximate the double integral.
-          The integration is performed over the region defined by x_1 <= x <= x_2 and y_1 <= y <= y_2(x).
-          The number of quadrature points is increased until the desired relative accuracy is achieved or a maximum number of iterations is reached.
-          For best results, the function should be smooth within the integration region, and y_2(x) should be a smooth function.
-          If x_1 equals x_2 then the method will return 0.
+         |  This method uses adaptive Gauss-Legendre quadrature to approximate the double integral.
+         |  The integration is performed over the region defined by x_1 <= x <= x_2 and y_1 <= y <= y_2(x).
+         |  The number of quadrature points is increased until the desired relative accuracy is achieved or a maximum number of iterations is reached.
+         |  For best results, the function should be smooth within the integration region, and y_2(x) should be a smooth function.
+         |  If x_1 equals x_2 then the method will return 0.
       Example: 
            Integrate the function f(x, y) = x * y over the region where x ranges from 0 to 1, and y ranges from 1 to x^2, which can be expressed as:
 
@@ -189,9 +189,9 @@ Integrators::
              double integral = Integrators.GaussLeg2(f, x_1, x_2, y_1, y_2);
              // Print the result
              Console.WriteLine($"The integral is approximately: {integral}");
-     cref=System.ArgumentNullException is Thrown when the  fun is null.
-     cref=System.ArgumentNullException is Thrown when the  y_2 is null.
-     cref=System.Exception is Thrown when the maximum number of iterations is reached without achieving the desired accuracy.
+   |   cref=System.ArgumentNullException is Thrown when the  fun is null.
+   |   cref=System.ArgumentNullException is Thrown when the  y_2 is null.
+   |   cref=System.Exception is Thrown when the maximum number of iterations is reached without achieving the desired accuracy.
 
 
    GaussLeg2::
@@ -207,11 +207,11 @@ Integrators::
       Returns: 
           The approximate value of the definite double integral.
       Remark: 
-          This method uses adaptive Gauss-Legendre quadrature to approximate the double integral.
-          The integration is performed over the region defined by x_1 <= x <= x_2 and y_1(x) <= y <= y_2(x).
-          The number of quadrature points is increased until the desired relative accuracy is achieved or a maximum number of iterations is reached.
-          For best results, the function should be smooth within the integration region, and both y_1(x) and y_2(x) should be smooth functions. Additionally, y_1(x) should be less than or equal to y_2(x) for all x in the interval [x_1, x_2] to ensure a valid integration region.
-          If x_1 equals x_2 then the method will return 0.
+         |  This method uses adaptive Gauss-Legendre quadrature to approximate the double integral.
+         |  The integration is performed over the region defined by x_1 <= x <= x_2 and y_1(x) <= y <= y_2(x).
+         |  The number of quadrature points is increased until the desired relative accuracy is achieved or a maximum number of iterations is reached.
+         |  For best results, the function should be smooth within the integration region, and both y_1(x) and y_2(x) should be smooth functions. Additionally, y_1(x) should be less than or equal to y_2(x) for all x in the interval [x_1, x_2] to ensure a valid integration region.
+         |  If x_1 equals x_2 then the method will return 0.
       Example: 
            Integrate the function f(x, y) = x * y over the region where x ranges from 0 to 1, y ranges from x^2 to sqrt(x), which can be expressed as:
 
@@ -238,10 +238,10 @@ Integrators::
              double integral = Integrators.GaussLeg2(f, x_1, x_2, y_1, y_2);
              // Print the result
              Console.WriteLine($"The integral is approximately: {integral}");
-     cref=System.ArgumentNullException is Thrown when the  fun is null.
-     cref=System.ArgumentNullException is Thrown when the  y_1 is null.
-     cref=System.ArgumentNullException is Thrown when the  y_2 is null.
-     cref=System.ArgumentException is Thrown when y_1(x) is greater than y_2(x) for any x in the interval [x_1, x_2].
+   |   cref=System.ArgumentNullException is Thrown when the  fun is null.
+   |   cref=System.ArgumentNullException is Thrown when the  y_1 is null.
+   |   cref=System.ArgumentNullException is Thrown when the  y_2 is null.
+   |   cref=System.ArgumentException is Thrown when y_1(x) is greater than y_2(x) for any x in the interval [x_1, x_2].
 
 
    GaussLeg3::
@@ -259,11 +259,11 @@ Integrators::
       Returns: 
           The approximate value of the definite triple integral.
       Remark: 
-          This method uses adaptive Gauss-Legendre quadrature to approximate the triple integral.
-          The integration is performed over the region defined by x_1 <= x <= x_2, y_1 <= y <= y_2, and z1 <= z <= z2.
-          The number of quadrature points is increased until the desired relative accuracy is achieved or a maximum number of iterations is reached.
-          For best results, the function should be smooth within the integration region.
-          If x_1 equals x_2 then the method will return 0. All y and z bounds are assumed to be constant.
+         |  This method uses adaptive Gauss-Legendre quadrature to approximate the triple integral.
+         |  The integration is performed over the region defined by x_1 <= x <= x_2, y_1 <= y <= y_2, and z1 <= z <= z2.
+         |  The number of quadrature points is increased until the desired relative accuracy is achieved or a maximum number of iterations is reached.
+         |  For best results, the function should be smooth within the integration region.
+         |  If x_1 equals x_2 then the method will return 0. All y and z bounds are assumed to be constant.
       Example: 
            Integrate the function f(x, y, z) = x * y * z over the region where x ranges from 0 to 1, y ranges from 1 to 2, and z ranges from 2 to 3, which can be expressed as:
 
@@ -294,8 +294,8 @@ Integrators::
              double integral = Integrators.GaussLeg3(f, x_1, x_2, y_1, y_2, z1, z2);
              // Print the result
              Console.WriteLine($"The triple integral of x*y*z is approximately: {integral}");
-     cref=System.ArgumentNullException is Thrown when the  fun is null.
-     cref=System.Exception is Thrown when the maximum number of iterations is reached without achieving the desired accuracy.
+   |   cref=System.ArgumentNullException is Thrown when the  fun is null.
+   |   cref=System.Exception is Thrown when the maximum number of iterations is reached without achieving the desired accuracy.
 
 
    GaussLeg3::
@@ -313,11 +313,11 @@ Integrators::
       Returns: 
           The approximate value of the definite triple integral.
       Remark: 
-          This method uses adaptive Gauss-Legendre quadrature to approximate the triple integral.
-          The integration is performed over the region defined by x_1 <= x <= x_2, y_1(x) <= y <= y_2, and z_1 <= z <= z_2.
-          The number of quadrature points is increased until the desired relative accuracy is achieved or a maximum number of iterations is reached.
-          For best results, the function should be smooth within the integration region, and y_1(x) should be a smooth function. The z bounds are assumed to be constant.
-          If x_1 equals x_2 then the method will return 0.
+         |  This method uses adaptive Gauss-Legendre quadrature to approximate the triple integral.
+         |  The integration is performed over the region defined by x_1 <= x <= x_2, y_1(x) <= y <= y_2, and z_1 <= z <= z_2.
+         |  The number of quadrature points is increased until the desired relative accuracy is achieved or a maximum number of iterations is reached.
+         |  For best results, the function should be smooth within the integration region, and y_1(x) should be a smooth function. The z bounds are assumed to be constant.
+         |  If x_1 equals x_2 then the method will return 0.
       Example: 
            Integrate the function f(x, y, z) = x * y * z over the region where x ranges from 0 to 1, y ranges from x^2 to 2, and z ranges from 2 to 3, which can be expressed as:
 
@@ -348,9 +348,9 @@ Integrators::
              double integral = Integrators.GaussLeg3(f, x_1, x_2, y_1, y_2, z_1, z_2);
              // Print the result
              Console.WriteLine($"The triple integral of x*y*z is approximately: {integral}");
-     cref=System.ArgumentNullException is Thrown when the  fun is null.
-     cref=System.ArgumentNullException is Thrown when the  y_1 is null.
-     cref=System.Exception is Thrown when the maximum number of iterations is reached without achieving the desired accuracy.
+   |   cref=System.ArgumentNullException is Thrown when the  fun is null.
+   |   cref=System.ArgumentNullException is Thrown when the  y_1 is null.
+   |   cref=System.Exception is Thrown when the maximum number of iterations is reached without achieving the desired accuracy.
 
 
    GaussLeg3::
@@ -368,11 +368,11 @@ Integrators::
       Returns: 
           The approximate value of the definite triple integral.
       Remark: 
-          This method uses adaptive Gauss-Legendre quadrature to approximate the triple integral.
-          The integration is performed over the region defined by x_1 <= x <= x_2, y_1 <= y <= y_2(x), and z_1 <= z <= z_2.
-          The number of quadrature points is increased until the desired relative accuracy is achieved or a maximum number of iterations is reached.
-          For best results, the function should be smooth within the integration region, and y_2(x) should be a smooth function. The z bounds are assumed to be constant.
-          If x_1 equals x_2 then the method will return 0.
+         |  This method uses adaptive Gauss-Legendre quadrature to approximate the triple integral.
+         |  The integration is performed over the region defined by x_1 <= x <= x_2, y_1 <= y <= y_2(x), and z_1 <= z <= z_2.
+         |  The number of quadrature points is increased until the desired relative accuracy is achieved or a maximum number of iterations is reached.
+         |  For best results, the function should be smooth within the integration region, and y_2(x) should be a smooth function. The z bounds are assumed to be constant.
+         |  If x_1 equals x_2 then the method will return 0.
       Example: 
            Integrate the function f(x, y, z) = x * y * z over the region where x ranges from 0 to 1, y ranges from 1 to x^2, and z ranges from 2 to 3, which can be expressed as:
 
@@ -403,9 +403,9 @@ Integrators::
              double integral = Integrators.GaussLeg3(f, x_1, x_2, y_1, y_2, z_1, z_2);
              // Print the result
              Console.WriteLine($"The triple integral of x*y*z is approximately: {integral}");
-     cref=System.ArgumentNullException is Thrown when the  fun is null.
-     cref=System.ArgumentNullException is Thrown when the  y_2 is null.
-     cref=System.Exception is Thrown when the maximum number of iterations is reached without achieving the desired accuracy.
+   |   cref=System.ArgumentNullException is Thrown when the  fun is null.
+   |   cref=System.ArgumentNullException is Thrown when the  y_2 is null.
+   |   cref=System.Exception is Thrown when the maximum number of iterations is reached without achieving the desired accuracy.
 
 
    GaussLeg3::
@@ -423,11 +423,11 @@ Integrators::
       Returns: 
           The approximate value of the definite triple integral.
       Remark: 
-          This method uses adaptive Gauss-Legendre quadrature to approximate the triple integral.
-          The integration is performed over the region defined by x_1 <= x <= x_2, y_1(x) <= y <= y_2(x), and z_1 <= z <= z_2.
-          The number of quadrature points is increased until the desired relative accuracy is achieved or a maximum number of iterations is reached.
-          For best results, the function should be smooth within the integration region, and both y_1(x) and y_2(x) should be smooth functions. Additionally, y_1(x) should be less than or equal to y_2(x) for all x in the interval [x_1, x_2] to ensure a valid integration region.
-          If x_1 equals x_2 then the method will return 0. The z bounds are assumed to be constant.
+         |  This method uses adaptive Gauss-Legendre quadrature to approximate the triple integral.
+         |  The integration is performed over the region defined by x_1 <= x <= x_2, y_1(x) <= y <= y_2(x), and z_1 <= z <= z_2.
+         |  The number of quadrature points is increased until the desired relative accuracy is achieved or a maximum number of iterations is reached.
+         |  For best results, the function should be smooth within the integration region, and both y_1(x) and y_2(x) should be smooth functions. Additionally, y_1(x) should be less than or equal to y_2(x) for all x in the interval [x_1, x_2] to ensure a valid integration region.
+         |  If x_1 equals x_2 then the method will return 0. The z bounds are assumed to be constant.
       Example: 
            Integrate the function f(x, y, z) = x * y * z over the region where x ranges from 0 to 1, y ranges from x^2 to sqrt(x), and z ranges from 2 to 3, which can be expressed as:
 
@@ -458,11 +458,11 @@ Integrators::
              double integral = Integrators.GaussLeg3(f, x_1, x_2, y_1, y_2, z_1, z_2);
              // Print the result
              Console.WriteLine($"The triple integral of x*y*z is approximately: {integral}");
-     cref=System.ArgumentNullException is Thrown when the  fun is null.
-     cref=System.ArgumentNullException is Thrown when the  y_1 is null.
-     cref=System.ArgumentNullException is Thrown when the  y_2 is null.
-     cref=System.ArgumentException is Thrown when y_1(x) is greater than y_2(x) for any x in the interval [x_1, x_2].
-     cref=System.Exception is Thrown when the maximum number of iterations is reached without achieving the desired accuracy.
+   |   cref=System.ArgumentNullException is Thrown when the  fun is null.
+   |   cref=System.ArgumentNullException is Thrown when the  y_1 is null.
+   |   cref=System.ArgumentNullException is Thrown when the  y_2 is null.
+   |   cref=System.ArgumentException is Thrown when y_1(x) is greater than y_2(x) for any x in the interval [x_1, x_2].
+   |   cref=System.Exception is Thrown when the maximum number of iterations is reached without achieving the desired accuracy.
 
 
    GaussLeg3::
@@ -480,11 +480,11 @@ Integrators::
       Returns: 
           The approximate value of the definite triple integral.
       Remark: 
-          This method uses adaptive Gauss-Legendre quadrature to approximate the triple integral.
-          The integration is performed over the region defined by x_1 <= x <= x_2, y_1(x) <= y <= y_2, and z_1(x, y) <= z <= z_2.
-          The number of quadrature points is increased until the desired relative accuracy is achieved or a maximum number of iterations is reached.
-          For best results, the function should be smooth within the integration region, y_1(x) should be a smooth function, and z_1(x, y) should be a smooth function. Also ensure that z_1(x,y) is less than or equal to z_2 within the integration region.
-          If x_1 equals x_2 then the method will return 0.
+         |  This method uses adaptive Gauss-Legendre quadrature to approximate the triple integral.
+         |  The integration is performed over the region defined by x_1 <= x <= x_2, y_1(x) <= y <= y_2, and z_1(x, y) <= z <= z_2.
+         |  The number of quadrature points is increased until the desired relative accuracy is achieved or a maximum number of iterations is reached.
+         |  For best results, the function should be smooth within the integration region, y_1(x) should be a smooth function, and z_1(x, y) should be a smooth function. Also ensure that z_1(x,y) is less than or equal to z_2 within the integration region.
+         |  If x_1 equals x_2 then the method will return 0.
       Example: 
            Integrate the function f(x, y, z) = x * y * z over the region where x ranges from 0 to 1, y ranges from x^2 to 2, and z ranges from x*y to 3, which can be expressed as:
 
@@ -515,10 +515,10 @@ Integrators::
              double integral = Integrators.GaussLeg3(f, x_1, x_2, y_1, y_2, z_1, z_2);
              // Print the result
              Console.WriteLine($"The triple integral of x*y*z is approximately: {integral}");
-     cref=System.ArgumentNullException is Thrown when the  fun is null.
-     cref=System.ArgumentNullException is Thrown when the  y_1 is null.
-     cref=System.ArgumentNullException is Thrown when the  z_1 is null.
-     cref=System.Exception is Thrown when the maximum number of iterations is reached without achieving the desired accuracy.
+   |   cref=System.ArgumentNullException is Thrown when the  fun is null.
+   |   cref=System.ArgumentNullException is Thrown when the  y_1 is null.
+   |   cref=System.ArgumentNullException is Thrown when the  z_1 is null.
+   |   cref=System.Exception is Thrown when the maximum number of iterations is reached without achieving the desired accuracy.
 
 
    GaussLeg3::
@@ -536,11 +536,11 @@ Integrators::
       Returns: 
           The approximate value of the definite triple integral.
       Remark: 
-          This method uses adaptive Gauss-Legendre quadrature to approximate the triple integral.
-          The integration is performed over the region defined by x_1 <= x <= x_2, y_1(x) <= y <= y_2, and z_1(x, y) <= z <= z_2.
-          The number of quadrature points is increased until the desired relative accuracy is achieved or a maximum number of iterations is reached.
-          For best results, the function should be smooth within the integration region, y_1(x) and z_1(x, y) should be smooth functions. Additionally, y_1(x) and z_1(x, y) must result in a valid intergration region.
-          If x_1 equals x_2 then the method will return 0.
+         |  This method uses adaptive Gauss-Legendre quadrature to approximate the triple integral.
+         |  The integration is performed over the region defined by x_1 <= x <= x_2, y_1(x) <= y <= y_2, and z_1(x, y) <= z <= z_2.
+         |  The number of quadrature points is increased until the desired relative accuracy is achieved or a maximum number of iterations is reached.
+         |  For best results, the function should be smooth within the integration region, y_1(x) and z_1(x, y) should be smooth functions. Additionally, y_1(x) and z_1(x, y) must result in a valid intergration region.
+         |  If x_1 equals x_2 then the method will return 0.
       Example: 
            Integrate the function f(x, y, z) = x * y * z over the region where x ranges from 0 to 1, y ranges from x^2 to 2, and z ranges from x*y to 3, which can be expressed as:
 
@@ -571,10 +571,10 @@ Integrators::
              double integral = Integrators.GaussLeg3(f, x_1, x_2, y_1, y_2, z_1, z_2);
              // Print the result
              Console.WriteLine($"The triple integral of x*y*z is approximately: {integral}");
-     cref=System.ArgumentNullException is Thrown when the  fun is null.
-     cref=System.ArgumentNullException is Thrown when the  y_1 is null.
-     cref=System.ArgumentNullException is Thrown when the  z_1 is null.
-     cref=System.Exception is Thrown when the maximum number of iterations is reached without achieving the desired accuracy.
+   |   cref=System.ArgumentNullException is Thrown when the  fun is null.
+   |   cref=System.ArgumentNullException is Thrown when the  y_1 is null.
+   |   cref=System.ArgumentNullException is Thrown when the  z_1 is null.
+   |   cref=System.Exception is Thrown when the maximum number of iterations is reached without achieving the desired accuracy.
 
 
    GaussLeg3::
@@ -591,10 +591,10 @@ Integrators::
          | eps:  The desired accuracy of the result. Defaults to 1e-6.
       Returns: 
           The approximate value of the integral.
-     cref=Exception is 
+   |   cref=Exception is 
       Remark: 
-          This method uses the Gauss-Legendre quadrature method for numerical integration.
-          It iterates up to a maximum number of steps to achieve the desired accuracy.
+         |  This method uses the Gauss-Legendre quadrature method for numerical integration.
+         |  It iterates up to a maximum number of steps to achieve the desired accuracy.
       Example: 
           This method calculates the integral of a function \( f(x, y, z) \) over a 3-dimensional region defined by the limits [x_1, x_2], [y_1, y_2], and [z_1, z_2(x, y)] using the Gauss-Legendre quadrature method.
          
@@ -643,10 +643,10 @@ Integrators::
          | eps:  The desired accuracy of the result. Defaults to 1e-6.
       Returns: 
           The approximate value of the integral.
-     cref=Exception is 
+   |   cref=Exception is 
       Remark: 
-          This method uses the Gauss-Legendre quadrature method for numerical integration.
-          It iterates up to a maximum number of steps to achieve the desired accuracy.
+         |  This method uses the Gauss-Legendre quadrature method for numerical integration.
+         |  It iterates up to a maximum number of steps to achieve the desired accuracy.
       Example: 
           This method calculates the integral of a function \( f(x, y, z) \) over a 3-dimensional region defined by the limits [x_1, x_2], [y_1(x), y_2], and [z_1, z_2(x, y)] using the Gauss-Legendre quadrature method.
          
@@ -696,10 +696,10 @@ Integrators::
          | eps:  The desired accuracy of the result. Defaults to 1e-6.
       Returns: 
           The approximate value of the integral.
-     cref=Exception is 
+   |   cref=Exception is 
       Remark: 
-          This method uses the Gauss-Legendre quadrature method for numerical integration.
-          It iterates up to a maximum number of steps to achieve the desired accuracy.
+         |  This method uses the Gauss-Legendre quadrature method for numerical integration.
+         |  It iterates up to a maximum number of steps to achieve the desired accuracy.
       Example: 
           This method calculates the integral of a function \( f(x, y, z) \) over a 3-dimensional region defined by the limits [x_1, x_2], [y_1, y_2(x)], and [z_1, z_2(x, y)] using the Gauss-Legendre quadrature method.
          
@@ -750,12 +750,12 @@ Integrators::
       Returns: 
           The approximate value of the definite triple integral.
       Remark: 
-          This method uses adaptive Gauss-Legendre quadrature to approximate the triple integral.
-          The integration is performed over the region defined by x_1 <= x <= x_2, y_1(x) <= y <= y_2(x), and z_1 <= z <= z_2(x, y).
-          The number of quadrature points is increased until the desired relative accuracy is achieved or a maximum number of iterations is reached.
-          For best results, the function should be smooth within the integration region, and y_1(x), y_2(x) and z_2(x, y) should be smooth functions.
-          Ensure that y_1(x) <= y_2(x) and z_1 <= z_2(x, y) throughout the integration region.
-          If x_1 equals x_2 then the method will return 0.
+         |  This method uses adaptive Gauss-Legendre quadrature to approximate the triple integral.
+         |  The integration is performed over the region defined by x_1 <= x <= x_2, y_1(x) <= y <= y_2(x), and z_1 <= z <= z_2(x, y).
+         |  The number of quadrature points is increased until the desired relative accuracy is achieved or a maximum number of iterations is reached.
+         |  For best results, the function should be smooth within the integration region, and y_1(x), y_2(x) and z_2(x, y) should be smooth functions.
+         |  Ensure that y_1(x) <= y_2(x) and z_1 <= z_2(x, y) throughout the integration region.
+         |  If x_1 equals x_2 then the method will return 0.
       Example: 
            Integrate the function f(x, y, z) = x * y * z over the region where x ranges from 0 to 1, y ranges from x^2 to sqrt(x), and z ranges from 2 to x+y, which can be expressed as:
 
@@ -786,11 +786,11 @@ Integrators::
              double integral = Integrators.GaussLeg3(f, x_1, x_2, y_1, y_2, z_1, z_2);
              // Print the result
              Console.WriteLine($"The triple integral of x*y*z is approximately: {integral}");
-     cref=System.ArgumentNullException is Thrown when the  fun is null.
-     cref=System.ArgumentNullException is Thrown when the  y_1 is null.
-     cref=System.ArgumentNullException is Thrown when the  y_2 is null.
-     cref=System.ArgumentNullException is Thrown when the  z_2 is null.
-     cref=System.Exception is Thrown when the maximum number of iterations is reached without achieving the desired accuracy.
+   |   cref=System.ArgumentNullException is Thrown when the  fun is null.
+   |   cref=System.ArgumentNullException is Thrown when the  y_1 is null.
+   |   cref=System.ArgumentNullException is Thrown when the  y_2 is null.
+   |   cref=System.ArgumentNullException is Thrown when the  z_2 is null.
+   |   cref=System.Exception is Thrown when the maximum number of iterations is reached without achieving the desired accuracy.
 
 
    GaussLeg3::
@@ -808,12 +808,12 @@ Integrators::
       Returns: 
           The approximate value of the definite triple integral.
       Remark: 
-          This method uses adaptive Gauss-Legendre quadrature to approximate the triple integral.
-          The integration is performed over the region defined by x_1 <= x <= x_2, y_1 <= y <= y_2, and z_1(x, y) <= z <= z_2(x, y).
-          The number of quadrature points is increased until the desired relative accuracy is achieved or a maximum number of iterations is reached.
-          For best results, the function should be smooth within the integration region, and z_1(x, y) and z_2(x, y) should be smooth functions. 
-          Ensure that z_1(x,y) <= z_2(x, y) throughout the integration region.
-          If x_1 equals x_2 then the method will return 0.
+         |  This method uses adaptive Gauss-Legendre quadrature to approximate the triple integral.
+         |  The integration is performed over the region defined by x_1 <= x <= x_2, y_1 <= y <= y_2, and z_1(x, y) <= z <= z_2(x, y).
+         |  The number of quadrature points is increased until the desired relative accuracy is achieved or a maximum number of iterations is reached.
+         |  For best results, the function should be smooth within the integration region, and z_1(x, y) and z_2(x, y) should be smooth functions. 
+         |  Ensure that z_1(x,y) <= z_2(x, y) throughout the integration region.
+         |  If x_1 equals x_2 then the method will return 0.
       Example: 
            Integrate the function f(x, y, z) = x * y * z over the region where x ranges from 0 to 1, y ranges from 1 to 2, and z ranges from x*y to x+y, which can be expressed as:
 
@@ -844,10 +844,10 @@ Integrators::
              double integral = Integrators.GaussLeg3(f, x_1, x_2, y_1, y_2, z_1, z_2);
              // Print the result
              Console.WriteLine($"The triple integral of x*y*z is approximately: {integral}");
-     cref=System.ArgumentNullException is Thrown when the  fun is null.
-     cref=System.ArgumentNullException is Thrown when the  z_1 is null.
-     cref=System.ArgumentNullException is Thrown when the  z_2 is null.
-     cref=System.Exception is Thrown when the maximum number of iterations is reached without achieving the desired accuracy.
+   |   cref=System.ArgumentNullException is Thrown when the  fun is null.
+   |   cref=System.ArgumentNullException is Thrown when the  z_1 is null.
+   |   cref=System.ArgumentNullException is Thrown when the  z_2 is null.
+   |   cref=System.Exception is Thrown when the maximum number of iterations is reached without achieving the desired accuracy.
 
 
    GaussLeg3::
@@ -865,12 +865,12 @@ Integrators::
       Returns: 
           The approximate value of the definite triple integral.
       Remark: 
-          This method uses adaptive Gauss-Legendre quadrature to approximate the triple integral.
-          The integration is performed over the region defined by x_1 <= x <= x_2, y_1(x) <= y <= y_2, and z_1(x, y) <= z <= z_2(x, y).
-          The number of quadrature points is increased until the desired relative accuracy is achieved or a maximum number of iterations is reached.
-          For best results, the function should be smooth within the integration region, and y_1(x), z_1(x, y), and z_2(x, y) should be smooth functions.
-          Ensure that y_1(x) <= y_2 and z_1(x,y) <= z_2(x, y) throughout the integration region.
-          If x_1 equals x_2 then the method will return 0.
+         |  This method uses adaptive Gauss-Legendre quadrature to approximate the triple integral.
+         |  The integration is performed over the region defined by x_1 <= x <= x_2, y_1(x) <= y <= y_2, and z_1(x, y) <= z <= z_2(x, y).
+         |  The number of quadrature points is increased until the desired relative accuracy is achieved or a maximum number of iterations is reached.
+         |  For best results, the function should be smooth within the integration region, and y_1(x), z_1(x, y), and z_2(x, y) should be smooth functions.
+         |  Ensure that y_1(x) <= y_2 and z_1(x,y) <= z_2(x, y) throughout the integration region.
+         |  If x_1 equals x_2 then the method will return 0.
       Example: 
            Integrate the function f(x, y, z) = x * y * z over the region where x ranges from 0 to 1, y ranges from x^2 to 2, and z ranges from x*y to x+y, which can be expressed as:
 
@@ -901,11 +901,11 @@ Integrators::
              double integral = Integrators.GaussLeg3(f, x_1, x_2, y_1, y_2, z_1, z_2);
              // Print the result
              Console.WriteLine($"The triple integral of x*y*z is approximately: {integral}");
-     cref=System.ArgumentNullException is Thrown when the  fun is null.
-     cref=System.ArgumentNullException is Thrown when the  y_1 is null.
-     cref=System.ArgumentNullException is Thrown when the  z_1 is null.
-     cref=System.ArgumentNullException is Thrown when the  z_2 is null.
-     cref=System.Exception is Thrown when the maximum number of iterations is reached without achieving the desired accuracy.
+   |   cref=System.ArgumentNullException is Thrown when the  fun is null.
+   |   cref=System.ArgumentNullException is Thrown when the  y_1 is null.
+   |   cref=System.ArgumentNullException is Thrown when the  z_1 is null.
+   |   cref=System.ArgumentNullException is Thrown when the  z_2 is null.
+   |   cref=System.Exception is Thrown when the maximum number of iterations is reached without achieving the desired accuracy.
 
 
    GaussLeg3::
@@ -923,12 +923,12 @@ Integrators::
       Returns: 
           The approximate value of the definite triple integral.
       Remark: 
-          This method uses adaptive Gauss-Legendre quadrature to approximate the triple integral.
-          The integration is performed over the region defined by x_1 <= x <= x_2, y_1 <= y <= y_2(x), and z_1(x, y) <= z <= z_2(x, y).
-          The number of quadrature points is increased until the desired relative accuracy is achieved or a maximum number of iterations is reached.
-          For best results, the function should be smooth within the integration region, y_2(x), z_1(x, y), and z_2(x, y) should be smooth functions.
-          Ensure that y_1 is less than or equal to y_2(x) and z_1(x,y) is less than or equal to z_2(x, y) across the integration region.
-          If x_1 equals x_2 then the method will return 0.
+         |  This method uses adaptive Gauss-Legendre quadrature to approximate the triple integral.
+         |  The integration is performed over the region defined by x_1 <= x <= x_2, y_1 <= y <= y_2(x), and z_1(x, y) <= z <= z_2(x, y).
+         |  The number of quadrature points is increased until the desired relative accuracy is achieved or a maximum number of iterations is reached.
+         |  For best results, the function should be smooth within the integration region, y_2(x), z_1(x, y), and z_2(x, y) should be smooth functions.
+         |  Ensure that y_1 is less than or equal to y_2(x) and z_1(x,y) is less than or equal to z_2(x, y) across the integration region.
+         |  If x_1 equals x_2 then the method will return 0.
       Example: 
            Integrate the function f(x, y, z) = x * y * z over the region where x ranges from 0 to 1, y ranges from 1 to x^2, and z ranges from x*y to x+y, which can be expressed as:
 
@@ -959,11 +959,11 @@ Integrators::
              double integral = Integrators.GaussLeg3(f, x_1, x_2, y_1, y_2, z_1, z_2);
              // Print the result
              Console.WriteLine($"The triple integral of x*y*z is approximately: {integral}");
-     cref=System.ArgumentNullException is Thrown when the  fun is null.
-     cref=System.ArgumentNullException is Thrown when the  y_2 is null.
-     cref=System.ArgumentNullException is Thrown when the  z_1 is null.
-     cref=System.ArgumentNullException is Thrown when the  z_2 is null.
-     cref=System.Exception is Thrown when the maximum number of iterations is reached without achieving the desired accuracy.
+   |   cref=System.ArgumentNullException is Thrown when the  fun is null.
+   |   cref=System.ArgumentNullException is Thrown when the  y_2 is null.
+   |   cref=System.ArgumentNullException is Thrown when the  z_1 is null.
+   |   cref=System.ArgumentNullException is Thrown when the  z_2 is null.
+   |   cref=System.Exception is Thrown when the maximum number of iterations is reached without achieving the desired accuracy.
 
 
    GaussLeg3::
@@ -981,12 +981,12 @@ Integrators::
       Returns: 
           The approximate value of the definite triple integral.
       Remark: 
-          This method uses adaptive Gauss-Legendre quadrature to approximate the triple integral.
-          The integration is performed over the region defined by x_1 <= x <= x_2, y_1(x) <= y <= y_2(x), and z_1(x, y) <= z <= z_2(x, y).
-          The number of quadrature points is increased until the desired relative accuracy is achieved or a maximum number of iterations is reached.
-          For best results, the function should be smooth within the integration region, y_1(x), y_2(x), z_1(x, y), and z_2(x, y) should be smooth functions. 
-          Ensure that y_1(x) <= y_2(x) and z_1(x, y) <= z_2(x, y) throughout the integration region.
-          If x_1 equals x_2 then the method will return 0.
+         |  This method uses adaptive Gauss-Legendre quadrature to approximate the triple integral.
+         |  The integration is performed over the region defined by x_1 <= x <= x_2, y_1(x) <= y <= y_2(x), and z_1(x, y) <= z <= z_2(x, y).
+         |  The number of quadrature points is increased until the desired relative accuracy is achieved or a maximum number of iterations is reached.
+         |  For best results, the function should be smooth within the integration region, y_1(x), y_2(x), z_1(x, y), and z_2(x, y) should be smooth functions. 
+         |  Ensure that y_1(x) <= y_2(x) and z_1(x, y) <= z_2(x, y) throughout the integration region.
+         |  If x_1 equals x_2 then the method will return 0.
       Example: 
            Integrate the function f(x, y, z) = x * y * z over the region where x ranges from 0 to 1, y ranges from x^2 to sqrt(x), and z ranges from x*y to x+y, which can be expressed as:
 
@@ -1017,9 +1017,9 @@ Integrators::
              double integral = Integrators.GaussLeg3(f, x_1, x_2, y_1, y_2, z_1, z_2);
              // Print the result
              Console.WriteLine($"The triple integral of x*y*z is approximately: {integral}");
-     cref=System.ArgumentNullException is Thrown when the  fun is null.
-     cref=System.ArgumentNullException is Thrown when the  y_1 is null.
-     cref=System.ArgumentNullException is Thrown when the  y_2 is null.
-     cref=System.ArgumentNullException is Thrown when the  z_1 is null.
-     cref=System.ArgumentNullException is Thrown when the  z_2 is null.
-     cref=System.Exception is Thrown when the maximum number of iterations is reached without achieving the desired accuracy.
+   |   cref=System.ArgumentNullException is Thrown when the  fun is null.
+   |   cref=System.ArgumentNullException is Thrown when the  y_1 is null.
+   |   cref=System.ArgumentNullException is Thrown when the  y_2 is null.
+   |   cref=System.ArgumentNullException is Thrown when the  z_1 is null.
+   |   cref=System.ArgumentNullException is Thrown when the  z_2 is null.
+   |   cref=System.Exception is Thrown when the maximum number of iterations is reached without achieving the desired accuracy.
