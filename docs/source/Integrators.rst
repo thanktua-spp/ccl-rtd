@@ -6,22 +6,6 @@ Integrators::
    Description:  Performs numerical evaluation of definite integration of functions
 
 
-   Trapz::
-      Description:  Performs numerical integration using Trapezoidal method
-
-
-   CumTrapz::
-      Description:  Performs cummulative integratio of y over x
-
-
-   Trapz::
-      Description:  Performs numerical interation of a function using trapezoidal method
-
-
-   Trapz::
-      Description:  Performs numerical interation of a complex function using trapezoidal method
-
-
    GaussLeg::
       Description:  Computes the definite integral of a function using adaptive Gauss-Legendre quadrature.
           Example usage: Integrate the function f(x) = x^2, which can be expressed as:
@@ -427,7 +411,7 @@ Integrators::
          
 
           .. math::
-             \int_{0}^{1} \int_{0}^{1} \int_{0}^{1} \sin(x) \cdot \cos(y) \cdot \exp(z) \, dz \, dy \, dx
+              \int_{0}^{1} \int_{0}^{1} \int_{0}^{1} \sin(x) \cdot \cos(y) \cdot \exp(z) \, dz \, dy \, dx
          
 
           .. code-block:: C# 
@@ -445,7 +429,6 @@ Integrators::
          
              // Output the result
              Console.WriteLine("The integral result is: " + result);
-             This example calculates the integral of the function sin(x) * cos(y) * exp(z) over the range [0, 1] for x, y, and z.
 
 
    GaussLeg3::
@@ -458,7 +441,7 @@ Integrators::
          
 
           .. math::
-             \int_{0}^{1} \int_{0}^{1} \int_{0}^{1} \sin(x) \cdot \cos(y) \cdot \exp(z) \, dz \, dy \, dx
+              \int_{0}^{1} \int_{0}^{1} \int_{0}^{1} \sin(x) \cdot \cos(y) \cdot \exp(z) \, dz \, dy \, dx
          
 
           .. code-block:: C# 
@@ -489,7 +472,7 @@ Integrators::
          
 
           .. math::
-             \int_{0}^{1} \int_{0}^{1} \int_{0}^{1} \sin(x) \cdot \cos(y) \cdot \exp(z) \, dz \, dy \, dx
+              \int_{0}^{1} \int_{0}^{1} \int_{0}^{1} \sin(x) \cdot \cos(y) \cdot \exp(z) \, dz \, dy \, dx
          
 
           .. code-block:: C# 
@@ -675,17 +658,4 @@ Integrators::
              Console.WriteLine($"The triple integral of x*y*z is approximately: {integral}");
 
 
-   GaussLag::
-      Description:  Integration via Gause Laguerre method
-
-
-   GaussHer::
-      Description:  Integration via Gause Hermite method
-
-
    GaussChebf::
-      Description:  Ingerates a function using the Gauss Chebyshev method
-
-
-   GaussChebg::
-      Description:  Ingerates a function using the Gauss Chebyshev method
