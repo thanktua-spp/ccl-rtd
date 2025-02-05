@@ -1,5 +1,5 @@
 Integrators
-------------------------------
+-----------
 
 
 Integrators::
@@ -661,6 +661,11 @@ Integrators::
 
           .. code-block:: C# 
 
+             // import libraries
+             using CypherCrescent.MathematicsLibrary;
+             using static System.Math;
+             using System;
+             
              // Define the function to integrate
              Func<double, double, double, double> func = (x, y, z) => Math.Sin(x) * Math.Cos(y) * Math.Exp(z);
          
@@ -709,6 +714,11 @@ Integrators::
 
           .. code-block:: C# 
 
+             // import libraries
+             using CypherCrescent.MathematicsLibrary;
+             using static System.Math;
+             using System;
+             
              // Define the function to integrate
              Func<double, double, double, double> func = (x, y, z) => Math.Sin(x) * Math.Cos(y) * Math.Exp(z);
          
