@@ -11,10 +11,10 @@ Integrators::
       Description: 
           Computes the definite integral of a function using adaptive Gauss-Legendre quadrature.
       Param: 
-         fun:  The function to integrate. The function should accept a double and return a double.
-         x_1:  The lower bound of the integration interval.
-         x_2:  The upper bound of the integration interval.
-         eps:  The desired relative accuracy. The default value is 1e-6.
+         fun:  The function to integrate. The function should accept a double and return a double.\\
+         x_1:  The lower bound of the integration interval.\\
+         x_2:  The upper bound of the integration interval.\\
+         eps:  The desired relative accuracy. The default value is 1e-6.\\
       Returns: 
           The approximate value of the definite integral.
       Remark: 
@@ -52,12 +52,12 @@ Integrators::
       Description: 
           Computes the definite double integral of a function over a rectangular region using adaptive Gauss-Legendre quadrature.
       Param: 
-         fun:  The function to integrate. The function should accept two doubles (x, y) and return a double.
-         x_1:  The lower bound of the x integration.
-         x_2:  The upper bound of the x integration.
-         y_1:  The lower bound of the y integration. It is assumed this is a constant.
-         y_2:  The upper bound of the y integration. It is assumed this is a constant.
-         eps:  The desired relative accuracy. The default value is 1e-6.
+         fun:  The function to integrate. The function should accept two doubles (x, y) and return a double.\\
+         x_1:  The lower bound of the x integration.\\
+         x_2:  The upper bound of the x integration.\\
+         y_1:  The lower bound of the y integration. It is assumed this is a constant.\\
+         y_2:  The upper bound of the y integration. It is assumed this is a constant.\\
+         eps:  The desired relative accuracy. The default value is 1e-6.\\
       Returns: 
           The approximate value of the definite double integral.
       Remark: 
@@ -100,12 +100,12 @@ Integrators::
       Description: 
           Computes the definite double integral of a function over a region where the y-bounds are defined by a function and a constant, using adaptive Gauss-Legendre quadrature.
       Param: 
-         fun:  The function to integrate. The function should accept two doubles (x, y) and return a double.
-         x_1:  The lower bound of the x integration.
-         x_2:  The upper bound of the x integration.
-         y_1:  A function that defines the lower bound of the y integration as a function of x. It should accept a double (x) and return a double (y).
-         y_2:  The upper bound of the y integration.  This is a constant value.
-         eps:  The desired relative accuracy. The default value is 1e-6.
+         fun:  The function to integrate. The function should accept two doubles (x, y) and return a double.\\
+         x_1:  The lower bound of the x integration.\\
+         x_2:  The upper bound of the x integration.\\
+         y_1:  A function that defines the lower bound of the y integration as a function of x. It should accept a double (x) and return a double (y).\\
+         y_2:  The upper bound of the y integration.  This is a constant value.\\
+         eps:  The desired relative accuracy. The default value is 1e-6.\\
       Returns: 
           The approximate value of the definite double integral.
       Remark: 
@@ -149,12 +149,12 @@ Integrators::
       Description: 
           Computes the definite double integral of a function over a region where the y-bounds are defined by a constant and a function, using adaptive Gauss-Legendre quadrature.
       Param: 
-         fun:  The function to integrate. The function should accept two doubles (x, y) and return a double.
-         x_1:  The lower bound of the x integration.
-         x_2:  The upper bound of the x integration.
-         y_1:  The lower bound of the y integration. This is a constant value.
-         y_2:  A function that defines the upper bound of the y integration as a function of x. It should accept a double (x) and return a double (y).
-         eps:  The desired relative accuracy. The default value is 1e-6.
+         fun:  The function to integrate. The function should accept two doubles (x, y) and return a double.\\
+         x_1:  The lower bound of the x integration.\\
+         x_2:  The upper bound of the x integration.\\
+         y_1:  The lower bound of the y integration. This is a constant value.\\
+         y_2:  A function that defines the upper bound of the y integration as a function of x. It should accept a double (x) and return a double (y).\\
+         eps:  The desired relative accuracy. The default value is 1e-6.\\
       Returns: 
           The approximate value of the definite double integral.
       Remark: 
@@ -198,12 +198,12 @@ Integrators::
       Description: 
           Computes the definite double integral of a function over a region where both y-bounds are defined by functions of x, using adaptive Gauss-Legendre quadrature.
       Param: 
-         fun:  The function to integrate. The function should accept two doubles (x, y) and return a double.
-         x_1:  The lower bound of the x integration.
-         x_2:  The upper bound of the x integration.
-         y_1:  A function that defines the lower bound of the y integration as a function of x. It should accept a double (x) and return a double (y).
-         y_2:  A function that defines the upper bound of the y integration as a function of x. It should accept a double (x) and return a double (y).
-         eps:  The desired relative accuracy. The default value is 1e-6.
+         fun:  The function to integrate. The function should accept two doubles (x, y) and return a double.\\
+         x_1:  The lower bound of the x integration.\\
+         x_2:  The upper bound of the x integration.\\
+         y_1:  A function that defines the lower bound of the y integration as a function of x. It should accept a double (x) and return a double (y).\\
+         y_2:  A function that defines the upper bound of the y integration as a function of x. It should accept a double (x) and return a double (y).\\
+         eps:  The desired relative accuracy. The default value is 1e-6.\\
       Returns: 
           The approximate value of the definite double integral.
       Remark: 
@@ -248,14 +248,14 @@ Integrators::
       Description: 
           Computes the definite triple integral of a function over a rectangular cuboid region using adaptive Gauss-Legendre quadrature.  All bounds are constants.
       Param: 
-         fun:  The function to integrate. The function should accept three doubles (x, y, z) and return a double.
-         x_1:  The lower bound of the x integration.
-         x_2:  The upper bound of the x integration.
-         y_1:  The lower bound of the y integration. This is a constant value.
-         y_2:  The upper bound of the y integration. This is a constant value.
-         z1:  The lower bound of the z integration. This is a constant value.
-         z2:  The upper bound of the z integration. This is a constant value.
-         eps:  The desired relative accuracy. The default value is 1e-6.
+         fun:  The function to integrate. The function should accept three doubles (x, y, z) and return a double.\\
+         x_1:  The lower bound of the x integration.\\
+         x_2:  The upper bound of the x integration.\\
+         y_1:  The lower bound of the y integration. This is a constant value.\\
+         y_2:  The upper bound of the y integration. This is a constant value.\\
+         z1:  The lower bound of the z integration. This is a constant value.\\
+         z2:  The upper bound of the z integration. This is a constant value.\\
+         eps:  The desired relative accuracy. The default value is 1e-6.\\
       Returns: 
           The approximate value of the definite triple integral.
       Remark: 
@@ -302,14 +302,14 @@ Integrators::
       Description: 
           Computes the definite triple integral of a function over a region where the y-bounds are defined by a function of x and a constant, and the z-bounds are constants, using adaptive Gauss-Legendre quadrature.
       Param: 
-         fun:  The function to integrate. The function should accept three doubles (x, y, z) and return a double.
-         x_1:  The lower bound of the x integration.
-         x_2:  The upper bound of the x integration.
-         y_1:  A function that defines the lower bound of the y integration as a function of x. It should accept a double (x) and return a double (y).
-         y_2:  The upper bound of the y integration. This is a constant value.
-         z_1:  The lower bound of the z integration. This is a constant value.
-         z_2:  The upper bound of the z integration. This is a constant value.
-         eps:  The desired relative accuracy. The default value is 1e-6.
+         fun:  The function to integrate. The function should accept three doubles (x, y, z) and return a double.\\
+         x_1:  The lower bound of the x integration.\\
+         x_2:  The upper bound of the x integration.\\
+         y_1:  A function that defines the lower bound of the y integration as a function of x. It should accept a double (x) and return a double (y).\\
+         y_2:  The upper bound of the y integration. This is a constant value.\\
+         z_1:  The lower bound of the z integration. This is a constant value.\\
+         z_2:  The upper bound of the z integration. This is a constant value.\\
+         eps:  The desired relative accuracy. The default value is 1e-6.\\
       Returns: 
           The approximate value of the definite triple integral.
       Remark: 
@@ -357,14 +357,14 @@ Integrators::
       Description: 
           Computes the definite triple integral of a function over a region where the y-bounds are defined by a constant and a function of x, and the z-bounds are constants, using adaptive Gauss-Legendre quadrature.
       Param: 
-         fun:  The function to integrate. The function should accept three doubles (x, y, z) and return a double.
-         x_1:  The lower bound of the x integration.
-         x_2:  The upper bound of the x integration.
-         y_1:  The lower bound of the y integration. This is a constant value.
-         y_2:  A function that defines the upper bound of the y integration as a function of x. It should accept a double (x) and return a double (y).
-         z_1:  The lower bound of the z integration. This is a constant value.
-         z_2:  The upper bound of the z integration. This is a constant value.
-         eps:  The desired relative accuracy. The default value is 1e-6.
+         fun:  The function to integrate. The function should accept three doubles (x, y, z) and return a double.\\
+         x_1:  The lower bound of the x integration.\\
+         x_2:  The upper bound of the x integration.\\
+         y_1:  The lower bound of the y integration. This is a constant value.\\
+         y_2:  A function that defines the upper bound of the y integration as a function of x. It should accept a double (x) and return a double (y).\\
+         z_1:  The lower bound of the z integration. This is a constant value.\\
+         z_2:  The upper bound of the z integration. This is a constant value.\\
+         eps:  The desired relative accuracy. The default value is 1e-6.\\
       Returns: 
           The approximate value of the definite triple integral.
       Remark: 
@@ -412,14 +412,14 @@ Integrators::
       Description: 
           Computes the definite triple integral of a function over a region where the y-bounds are defined by functions of x, and the z-bounds are constants, using adaptive Gauss-Legendre quadrature.
       Param: 
-         fun:  The function to integrate. The function should accept three doubles (x, y, z) and return a double.
-         x_1:  The lower bound of the x integration.
-         x_2:  The upper bound of the x integration.
-         y_1:  A function that defines the lower bound of the y integration as a function of x. It should accept a double (x) and return a double (y).
-         y_2:  A function that defines the upper bound of the y integration as a function of x. It should accept a double (x) and return a double (y).
-         z_1:  The lower bound of the z integration. This is a constant value.
-         z_2:  The upper bound of the z integration. This is a constant value.
-         eps:  The desired relative accuracy. The default value is 1e-6.
+         fun:  The function to integrate. The function should accept three doubles (x, y, z) and return a double.\\
+         x_1:  The lower bound of the x integration.\\
+         x_2:  The upper bound of the x integration.\\
+         y_1:  A function that defines the lower bound of the y integration as a function of x. It should accept a double (x) and return a double (y).\\
+         y_2:  A function that defines the upper bound of the y integration as a function of x. It should accept a double (x) and return a double (y).\\
+         z_1:  The lower bound of the z integration. This is a constant value.\\
+         z_2:  The upper bound of the z integration. This is a constant value.\\
+         eps:  The desired relative accuracy. The default value is 1e-6.\\
       Returns: 
           The approximate value of the definite triple integral.
       Remark: 
@@ -469,14 +469,14 @@ Integrators::
       Description: 
           Computes the definite triple integral of a function over a region where the y-bounds are defined by a function of x and a constant, the lower z-bound is a function of x and y, and the upper z-bound is a constant, using adaptive Gauss-Legendre quadrature.
       Param: 
-         fun:  The function to integrate. The function should accept three doubles (x, y, z) and return a double.
-         x_1:  The lower bound of the x integration.
-         x_2:  The upper bound of the x integration.
-         y_1:  A function that defines the lower bound of the y integration as a function of x. It should accept a double (x) and return a double (y).
-         y_2:  The upper bound of the y integration. This is a constant value.
-         z_1:  A function that defines the lower bound of the z integration as a function of x and y. It should accept two doubles (x, y) and return a double (z).
-         z_2:  The upper bound of the z integration. This is a constant value.
-         eps:  The desired relative accuracy. The default value is 1e-6.
+         fun:  The function to integrate. The function should accept three doubles (x, y, z) and return a double.\\
+         x_1:  The lower bound of the x integration.\\
+         x_2:  The upper bound of the x integration.\\
+         y_1:  A function that defines the lower bound of the y integration as a function of x. It should accept a double (x) and return a double (y).\\
+         y_2:  The upper bound of the y integration. This is a constant value.\\
+         z_1:  A function that defines the lower bound of the z integration as a function of x and y. It should accept two doubles (x, y) and return a double (z).\\
+         z_2:  The upper bound of the z integration. This is a constant value.\\
+         eps:  The desired relative accuracy. The default value is 1e-6.\\
       Returns: 
           The approximate value of the definite triple integral.
       Remark: 
@@ -525,14 +525,14 @@ Integrators::
       Description: 
           Computes the definite triple integral of a function over a region where the y-bounds are defined by a function of x and a constant, and the lower z-bound is a function of x and y, and the upper z-bound is a constant, using adaptive Gauss-Legendre quadrature.
       Param: 
-         fun:  The function to integrate. The function should accept three doubles (x, y, z) and return a double.
-         x_1:  The lower bound of the x integration.
-         x_2:  The upper bound of the x integration.
-         y_1:  A function that defines the lower bound of the y integration as a function of x. It should accept a double (x) and return a double (y).
-         y_2:  The upper bound of the y integration. This is a constant value.
-         z_1:  A function that defines the lower bound of the z integration as a function of x and y. It should accept two doubles (x, y) and return a double (z).
-         z_2:  The upper bound of the z integration. This is a constant value.
-         eps:  The desired relative accuracy. The default value is 1e-6.
+         fun:  The function to integrate. The function should accept three doubles (x, y, z) and return a double.\\
+         x_1:  The lower bound of the x integration.\\
+         x_2:  The upper bound of the x integration.\\
+         y_1:  A function that defines the lower bound of the y integration as a function of x. It should accept a double (x) and return a double (y).\\
+         y_2:  The upper bound of the y integration. This is a constant value.\\
+         z_1:  A function that defines the lower bound of the z integration as a function of x and y. It should accept two doubles (x, y) and return a double (z).\\
+         z_2:  The upper bound of the z integration. This is a constant value.\\
+         eps:  The desired relative accuracy. The default value is 1e-6.\\
       Returns: 
           The approximate value of the definite triple integral.
       Remark: 
@@ -581,14 +581,14 @@ Integrators::
       Description: 
           Calculates the integral of a function using a 3-dimensional Gauss-Legendre quadrature method.
       Param: 
-         fun:  A function of three variables to integrate.
-         x_1:  The lower limit of integration for the x variable.
-         x_2:  The upper limit of integration for the x variable.
-         y_1:  The lower limit of integration for the y variable (constant).
-         y_2:  The upper limit of integration for the y variable (constant).
-         z_1:  The lower limit of integration for the z variable (constant).
-         z_2:  A function that provides the upper limit of integration for the z variable based on x and y.
-         eps:  The desired accuracy of the result. Defaults to 1e-6.
+         fun:  A function of three variables to integrate.\\
+         x_1:  The lower limit of integration for the x variable.\\
+         x_2:  The upper limit of integration for the x variable.\\
+         y_1:  The lower limit of integration for the y variable (constant).\\
+         y_2:  The upper limit of integration for the y variable (constant).\\
+         z_1:  The lower limit of integration for the z variable (constant).\\
+         z_2:  A function that provides the upper limit of integration for the z variable based on x and y.\\
+         eps:  The desired accuracy of the result. Defaults to 1e-6.\\
       Returns: 
           The approximate value of the integral.
      cref=Exception is 
@@ -628,14 +628,14 @@ Integrators::
       Description: 
           Calculates the integral of a function using a 3-dimensional Gauss-Legendre quadrature method.
       Param: 
-         fun:  A function of three variables to integrate.
-         x_1:  The lower limit of integration for the x variable.
-         x_2:  The upper limit of integration for the x variable.
-         y_1:  A function that provides the lower limit of integration for the y variable based on x.
-         y_2:  The upper limit of integration for the y variable (constant).
-         z_1:  The lower limit of integration for the z variable (constant).
-         z_2:  A function that provides the upper limit of integration for the z variable based on x and y.
-         eps:  The desired accuracy of the result. Defaults to 1e-6.
+         fun:  A function of three variables to integrate.\\
+         x_1:  The lower limit of integration for the x variable.\\
+         x_2:  The upper limit of integration for the x variable.\\
+         y_1:  A function that provides the lower limit of integration for the y variable based on x.\\
+         y_2:  The upper limit of integration for the y variable (constant).\\
+         z_1:  The lower limit of integration for the z variable (constant).\\
+         z_2:  A function that provides the upper limit of integration for the z variable based on x and y.\\
+         eps:  The desired accuracy of the result. Defaults to 1e-6.\\
       Returns: 
           The approximate value of the integral.
      cref=Exception is 
@@ -676,14 +676,14 @@ Integrators::
       Description: 
           Calculates the integral of a function using a 3-dimensional Gauss-Legendre quadrature method.
       Param: 
-         fun:  A function of three variables to integrate.
-         x_1:  The lower limit of integration for the x variable.
-         x_2:  The upper limit of integration for the x variable.
-         y_1:  The lower limit of integration for the y variable (constant).
-         y_2:  A function that provides the upper limit of integration for the y variable based on x.
-         z_1:  The lower limit of integration for the z variable (constant).
-         z_2:  A function that provides the upper limit of integration for the z variable based on x and y.
-         eps:  The desired accuracy of the result. Defaults to 1e-6.
+         fun:  A function of three variables to integrate.\\
+         x_1:  The lower limit of integration for the x variable.\\
+         x_2:  The upper limit of integration for the x variable.\\
+         y_1:  The lower limit of integration for the y variable (constant).\\
+         y_2:  A function that provides the upper limit of integration for the y variable based on x.\\
+         z_1:  The lower limit of integration for the z variable (constant).\\
+         z_2:  A function that provides the upper limit of integration for the z variable based on x and y.\\
+         eps:  The desired accuracy of the result. Defaults to 1e-6.\\
       Returns: 
           The approximate value of the integral.
      cref=Exception is 
@@ -724,14 +724,14 @@ Integrators::
       Description: 
           Computes the definite triple integral of a function over a region where the y-bounds are defined by functions of x, the lower z-bound is a constant, and the upper z-bound is a function of x and y, using adaptive Gauss-Legendre quadrature.
       Param: 
-         fun:  The function to integrate. The function should accept three doubles (x, y, z) and return a double.
-         x_1:  The lower bound of the x integration.
-         x_2:  The upper bound of the x integration.
-         y_1:  A function that defines the lower bound of the y integration as a function of x. It should accept a double (x) and return a double (y).
-         y_2:  A function that defines the upper bound of the y integration as a function of x. It should accept a double (x) and return a double (y).
-         z_1:  The lower bound of the z integration. This is a constant value.
-         z_2:  A function that defines the upper bound of the z integration as a function of x and y. It should accept two doubles (x, y) and return a double (z).
-         eps:  The desired relative accuracy. The default value is 1e-6.
+         fun:  The function to integrate. The function should accept three doubles (x, y, z) and return a double.\\
+         x_1:  The lower bound of the x integration.\\
+         x_2:  The upper bound of the x integration.\\
+         y_1:  A function that defines the lower bound of the y integration as a function of x. It should accept a double (x) and return a double (y).\\
+         y_2:  A function that defines the upper bound of the y integration as a function of x. It should accept a double (x) and return a double (y).\\
+         z_1:  The lower bound of the z integration. This is a constant value.\\
+         z_2:  A function that defines the upper bound of the z integration as a function of x and y. It should accept two doubles (x, y) and return a double (z).\\
+         eps:  The desired relative accuracy. The default value is 1e-6.\\
       Returns: 
           The approximate value of the definite triple integral.
       Remark: 
@@ -782,14 +782,14 @@ Integrators::
       Description: 
           Computes the definite triple integral of a function over a region where the y-bounds are defined by constants, and the z-bounds are defined by functions of x and y, using adaptive Gauss-Legendre quadrature.
       Param: 
-         fun:  The function to integrate. The function should accept three doubles (x, y, z) and return a double.
-         x_1:  The lower bound of the x integration.
-         x_2:  The upper bound of the x integration.
-         y_1:  The lower bound of the y integration. This is a constant value.
-         y_2:  The upper bound of the y integration. This is a constant value.
-         z_1:  A function that defines the lower bound of the z integration as a function of x and y. It should accept two doubles (x, y) and return a double (z).
-         z_2:  A function that defines the upper bound of the z integration as a function of x and y. It should accept two doubles (x, y) and return a double (z).
-         eps:  The desired relative accuracy. The default value is 1e-6.
+         fun:  The function to integrate. The function should accept three doubles (x, y, z) and return a double.\\
+         x_1:  The lower bound of the x integration.\\
+         x_2:  The upper bound of the x integration.\\
+         y_1:  The lower bound of the y integration. This is a constant value.\\
+         y_2:  The upper bound of the y integration. This is a constant value.\\
+         z_1:  A function that defines the lower bound of the z integration as a function of x and y. It should accept two doubles (x, y) and return a double (z).\\
+         z_2:  A function that defines the upper bound of the z integration as a function of x and y. It should accept two doubles (x, y) and return a double (z).\\
+         eps:  The desired relative accuracy. The default value is 1e-6.\\
       Returns: 
           The approximate value of the definite triple integral.
       Remark: 
@@ -839,14 +839,14 @@ Integrators::
       Description: 
           Computes the definite triple integral of a function over a region where the y-bounds are defined by a function of x for the lower bound and a constant for the upper bound, and the z-bounds are defined by functions of x and y, using adaptive Gauss-Legendre quadrature.
       Param: 
-         fun:  The function to integrate. The function should accept three doubles (x, y, z) and return a double.
-         x_1:  The lower bound of the x integration.
-         x_2:  The upper bound of the x integration.
-         y_1:  A function that defines the lower bound of the y integration as a function of x. It should accept a double (x) and return a double (y).
-         y_2:  The upper bound of the y integration. This is a constant value.
-         z_1:  A function that defines the lower bound of the z integration as a function of x and y. It should accept two doubles (x, y) and return a double (z).
-         z_2:  A function that defines the upper bound of the z integration as a function of x and y. It should accept two doubles (x, y) and return a double (z).
-         eps:  The desired relative accuracy. The default value is 1e-6.
+         fun:  The function to integrate. The function should accept three doubles (x, y, z) and return a double.\\
+         x_1:  The lower bound of the x integration.\\
+         x_2:  The upper bound of the x integration.\\
+         y_1:  A function that defines the lower bound of the y integration as a function of x. It should accept a double (x) and return a double (y).\\
+         y_2:  The upper bound of the y integration. This is a constant value.\\
+         z_1:  A function that defines the lower bound of the z integration as a function of x and y. It should accept two doubles (x, y) and return a double (z).\\
+         z_2:  A function that defines the upper bound of the z integration as a function of x and y. It should accept two doubles (x, y) and return a double (z).\\
+         eps:  The desired relative accuracy. The default value is 1e-6.\\
       Returns: 
           The approximate value of the definite triple integral.
       Remark: 
@@ -897,14 +897,14 @@ Integrators::
       Description: 
           Computes the definite triple integral of a function over a region where the lower y-bound is constant, the upper y-bound is a function of x, and the z-bounds are functions of x and y, using adaptive Gauss-Legendre quadrature.
       Param: 
-         fun:  The function to integrate. The function should accept three doubles (x, y, z) and return a double.
-         x_1:  The lower bound of the x integration.
-         x_2:  The upper bound of the x integration.
-         y_1:  The lower bound of the y integration. This is a constant value.
-         y_2:  A function that defines the upper bound of the y integration as a function of x. It should accept a double (x) and return a double (y).
-         z_1:  A function that defines the lower bound of the z integration as a function of x and y. It should accept two doubles (x, y) and return a double (z).
-         z_2:  A function that defines the upper bound of the z integration as a function of x and y. It should accept two doubles (x, y) and return a double (z).
-         eps:  The desired relative accuracy. The default value is 1e-6.
+         fun:  The function to integrate. The function should accept three doubles (x, y, z) and return a double.\\
+         x_1:  The lower bound of the x integration.\\
+         x_2:  The upper bound of the x integration.\\
+         y_1:  The lower bound of the y integration. This is a constant value.\\
+         y_2:  A function that defines the upper bound of the y integration as a function of x. It should accept a double (x) and return a double (y).\\
+         z_1:  A function that defines the lower bound of the z integration as a function of x and y. It should accept two doubles (x, y) and return a double (z).\\
+         z_2:  A function that defines the upper bound of the z integration as a function of x and y. It should accept two doubles (x, y) and return a double (z).\\
+         eps:  The desired relative accuracy. The default value is 1e-6.\\
       Returns: 
           The approximate value of the definite triple integral.
       Remark: 
@@ -955,14 +955,14 @@ Integrators::
       Description: 
           Computes the definite triple integral of a function over a region where the y-bounds are defined by functions of x, and the z-bounds are defined by functions of x and y, using adaptive Gauss-Legendre quadrature.
       Param: 
-         fun:  The function to integrate. The function should accept three doubles (x, y, z) and return a double.
-         x_1:  The lower bound of the x integration.
-         x_2:  The upper bound of the x integration.
-         y_1:  A function that defines the lower bound of the y integration as a function of x. It should accept a double (x) and return a double (y).
-         y_2:  A function that defines the upper bound of the y integration as a function of x. It should accept a double (x) and return a double (y).
-         z_1:  A function that defines the lower bound of the z integration as a function of x and y. It should accept two doubles (x, y) and return a double (z).
-         z_2:  A function that defines the upper bound of the z integration as a function of x and y. It should accept two doubles (x, y) and return a double (z).
-         eps:  The desired relative accuracy. The default value is 1e-6.
+         fun:  The function to integrate. The function should accept three doubles (x, y, z) and return a double.\\
+         x_1:  The lower bound of the x integration.\\
+         x_2:  The upper bound of the x integration.\\
+         y_1:  A function that defines the lower bound of the y integration as a function of x. It should accept a double (x) and return a double (y).\\
+         y_2:  A function that defines the upper bound of the y integration as a function of x. It should accept a double (x) and return a double (y).\\
+         z_1:  A function that defines the lower bound of the z integration as a function of x and y. It should accept two doubles (x, y) and return a double (z).\\
+         z_2:  A function that defines the upper bound of the z integration as a function of x and y. It should accept two doubles (x, y) and return a double (z).\\
+         eps:  The desired relative accuracy. The default value is 1e-6.\\
       Returns: 
           The approximate value of the definite triple integral.
       Remark: 
