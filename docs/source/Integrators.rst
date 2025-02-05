@@ -28,7 +28,7 @@ Integrators::
           .. math::
              \int_{x_1}^{x_2} x^2 \, dx
 
-          .. code-block:: C# 
+          .. code-block:: CSharp 
 
              // import libraries
              using CypherCrescent.MathematicsLibrary;
@@ -72,7 +72,7 @@ Integrators::
           .. math::
              \int_{x_1}^{x_2} \int_{y_1}^{y_2} x y \, dy \, dx
 
-          .. code-block:: C# 
+          .. code-block:: CSharp 
 
              // import libraries
              using CypherCrescent.MathematicsLibrary;
@@ -120,7 +120,7 @@ Integrators::
           .. math::
              \int_{x_1}^{x_2} \int_{y_1(x)}^{y_2} x y \, dy \, dx
 
-          .. code-block:: C# 
+          .. code-block:: CSharp 
 
              // import libraries
              using CypherCrescent.MathematicsLibrary;
@@ -169,7 +169,7 @@ Integrators::
           .. math::
              \int_{x_1}^{x_2} \int_{y_1}^{y_2(x)} x y \, dy \, dx
 
-          .. code-block:: C# 
+          .. code-block:: CSharp 
 
              // import libraries
              using CypherCrescent.MathematicsLibrary;
@@ -218,7 +218,7 @@ Integrators::
           .. math::
              \int_{x_1}^{x_2} \int_{y_1(x)}^{y_2(x)} x y \, dy \, dx
 
-          .. code-block:: C# 
+          .. code-block:: CSharp 
 
              // import libraries
              using CypherCrescent.MathematicsLibrary;
@@ -270,7 +270,7 @@ Integrators::
           .. math::
              \int_{x_1}^{x_2} \int_{y_1}^{y_2}  \int_{z_1}^{z_2} x y z \, dz \, dy \, dx
 
-          .. code-block:: C# 
+          .. code-block:: CSharp 
 
              // import libraries
              using CypherCrescent.MathematicsLibrary;
@@ -324,7 +324,7 @@ Integrators::
           .. math::
              \int_{x_1}^{x_2} \int_{y_1(x)}^{y_2}  \int_{z_1}^{z_2} x y z \, dz \, dy \, dx
 
-          .. code-block:: C# 
+          .. code-block:: CSharp 
 
              // import libraries
              using CypherCrescent.MathematicsLibrary;
@@ -379,7 +379,7 @@ Integrators::
           .. math::
              \int_{x_1}^{x_2} \int_{y_1}^{y_2(x)}  \int_{z_1}^{z_2} x y z \, dz \, dy \, dx
 
-          .. code-block:: C# 
+          .. code-block:: CSharp 
 
              // import libraries
              using CypherCrescent.MathematicsLibrary;
@@ -434,7 +434,7 @@ Integrators::
           .. math::
              \int_{x_1}^{x_2} \int_{y_1(x)}^{y_2(x)}  \int_{z_1}^{z_2} x y z \, dz \, dy \, dx
 
-          .. code-block:: C# 
+          .. code-block:: CSharp 
 
              // import libraries
              using CypherCrescent.MathematicsLibrary;
@@ -491,7 +491,7 @@ Integrators::
           .. math::
              \int_{x_1}^{x_2} \int_{y_1(x)}^{y_2}  \int_{z_1(x,y)}^{z_2} x y z \, dz \, dy \, dx
 
-          .. code-block:: C# 
+          .. code-block:: CSharp 
 
              // import libraries
              using CypherCrescent.MathematicsLibrary;
@@ -547,7 +547,7 @@ Integrators::
           .. math::
              \int_{x_1}^{x_2} \int_{y_1(x)}^{y_2}  \int_{z_1(x,y)}^{z_2} x y z \, dz \, dy \, dx
 
-          .. code-block:: C# 
+          .. code-block:: CSharp 
 
              // import libraries
              using CypherCrescent.MathematicsLibrary;
@@ -607,7 +607,7 @@ Integrators::
               \int_{0}^{1} \int_{0}^{1} \int_{0}^{1} \sin(x) \cdot \cos(y) \cdot \exp(z) \, dz \, dy \, dx
          
 
-          .. code-block:: C# 
+          .. code-block:: CSharp 
 
              // import libraries
              using CypherCrescent.MathematicsLibrary;
@@ -659,7 +659,7 @@ Integrators::
               \int_{0}^{1} \int_{0}^{1} \int_{0}^{1} \sin(x) \cdot \cos(y) \cdot \exp(z) \, dz \, dy \, dx
          
 
-          .. code-block:: C# 
+          .. code-block:: CSharp 
 
              // import libraries
              using CypherCrescent.MathematicsLibrary;
@@ -712,7 +712,7 @@ Integrators::
               \int_{0}^{1} \int_{0}^{1} \int_{0}^{1} \sin(x) \cdot \cos(y) \cdot \exp(z) \, dz \, dy \, dx
          
 
-          .. code-block:: C# 
+          .. code-block:: CSharp 
 
              // import libraries
              using CypherCrescent.MathematicsLibrary;
@@ -762,7 +762,7 @@ Integrators::
           .. math::
              \int_{x_1}^{x_2} \int_{y_1(x)}^{y_2(x)}  \int_{z_1}^{z_2(x,y)} x y z \, dz \, dy \, dx
 
-          .. code-block:: C# 
+          .. code-block:: CSharp 
 
              // import libraries
              using CypherCrescent.MathematicsLibrary;
@@ -820,7 +820,7 @@ Integrators::
           .. math::
              \int_{x_1}^{x_2} \int_{y_1}^{y_2}  \int_{z_1(x,y)}^{z_2(x,y)} x y z \, dz \, dy \, dx
 
-          .. code-block:: C# 
+          .. code-block:: CSharp 
 
              // import libraries
              using CypherCrescent.MathematicsLibrary;
@@ -877,7 +877,7 @@ Integrators::
           .. math::
              \int_{x_1}^{x_2} \int_{y_1(x)}^{y_2}  \int_{z_1(x,y)}^{z_2(x,y)} x y z \, dz \, dy \, dx
 
-          .. code-block:: C# 
+          .. code-block:: CSharp 
 
              // import libraries
              using CypherCrescent.MathematicsLibrary;
@@ -935,7 +935,7 @@ Integrators::
           .. math::
              \int_{x_1}^{x_2} \int_{y_1}^{y_2(x)}  \int_{z_1(x,y)}^{z_2(x,y)} x y z \, dz \, dy \, dx
 
-          .. code-block:: C# 
+          .. code-block:: CSharp 
 
              // import libraries
              using CypherCrescent.MathematicsLibrary;
@@ -993,7 +993,7 @@ Integrators::
           .. math::
              \int_{x_1}^{x_2} \int_{y_1(x)}^{y_2(x)}  \int_{z_1(x,y)}^{z_2(x,y)} x y z \, dz \, dy \, dx
 
-          .. code-block:: C# 
+          .. code-block:: CSharp 
 
              // import libraries
              using CypherCrescent.MathematicsLibrary;
