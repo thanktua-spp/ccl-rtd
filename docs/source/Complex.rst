@@ -134,8 +134,10 @@ Complex::
           Mathematically, if we have:
 
           .. math::
-             A = 3 + 4i \, 
-             B = 5 + 2i
+             \begin{array}{rcl}
+              A &=& 3 + 4i  \\
+              B &=& 5 + 2i
+              \end{array}
           The method will return B as it is greater.
 
           .. code-block:: CSharp 
