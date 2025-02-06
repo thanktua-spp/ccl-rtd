@@ -203,3 +203,45 @@ Complex::
           .. code-block:: Terminal 
 
              Min Complex =   3.0000 + 4.0000i
+
+
+   static::
+      Description: 
+          Returns the polar coordinates (magnitude and argument) of a complex number.
+      Param: 
+         | c:  The complex number to convert to polar coordinates.
+      Returns: 
+          A tuple containing the magnitude and argument of the complex number.
+      Example: 
+          In this example, we convert a complex number to its polar coordinates.
+          Mathematically, if we have:
+
+          .. math::
+             z = 3 + 4i
+          The polar coordinates are:
+
+          .. math::
+             \begin{array}{rcl}
+             \text{Magnitude} &=& 5  \\
+             \text{Argument} &=& \arctan\left(\frac{4}{3}\right)
+             \end{array}
+
+          .. code-block:: CSharp 
+
+             // import libraries
+             using CypherCrescent.MathematicsLibrary;
+             using static System.Math;
+             using System;
+             
+             // Example of using the Pol method
+             Complex c = new Complex(3.0, 4.0);
+             var polarCoordinates = Complex.Pol(c);
+             // print the result
+             Console.WriteLine($"Magnitude = {polarCoordinates.Mag}, Argument = {polarCoordinates.Arg}");
+
+         Output: 
+
+
+          .. code-block:: Terminal 
+
+             Magnitude = 5, Argument = 0.9273
