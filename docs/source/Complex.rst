@@ -4,25 +4,53 @@ Complex
 
 Complex::
    Description: 
-       Represents a complex number with a real and imaginary component.
-   Remark: 
-      |  A complex number is a number that can be expressed in the form a + bi, 
-      |  where 'a' and 'b' are real numbers, and 'i' is the imaginary unit, 
-      |  which satisfies the equation i² = -1.
+       Represents a complex number with real and imaginary parts.
    Example: 
-       <code>
-          Complex z1 = new ComplexNumber(2, 3); 
-          Complex z2 = new ComplexNumber(1, -2); 
-          Complex sum = z1 + z2; // Complex number addition
-          Console.WriteLine(sum); 
-       </code>
+       In this example, we demonstrate various arithmetic operations on complex numbers.
+       
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using CypherCrescent.MathematicsLibrary;
+          using static System.Math;
+          using System;
+          
+          // Create complex numbers
+          Complex c1 = new Complex(1.0, 2.0);
+          Complex c2 = new Complex(3.0, 4.0);
+          Complex c3 = new Complex(0.5, 0.5);
+          
+          // Addition
+          Complex sum = c1 + c2;
+          Console.WriteLine($"Sum: {sum}");
+          
+          // Subtraction
+          Complex difference = c1 - c2;
+          Console.WriteLine($"Difference: {difference}");
+          
+          // Multiplication
+          Complex product = c1 * c2;
+          Console.WriteLine($"Product: {product}");
+          
+          // Division
+          Complex quotient = c1 / c2;
+          Console.WriteLine($"Quotient: {quotient}");
+          
+          // Power (c1 - c2)^c3
+          Console.WriteLine($"(c1 - c2)^c3: {(c1 - c2)^c3}");
+       
 
       Output: 
 
 
        .. code-block:: Terminal 
 
-          3.0000 +  1.0000i
+          Sum: 4 + 6i
+          Difference: -2 - 2i
+          Product: -5 + 10i
+          Quotient: 0.44 + 0.08i
+          (c1 - c2)^c3: 0.7692 - 0.6366i
 
 
    Real::
