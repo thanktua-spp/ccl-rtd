@@ -705,14 +705,13 @@ Integrators::
              double integral = Integrators.GaussLeg3(f, x_1, x_2, y_1, y_2, z_1, z_2);
              // Print the result
              Console.WriteLine($"The triple integral of x+y+z is approximately: {integral}");
-             // The triple integral of x+y+z is approximately: 20.7166666645573
 
          Output: 
 
 
           .. code-block:: Terminal 
 
-             
+             The triple integral of x+y+z is approximately: 20.7166666645573
    |   cref=System.ArgumentNullException is Thrown when the  fun is null.
    |   cref=System.ArgumentNullException is Thrown when the  y_2 is null.
    |   cref=System.ArgumentNullException is Thrown when the  z_1 is null.
@@ -770,14 +769,13 @@ Integrators::
              double integral = Integrators.GaussLeg3(f, x_1, x_2, y_1, y_2, z_1, z_2);
              // Print the result
              Console.WriteLine($"The triple integral of x^2+y^2+z^2 is approximately: {integral}");
-             // The triple integral of x^2+y^2+z^2 is approximately: 29.0252572989997
 
          Output: 
 
 
           .. code-block:: Terminal 
 
-             
+             The triple integral of x^2+y^2+z^2 is approximately: 29.0252572989997
    |   cref=System.ArgumentNullException is Thrown when the  fun is null.
    |   cref=System.ArgumentNullException is Thrown when the  y_1 is null.
    |   cref=System.ArgumentNullException is Thrown when the  y_2 is null.
@@ -835,14 +833,13 @@ Integrators::
              double integral = Integrators.GaussLeg3(f, x_1, x_2, y_1, y_2, z_1, z_2);
              // Print the result
              Console.WriteLine($"The triple integral of 1/(1+x+y+z) is approximately: {integral}");
-             // The triple integral of 1/(1+x+y+z) is approximately: 1.40208584910316
 
          Output: 
 
 
           .. code-block:: Terminal 
 
-             
+             The triple integral of 1/(1+x+y+z) is approximately: 1.40208584910316
    |   cref=System.ArgumentNullException is Thrown when the  fun is null.
    |   cref=System.ArgumentNullException is Thrown when the  z_2 is null.
    |   cref=System.Exception is Thrown when the maximum number of iterations is reached without achieving the desired accuracy.
