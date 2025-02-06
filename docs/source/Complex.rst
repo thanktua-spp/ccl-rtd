@@ -456,3 +456,83 @@ Complex::
           .. code-block:: Terminal 
 
              Exp Complex =   1.4687 + 2.2874i
+
+
+   Log::
+      Description: 
+          Calculates the natural logarithm of a complex number.
+      Param: 
+         | c:  The complex number for which to calculate the natural logarithm.
+      Returns: 
+          A complex number representing the natural logarithm of the input complex number.
+      Example: 
+          In this example, we calculate the natural logarithm of a complex number.
+          Mathematically, if we have:
+
+          .. math::
+             z = 1 + i
+          The natural logarithm is:
+
+          .. math::
+             \ln(z) = \ln(1 + i)
+
+          .. code-block:: CSharp 
+
+             // import libraries
+             using CypherCrescent.MathematicsLibrary;
+             using static System.Math;
+             using System;
+             
+             // Example of using the Log method
+             Complex c = new Complex(1.0, 1.0);
+             Complex logComplex = Complex.Log(c);
+             // print the result
+             Console.WriteLine($"Log Complex = {logComplex}");
+
+         Output: 
+
+
+          .. code-block:: Terminal 
+
+             Log Complex =   0.3466 + 0.7854i
+
+
+   Log::
+      Description: 
+          Calculates the logarithm of a complex number to the base of another complex number.
+      Param: 
+         | c:  The complex number for which to calculate the logarithm.
+         | num:  The base complex number.
+      Returns: 
+          A complex number representing the logarithm of the input complex number to the specified base.
+      Example: 
+          In this example, we calculate the logarithm of a complex number to the base of another complex number.
+          Mathematically, if we have:
+
+          .. math::
+             z = 1 + i, \text{base} = 2 + i
+          The logarithm is:
+
+          .. math::
+             \log_{\text{base}}(z) = \frac{\ln(z)}{\ln(\text{base})}
+
+          .. code-block:: CSharp 
+
+             // import libraries
+             using CypherCrescent.MathematicsLibrary;
+             using static System.Math;
+             using System;
+             
+             // Example of using the Log method with a base
+             Complex c = new Complex(1.0, 1.0);
+             Complex baseNum = new Complex(2.0, 1.0);
+             Complex logComplex = Complex.Log(c, baseNum);
+             // print the result
+             Console.WriteLine($"Log Complex = {logComplex}");
+
+         Output: 
+
+
+          .. code-block:: Terminal 
+
+             Log Complex =   0.2310 + 0.3218i
