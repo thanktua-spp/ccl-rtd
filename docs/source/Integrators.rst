@@ -895,14 +895,13 @@ Integrators::
              double integral = Integrators.GaussLeg3(f, x_1, x_2, y_1, y_2, z_1, z_2);
              // Print the result
              Console.WriteLine($"The triple integral of xy+z is approximately: {integral}");
-             // The triple integral of xy+z is approximately: 119.271742284841
 
          Output: 
 
 
           .. code-block:: Terminal 
 
-             
+             The triple integral of xy+z is approximately: 119.271742284841
    |   cref=System.ArgumentNullException is Thrown when the  fun is null.
    |   cref=System.ArgumentNullException is Thrown when the  y_1 is null.
    |   cref=System.ArgumentNullException is Thrown when the  z_2 is null.
@@ -959,14 +958,13 @@ Integrators::
              double integral = Integrators.GaussLeg3(f, x_1, x_2, y_1, y_2, z_1, z_2);
              // Print the result
              Console.WriteLine($"The triple integral of x-y+2z is approximately: {integral}");
-             // The triple integral of x-y+2z is approximately: 353.666666629263
 
          Output: 
 
 
           .. code-block:: Terminal 
 
-             
+             The triple integral of x-y+2z is approximately: 353.666666629263
    |   cref=System.ArgumentNullException is Thrown when the  fun is null.
    |   cref=System.ArgumentNullException is Thrown when the  y_2 is null.
    |   cref=System.ArgumentNullException is Thrown when the  z_2 is null.
@@ -1025,7 +1023,6 @@ Integrators::
              double integral = Integrators.GaussLeg3(f, x_1, x_2, y_1, y_2, z_1, z_2);
              // Print the result
              Console.WriteLine($"The triple integral of x*y*z is approximately: {integral}");
-             // The triple integral of x*y*z is approximately: -0.0921296305735099
 
          Output: 
 
@@ -1220,7 +1217,6 @@ Integrators::
              double integral = Integrators.GaussLeg3(f, x_1, x_2, y_1, y_2, z_1, z_2);
              // Print the result
              Console.WriteLine($"The triple integral of x*y*z is approximately: {integral}");
-             // 
 
          Output: 
 
