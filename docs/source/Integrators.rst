@@ -526,6 +526,7 @@ Integrators::
              double integral = Integrators.GaussLeg3(f, x_1, x_2, y_1, y_2, z_1, z_2);
              // Print the result
              Console.WriteLine($"The triple integral of x^2*y^2*z is approximately: {integral}");
+             // The triple integral of x^2*y^2*z is approximately: 0.808888888786791
    |   cref=System.ArgumentNullException is Thrown when the  fun is null.
    |   cref=System.ArgumentNullException is Thrown when the  z_1 is null.
    |   cref=System.Exception is Thrown when the maximum number of iterations is reached without achieving the desired accuracy.
@@ -675,6 +676,7 @@ Integrators::
 
              // import libraries
              using CypherCrescent.MathematicsLibrary;
+             using static System.Math
              using System;
          
              // Define the function to integrate
@@ -682,7 +684,7 @@ Integrators::
              // Define the lower bound of y as a function of x
              Func<double, double> y_1 = (x) => 0;
              // Define the upper bound of y as a function of x
-             Func<double, double> y_2 = (x) => Math.Sqrt(x);
+             Func<double, double> y_2 = (x) => Sqrt(x);
              // Define the lower bound of z as a function of x and y
              Func<double, double, double> z_1 = (x, y) => x + y;
              // Set the upper bound of z
@@ -695,6 +697,7 @@ Integrators::
              double integral = Integrators.GaussLeg3(f, x_1, x_2, y_1, y_2, z_1, z_2);
              // Print the result
              Console.WriteLine($"The triple integral of x^2+y^2+z^2 is approximately: {integral}");
+             // The triple integral of x^2+y^2+z^2 is approximately: 29.0252572989997
    |   cref=System.ArgumentNullException is Thrown when the  fun is null.
    |   cref=System.ArgumentNullException is Thrown when the  y_1 is null.
    |   cref=System.ArgumentNullException is Thrown when the  y_2 is null.
@@ -752,6 +755,7 @@ Integrators::
              double integral = Integrators.GaussLeg3(f, x_1, x_2, y_1, y_2, z_1, z_2);
              // Print the result
              Console.WriteLine($"The triple integral of 1/(1+x+y+z) is approximately: {integral}");
+             // The triple integral of 1/(1+x+y+z) is approximately: 1.40208584910316
    |   cref=System.ArgumentNullException is Thrown when the  fun is null.
    |   cref=System.ArgumentNullException is Thrown when the  z_2 is null.
    |   cref=System.Exception is Thrown when the maximum number of iterations is reached without achieving the desired accuracy.
@@ -807,6 +811,7 @@ Integrators::
              double integral = Integrators.GaussLeg3(f, x_1, x_2, y_1, y_2, z_1, z_2);
              // Print the result
              Console.WriteLine($"The triple integral of xy+z is approximately: {integral}");
+             // The triple integral of xy+z is approximately: 119.271742284841
    |   cref=System.ArgumentNullException is Thrown when the  fun is null.
    |   cref=System.ArgumentNullException is Thrown when the  y_1 is null.
    |   cref=System.ArgumentNullException is Thrown when the  z_2 is null.
