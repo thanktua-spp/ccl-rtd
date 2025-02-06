@@ -139,3 +139,54 @@ Polynomials::
 
              Quotient: -1.16666666666667, -0.777777777777778, 1.34259259259259, 0.524691358024691
              Remainder: 2.75617283950617, -5.52469135802469
+
+
+   DeConv::
+      Description: 
+          Performs polynomial division, dividing one polynomial by another, with complex coefficients.
+      Param: 
+         | Coeffs_a:  An array of complex numbers representing the coefficients of the dividend polynomial.
+         | Coeffs_d:  An array of complex numbers representing the coefficients of the divisor polynomial.
+         | Coeffs_q:  When this method returns, contains the coefficients of the quotient polynomial.
+         | Coeffs_r:  When this method returns, contains the coefficients of the remainder polynomial.
+      Example: 
+          In this example, we perform polynomial division with complex coefficients.
+          
+          Mathematically, if we have:
+
+          .. math::
+             P(z) = z^3 - (6 + 6i)z^2 + (11 + 11i)z - (6 + 6i)
+          and
+
+          .. math::
+             D(z) = z - (2 + 2i)
+          
+
+          .. code-block:: CSharp 
+
+             // import libraries
+             using CypherCrescent.MathematicsLibrary;
+             using static System.Math;
+             using System;
+             
+             // Coefficients of the dividend polynomial z^3 - (6 + 6i)z^2 + (11 + 11i)z - (6 + 6i)
+             Complex[] coeffs_a = [new(1)  new (-6, -6), new(11, 11), new(-6, -6)];
+             
+             // Coefficients of the divisor polynomial z - (2 + 2i)
+             Complex[] coeffs_d = [new(1), new(-2, -2)];
+             
+             // Perform polynomial division
+             Polynomials.DeConv(coeffs_a, coeffs_d, out Complex[] coeffs_q, out Complex[] coeffs_r);
+             
+             // Print the quotient and remainder
+             Console.WriteLine("Quotient: " + string.Join(", ", coeffs_q));
+             Console.WriteLine("Remainder: " + string.Join(", ", coeffs_r));
+          
+
+         Output: 
+
+
+          .. code-block:: Terminal 
+
+             Quotient: 1 + 1i, -4 - 4i, 5 + 5i
+             Remainder: 0 + 0i
