@@ -934,7 +934,7 @@ Complex::
           The inverse hyperbolic sine is:
 
           .. math::
-             \arcsinh(z) = \ln\left(z + \sqrt{z^2 + 1}\right)
+             \sinh^{-1}(z) = \ln\left(z + \sqrt{z^2 + 1}\right)
 
           .. code-block:: CSharp 
 
@@ -973,7 +973,7 @@ Complex::
           The inverse hyperbolic cosine is:
 
           .. math::
-             \arccosh(z) = \ln\left(z + \sqrt{z^2 - 1}\right)
+             \cosh^{-1}(z) = \ln\left(z + \sqrt{z^2 - 1}\right)
 
           .. code-block:: CSharp 
 
@@ -1012,7 +1012,7 @@ Complex::
           The inverse hyperbolic tangent is:
 
           .. math::
-             \arctanh(z) = \frac{1}{2} \ln\left(\frac{1 + z}{1 - z}\right)
+             \tanh^{-1}(z) = \frac{1}{2} \ln\left(\frac{1 + z}{1 - z}\right)
 
           .. code-block:: CSharp 
 
