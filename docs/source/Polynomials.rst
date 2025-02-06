@@ -33,9 +33,8 @@ Polynomials::
              
              // Print the roots
              foreach (Complex root in roots)
-             {
                  Console.WriteLine($"Root: {root}");
-             }
+                 
           
 
          Output: 
@@ -73,7 +72,7 @@ Polynomials::
              Complex[] coeffs = [ new(-6, -6), new(11, 11), new(-6, -6), new(1, 1) ];
              
              // Calculate the roots
-             Complex[] roots = Complex.Roots(coeffs);
+             Complex[] roots = Polynomials.Roots(coeffs);
              
              // Print the roots
              foreach (Complex root in roots)
