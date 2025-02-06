@@ -70,7 +70,7 @@ Polynomials::
              using System;
              
              // Coefficients of the polynomial (x - (1 + i))(x - (2 + 2i))(x - (3 + 3i))
-             Complex[] coeffs = { new Complex(-6, -6), new Complex(11, 11), new Complex(-6, -6), new Complex(1, 1) };
+             Complex[] coeffs = { new(-6, -6), new(11, 11), new(-6, -6), new(1, 1) };
              
              // Calculate the roots
              Complex[] roots = Complex.Roots(coeffs);
@@ -87,6 +87,6 @@ Polynomials::
 
           .. code-block:: Terminal 
 
-             Root: 1.0000 + 1i
-             Root: 2 + 2i
-             Root: 3 + 3i
+             Root: 1.0000 + 0.0000i
+             Root: 0.5000 + 0.0000i
+             Root: 0.3333 + 0.0000i
