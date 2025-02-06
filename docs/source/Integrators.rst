@@ -868,6 +868,7 @@ Integrators::
              double integral = Integrators.GaussLeg3(f, x_1, x_2, y_1, y_2, z_1, z_2);
              // Print the result
              Console.WriteLine($"The triple integral of x-y+2z is approximately: {integral}");
+             // The triple integral of x-y+2z is approximately: 353.666666629263
    |   cref=System.ArgumentNullException is Thrown when the  fun is null.
    |   cref=System.ArgumentNullException is Thrown when the  y_2 is null.
    |   cref=System.ArgumentNullException is Thrown when the  z_2 is null.
@@ -905,6 +906,7 @@ Integrators::
 
              // import libraries
              using CypherCrescent.MathematicsLibrary;
+             using stati System.Math;
              using System;
          
              // Define the function to integrate
@@ -912,7 +914,7 @@ Integrators::
              // Define the lower bound of y as a function of x
              Func<double, double> y_1 = (x) => x * x;
              // Define the upper bound of y as a function of x
-             Func<double, double> y_2 = (x) => Math.Sqrt(x);
+             Func<double, double> y_2 = (x) => Sqrt(x);
              // Set the lower bound of z
              double z_1 = 2;
              // Define the upper bound of z as a function of x and y
@@ -925,6 +927,7 @@ Integrators::
              double integral = Integrators.GaussLeg3(f, x_1, x_2, y_1, y_2, z_1, z_2);
              // Print the result
              Console.WriteLine($"The triple integral of x*y*z is approximately: {integral}");
+             // The triple integral of x*y*z is approximately: -0.0921296305735099
    |   cref=System.ArgumentNullException is Thrown when the  fun is null.
    |   cref=System.ArgumentNullException is Thrown when the  y_1 is null.
    |   cref=System.ArgumentNullException is Thrown when the  y_2 is null.
@@ -983,6 +986,7 @@ Integrators::
              double integral = Integrators.GaussLeg3(f, x_1, x_2, y_1, y_2, z_1, z_2);
              // Print the result
              Console.WriteLine($"The triple integral of x*y*z is approximately: {integral}");
+             // The triple integral of x*y*z is approximately: 1.43402777762941
    |   cref=System.ArgumentNullException is Thrown when the  fun is null.
    |   cref=System.ArgumentNullException is Thrown when the  z_1 is null.
    |   cref=System.ArgumentNullException is Thrown when the  z_2 is null.
@@ -1040,6 +1044,7 @@ Integrators::
              double integral = Integrators.GaussLeg3(f, x_1, x_2, y_1, y_2, z_1, z_2);
              // Print the result
              Console.WriteLine($"The triple integral of x*y*z is approximately: {integral}");
+             // The triple integral of x*y*z is approximately: 1.56851851820977
    |   cref=System.ArgumentNullException is Thrown when the  fun is null.
    |   cref=System.ArgumentNullException is Thrown when the  y_1 is null.
    |   cref=System.ArgumentNullException is Thrown when the  z_1 is null.
@@ -1098,6 +1103,7 @@ Integrators::
              double integral = Integrators.GaussLeg3(f, x_1, x_2, y_1, y_2, z_1, z_2);
              // Print the result
              Console.WriteLine($"The triple integral of x*y*z is approximately: {integral}");
+             // The triple integral of x*y*z is approximately: -0.134490740716508
    |   cref=System.ArgumentNullException is Thrown when the  fun is null.
    |   cref=System.ArgumentNullException is Thrown when the  y_2 is null.
    |   cref=System.ArgumentNullException is Thrown when the  z_1 is null.
@@ -1136,6 +1142,7 @@ Integrators::
 
              // import libraries
              using CypherCrescent.MathematicsLibrary;
+             using static System.Math;
              using System;
          
              // Define the function to integrate
@@ -1143,7 +1150,7 @@ Integrators::
              // Define the lower bound of y as a function of x
              Func<double, double> y_1 = (x) => x * x;
              // Define the upper bound of y as a function of x
-             Func<double, double> y_2 = (x) => Math.Sqrt(x);
+             Func<double, double> y_2 = (x) => Sqrt(x);
              // Define the lower bound of z as a function of x and y
              Func<double, double, double> z_1 = (x, y) => x * y;
              // Define the upper bound of z as a function of x and y
