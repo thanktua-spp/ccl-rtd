@@ -104,21 +104,12 @@ Polynomials::
           Mathematically, if we have:
 
           .. math::
-             P(x) = x^3 - 6x^2 + 11x - 6
+             P(x) = -7x^5 + 10x^3 - 3x^2 + 2x - 5
           and
 
           .. math::
-             D(x) = x - 2
-          
-          The division of \(P(x)\) by \(D(x)\) gives us:
-
-          .. math::
-             Q(x) = x^2 - 3x + 2
-          with a remainder:
-
-          .. math::
-             R(x) = 0
-          
+             D(x) =  6x^2 - 4x + 1
+             
 
           .. code-block:: CSharp 
 
@@ -146,5 +137,5 @@ Polynomials::
 
           .. code-block:: Terminal 
 
-             Quotient: 1, -3, 2
-             Remainder: 0
+             Quotient: -1.16666666666667, -0.777777777777778, 1.34259259259259, 0.524691358024691
+             Remainder: 2.75617283950617, -5.52469135802469
