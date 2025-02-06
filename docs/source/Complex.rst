@@ -205,6 +205,50 @@ Complex::
              Min Complex =   3.0000 + 4.0000i
 
 
+   Cart::
+      Description: 
+          Converts polar coordinates (magnitude and angle) to a complex number in Cartesian coordinates.
+      Param: 
+         | mag:  The magnitude of the complex number.
+         | angle:  The angle (in radians) of the complex number.
+      Returns: 
+          A complex number represented in Cartesian coordinates.
+      Example: 
+          In this example, we convert polar coordinates to a complex number.
+          Mathematically, if we have:
+
+          .. math::
+             \text{Magnitude} = 5, \text{Angle} = \frac{\pi}{4}
+          The Cartesian coordinates are:
+
+          .. math::
+             \begin{array}{rcl}
+             \text{Real} &=& 5 \cdot \cos\left(\frac{\pi}{4}\right) \\
+             \text{Imaginary} &=& 5 \cdot \sin\left(\frac{\pi}{4}\right)
+             \end{array}
+
+          .. code-block:: CSharp 
+
+             // import libraries
+             using CypherCrescent.MathematicsLibrary;
+             using static System.Math;
+             using System;
+             
+             // Example of using the Cart method
+             double magnitude = 5.0;
+             double angle = Math.PI / 4;
+             Complex cartesianComplex = Complex.Cart(magnitude, angle);
+             // print the result
+             Console.WriteLine($"Cartesian Complex = {cartesianComplex}");
+
+         Output: 
+
+
+          .. code-block:: Terminal 
+
+             Cartesian Complex =   3.5355 + 3.5355i
+
+
    static::
       Description: 
           Returns the polar coordinates (magnitude and argument) of a complex number.
