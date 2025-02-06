@@ -9,3 +9,4 @@ Classes
 
       Integrators
       Complex
+      Polynomials
