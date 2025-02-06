@@ -223,8 +223,8 @@ Complex::
 
           .. math::
              \begin{array}{rcl}
-             \text{Real} &=& 5 \cdot \cos\left(\frac{\pi}{4}\right) \\
-             \text{Imaginary} &=& 5 \cdot \sin\left(\frac{\pi}{4}\right)
+             \text{Real} &=& 5 \cdot \cos\left(\cfrac{\pi}{4}\right) \\
+             \text{Imaginary} &=& 5 \cdot \sin\left(\cfrac{\pi}{4}\right)
              \end{array}
 
           .. code-block:: CSharp 
