@@ -653,3 +653,120 @@ Complex::
           .. code-block:: Terminal 
 
              Tan Complex =   0.2718 + 1.0839i
+
+
+   Sinh::
+      Description: 
+          Calculates the hyperbolic sine of a complex number.
+      Param: 
+         | c:  The complex number for which to calculate the hyperbolic sine.
+      Returns: 
+          A complex number representing the hyperbolic sine of the input complex number.
+      Example: 
+          In this example, we calculate the hyperbolic sine of a complex number.
+          Mathematically, if we have:
+
+          .. math::
+             z = 1 + i
+          The hyperbolic sine is:
+
+          .. math::
+             \sinh(z) = \frac{e^z - e^{-z}}{2}
+
+          .. code-block:: CSharp 
+
+             // import libraries
+             using CypherCrescent.MathematicsLibrary;
+             using static System.Math;
+             using System;
+             
+             // Example of using the Sinh method
+             Complex c = new Complex(1.0, 1.0);
+             Complex sinhComplex = Complex.Sinh(c);
+             // print the result
+             Console.WriteLine($"Sinh Complex = {sinhComplex}");
+
+         Output: 
+
+
+          .. code-block:: Terminal 
+
+             Sinh Complex =   0.6349 + 1.2985i
+
+
+   Cosh::
+      Description: 
+          Calculates the hyperbolic cosine of a complex number.
+      Param: 
+         | c:  The complex number for which to calculate the hyperbolic cosine.
+      Returns: 
+          A complex number representing the hyperbolic cosine of the input complex number.
+      Example: 
+          In this example, we calculate the hyperbolic cosine of a complex number.
+          Mathematically, if we have:
+
+          .. math::
+             z = 1 + i
+          The hyperbolic cosine is:
+
+          .. math::
+             \cosh(z) = \frac{e^z + e^{-z}}{2}
+
+          .. code-block:: CSharp 
+
+             // import libraries
+             using CypherCrescent.MathematicsLibrary;
+             using static System.Math;
+             using System;
+             
+             // Example of using the Cosh method
+             Complex c = new Complex(1.0, 1.0);
+             Complex coshComplex = Complex.Cosh(c);
+             // print the result
+             Console.WriteLine($"Cosh Complex = {coshComplex}");
+
+         Output: 
+
+
+          .. code-block:: Terminal 
+
+             Cosh Complex =   0.8337 + 0.9889i
+
+
+   Tanh::
+      Description: 
+          Calculates the hyperbolic tangent of a complex number.
+      Param: 
+         | c:  The complex number for which to calculate the hyperbolic tangent.
+      Returns: 
+          A complex number representing the hyperbolic tangent of the input complex number.
+      Example: 
+          In this example, we calculate the hyperbolic tangent of a complex number.
+          Mathematically, if we have:
+
+          .. math::
+             z = 1 + i
+          The hyperbolic tangent is:
+
+          .. math::
+             \tanh(z) = \frac{\sinh(z)}{\cosh(z)}
+
+          .. code-block:: CSharp 
+
+             // import libraries
+             using CypherCrescent.MathematicsLibrary;
+             using static System.Math;
+             using System;
+             
+             // Example of using the Tanh method
+             Complex c = new Complex(1.0, 1.0);
+             Complex tanhComplex = Complex.Tanh(c);
+             // print the result
+             Console.WriteLine($"Tanh Complex = {tanhComplex}");
+
+         Output: 
+
+
+          .. code-block:: Terminal 
+
+             Tanh Complex =   1.0839 + 0.2718i
