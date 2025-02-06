@@ -965,3 +965,42 @@ Complex::
           .. code-block:: Terminal 
 
              Acosh Complex = 1.0613 + 0.9046i
+
+
+   Atanh::
+      Description: 
+          Calculates the inverse hyperbolic tangent (artanh) of a complex number.
+      Param: 
+         | c:  The complex number for which to calculate the inverse hyperbolic tangent.
+      Returns: 
+          A complex number representing the inverse hyperbolic tangent of the input complex number.
+      Example: 
+          In this example, we calculate the inverse hyperbolic tangent of a complex number.
+          Mathematically, if we have:
+
+          .. math::
+             z = 1 + i
+          The inverse hyperbolic tangent is:
+
+          .. math::
+             \artanh(z) = \frac{1}{2} \ln\left(\frac{1 + z}{1 - z}\right)
+
+          .. code-block:: CSharp 
+
+             // import libraries
+             using CypherCrescent.MathematicsLibrary;
+             using static System.Math;
+             using System;
+             
+             // Example of using the Atanh method
+             Complex c = new Complex(1.0, 1.0);
+             Complex atanhComplex = Complex.Atanh(c);
+             // print the result
+             Console.WriteLine($"Atanh Complex = {atanhComplex}");
+
+         Output: 
+
+
+          .. code-block:: Terminal 
+
+             Atanh Complex = 0.4024 + 1.0172i
