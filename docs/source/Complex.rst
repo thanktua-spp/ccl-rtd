@@ -811,6 +811,45 @@ Complex::
              Asin Complex = 0.6662 + 1.0613i
 
 
+   Acos::
+      Description: 
+          Calculates the inverse cosine (arccosine) of a complex number.
+      Param: 
+         | c:  The complex number for which to calculate the inverse cosine.
+      Returns: 
+          A complex number representing the inverse cosine of the input complex number.
+      Example: 
+          In this example, we calculate the inverse cosine of a complex number.
+          Mathematically, if we have:
+
+          .. math::
+             z = 1 + i
+          The inverse cosine is:
+
+          .. math::
+             \arccos(z) = -i \ln\left(z + i \sqrt{1 - z^2}\right)
+
+          .. code-block:: CSharp 
+
+             // import libraries
+             using CypherCrescent.MathematicsLibrary;
+             using static System.Math;
+             using System;
+             
+             // Example of using the Acos method
+             Complex c = new Complex(1.0, 1.0);
+             Complex acosComplex = Complex.Acos(c);
+             // print the result
+             Console.WriteLine($"Acos Complex = {acosComplex}");
+
+         Output: 
+
+
+          .. code-block:: Terminal 
+
+             Acos Complex = 0.9046 - 1.0613i
+
+
    Atan::
       Description: 
           Calculates the inverse tangent (arctangent) of a complex number.
