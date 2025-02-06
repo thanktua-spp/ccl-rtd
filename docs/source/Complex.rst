@@ -140,11 +140,18 @@ Complex::
 
           .. code-block:: CSharp 
 
-          // Example of using the Max method
-          Complex A = new Complex(3.0, 4.0);
-          Complex B = new Complex(5.0, 2.0);
-          Complex maxComplex = Complex.Max(A, B);
-          Console.WriteLine($"Max Complex = {maxComplex}");
+             // import libraries
+             using CypherCrescent.MathematicsLibrary;
+             using static System.Math;
+             using System;
+             
+             // Example of using the Max method
+             Complex A = new Complex(3.0, 4.0);
+             Complex B = new Complex(5.0, 2.0);
+             // find the maximum
+             Complex maxComplex = Complex.Max(A, B);
+             // print the result
+             Console.WriteLine($"Max Complex = {maxComplex}");
 
          Output: 
 
