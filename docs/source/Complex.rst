@@ -348,3 +348,33 @@ Complex::
              Root =   2.0000 + 0.0000i
              Root =  -1.0000 + 1.7321i
              Root =  -1.0000 - 1.7321i
+
+
+   Random::
+      Description: 
+          Generates a random complex number with real and imaginary parts between 0 and 1.
+      Param: 
+         | random:  An optional Random object to use for generating the random numbers. If null, a new Random object is created.
+      Returns: 
+          A complex number with random real and imaginary parts.
+      Example: 
+          In this example, we generate a random complex number.
+
+          .. code-block:: CSharp 
+
+             // import libraries
+             using CypherCrescent.MathematicsLibrary;
+             using static System.Math;
+             using System;
+             
+             // Example of using the Random method
+             Complex randomComplex = Complex.Random();
+             // print the result
+             Console.WriteLine($"Random Complex = {randomComplex}");
+
+         Output: 
+
+
+          .. code-block:: Terminal 
+
+             Random Complex =   0.1234 + 0.5678i
