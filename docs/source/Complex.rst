@@ -536,3 +536,42 @@ Complex::
           .. code-block:: Terminal 
 
              Log Complex =   0.2310 + 0.3218i
+
+
+   Sin::
+      Description: 
+          Calculates the sine of a complex number.
+      Param: 
+         | c:  The complex number for which to calculate the sine.
+      Returns: 
+          A complex number representing the sine of the input complex number.
+      Example: 
+          In this example, we calculate the sine of a complex number.
+          Mathematically, if we have:
+
+          .. math::
+             z = 1 + i
+          The sine is:
+
+          .. math::
+             \sin(z) = \frac{e^{i z} - e^{-i z}}{2 i}
+
+          .. code-block:: CSharp 
+
+             // import libraries
+             using CypherCrescent.MathematicsLibrary;
+             using static System.Math;
+             using System;
+             
+             // Example of using the Sin method
+             Complex c = new Complex(1.0, 1.0);
+             Complex sinComplex = Complex.Sin(c);
+             // print the result
+             Console.WriteLine($"Sin Complex = {sinComplex}");
+
+         Output: 
+
+
+          .. code-block:: Terminal 
+
+             Sin Complex =   1.2985 + 0.6349i
