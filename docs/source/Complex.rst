@@ -574,4 +574,82 @@ Complex::
 
           .. code-block:: Terminal 
 
-             Sin Complex =   1.2985 + 0.6349i
+             Sin Complex =   1.2985 + 0.6350i
+
+
+   Cos::
+      Description: 
+          Calculates the cosine of a complex number.
+      Param: 
+         | c:  The complex number for which to calculate the cosine.
+      Returns: 
+          A complex number representing the cosine of the input complex number.
+      Example: 
+          In this example, we calculate the cosine of a complex number.
+          Mathematically, if we have:
+
+          .. math::
+             z = 1 + i
+          The cosine is:
+
+          .. math::
+             \cos(z) = \frac{e^{i z} + e^{-i z}}{2}
+
+          .. code-block:: CSharp 
+
+             // import libraries
+             using CypherCrescent.MathematicsLibrary;
+             using static System.Math;
+             using System;
+             
+             // Example of using the Cos method
+             Complex c = new Complex(1.0, 1.0);
+             Complex cosComplex = Complex.Cos(c);
+             // print the result
+             Console.WriteLine($"Cos Complex = {cosComplex}");
+
+         Output: 
+
+
+          .. code-block:: Terminal 
+
+             Cos Complex =   0.8337 - 0.9889i
+
+
+   Tan::
+      Description: 
+          Calculates the tangent of a complex number.
+      Param: 
+         | c:  The complex number for which to calculate the tangent.
+      Returns: 
+          A complex number representing the tangent of the input complex number.
+      Example: 
+          In this example, we calculate the tangent of a complex number.
+          Mathematically, if we have:
+
+          .. math::
+             z = 1 + i
+          The tangent is:
+
+          .. math::
+             \tan(z) = -i \frac{e^{i z} - e^{-i z}}{e^{i z} + e^{-i z}}
+
+          .. code-block:: CSharp 
+
+             // import libraries
+             using CypherCrescent.MathematicsLibrary;
+             using static System.Math;
+             using System;
+             
+             // Example of using the Tan method
+             Complex c = new Complex(1.0, 1.0);
+             Complex tanComplex = Complex.Tan(c);
+             // print the result
+             Console.WriteLine($"Tan Complex = {tanComplex}");
+
+         Output: 
+
+
+          .. code-block:: Terminal 
+
+             Tan Complex =   0.2718 + 1.0839i
