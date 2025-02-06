@@ -691,7 +691,7 @@ Complex::
 
           .. code-block:: Terminal 
 
-             Sinh Complex =   0.6349 + 1.2985i
+             Sinh Complex =   0.6350 + 1.2985i
 
 
    Cosh::
@@ -770,6 +770,45 @@ Complex::
           .. code-block:: Terminal 
 
              Tanh Complex =   1.0839 + 0.2718i
+
+
+   Asin::
+      Description: 
+          Calculates the inverse sine (arcsine) of a complex number.
+      Param: 
+         | c:  The complex number for which to calculate the inverse sine.
+      Returns: 
+          A complex number representing the inverse sine of the input complex number.
+      Example: 
+          In this example, we calculate the inverse sine of a complex number.
+          Mathematically, if we have:
+
+          .. math::
+             z = 1 + i
+          The inverse sine is:
+
+          .. math::
+             \arcsin(z) = -i \ln\left(i z + \sqrt{1 - z^2}\right)
+
+          .. code-block:: CSharp 
+
+             // import libraries
+             using CypherCrescent.MathematicsLibrary;
+             using static System.Math;
+             using System;
+             
+             // Example of using the Asin method
+             Complex c = new Complex(1.0, 1.0);
+             Complex asinComplex = Complex.Asin(c);
+             // print the result
+             Console.WriteLine($"Asin Complex = {asinComplex}");
+
+         Output: 
+
+
+          .. code-block:: Terminal 
+
+             Asin Complex = 0.6662 + 1.0613i
 
 
    Atan::
