@@ -207,7 +207,7 @@ Polynomials::
 
           .. math::
              P(x) = x^3 - 6x^2 + 11x - 6
-          and we want to evaluate it at \(x = 2\):
+          and we want to evaluate it at \(x = 4\):
           
 
           .. code-block:: CSharp 
@@ -220,11 +220,11 @@ Polynomials::
              // Coefficients of the polynomial x^3 - 6x^2 + 11x - 6
              double[] coeffs_a = [1, -6, 11, -6];
              
-             // Evaluate the polynomial at x = 3
+             // Evaluate the polynomial at x = 4
              double value = Polynomials.PolyVal(coeffs_a, 3);
              
              // Print the value
-             Console.WriteLine($"P(2) = {value}");
+             Console.WriteLine($"P(4) = {value}");
           
 
          Output: 
@@ -232,4 +232,4 @@ Polynomials::
 
           .. code-block:: Terminal 
 
-             P(2) = 0
+             P(4) = 6.0000
