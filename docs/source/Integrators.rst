@@ -478,12 +478,12 @@ Integrators::
 
    GaussLeg3::
       Description: 
-          Computes the definite triple integral of a function over a region where the y-bounds are defined by a function of x and a constant, the lower z-bound is a function of x and y, and the upper z-bound is a constant, using adaptive Gauss-Legendre quadrature.
+          Computes the definite triple integral of a function over a region where the x and y bounds are constants, the lower z-bound is a function of x and y, and the upper z-bound is constant, using adaptive Gauss-Legendre quadrature.
       Param: 
          | fun:  The function to integrate. The function should accept three doubles (x, y, z) and return a double.
          | x_1:  The lower bound of the x integration.
          | x_2:  The upper bound of the x integration.
-         | y_1:  A function that defines the lower bound of the y integration as a function of x. It should accept a double (x) and return a double (y).
+         | y_1:  The lower bound of the y integration. This is a constant value.
          | y_2:  The upper bound of the y integration. This is a constant value.
          | z_1:  A function that defines the lower bound of the z integration as a function of x and y. It should accept two doubles (x, y) and return a double (z).
          | z_2:  The upper bound of the z integration. This is a constant value.
@@ -492,15 +492,15 @@ Integrators::
           The approximate value of the definite triple integral.
       Remark: 
          |  This method uses adaptive Gauss-Legendre quadrature to approximate the triple integral.
-         |  The integration is performed over the region defined by x_1 <= x <= x_2, y_1(x) <= y <= y_2, and z_1(x, y) <= z <= z_2.
+         |  The integration is performed over the region defined by x_1 <= x <= x_2, y_1 <= y <= y_2, and z_1(x, y) <= z <= z_2.
          |  The number of quadrature points is increased until the desired relative accuracy is achieved or a maximum number of iterations is reached.
-         |  For best results, the function should be smooth within the integration region, y_1(x) should be a smooth function, and z_1(x, y) should be a smooth function. Also ensure that z_1(x,y) is less than or equal to z_2 within the integration region.
+         |  For best results, the function should be smooth within the integration region, and z_1(x, y) should be a smooth function. The x and y bounds, and the upper z bound are assumed to be constant.
          |  If x_1 equals x_2 then the method will return 0.
       Example: 
-           Integrate the function f(x, y, z) = x * y * z over the region where x ranges from 0 to 1, y ranges from x^2 to 2, and z ranges from x*y to 3, which can be expressed as:
+           Integrate the function f(x, y, z) = x * x * y * y * z over the region where x ranges from -1 to 1, y ranges from -1 to 1, and z ranges from x*y to 2, which can be expressed as:
 
           .. math::
-             \int_{x_1}^{x_2} \int_{y_1(x)}^{y_2}  \int_{z_1(x,y)}^{z_2} x y z \, dz \, dy \, dx
+             \int_{x_1}^{x_2} \int_{y_1}^{y_2}  \int_{z_1(x, y)}^{z_2} (x^2 y^2 z) \, dz \, dy \, dx
 
           .. code-block:: CSharp 
 
@@ -509,25 +509,24 @@ Integrators::
              using System;
          
              // Define the function to integrate
-             Func<double, double, double, double> f = (x, y, z) => x * y * z;
-             // Define the lower bound of y as a function of x
-             Func<double, double> y_1 = (x) => x * x;
+             Func<double, double, double, double> f = (x, y, z) => x * x * y * y * z;
+             // Set the lower bound of y
+             double y_1 = -1;
              // Set the upper bound of y
-             double y_2 = 2;
+             double y_2 = 1;
              // Define the lower bound of z as a function of x and y
              Func<double, double, double> z_1 = (x, y) => x * y;
              // Set the upper bound of z
-             double z_2 = 3;
+             double z_2 = 2;
              // Set the lower bound of x
-             double x_1 = 0;
+             double x_1 = -1;
              // Set the upper bound of x
              double x_2 = 1;
              // Calculate the integral
              double integral = Integrators.GaussLeg3(f, x_1, x_2, y_1, y_2, z_1, z_2);
              // Print the result
-             Console.WriteLine($"The triple integral of x*y*z is approximately: {integral}");
+             Console.WriteLine($"The triple integral of x^2*y^2*z is approximately: {integral}");
    |   cref=System.ArgumentNullException is Thrown when the  fun is null.
-   |   cref=System.ArgumentNullException is Thrown when the  y_1 is null.
    |   cref=System.ArgumentNullException is Thrown when the  z_1 is null.
    |   cref=System.Exception is Thrown when the maximum number of iterations is reached without achieving the desired accuracy.
 
@@ -582,6 +581,7 @@ Integrators::
              double integral = Integrators.GaussLeg3(f, x_1, x_2, y_1, y_2, z_1, z_2);
              // Print the result
              Console.WriteLine($"The triple integral of x*y*z is approximately: {integral}");
+             // The triple integral of x*y*z is approximately: 3.63541666602461
    |   cref=System.ArgumentNullException is Thrown when the  fun is null.
    |   cref=System.ArgumentNullException is Thrown when the  y_1 is null.
    |   cref=System.ArgumentNullException is Thrown when the  z_1 is null.
@@ -638,6 +638,7 @@ Integrators::
              double integral = Integrators.GaussLeg3(f, x_1, x_2, y_1, y_2, z_1, z_2);
              // Print the result
              Console.WriteLine($"The triple integral of x+y+z is approximately: {integral}");
+             // The triple integral of x+y+z is approximately: 20.7166666645573
    |   cref=System.ArgumentNullException is Thrown when the  fun is null.
    |   cref=System.ArgumentNullException is Thrown when the  y_2 is null.
    |   cref=System.ArgumentNullException is Thrown when the  z_1 is null.
