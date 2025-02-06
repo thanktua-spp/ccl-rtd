@@ -58,6 +58,11 @@ Complex::
 
           .. code-block:: CSharp 
 
+             // import libraries
+             using CypherCrescent.MathematicsLibrary;
+             using static System.Math;
+             using System;
+         
              // Example of creating a Complex instance
              Complex complex = new Complex(3.0, 4.0);
              // Print the result
@@ -85,9 +90,22 @@ Complex::
 
           .. code-block:: CSharp 
 
-          // Example of creating a Complex instance
-          Complex complexNumber = new Complex(5.0);
-          Console.WriteLine($"Real: {complexNumber.Real}, Imaginary: {complexNumber.Imaginary}");
+             // import libraries
+             using CypherCrescent.MathematicsLibrary;
+             using static System.Math;
+             using System;
+         
+             // Example of creating a Complex instance
+             Complex complexNumber = new Complex(5.0);
+             // Print the result
+             Console.WriteLine($"z = {complex}");
+
+         Output: 
+
+
+          .. code-block:: Terminal 
+
+             z = 5 + 0i
 
 
    CompareTo::
