@@ -267,7 +267,7 @@ Complex::
           .. math::
              \begin{array}{rcl}
              \text{Magnitude} &=& 5  \\
-             \text{Argument} &=& \arctan\left(\frac{4}{3}\right)
+             \text{Argument} &=& \arctan\left(\cfrac{4}{3}\right)
              \end{array}
 
           .. code-block:: CSharp 
