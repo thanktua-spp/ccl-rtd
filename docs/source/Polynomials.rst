@@ -26,7 +26,7 @@ Polynomials::
              using System;
              
              // Coefficients of the polynomial 7x^6 + 9x^5 - 7x^4 + 9x^3 + 3x^2 - 8x - 4
-             double[] coeffs = { 7,  9, -7, 9, 3, -8, -4 };
+             double[] coeffs = [ 7,  9, -7, 9, 3, -8, -4 ];
              
              // Calculate the roots
              Complex[] roots = Complex.Roots(coeffs);
