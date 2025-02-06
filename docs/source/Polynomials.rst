@@ -77,9 +77,8 @@ Polynomials::
              
              // Print the roots
              foreach (Complex root in roots)
-             {
                  Console.WriteLine($"Root: {root}");
-             }
+             
           
 
          Output: 
