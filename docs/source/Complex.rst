@@ -58,9 +58,17 @@ Complex::
 
           .. code-block:: CSharp 
 
-          // Example of creating a Complex instance
-          Complex complexNumber = new Complex(3.0, 4.0);
-          Console.WriteLine($"Real: {complexNumber.Real}, Imaginary: {complexNumber.Imaginary}");
+             // Example of creating a Complex instance
+             Complex complex = new Complex(3.0, 4.0);
+             // Print the result
+             Console.WriteLine($"z = {complex}");
+
+         Output: 
+
+
+          .. code-block:: Terminal 
+
+             z = 3 + 4i
 
 
    Complex::
