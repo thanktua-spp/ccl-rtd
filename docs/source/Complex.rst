@@ -770,3 +770,42 @@ Complex::
           .. code-block:: Terminal 
 
              Tanh Complex =   1.0839 + 0.2718i
+
+
+   Atan::
+      Description: 
+          Calculates the inverse tangent (arctangent) of a complex number.
+      Param: 
+         | c:  The complex number for which to calculate the inverse tangent.
+      Returns: 
+          A complex number representing the inverse tangent of the input complex number.
+      Example: 
+          In this example, we calculate the inverse tangent of a complex number.
+          Mathematically, if we have:
+
+          .. math::
+             z = 1 + i
+          The inverse tangent is:
+
+          .. math::
+             \arctan(z) = \frac{i}{2} \ln\left(\frac{1 - i z}{1 + i z}\right)
+
+          .. code-block:: CSharp 
+
+             // import libraries
+             using CypherCrescent.MathematicsLibrary;
+             using static System.Math;
+             using System;
+             
+             // Example of using the Atan method
+             Complex c = new Complex(1.0, 1.0);
+             Complex atanComplex = Complex.Atan(c);
+             // print the result
+             Console.WriteLine($"Atan Complex = {atanComplex}");
+
+         Output: 
+
+
+          .. code-block:: Terminal 
+
+             Atan Complex = 1.0172 + 0.4024i
