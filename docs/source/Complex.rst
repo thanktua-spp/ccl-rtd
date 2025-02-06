@@ -817,7 +817,7 @@ Complex::
           The inverse sine is:
 
           .. math::
-             \arcsin(z) = -i \ln\left(i z + \sqrt{1 - z^2}\right)
+             \sin^{-1}(z) = -i \ln\left(i z + \sqrt{1 - z^2}\right)
 
           .. code-block:: CSharp 
 
@@ -856,7 +856,7 @@ Complex::
           The inverse cosine is:
 
           .. math::
-             \arccos(z) = -i \ln\left(z + i \sqrt{1 - z^2}\right)
+             \cos^{-1}(z) = -i \ln\left(z + i \sqrt{1 - z^2}\right)
 
           .. code-block:: CSharp 
 
@@ -895,7 +895,7 @@ Complex::
           The inverse tangent is:
 
           .. math::
-             \arctan(z) = \frac{i}{2} \ln\left(\frac{1 - i z}{1 + i z}\right)
+             \tan^{-1}(z) = \frac{i}{2} \ln\left(\frac{1 - i z}{1 + i z}\right)
 
           .. code-block:: CSharp 
 
