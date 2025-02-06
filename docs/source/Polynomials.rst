@@ -69,7 +69,7 @@ Polynomials::
              using static System.Math;
              using System;
              
-             // Coefficients of the polynomial (x - (1 + i))(x - (2 + 2i))(x - (3 + 3i))
+             // Complex Coefficients of the polynomial (-6, -6i)x^3 + (11, 11i)x^2 + (-6, -6i)x + (1, 1)
              Complex[] coeffs = { new(-6, -6), new(11, 11), new(-6, -6), new(1, 1) };
              
              // Calculate the roots
