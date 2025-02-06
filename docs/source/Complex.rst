@@ -105,7 +105,7 @@ Complex::
 
           .. code-block:: Terminal 
 
-             z =  5.0000 + 0.0000i
+             z =   5.0000 + 0.0000i
 
 
    CompareTo::
@@ -134,7 +134,7 @@ Complex::
           Mathematically, if we have:
 
           .. math::
-             A = 3 + 4i
+             A = 3 + 4i \, 
              B = 5 + 2i
           The method will return B as it is greater.
 
