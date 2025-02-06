@@ -73,7 +73,7 @@ Complex::
 
           .. code-block:: Terminal 
 
-             z = 3 + 4i
+             z =   3.0000 + 4.0000i
 
 
    Complex::
@@ -105,7 +105,7 @@ Complex::
 
           .. code-block:: Terminal 
 
-             z = 5 + 0i
+             z =  5.0000 + 0.0000i
 
 
    CompareTo::
