@@ -45,7 +45,7 @@ Integrators::
              // Print the result
              Console.WriteLine($"The integral of x^2 is approximately: {integral}");
 
-            Output: 
+         Output: 
 
 
           .. code-block:: Terminal 
@@ -100,7 +100,7 @@ Integrators::
              // Print the result
              Console.WriteLine($"The integral of x*y is approximately: {integral}");
 
-            Output: 
+         Output: 
 
 
           .. code-block:: Terminal 
@@ -155,7 +155,7 @@ Integrators::
              // Print the result
              Console.WriteLine($"The integral is approximately: {integral}");
 
-            Output: 
+         Output: 
 
 
           .. code-block:: Terminal 
@@ -211,7 +211,7 @@ Integrators::
              // Print the result
              Console.WriteLine($"The integral is approximately: {integral}");
 
-            Output: 
+         Output: 
 
 
           .. code-block:: Terminal 
@@ -268,7 +268,7 @@ Integrators::
              // Print the result
              Console.WriteLine($"The integral is approximately: {integral}");
 
-            Output: 
+         Output: 
 
 
           .. code-block:: Terminal 
@@ -331,7 +331,7 @@ Integrators::
              // Print the result
              Console.WriteLine($"The triple integral of x*y*z is approximately: {integral}");
 
-            Output: 
+         Output: 
 
 
           .. code-block:: Terminal 
@@ -392,7 +392,7 @@ Integrators::
              // Print the result
              Console.WriteLine($"The triple integral of x*y*z is approximately: {integral}");
 
-            Output: 
+         Output: 
 
 
           .. code-block:: Terminal 
@@ -454,7 +454,7 @@ Integrators::
              // Print the result
              Console.WriteLine($"The triple integral of x*y*z is approximately: {integral}");
 
-            Output: 
+         Output: 
 
 
           .. code-block:: Terminal 
@@ -517,7 +517,7 @@ Integrators::
              // Print the result
              Console.WriteLine($"The triple integral of x*y*z is approximately: {integral}");
 
-            Output: 
+         Output: 
 
 
           .. code-block:: Terminal 
@@ -581,7 +581,7 @@ Integrators::
              // Print the result
              Console.WriteLine($"The triple integral of x^2*y^2*z is approximately: {integral}");
 
-            Output: 
+         Output: 
 
 
           .. code-block:: Terminal 
@@ -643,7 +643,7 @@ Integrators::
              // Print the result
              Console.WriteLine($"The triple integral of x*y*z is approximately: {integral}");
 
-            Output: 
+         Output: 
 
 
           .. code-block:: Terminal 
@@ -707,7 +707,7 @@ Integrators::
              Console.WriteLine($"The triple integral of x+y+z is approximately: {integral}");
              // The triple integral of x+y+z is approximately: 20.7166666645573
 
-            Output: 
+         Output: 
 
 
           .. code-block:: Terminal 
@@ -772,7 +772,7 @@ Integrators::
              Console.WriteLine($"The triple integral of x^2+y^2+z^2 is approximately: {integral}");
              // The triple integral of x^2+y^2+z^2 is approximately: 29.0252572989997
 
-            Output: 
+         Output: 
 
 
           .. code-block:: Terminal 
@@ -837,7 +837,7 @@ Integrators::
              Console.WriteLine($"The triple integral of 1/(1+x+y+z) is approximately: {integral}");
              // The triple integral of 1/(1+x+y+z) is approximately: 1.40208584910316
 
-            Output: 
+         Output: 
 
 
           .. code-block:: Terminal 
@@ -900,7 +900,7 @@ Integrators::
              Console.WriteLine($"The triple integral of xy+z is approximately: {integral}");
              // The triple integral of xy+z is approximately: 119.271742284841
 
-            Output: 
+         Output: 
 
 
           .. code-block:: Terminal 
@@ -964,7 +964,7 @@ Integrators::
              Console.WriteLine($"The triple integral of x-y+2z is approximately: {integral}");
              // The triple integral of x-y+2z is approximately: 353.666666629263
 
-            Output: 
+         Output: 
 
 
           .. code-block:: Terminal 
@@ -1030,7 +1030,7 @@ Integrators::
              Console.WriteLine($"The triple integral of x*y*z is approximately: {integral}");
              // The triple integral of x*y*z is approximately: -0.0921296305735099
 
-            Output: 
+         Output: 
 
 
           .. code-block:: Terminal 
@@ -1095,7 +1095,7 @@ Integrators::
              // Print the result
              Console.WriteLine($"The triple integral of x*y*z is approximately: {integral}");
 
-            Output: 
+         Output: 
 
 
           .. code-block:: Terminal 
@@ -1159,7 +1159,7 @@ Integrators::
              // Print the result
              Console.WriteLine($"The triple integral of x*y*z is approximately: {integral}");
 
-            Output: 
+         Output: 
 
 
           .. code-block:: Terminal 
@@ -1225,7 +1225,7 @@ Integrators::
              Console.WriteLine($"The triple integral of x*y*z is approximately: {integral}");
              // 
 
-            Output: 
+         Output: 
 
 
           .. code-block:: Terminal 
@@ -1291,7 +1291,7 @@ Integrators::
              // Print the result
              Console.WriteLine($"The triple integral of x*y*z is approximately: {integral}");
 
-            Output: 
+         Output: 
 
 
           .. code-block:: Terminal 
