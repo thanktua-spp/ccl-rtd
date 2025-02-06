@@ -11,11 +11,18 @@ Complex::
       |  which satisfies the equation i² = -1.
    Example: 
        <code>
-       Complex z1 = new ComplexNumber(2, 3); // 2 + 3i
-       Complex z2 = new ComplexNumber(1, -2); // 1 - 2i
-       Complex sum = z1 + z2; // Complex number addition
-       Console.WriteLine(sum); // 3 + i
+          Complex z1 = new ComplexNumber(2, 3); 
+          Complex z2 = new ComplexNumber(1, -2); 
+          Complex sum = z1 + z2; // Complex number addition
+          Console.WriteLine(sum); 
        </code>
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          3.0000 +  1.0000i
 
 
    Real::
