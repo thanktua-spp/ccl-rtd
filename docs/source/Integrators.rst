@@ -447,6 +447,7 @@ Integrators::
 
              // import libraries
              using CypherCrescent.MathematicsLibrary;
+             using static System.Math
              using System;
          
              // Define the function to integrate
@@ -454,7 +455,7 @@ Integrators::
              // Define the lower bound of y as a function of x
              Func<double, double> y_1 = (x) => x * x;
              // Define the upper bound of y as a function of x
-             Func<double, double> y_2 = (x) => Math.Sqrt(x);
+             Func<double, double> y_2 = (x) => Sqrt(x);
              // Set the lower bound of z
              double z_1 = 2;
              // Set the upper bound of z
@@ -467,6 +468,7 @@ Integrators::
              double integral = Integrators.GaussLeg3(f, x_1, x_2, y_1, y_2, z_1, z_2);
              // Print the result
              Console.WriteLine($"The triple integral of x*y*z is approximately: {integral}");
+             // The triple integral of x*y*z is approximately: 0.208333333312197
    |   cref=System.ArgumentNullException is Thrown when the  fun is null.
    |   cref=System.ArgumentNullException is Thrown when the  y_1 is null.
    |   cref=System.ArgumentNullException is Thrown when the  y_2 is null.
