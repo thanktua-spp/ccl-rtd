@@ -38,7 +38,8 @@ Complex::
           Console.WriteLine($"Quotient: {quotient}");
           
           // Power (c1 - c2)^c3
-          Console.WriteLine($"(c1 - c2)^c3: {(c1 - c2)^c3}");
+          Complex power = Complex.Pow(difference, c3);
+          Console.WriteLine($"(c1 - c2)^c3: {power}");
        
 
       Output: 
@@ -933,7 +934,7 @@ Complex::
           The inverse hyperbolic sine is:
 
           .. math::
-             \arsinh(z) = \ln\left(z + \sqrt{z^2 + 1}\right)
+             \arcsinh(z) = \ln\left(z + \sqrt{z^2 + 1}\right)
 
           .. code-block:: CSharp 
 
@@ -972,7 +973,7 @@ Complex::
           The inverse hyperbolic cosine is:
 
           .. math::
-             \arcosh(z) = \ln\left(z + \sqrt{z^2 - 1}\right)
+             \arccosh(z) = \ln\left(z + \sqrt{z^2 - 1}\right)
 
           .. code-block:: CSharp 
 
@@ -1011,7 +1012,7 @@ Complex::
           The inverse hyperbolic tangent is:
 
           .. math::
-             \artanh(z) = \frac{1}{2} \ln\left(\frac{1 + z}{1 - z}\right)
+             \arctanh(z) = \frac{1}{2} \ln\left(\frac{1 + z}{1 - z}\right)
 
           .. code-block:: CSharp 
 
