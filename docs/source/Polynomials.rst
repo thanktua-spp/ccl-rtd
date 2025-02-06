@@ -188,5 +188,5 @@ Polynomials::
 
           .. code-block:: Terminal 
 
-             Quotient: 1 + 1i, -4 - 4i, 5 + 5i
-             Remainder: 0 + 0i
+             Quotient:   1.0000 + 0.0000i ,  -4.0000 - 4.0000i ,  11.0000 - 5.0000i
+             Remainder:  26.0000 + 6.0000i
