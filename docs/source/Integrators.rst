@@ -1289,7 +1289,7 @@ Integrators::
 
           .. code-block:: Terminal 
 
-          
+             The triple integral of x*y*z is approximately: 0.0641203694008985
    |   cref=System.ArgumentNullException is Thrown when the  fun is null.
    |   cref=System.ArgumentNullException is Thrown when the  y_1 is null.
    |   cref=System.ArgumentNullException is Thrown when the  y_2 is null.
