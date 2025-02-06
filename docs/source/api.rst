@@ -8,3 +8,4 @@ Classes
    .. toctree::
 
       Integrators
+      Complex
