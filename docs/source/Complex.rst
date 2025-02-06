@@ -378,3 +378,42 @@ Complex::
           .. code-block:: Terminal 
 
              Random Complex =   0.1234 + 0.5678i
+
+
+   Sqrt::
+      Description: 
+          Calculates the square root of a complex number.
+      Param: 
+         | c:  The complex number for which to calculate the square root.
+      Returns: 
+          A complex number representing the square root of the input complex number.
+      Example: 
+          In this example, we calculate the square root of a complex number.
+          Mathematically, if we have:
+
+          .. math::
+             z = 3 + 4i
+          The square root is:
+
+          .. math::
+             \sqrt{z} = \sqrt{3 + 4i}
+
+          .. code-block:: CSharp 
+
+             // import libraries
+             using CypherCrescent.MathematicsLibrary;
+             using static System.Math;
+             using System;
+             
+             // Example of using the Sqrt method
+             Complex c = new Complex(3.0, 4.0);
+             Complex sqrtComplex = Complex.Sqrt(c);
+             // print the result
+             Console.WriteLine($"Sqrt Complex = {sqrtComplex}");
+
+         Output: 
+
+
+          .. code-block:: Terminal 
+
+             Sqrt Complex =   2.0000 + 1.0000i
