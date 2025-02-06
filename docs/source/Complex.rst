@@ -417,3 +417,42 @@ Complex::
           .. code-block:: Terminal 
 
              Sqrt Complex =   2.0000 + 1.0000i
+
+
+   Exp::
+      Description: 
+          Calculates the exponential of a complex number.
+      Param: 
+         | c:  The complex number for which to calculate the exponential.
+      Returns: 
+          A complex number representing the exponential of the input complex number.
+      Example: 
+          In this example, we calculate the exponential of a complex number.
+          Mathematically, if we have:
+
+          .. math::
+             z = 1 + i
+          The exponential is:
+
+          .. math::
+             e^z = e^{1 + i}
+
+          .. code-block:: CSharp 
+
+             // import libraries
+             using CypherCrescent.MathematicsLibrary;
+             using static System.Math;
+             using System;
+             
+             // Example of using the Exp method
+             Complex c = new Complex(1.0, 1.0);
+             Complex expComplex = Complex.Exp(c);
+             // print the result
+             Console.WriteLine($"Exp Complex = {expComplex}");
+
+         Output: 
+
+
+          .. code-block:: Terminal 
+
+             Exp Complex =   1.4687 + 2.2874i
