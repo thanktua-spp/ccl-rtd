@@ -289,3 +289,55 @@ Complex::
           .. code-block:: Terminal 
 
              Magnitude = 5, Argument = 0.9273
+
+
+   Root::
+      Description: 
+          Calculates the Nth roots of a complex number.
+      Param: 
+         | c:  The complex number for which to calculate the roots.
+         | N:  The number of roots to calculate.
+      Returns: 
+          An array of complex numbers representing the Nth roots of the input complex number.
+   |   cref=ArgumentException is 
+      Example: 
+          In this example, we calculate the 3rd roots of a complex number.
+          Mathematically, if we have:
+
+          .. math::
+             z = 8 + 0i, N = 3
+          The roots are:
+
+          .. math::
+             \begin{array}{rcl}
+             \text{Root}_1 &=& 2 + 0i \\
+             \text{Root}_2 &=& -1 + \sqrt{3}i \\
+             \text{Root}_3 &=& -1 - \sqrt{3}i
+             \end{array}
+
+          .. code-block:: CSharp 
+
+             // import libraries
+             using CypherCrescent.MathematicsLibrary;
+             using static System.Math;
+             using System;
+             using System.Linq;
+             
+             // Example of using the Root method
+             Complex c = new Complex(8.0, 0.0);
+             int N = 3;
+             Complex[] roots = Complex.Root(c, N);
+             // print the results
+             foreach (var root in roots)
+             {
+                 Console.WriteLine($"Root = {root}");
+             }
+
+         Output: 
+
+
+          .. code-block:: Terminal 
+
+             Root =   2.0000 + 0.0000i
+             Root =  -1.0000 + 1.7321i
+             Root =  -1.0000 - 1.7321i
