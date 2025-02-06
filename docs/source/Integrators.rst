@@ -45,6 +45,9 @@ Integrators::
              // Print the result
              Console.WriteLine($"The integral of x^2 is approximately: {integral}");
 
+         Output: 
+
+
           .. code-block:: Terminal 
 
              The integral of x^2 is approximately: 0.333333333321056
@@ -97,6 +100,9 @@ Integrators::
              // Print the result
              Console.WriteLine($"The integral of x*y is approximately: {integral}");
 
+         Output: 
+
+
           .. code-block:: Terminal 
 
              The integral of x*y is approximately: 0.749999999948747
@@ -148,6 +154,9 @@ Integrators::
              double integral = Integrators.GaussLeg2(f, x_1, x_2, y_1, y_2);
              // Print the result
              Console.WriteLine($"The integral is approximately: {integral}");
+
+         Output: 
+
 
           .. code-block:: Terminal 
 
@@ -202,6 +211,9 @@ Integrators::
              // Print the result
              Console.WriteLine($"The integral is approximately: {integral}");
 
+         Output: 
+
+
           .. code-block:: Terminal 
 
              The integral is approximately: -0.166666666655809
@@ -255,6 +267,9 @@ Integrators::
              double integral = Integrators.GaussLeg2(f, x_1, x_2, y_1, y_2);
              // Print the result
              Console.WriteLine($"The integral is approximately: {integral}");
+
+         Output: 
+
 
           .. code-block:: Terminal 
 
@@ -316,6 +331,9 @@ Integrators::
              // Print the result
              Console.WriteLine($"The triple integral of x*y*z is approximately: {integral}");
 
+         Output: 
+
+
           .. code-block:: Terminal 
 
              The triple integral of x*y*z is approximately: 1.8749999998078
@@ -373,6 +391,9 @@ Integrators::
              double integral = Integrators.GaussLeg3(f, x_1, x_2, y_1, y_2, z_1, z_2);
              // Print the result
              Console.WriteLine($"The triple integral of x*y*z is approximately: {integral}");
+
+         Output: 
+
 
           .. code-block:: Terminal 
 
@@ -433,6 +454,9 @@ Integrators::
              // Print the result
              Console.WriteLine($"The triple integral of x*y*z is approximately: {integral}");
 
+         Output: 
+
+
           .. code-block:: Terminal 
 
              The triple integral of x*y*z is approximately: -0.416666666625285
@@ -492,6 +516,9 @@ Integrators::
              double integral = Integrators.GaussLeg3(f, x_1, x_2, y_1, y_2, z_1, z_2);
              // Print the result
              Console.WriteLine($"The triple integral of x*y*z is approximately: {integral}");
+
+         Output: 
+
 
           .. code-block:: Terminal 
 
@@ -554,6 +581,9 @@ Integrators::
              // Print the result
              Console.WriteLine($"The triple integral of x^2*y^2*z is approximately: {integral}");
 
+         Output: 
+
+
           .. code-block:: Terminal 
 
              The triple integral of x^2*y^2*z is approximately: 0.808888888786791
@@ -612,11 +642,13 @@ Integrators::
              double integral = Integrators.GaussLeg3(f, x_1, x_2, y_1, y_2, z_1, z_2);
              // Print the result
              Console.WriteLine($"The triple integral of x*y*z is approximately: {integral}");
-             // The triple integral of x*y*z is approximately: 3.63541666602461
+
+         Output: 
+
 
           .. code-block:: Terminal 
 
-             
+             The triple integral of x*y*z is approximately: 3.63541666602461
    |   cref=System.ArgumentNullException is Thrown when the  fun is null.
    |   cref=System.ArgumentNullException is Thrown when the  y_1 is null.
    |   cref=System.ArgumentNullException is Thrown when the  z_1 is null.
@@ -674,6 +706,9 @@ Integrators::
              // Print the result
              Console.WriteLine($"The triple integral of x+y+z is approximately: {integral}");
              // The triple integral of x+y+z is approximately: 20.7166666645573
+
+         Output: 
+
 
           .. code-block:: Terminal 
 
@@ -737,6 +772,9 @@ Integrators::
              Console.WriteLine($"The triple integral of x^2+y^2+z^2 is approximately: {integral}");
              // The triple integral of x^2+y^2+z^2 is approximately: 29.0252572989997
 
+         Output: 
+
+
           .. code-block:: Terminal 
 
              
@@ -799,6 +837,9 @@ Integrators::
              Console.WriteLine($"The triple integral of 1/(1+x+y+z) is approximately: {integral}");
              // The triple integral of 1/(1+x+y+z) is approximately: 1.40208584910316
 
+         Output: 
+
+
           .. code-block:: Terminal 
 
              
@@ -858,6 +899,9 @@ Integrators::
              // Print the result
              Console.WriteLine($"The triple integral of xy+z is approximately: {integral}");
              // The triple integral of xy+z is approximately: 119.271742284841
+
+         Output: 
+
 
           .. code-block:: Terminal 
 
@@ -919,6 +963,9 @@ Integrators::
              // Print the result
              Console.WriteLine($"The triple integral of x-y+2z is approximately: {integral}");
              // The triple integral of x-y+2z is approximately: 353.666666629263
+
+         Output: 
+
 
           .. code-block:: Terminal 
 
@@ -983,6 +1030,9 @@ Integrators::
              Console.WriteLine($"The triple integral of x*y*z is approximately: {integral}");
              // The triple integral of x*y*z is approximately: -0.0921296305735099
 
+         Output: 
+
+
           .. code-block:: Terminal 
 
              The triple integral of x*y*z is approximately:   -0.0921296305735099
@@ -1045,6 +1095,9 @@ Integrators::
              // Print the result
              Console.WriteLine($"The triple integral of x*y*z is approximately: {integral}");
 
+         Output: 
+
+
           .. code-block:: Terminal 
 
              The triple integral of x*y*z is approximately:  1.43402777762941
@@ -1105,6 +1158,9 @@ Integrators::
              double integral = Integrators.GaussLeg3(f, x_1, x_2, y_1, y_2, z_1, z_2);
              // Print the result
              Console.WriteLine($"The triple integral of x*y*z is approximately: {integral}");
+
+         Output: 
+
 
           .. code-block:: Terminal 
 
@@ -1169,6 +1225,9 @@ Integrators::
              Console.WriteLine($"The triple integral of x*y*z is approximately: {integral}");
              // 
 
+         Output: 
+
+
           .. code-block:: Terminal 
 
              The triple integral of x*y*z is approximately: -0.134490740716508
@@ -1231,6 +1290,9 @@ Integrators::
              double integral = Integrators.GaussLeg3(f, x_1, x_2, y_1, y_2, z_1, z_2);
              // Print the result
              Console.WriteLine($"The triple integral of x*y*z is approximately: {integral}");
+
+         Output: 
+
 
           .. code-block:: Terminal 
 

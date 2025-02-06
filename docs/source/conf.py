@@ -39,4 +39,4 @@ html_theme = 'sphinx_rtd_theme'
 epub_show_urls = 'footnote'
 
 # -- Options for Pygment style
-# pygments_style = 'sphinx'
+pygments_style = 'sphinx'
