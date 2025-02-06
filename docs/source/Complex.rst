@@ -887,3 +887,81 @@ Complex::
           .. code-block:: Terminal 
 
              Atan Complex = 1.0172 + 0.4024i
+
+
+   Asinh::
+      Description: 
+          Calculates the inverse hyperbolic sine (arsinh) of a complex number.
+      Param: 
+         | c:  The complex number for which to calculate the inverse hyperbolic sine.
+      Returns: 
+          A complex number representing the inverse hyperbolic sine of the input complex number.
+      Example: 
+          In this example, we calculate the inverse hyperbolic sine of a complex number.
+          Mathematically, if we have:
+
+          .. math::
+             z = 1 + i
+          The inverse hyperbolic sine is:
+
+          .. math::
+             \arsinh(z) = \ln\left(z + \sqrt{z^2 + 1}\right)
+
+          .. code-block:: CSharp 
+
+             // import libraries
+             using CypherCrescent.MathematicsLibrary;
+             using static System.Math;
+             using System;
+             
+             // Example of using the Asinh method
+             Complex c = new Complex(1.0, 1.0);
+             Complex asinhComplex = Complex.Asinh(c);
+             // print the result
+             Console.WriteLine($"Asinh Complex = {asinhComplex}");
+
+         Output: 
+
+
+          .. code-block:: Terminal 
+
+             Asinh Complex = 1.0613 + 0.6662i
+
+
+   Acosh::
+      Description: 
+          Calculates the inverse hyperbolic cosine (arcosh) of a complex number.
+      Param: 
+         | c:  The complex number for which to calculate the inverse hyperbolic cosine.
+      Returns: 
+          A complex number representing the inverse hyperbolic cosine of the input complex number.
+      Example: 
+          In this example, we calculate the inverse hyperbolic cosine of a complex number.
+          Mathematically, if we have:
+
+          .. math::
+             z = 1 + i
+          The inverse hyperbolic cosine is:
+
+          .. math::
+             \arcosh(z) = \ln\left(z + \sqrt{z^2 - 1}\right)
+
+          .. code-block:: CSharp 
+
+             // import libraries
+             using CypherCrescent.MathematicsLibrary;
+             using static System.Math;
+             using System;
+             
+             // Example of using the Acosh method
+             Complex c = new Complex(1.0, 1.0);
+             Complex acoshComplex = Complex.Acosh(c);
+             // print the result
+             Console.WriteLine($"Acosh Complex = {acoshComplex}");
+
+         Output: 
+
+
+          .. code-block:: Terminal 
+
+             Acosh Complex = 1.0613 + 0.9046i
