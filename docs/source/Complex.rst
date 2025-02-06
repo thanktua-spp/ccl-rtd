@@ -160,4 +160,46 @@ Complex::
 
           .. code-block:: Terminal 
 
+             Max Complex =   5.0000 + 2.0000i
+
+
+   Min::
+      Description: 
+          Returns the minimum of two Complex numbers.
+      Param: 
+         | A:  The first complex number to compare.
+         | B:  The second complex number to compare.
+      Returns: 
+          The complex number that is smaller.
+      Example: 
+          In this example, we compare two complex numbers and return the smaller one.
+          Mathematically, if we have:
+
+          .. math::
+             \begin{array}{rcl}
+              A &=& 3 + 4i  \\
+              B &=& 5 + 2i
+              \end{array}
+          The method will return A as it is smaller.
+
+          .. code-block:: CSharp 
+
+             // import libraries
+             using CypherCrescent.MathematicsLibrary;
+             using static System.Math;
+             using System;
              
+             // Example of using the Min method
+             Complex A = new Complex(3.0, 4.0);
+             Complex B = new Complex(5.0, 2.0);
+             // find the minimum
+             Complex minComplex = Complex.Min(A, B);
+             // print the result
+             Console.WriteLine($"Min Complex = {minComplex}");
+
+         Output: 
+
+
+          .. code-block:: Terminal 
+
+             Min Complex =   3.0000 + 4.0000i
