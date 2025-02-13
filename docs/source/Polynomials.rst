@@ -50,46 +50,6 @@ Polynomials::
              Root: -0.5064 - 0.1948i
 
 
-   Roots::
-      Description: 
-          Calculates the roots of a polynomial given its complex coefficients.
-      Param: 
-         | Coeffs:  An array of complex numbers representing the coefficients of the polynomial.
-      Returns: 
-          An array of complex numbers representing the roots of the polynomial.
-      Example: 
-          In this example, we calculate the roots of a polynomial with given complex coefficients.
-          
-
-          .. code-block:: CSharp 
-
-             // import libraries
-             using CypherCrescent.MathematicsLibrary;
-             using static System.Math;
-             using System;
-             
-             // Complex Coefficients of the polynomial (-6, -6i)x^3 + (11, 11i)x^2 + (-6, -6i)x + (1, 1)
-             Complex[] coeffs = [ new(-6, -6), new(11, 11), new(-6, -6), new(1, 1) ];
-             
-             // Calculate the roots
-             Complex[] roots = Polynomials.Roots(coeffs);
-             
-             // Print the roots
-             foreach (Complex root in roots)
-                 Console.WriteLine($"Root: {root}");
-             
-          
-
-         Output: 
-
-
-          .. code-block:: Terminal 
-
-             Root: 1.0000 + 0.0000i
-             Root: 0.5000 + 0.0000i
-             Root: 0.3333 + 0.0000i
-
-
    DeConv::
       Description: 
           Performs polynomial division, dividing one polynomial by another.
@@ -141,65 +101,14 @@ Polynomials::
              Remainder: 2.75617283950617, -5.52469135802469
 
 
-   DeConv::
-      Description: 
-          Performs polynomial division, dividing one polynomial by another, with complex coefficients.
-      Param: 
-         | Coeffs_a:  An array of complex numbers representing the coefficients of the dividend polynomial.
-         | Coeffs_d:  An array of complex numbers representing the coefficients of the divisor polynomial.
-         | Coeffs_q:  When this method returns, contains the coefficients of the quotient polynomial.
-         | Coeffs_r:  When this method returns, contains the coefficients of the remainder polynomial.
-      Example: 
-          In this example, we perform polynomial division with complex coefficients.
-          
-          Mathematically, if we have:
-
-          .. math::
-             P(z) = z^3 - (6 + 6i)z^2 + (11 + 11i)z - (6 + 6i)
-          and
-
-          .. math::
-             D(z) = z - (2 + 2i)
-          
-
-          .. code-block:: CSharp 
-
-             // import libraries
-             using CypherCrescent.MathematicsLibrary;
-             using static System.Math;
-             using System;
-             
-             // Coefficients of the dividend polynomial z^3 - (6 + 6i)z^2 + (11 + 11i)z - (6 + 6i)
-             Complex[] coeffs_a = [new(1)  new (-6, -6), new(11, 11), new(-6, -6)];
-             
-             // Coefficients of the divisor polynomial z - (2 + 2i)
-             Complex[] coeffs_d = [new(1), new(-2, -2)];
-             
-             // Perform polynomial division
-             Polynomials.DeConv(coeffs_a, coeffs_d, out Complex[] coeffs_q, out Complex[] coeffs_r);
-             
-             // Print the quotient and remainder
-             Console.WriteLine("Quotient: " + string.Join(", ", coeffs_q));
-             Console.WriteLine("Remainder: " + string.Join(", ", coeffs_r));
-          
-
-         Output: 
-
-
-          .. code-block:: Terminal 
-
-             Quotient:   1.0000 + 0.0000i ,  -4.0000 - 4.0000i ,  11.0000 - 5.0000i
-             Remainder:  26.0000 + 6.0000i
-
-
    PolyVal::
       Description: 
           Evaluates a polynomial at a given point.
       Param: 
-         | Coeffs_a:  An array of doubles representing the coefficients of the polynomial.
-         | x:  The point at which to evaluate the polynomial.
+         | Coeffs_a:  An array of double or an array of complex representing the coefficients of the polynomial.
+         | x:  The point (double or complex) at which to evaluate the polynomial.
       Returns: 
-          The value of the polynomial at the given point.
+          The value (double or complex) of the polynomial at the given point.
       Example: 
           In this example, we evaluate a polynomial at a given point.
           
