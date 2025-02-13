@@ -1,12 +1,11 @@
 API
 ===
 
-Classes
---------
+Math
+----
    
 
    .. toctree::
 
-      Integrators
-      Complex
-      Polynomials
+      Math
+      
