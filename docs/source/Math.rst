@@ -17,6 +17,9 @@ Deconv
           - Quotient: The coefficients of the quotient polynomial.
           - Remainder: The coefficients of the remainder polynomial.
    Example: 
+
+          .. math::
+             P(x) = x^5 + 2x^4 + 3x^3 + 4x^2 + 5x + 6,~ D(x) = x^2 + 2x + 3
        In this example, we perform polynomial deconvolution on two polynomials.
        The dividend polynomial is represented by the coefficients { 1, 2, 3, 4, 5, 6 } and the divisor polynomial by { 1, 2, 3 }.
 
