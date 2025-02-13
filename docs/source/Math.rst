@@ -6,6 +6,7 @@ Math
       Description: 
           Performs polynomial deconvolution (division) of two polynomials and returns the quotient and remainder.
           Mathematically, this can be represented as:
+          
           .. math::
              P(x) = D(x) * Q(x) + R(x)
           where P(x) is the dividend polynomial, D(x) is the divisor polynomial, Q(x) is the quotient polynomial, and R(x) is the remainder polynomial.
