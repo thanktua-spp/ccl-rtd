@@ -3,7 +3,7 @@ Math
 
 
    Deconv
-   ------
+   ======
       Description: 
           Performs polynomial deconvolution (division) of two polynomials and returns the quotient and remainder.
           Mathematically, this can be represented as:
