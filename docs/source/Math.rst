@@ -89,9 +89,11 @@ Deconv
           Quotient: 1, 0, 0, 4
           Remainder: 0, 0, 0, 0, -3, -6
 
-..note::
-
+   ..note::
        Both polynomial and the divisor can be real or complex as demonstrated below
+
+
+
    Example: 
 
           .. math::
