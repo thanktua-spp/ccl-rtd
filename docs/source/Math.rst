@@ -96,12 +96,12 @@ Deconv
 
    Example: 
 
-          .. math::
-             P(x) = (2+2i)x^4 + (7+3i)x^3 + (9+10i)x^2 + (10+4i)x + (2+7i)
-       
-
-          .. math::
-             D(x) = (3+2i)x^2 + (4+2i)x + (3+i)
+       .. math::
+          \begin{array}{rcl}
+          P(x) &=& (2+2i)x^4 + (7+3i)x^3 + (9+10i)x^2 + (10+4i)x + (2+7i) \\
+          D(x) &=& (3+2i)x^2 + (4+2i)x + (3+i)
+          \end{array}
+          
        In this example, we perform polynomial deconvolution on two polynomials with complex coefficients.
 
        .. code-block:: CSharp 
