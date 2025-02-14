@@ -97,9 +97,12 @@ Deconv
    Example: 
 
           .. math::
-             P(x) = (6+2i)x^5 + (2+2i)x^4 + (7+3i)x^3 + (9+10i)x^2 + (10+4i)x + (2+7i),~ D(x) = (3+2i)x^2 + (4+2i)x + (3+i)
+             P(x) = (2+2i)x^4 + (7+3i)x^3 + (9+10i)x^2 + (10+4i)x + (2+7i)
+       
+
+          .. math::
+             D(x) = (3+2i)x^2 + (4+2i)x + (3+i)
        In this example, we perform polynomial deconvolution on two polynomials with complex coefficients.
-       The dividend polynomial is represented by the coefficients { 1, 2, 3, 4, 5, 6 } and the divisor polynomial by { 1, 2, 3 }.
 
        .. code-block:: CSharp 
 
@@ -108,7 +111,7 @@ Deconv
           using CypherCrescent.MathematicsLibrary.Math;
       
           // Example of performing polynomial deconvolution
-          Complex[] P = [new(6,2), new(2,2), new(7,3), new(9,10), new(10,4), new(2,7)], 
+          Complex[] P = [new(2,2), new(7,3), new(9,10), new(10,4), new(2,7)], 
           Complex[] D = [new(3,2), new(4,2), new(3,1)];
           (Complex[]Q, Complex[]R) = Deconv(P, D);
       
@@ -122,9 +125,9 @@ Deconv
        .. code-block:: Terminal 
 
           Q = 
-              1.6923 - 0.4615i ,  -1.2426 + 0.9822i ,   2.1297 - 1.0036i ,   1.9734 + 1.3681i
+              0.7692 + 0.1538i ,   1.1065 - 0.4556i ,   1.6372 + 1.7014i
           R =
-              0.0000 + 0.0000i ,   0.0000 + 0.0000i ,   0.0000 + 0.0000i ,   0.0000 + 0.0000i ,  -2.5501 - 4.5379i ,  -2.5520 + 0.9224i
+              0.0000 + 0.0000i ,   0.0000 + 0.0000i ,   0.0000 + 0.0000i ,   3.0787 - 5.8198i ,  -1.2103 + 0.2585i
 
 
 Conv
