@@ -1,5 +1,49 @@
 
 
+Polyfit
+=======
+   Description: 
+       Fits a polynomial of degree N to the data points specified by the arrays X and Y.
+       Mathematically, this can be represented as finding the coefficients of the polynomial:
+
+       .. math::
+          P(x) = a_0 + a_1 x + a_2 x^2 + ... + a_N x^N
+       that best fits the given data points (X, Y).
+   Param: 
+      | X:  The x-coordinates of the data points.
+      | Y:  The y-coordinates of the data points.
+      | N:  The degree of the polynomial to fit.
+   Returns: 
+       An array containing the coefficients of the fitted polynomial, starting with the coefficient of the highest degree term.
+   Example: 
+
+          .. math::
+             X = [1, 2, 3, 4],~ Y = [1, 4, 9, 16],~ N = 2
+       In this example, we fit a polynomial of degree 2 to the data points.
+       The x-coordinates are represented by the array { 1, 2, 3, 4 } and the y-coordinates by { 1, 4, 9, 16 }.
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using CypherCrescent.MathematicsLibrary.Math;
+      
+          // Example of fitting a polynomial
+          double[] X = { 1, 2, 3, 4 };
+          double[] Y = { 1, 4, 9, 16 };
+          int N = 2;
+          double[] coefficients = Polyfit(X, Y, N);
+          // Print the result
+          Console.WriteLine($"Coefficients: {string.Join(", ", coefficients)}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          Coefficients: 1, 0, 0
+
+
 Deconv
 ======
    Description: 
@@ -45,6 +89,41 @@ Deconv
           Quotient: 1, 0, 0, 4
           Remainder: 0, 0, 0, 0, -3, -6
 
+..note::
+
+       Both polynomial and the divisor can be real or complex as demonstrated below
+   Example: 
+
+          .. math::
+             P(x) = (6+2i)x^5 + (2+2i)x^4 + (7+3i)x^3 + (9+10i)x^2 + (10+4i)x + (2+7i),~ D(x) = (3+2i)x^2 + (4+2i)x + (3+i)
+       In this example, we perform polynomial deconvolution on two polynomials with complex coefficients.
+       The dividend polynomial is represented by the coefficients { 1, 2, 3, 4, 5, 6 } and the divisor polynomial by { 1, 2, 3 }.
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using CypherCrescent.MathematicsLibrary.Math;
+      
+          // Example of performing polynomial deconvolution
+          Complex[] P = [new(6,2), new(2,2), new(7,3), new(9,10), new(10,4), new(2,7)], 
+          Complex[] D = [new(3,2), new(4,2), new(3,1)];
+          (Complex[]Q, Complex[]R) = Deconv(P, D);
+      
+          // Print the result
+          Console.WriteLine("Q = \n" + string.Join(", ", Q)); 
+          Console.WriteLine("R = \n" + string.Join(", ", R));
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          Q = 
+              1.6923 - 0.4615i ,  -1.2426 + 0.9822i ,   2.1297 - 1.0036i ,   1.9734 + 1.3681i
+          R =
+              0.0000 + 0.0000i ,   0.0000 + 0.0000i ,   0.0000 + 0.0000i ,   0.0000 + 0.0000i ,  -2.5501 - 4.5379i ,  -2.5520 + 0.9224i
+
 
 Conv
 ====
@@ -74,15 +153,15 @@ Conv
           using CypherCrescent.MathematicsLibrary.Math;
       
           // Example of performing polynomial convolution
-          double[] Polynomial = { 1, 2, 3 };
-          double[] Multiplier = { 1, 1 };
-          double[] result = Conv(Polynomial, Multiplier);
+          double[] Polynomial = [ 1, 2, 3 ];
+          double[] Multiplier = [ 1, 1 ];
+          double[] Product = Conv(Polynomial, Multiplier);
           // Print the result
-          Console.WriteLine($"Resulting Polynomial: {string.Join(", ", result)}");
+          Console.WriteLine($"Product: {string.Join(", ", Product)}");
 
       Output: 
 
 
        .. code-block:: Terminal 
 
-          Resulting Polynomial: 1, 3, 5, 3
+          Product: 1, 3, 5, 3
