@@ -185,7 +185,7 @@ Conv
       
           // Example of performing polynomial convolution
           Complex[] Polynomial = [ new(2,3), new(5,-1), new(3,7) ];
-          double[] Multiplier = [ 1, 1 ];
+          Complex[] Multiplier = [ new(-3,2), new(2,-1) ];
           var Product = Conv(Polynomial, Multiplier);
           // Print the result
           Console.WriteLine($"Product: {string.Join(", ", Product)}");
@@ -195,4 +195,4 @@ Conv
 
        .. code-block:: Terminal 
 
-          Product:   2.0000 + 3.0000i ,   7.0000 + 2.0000i ,   8.0000 + 6.0000i ,   3.0000 + 7.0000i
+          Product: -12.0000 - 5.0000i ,  -6.0000 + 17.0000i, -1.4000e+01 - 2.2000e+01i,  13.0000 + 11.0000i
