@@ -270,7 +270,7 @@ Integral2
         Integrate the function f(x, y) = x * y over the region where x ranges from 0 to 1, y ranges from x^2 to sqrt(x), which can be expressed as:
 
        .. math::
-          \int_{x_1}^{x_2} \int_{y_1(x)}^{y_2(x)} x y \, dy \, dx
+          \int_{0}^{1} \int_{x^{2}}^{\sqrt{x}} x y \, dy \, dx
 
        .. code-block:: CSharp 
 
@@ -371,7 +371,7 @@ Integral3
         Integrate the function f(x, y, z) = x * y * z over the region where x ranges from 0 to 1, y ranges from x^2 to sqrt(x), and z ranges from x*y to x+y, which can be expressed as:
 
        .. math::
-          \int_{x_1}^{x_2} \int_{y_1(x)}^{y_2(x)}  \int_{z_1(x,y)}^{z_2(x,y)} x y z \, dz \, dy \, dx
+          \int_{0}^{1} \int_{x^{2}}^{\sqrt{x}}  \int_{xy}^{x+y} x y z \, dz \, dy \, dx
 
        .. code-block:: CSharp 
 
