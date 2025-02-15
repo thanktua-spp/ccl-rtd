@@ -481,7 +481,7 @@ Integral4
       |  Ensure that x_1(w) <= x_2(w),  y_1(w, x) <= y_2(w, x) and z_1(w, x, y) <= z_2(w, x, y) throughout the integration region.
       |  If x_1 equals x_2 then the method will return 0.
    Example: 
-        Computing the volume of a sphere in 4D: :math:`f(w, x, y, z) = 1` over the region where w ranges from -1 to 1, x ranges from :math:`-\sqrt(1-w^2)` to :math:`\sqrt(1-w^2)`, y ranges from :math:`-\sqrt(1-w^2-x^2)` to :math:`\sqrt(1-w^2-x^2)`, and z ranges from :math:`-\sqrt(1-w^2-x^2-y^2)` to :math:`\sqrt(1-w^2-x^2-y^2)`, which can be expressed as:
+        Computing the volume of a sphere in 4D: :math:`f(w, x, y, z) = 1` over the region where w ranges from -1 to 1, x ranges from :math:`-\sqrt{1-w^2}` to :math:`\sqrt{1-w^2}`, y ranges from :math:`-\sqrt{1-w^2-x^2}` to :math:`\sqrt{1-w^2-x^2}`, and z ranges from :math:`-\sqrt{1-w^2-x^2-y^2}` to :math:`\sqrt{1-w^2-x^2-y^2}`, which can be expressed as:
 
        .. math::
           \int_{-1}^{1}\int_{-\sqrt{1-w^{2}}}^{\sqrt{1-w^{2}}} \int_{-\sqrt{1-w^{2}-x^{2}}}^{\sqrt{1-w^{2}-x^{2}}} \int_{-\sqrt{1-w^{2}-x^{2}-y^{2}}}^{\sqrt{1-w^{2}-x^{2}-y^{2}}} \, dz \, dy \, dx \, dw
@@ -496,13 +496,13 @@ Integral4
           // Define the function to integrate
           Func<double, double, double, double, double> f = (w, x, y, z) => 1;
           // Define the lower bound of z as a function of x and y
-          Func<double, double, double> z_1 = (w, x, y) => -Sqrt(1 - w*w - x*x - y*y);
+          Func<double, double, double, double> z_1 = (w, x, y) => -Sqrt(1 - w*w - x*x - y*y);
           // Define the upper bound of z as a function of x and y
-          Func<double, double, double> z_2 = (w, x, y) => Sqrt(1 - w*w - x*x - y*y);
+          Func<double, double, double, double> z_2 = (w, x, y) => Sqrt(1 - w*w - x*x - y*y);
           // Define the lower bound of y as a function of x
-          Func<double, double> y_1 = (w, x) => -Sqrt(1 - w*w - x*x);
+          Func<double, double, double> y_1 = (w, x) => -Sqrt(1 - w*w - x*x);
           // Define the upper bound of y as a function of x
-          Func<double, double> y_2 = (w, x) => Sqrt(1 - w*w - x*x);
+          Func<double, double, double> y_2 = (w, x) => Sqrt(1 - w*w - x*x);
           // Define the lower bound of x as a function of w
           Func<double, double> x_1 = (w) => -Sqrt(1 - w*w);
           // Define the upper bound of x as a function of w
@@ -522,8 +522,8 @@ Integral4
 
        .. code-block:: Terminal 
 
-          The approximate volume of a 4D sphere:
-          The exact volume of a 4D sphere:
+          The approximate volume of a 4D sphere: 4.93483151454187
+          The exact volume of a 4D sphere: 4.93480220054468
 |   cref=System.ArgumentNullException is Thrown when the  fun is null.
 |   cref=System.ArgumentNullException is Thrown when the  x_1 is null.
 |   cref=System.ArgumentNullException is Thrown when the  x_2 is null.
