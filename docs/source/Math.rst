@@ -454,3 +454,81 @@ Integral3
 |   cref=System.ArgumentNullException is Thrown when the  z_1 is null.
 |   cref=System.ArgumentNullException is Thrown when the  z_2 is null.
 |   cref=System.Exception is Thrown when the maximum number of iterations is reached without achieving the desired accuracy.
+
+
+Integral4
+=========
+   Description: 
+       Computes the definite quadruple integral of a function over a region where the y-bounds are defined by functions of x, and the z-bounds are defined by functions of x and y, using adaptive Gauss-Legendre quadrature.
+   Param: 
+      | fun:  The function to integrate. The function should accept four doubles (w, x, y, z) and return a double.
+      | w_1:  The lower bound of the w integration.
+      | w_2:  The upper bound of the w integration.
+      | x_1:  A function that defines the lower bound of the x integration as a function of w. It should accept a double (w) and return a double (x).
+      | x_2:  A function that defines the upper bound of the x integration as a function of w. It should accept a double (w) and return a double (x).
+      | y_1:  A function that defines the lower bound of the y integration as a function of w and x. It should accept two doubles (w, x) and return a double (y).
+      | y_2:  A function that defines the upper bound of the y integration as a function of w and x. It should accept two doubles (w, x) and return a double (y).
+      | z_1:  A function that defines the lower bound of the z integration as a function of w, x and y. It should accept three doubles (w, x, y) and return a double (z).
+      | z_2:  A function that defines the upper bound of the z integration as a function of w, x and y. It should accept three doubles (w, x, y) and return a double (z).
+      | eps:  The desired relative accuracy. The default value is 1e-6.
+   Returns: 
+       The approximate value of the definite triple integral.
+   Remark: 
+      |  This method uses adaptive Gauss-Legendre quadrature to approximate the triple integral.
+      |  The integration is performed over the region defined by w_1 <= w <= w_2, x_1(w) <= x <= x_2(w), y_1(w, x) <= y <= y_2(w, x), and z_1(w, x, y) <= z <= z_2(w, x, y).
+      |  The number of quadrature points is increased until the desired relative accuracy is achieved or a maximum number of iterations is reached.
+      |  For best results, the function should be smooth within the integration region, x_1(w), x_2(w),  y_1(w, x), y_2(w, x), z_1(w, x, y), and z_2(w, x, y) should be smooth functions. 
+      |  Ensure that x_1(w) <= x_2(w),  y_1(w, x) <= y_2(w, x) and z_1(w, x, y) <= z_2(w, x, y) throughout the integration region.
+      |  If x_1 equals x_2 then the method will return 0.
+   Example: 
+        Computing the volume of a sphere in 4D: f(w, x, y, z) = 1 over the region where w ranges from -1 to 1, x ranges from -sqrt(1-w^2) to sqrt(1-w^2), y ranges from -sqrt(1-w^2-x^2) to sqrt(1-w^2-x^2), and z ranges from -sqrt(1-w^2-x^2-y^2) to sqrt(1-w^2-x^2-y^2), which can be expressed as:
+
+       .. math::
+          \int_{-1}^{1}\int_{-\sqrt{1-w^{2}}}^{\sqrt{1-w^{2}}} \int_{-\sqrt{1-w^{2}-x^{2}}}^{\sqrt{1-w^{2}-x^{2}}} \int_{-\sqrt{1-w^{2}-x^{2}-y^{2}}}^{\sqrt{1-w^{2}-x^{2}-y^{2}}} \, dz \, dy \, dx \, dw
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using CypherCrescent.MathematicsLibrary;
+          using static System.Math;
+          using System;
+      
+          // Define the function to integrate
+          Func<double, double, double, double, double> f = (w, x, y, z) => 1;
+          // Define the lower bound of z as a function of x and y
+          Func<double, double, double> z_1 = (w, x, y) => -Sqrt(1 - w*w - x*x - y*y);
+          // Define the upper bound of z as a function of x and y
+          Func<double, double, double> z_2 = (w, x, y) => Sqrt(1 - w*w - x*x - y*y);
+          // Define the lower bound of y as a function of x
+          Func<double, double> y_1 = (w, x) => -Sqrt(1 - w*w - x*x);
+          // Define the upper bound of y as a function of x
+          Func<double, double> y_2 = (w, x) => Sqrt(1 - w*w - x*x);
+          // Define the lower bound of x as a function of w
+          Func<double, double> x_1 = (w) => -Sqrt(1 - w*w);
+          // Define the upper bound of x as a function of w
+          Func<double, double> x_2 = (w) => Sqrt(1 - w*w);
+          // Set the lower bound of w
+          double w_1 = -1;
+          // Set the upper bound of w
+          double w_2 = 1;
+          // Calculate the integral
+          double integral = Integral4(f, w_1, w_2, x_1, x_2, y_1, y_2, z_1, z_2);
+          // Print the result
+          Console.WriteLine($"The approximate volume of a 4D sphere: {integral}");
+          Console.WriteLine($"The exact volume of a 4D sphere: {pi*pi/2}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          The approximate volume of a 4D sphere:
+          The exact volume of a 4D sphere:
+|   cref=System.ArgumentNullException is Thrown when the  fun is null.
+|   cref=System.ArgumentNullException is Thrown when the  x_1 is null.
+|   cref=System.ArgumentNullException is Thrown when the  x_2 is null.
+|   cref=System.ArgumentNullException is Thrown when the  y_1 is null.
+|   cref=System.ArgumentNullException is Thrown when the  y_2 is null.
+|   cref=System.ArgumentNullException is Thrown when the  z_1 is null.
+|   cref=System.ArgumentNullException is Thrown when the  z_2 is null.
+|   cref=System.Exception is Thrown when the maximum number of iterations is reached without achieving the desired accuracy.
