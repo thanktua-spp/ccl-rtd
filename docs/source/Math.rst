@@ -98,7 +98,7 @@ Deconv
 
        .. math::
           \begin{array}{rcl}
-          P(x) &=& (2+2i)x^4 + (7+3i)x^3 + (9+10i)x^2 + (10+4i)x + (2+7i) \\
+          P(x) &=& (7+3i)x^3 + (9+10i)x^2 + (10+4i)x + (2+7i) \\
           D(x) &=& (3+2i)x^2 + (4+2i)x + (3+i)
           \end{array}
           
@@ -111,7 +111,7 @@ Deconv
           using CypherCrescent.MathematicsLibrary.Math;
       
           // Example of performing polynomial deconvolution
-          Complex[] P = [new(2,2), new(7,3), new(9,10), new(10,4), new(2,7)], 
+          Complex[] P = [new(7,3), new(9,10), new(10,4), new(2,7)], 
           Complex[] D = [new(3,2), new(4,2), new(3,1)];
           (Complex[]Q, Complex[]R) = Deconv(P, D);
       
@@ -125,9 +125,9 @@ Deconv
        .. code-block:: Terminal 
 
           Q = 
-              0.7692 + 0.1538i ,   1.1065 - 0.4556i ,   1.6372 + 1.7014i
+              2.0769 - 0.3846i ,  1.1183 + 1.7160i
           R =
-              0.0000 + 0.0000i ,   0.0000 + 0.0000i ,   0.0000 + 0.0000i ,   3.0787 - 5.8198i ,  -1.2103 + 0.2585i
+              0.0000 + 0.0000i ,  0.0000 + 0.0000i ,  2.3432 - 6.0237i ,  0.3609 + 0.7337i
 
 
 Conv
@@ -170,3 +170,29 @@ Conv
        .. code-block:: Terminal 
 
           Product: 1, 3, 5, 3
+   Example: 
+
+          .. math::
+             P(x) = (2+3i)x^2 + (5-i)x + 3+7i,~ M(x) = x + 1
+       In this example, we perform polynomial convolution on two polynomials.
+       The first polynomial is represented by the coefficients { 2+3i, 5-i, 3+7i } and the second polynomial by { 1, 1 }.
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using CypherCrescent.MathematicsLibrary.Math;
+      
+          // Example of performing polynomial convolution
+          Complex[] Polynomial = [ new(2,3), new(5,-1), new(3,7) ];
+          double[] Multiplier = [ 1, 1 ];
+          var Product = Conv(Polynomial, Multiplier);
+          // Print the result
+          Console.WriteLine($"Product: {string.Join(", ", Product)}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          Product:   2.0000 + 3.0000i ,   7.0000 + 2.0000i ,   8.0000 + 6.0000i ,   3.0000 + 7.0000i
