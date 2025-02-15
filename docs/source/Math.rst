@@ -196,3 +196,261 @@ Conv
        .. code-block:: Terminal 
 
           Product: -12.0000 - 5.0000i ,  -6.0000 + 17.0000i, -1.4000e+01 - 2.2000e+01i,  13.0000 + 11.0000i
+
+
+Integral
+========
+   Description: 
+       Computes the definite integral of a function using adaptive Gauss-Legendre quadrature.
+   Param: 
+      | fun:  The function to integrate. The function should accept a double and return a double.
+      | x_1:  The lower bound of the integration interval.
+      | x_2:  The upper bound of the integration interval.
+      | eps:  The desired relative accuracy. The default value is 1e-6.
+   Returns: 
+       The approximate value of the definite integral.
+   Remark: 
+      |  This method uses adaptive Gauss-Legendre quadrature to approximate the definite integral.
+      |  The number of quadrature points is increased until the desired relative accuracy is achieved or a maximum number of iterations is reached.
+      |  For best results, the function should be smooth within the integration interval.
+      |  If x_1 equals x_2 then the method will return 0.
+   Example: 
+        Integrate the function f(x) = x^2, which can be expressed as:
+
+       .. math::
+          \int_{x_1}^{x_2} x^2 \, dx
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using CypherCrescent.MathematicsLibrary;
+          using System;
+      
+          // Define the function to integrate
+          Func<double, double> f = (x) => x * x;
+          // Set the lower bound of x
+          double x_1 = 0;
+          // Set the upper bound of x
+          double x_2 = 1;
+          // Calculate the integral
+          double integral = Integral(f, x_1, x_2);
+          // Print the result
+          Console.WriteLine($"The integral of x^2 is approximately: {integral}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          The integral of x^2 is approximately: 0.333333333321056
+|   cref=System.ArgumentNullException is Thrown when the  fun is null.
+|   cref=System.Exception is Thrown when the maximum number of iterations is reached without achieving the desired accuracy.
+
+
+Integral2
+=========
+   Description: 
+       Computes the definite double integral of a function over a region where both y-bounds are defined by functions of x, using adaptive Gauss-Legendre quadrature.
+   Param: 
+      | fun:  The function to integrate. The function should accept two doubles (x, y) and return a double.
+      | x_1:  The lower bound of the x integration.
+      | x_2:  The upper bound of the x integration.
+      | y_1:  A function that defines the lower bound of the y integration as a function of x. It should accept a double (x) and return a double (y).
+      | y_2:  A function that defines the upper bound of the y integration as a function of x. It should accept a double (x) and return a double (y).
+      | eps:  The desired relative accuracy. The default value is 1e-6.
+   Returns: 
+       The approximate value of the definite double integral.
+   Remark: 
+      |  This method uses adaptive Gauss-Legendre quadrature to approximate the double integral.
+      |  The integration is performed over the region defined by x_1 <= x <= x_2 and y_1(x) <= y <= y_2(x).
+      |  The number of quadrature points is increased until the desired relative accuracy is achieved or a maximum number of iterations is reached.
+      |  For best results, the function should be smooth within the integration region, and both y_1(x) and y_2(x) should be smooth functions. Additionally, y_1(x) should be less than or equal to y_2(x) for all x in the interval [x_1, x_2] to ensure a valid integration region.
+      |  If x_1 equals x_2 then the method will return 0.
+   Example: 
+        Integrate the function f(x, y) = x * y over the region where x ranges from 0 to 1, y ranges from x^2 to sqrt(x), which can be expressed as:
+
+       .. math::
+          \int_{x_1}^{x_2} \int_{y_1(x)}^{y_2(x)} x y \, dy \, dx
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using CypherCrescent.MathematicsLibrary;
+          using static System.Math
+          using System;
+      
+          // Define the function to integrate
+          Func<double, double, double> f = (x, y) => x * y;
+          // Define the lower bound of y as a function of x
+          Func<double, double> y_1 = (x) => x * x;
+          // Define the upper bound of y as a function of x
+          Func<double, double> y_2 = (x) => Sqrt(x);
+          // Set the lower bound of x
+          double x_1 = 0;
+          // Set the upper bound of x
+          double x_2 = 1;
+          // Calculate the integral
+          double integral = Integral2(f, x_1, x_2, y_1, y_2);
+          // Print the result
+          Console.WriteLine($"The integral is approximately: {integral}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          The integral is approximately: 0.0833333333277262
+
+   ..note::
+       If the any of the boundary of y is a constant, it can be defined as a lambda function that returns the constant value as shown below:
+
+
+
+   Example: 
+        Integrate the function f(x, y) = x * y, which can be expressed as:
+
+       .. math::
+          \int_{0}^{1} \int_{1}^{2} x y \, dy \, dx
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using CypherCrescent.MathematicsLibrary;
+          using System;
+      
+          // Define the function to integrate
+          Func<double, double, double> f = (x, y) => x * y;
+          // Set the lower bound of x
+          double x_1 = 0;
+          // Set the upper bound of x
+          double x_2 = 1;
+          // Set the lower bound of y
+          Func<double, double> y_1 = x => 1;
+          // Set the upper bound of y
+          Func<double, double> y_2 = x => 2;
+          // Calculate the integral
+          double integral = Integral2(f, x_1, x_2, y_1, y_2);
+          // Print the result
+          Console.WriteLine($"The integral of x*y is approximately: {integral}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          The integral of x*y is approximately: 0.749999999948747
+|   cref=System.ArgumentNullException is Thrown when the  fun is null.
+|   cref=System.ArgumentNullException is Thrown when the  y_1 is null.
+|   cref=System.ArgumentNullException is Thrown when the  y_2 is null.
+|   cref=System.ArgumentException is Thrown when y_1(x) is greater than y_2(x) for any x in the interval [x_1, x_2].
+
+
+Integral3
+=========
+   Description: 
+       Computes the definite triple integral of a function over a region where the y-bounds are defined by functions of x, and the z-bounds are defined by functions of x and y, using adaptive Gauss-Legendre quadrature.
+   Param: 
+      | fun:  The function to integrate. The function should accept three doubles (x, y, z) and return a double.
+      | x_1:  The lower bound of the x integration.
+      | x_2:  The upper bound of the x integration.
+      | y_1:  A function that defines the lower bound of the y integration as a function of x. It should accept a double (x) and return a double (y).
+      | y_2:  A function that defines the upper bound of the y integration as a function of x. It should accept a double (x) and return a double (y).
+      | z_1:  A function that defines the lower bound of the z integration as a function of x and y. It should accept two doubles (x, y) and return a double (z).
+      | z_2:  A function that defines the upper bound of the z integration as a function of x and y. It should accept two doubles (x, y) and return a double (z).
+      | eps:  The desired relative accuracy. The default value is 1e-6.
+   Returns: 
+       The approximate value of the definite triple integral.
+   Remark: 
+      |  This method uses adaptive Gauss-Legendre quadrature to approximate the triple integral.
+      |  The integration is performed over the region defined by x_1 <= x <= x_2, y_1(x) <= y <= y_2(x), and z_1(x, y) <= z <= z_2(x, y).
+      |  The number of quadrature points is increased until the desired relative accuracy is achieved or a maximum number of iterations is reached.
+      |  For best results, the function should be smooth within the integration region, y_1(x), y_2(x), z_1(x, y), and z_2(x, y) should be smooth functions. 
+      |  Ensure that y_1(x) <= y_2(x) and z_1(x, y) <= z_2(x, y) throughout the integration region.
+      |  If x_1 equals x_2 then the method will return 0.
+   Example: 
+        Integrate the function f(x, y, z) = x * y * z over the region where x ranges from 0 to 1, y ranges from x^2 to sqrt(x), and z ranges from x*y to x+y, which can be expressed as:
+
+       .. math::
+          \int_{x_1}^{x_2} \int_{y_1(x)}^{y_2(x)}  \int_{z_1(x,y)}^{z_2(x,y)} x y z \, dz \, dy \, dx
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using CypherCrescent.MathematicsLibrary;
+          using static System.Math;
+          using System;
+      
+          // Define the function to integrate
+          Func<double, double, double, double> f = (x, y, z) => x * y * z;
+          // Define the lower bound of y as a function of x
+          Func<double, double> y_1 = (x) => x * x;
+          // Define the upper bound of y as a function of x
+          Func<double, double> y_2 = (x) => Sqrt(x);
+          // Define the lower bound of z as a function of x and y
+          Func<double, double, double> z_1 = (x, y) => x * y;
+          // Define the upper bound of z as a function of x and y
+          Func<double, double, double> z_2 = (x, y) => x + y;
+          // Set the lower bound of x
+          double x_1 = 0;
+          // Set the upper bound of x
+          double x_2 = 1;
+          // Calculate the integral
+          double integral = Integral3(f, x_1, x_2, y_1, y_2, z_1, z_2);
+          // Print the result
+          Console.WriteLine($"The triple integral of x*y*z is approximately: {integral}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          The triple integral of x*y*z is approximately: 0.0641203694008985
+
+   ..note::
+       If any of boundaries of y or z is a constant, it can be defined as a lambda function that returns the constant value as shown below:
+
+
+
+   Example: 
+        Integrate the function f(x, y, z) = x * y * z over the region where x ranges from 0 to 1, y ranges from x^2 to 2, and z ranges from x*y to x+y, which can be expressed as:
+
+       .. math::
+          \int_{0}^{1} \int_{x^{2}}^{2}  \int_{xy}^{x+y} x y z \, dz \, dy \, dx
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using CypherCrescent.MathematicsLibrary;
+          using System;
+      
+          // Define the function to integrate
+          Func<double, double, double, double> f = (x, y, z) => x * y * z;
+          // Define the lower bound of y as a function of x
+          Func<double, double> y_1 = (x) => x * x;
+          // Set the upper bound of y
+          Func<double, double> y_2 = (x) => 2;
+          // Define the lower bound of z as a function of x and y
+          Func<double, double, double> z_1 = (x, y) => x * y;
+          // Define the upper bound of z as a function of x and y
+          Func<double, double, double> z_2 = (x, y) => x + y;
+          // Set the lower bound of x
+          double x_1 = 0;
+          // Set the upper bound of x
+          double x_2 = 1;
+          // Calculate the integral
+          double integral = Integral3(f, x_1, x_2, y_1, y_2, z_1, z_2);
+          // Print the result
+          Console.WriteLine($"The triple integral of x*y*z is approximately: {integral}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          The triple integral of x*y*z is approximately:  1.56851851820977
+|   cref=System.ArgumentNullException is Thrown when the  fun is null.
+|   cref=System.ArgumentNullException is Thrown when the  y_1 is null.
+|   cref=System.ArgumentNullException is Thrown when the  y_2 is null.
+|   cref=System.ArgumentNullException is Thrown when the  z_1 is null.
+|   cref=System.ArgumentNullException is Thrown when the  z_2 is null.
+|   cref=System.Exception is Thrown when the maximum number of iterations is reached without achieving the desired accuracy.
