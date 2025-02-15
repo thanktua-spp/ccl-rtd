@@ -41,7 +41,13 @@ Ode45
           Legend(["y_1", "y_2"], Alignment.UpperLeft);
           Title("Solution of van der Pol Equation (μ = 1) with ODE45");
           SaveAs("Van der Pol-(μ = 1)-Ode45.png");
+       <termimal>
        
+       .. figure:: images/Van der Pol-(μ = 1)-Ode45.png
+          :align: center
+          :alt: Van der Pol-(μ = 1)-Ode45.png
+          
+       </termimal>
 |   cref=System.ArgumentNullException is Thrown when the  dydx is null.
 |   cref=System.ArgumentException is Thrown when the  tspan array has less than two elements.
 
