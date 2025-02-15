@@ -223,7 +223,7 @@ Integral
        .. code-block:: CSharp 
 
           // import libraries
-          using CypherCrescent.MathematicsLibrary;
+          using CypherCrescent.MathematicsLibrary.Math;
           using System;
       
           // Define the function to integrate
@@ -275,9 +275,8 @@ Integral2
        .. code-block:: CSharp 
 
           // import libraries
-          using CypherCrescent.MathematicsLibrary;
-          using static System.Math
           using System;
+          using CypherCrescent.MathematicsLibrary.Math;
       
           // Define the function to integrate
           Func<double, double, double> f = (x, y) => x * y;
@@ -315,8 +314,8 @@ Integral2
        .. code-block:: CSharp 
 
           // import libraries
-          using CypherCrescent.MathematicsLibrary;
           using System;
+          using CypherCrescent.MathematicsLibrary.Math;
       
           // Define the function to integrate
           Func<double, double, double> f = (x, y) => x * y;
@@ -376,9 +375,8 @@ Integral3
        .. code-block:: CSharp 
 
           // import libraries
-          using CypherCrescent.MathematicsLibrary;
-          using static System.Math;
           using System;
+          using CypherCrescent.MathematicsLibrary.Math;
       
           // Define the function to integrate
           Func<double, double, double, double> f = (x, y, z) => x * y * z;
@@ -489,9 +487,8 @@ Integral4
        .. code-block:: CSharp 
 
           // import libraries
-          using CypherCrescent.MathematicsLibrary;
-          using static System.Math;
           using System;
+          using CypherCrescent.MathematicsLibrary.Math;
       
           // Define the function to integrate
           Func<double, double, double, double, double> f = (w, x, y, z) => 1;
