@@ -11,15 +11,13 @@ Ode23
       | options:  Optional parameters for the ODE solver, such as relative tolerance, absolute tolerance, and maximum step size. If not provided, default options will be used.
    Returns: 
        A tuple containing two elements:
-       <list type="bullet">
-       <item><description><c>ColVec T</c>: A column vector of time points at which the solution was computed.</description></item>
-       <item><description><c>Matrix Y</c>: A matrix where each row corresponds to the state of the system at the corresponding time point in <c>T</c>.</description></item>
-       </list>
+          * ColVec T: A column vector of time points at which the solution was computed.
+          * Matrix Y: A matrix where each row corresponds to the state of the system at the corresponding time point in T.
    Remark: 
-      |  This method uses the Dormand-Prince method (Ode45) to solve the ODE. It is an adaptive step size method that adjusts the step size to achieve the desired accuracy.
+      |  This method uses the Bogacki-Shampine method (Ode23) to solve the ODE. It is an adaptive step size method that adjusts the step size to achieve the desired accuracy.
       |  For best results, the function should be smooth within the integration interval.
    Example: 
-        Solve the ODE dy/dx = -2 * t * y with initial condition y(0) = 1 over the interval [0, 2].
+        Solve the ODE :math:`d^2y/dt^2 = (1 - y^2) * y' - y` with initial condition :math:`y(0) = 1` over the interval :math:`[0, 2]`.
 
        .. code-block:: CSharp 
 
@@ -64,15 +62,13 @@ Ode45
       | options:  Optional parameters for the ODE solver, such as relative tolerance, absolute tolerance, and maximum step size. If not provided, default options will be used.
    Returns: 
        A tuple containing two elements:
-       <list type="bullet">
-       <item><description><c>ColVec T</c>: A column vector of time points at which the solution was computed.</description></item>
-       <item><description><c>Matrix Y</c>: A matrix where each row corresponds to the state of the system at the corresponding time point in <c>T</c>.</description></item>
-       </list>
+          * ColVec T: A column vector of time points at which the solution was computed.
+          * Matrix Y: A matrix where each row corresponds to the state of the system at the corresponding time point in T.
    Remark: 
       |  This method uses the Dormand-Prince method (Ode45) to solve the ODE. It is an adaptive step size method that adjusts the step size to achieve the desired accuracy.
       |  For best results, the function should be smooth within the integration interval.
    Example: 
-        Solve the ODE dy/dx = -2 * t * y with initial condition y(0) = 1 over the interval [0, 2].
+        Solve the ODE :math:`d^2y/dt^2 = (1 - y^2) * y' - y` with initial condition :math:`y(0) = 1` over the interval :math:`[0, 2]`.
 
        .. code-block:: CSharp 
 
