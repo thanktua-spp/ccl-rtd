@@ -1,5 +1,58 @@
 
 
+Ode23
+=====
+   Description: 
+       Solves an ordinary differential equation (ODE) using the Bogacki-Shampine method (Ode23).
+   Param: 
+      | dydx:  The function that represents the ODE. The function should accept two doubles (time and state) and return a double representing the derivative of the state.
+      | initcon:  The initial value of the dependent variable (state).
+      | tspan:  An array of time points at which the solution is desired. The first element is the initial time, and the last element is the final time.
+      | options:  Optional parameters for the ODE solver, such as relative tolerance, absolute tolerance, and maximum step size. If not provided, default options will be used.
+   Returns: 
+       A tuple containing two elements:
+       <list type="bullet">
+       <item><description><c>ColVec T</c>: A column vector of time points at which the solution was computed.</description></item>
+       <item><description><c>Matrix Y</c>: A matrix where each row corresponds to the state of the system at the corresponding time point in <c>T</c>.</description></item>
+       </list>
+   Remark: 
+      |  This method uses the Dormand-Prince method (Ode45) to solve the ODE. It is an adaptive step size method that adjusts the step size to achieve the desired accuracy.
+      |  For best results, the function should be smooth within the integration interval.
+   Example: 
+        Solve the ODE dy/dx = -2 * t * y with initial condition y(0) = 1 over the interval [0, 2].
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using CypherCrescent.MathematicsLibrary.Math;
+      
+          //define ODE
+          static ColVec vdp1(double t, ColVec y)
+          {
+               double[] dy;
+               return dy = [y[1], (1 - y[0] * y[0]) * y[1] - y[0]];
+          }
+          //Solve ODE
+          (ColVec T, Matrix Y) = Ode23(vdp1, [2, 0], [0, 20]);
+          // Plot the result
+          Plot(T, Y, "-o");
+          Xlabel("Time t"); Ylabel("Soluton y");
+          Legend(["y_1", "y_2"], Alignment.UpperLeft);
+          Title("Solution of van der Pol Equation (μ = 1) with ODE23");
+          SaveAs("Van-der-Pol-(μ=1)-Ode23");
+
+      Output: 
+
+    .. figure:: images/Van-der-Pol-(μ=1)-Ode23.png
+       :align: center
+       :alt: Van der Pol-(μ = 1)-Ode23.png
+
+
+|   cref=System.ArgumentNullException is Thrown when the  dydx is null.
+|   cref=System.ArgumentException is Thrown when the  tspan array has less than two elements.
+
+
 Ode45
 =====
    Description: 
