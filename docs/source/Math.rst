@@ -40,11 +40,11 @@ Ode45
           Xlabel("Time t"); Ylabel("Soluton y");
           Legend(["y_1", "y_2"], Alignment.UpperLeft);
           Title("Solution of van der Pol Equation (μ = 1) with ODE45");
-          SaveAs("Van-der-Pol-(μ = 1)-Ode45");
+          SaveAs("Van-der-Pol-(μ=1)-Ode45");
 
       Output: 
 
-    .. figure:: images/Van-der-Pol-(μ = 1)-Ode45.png
+    .. figure:: images/Van-der-Pol-(μ=1)-Ode45.png
        :align: center
        :alt: Van der Pol-(μ = 1)-Ode45.png
 
