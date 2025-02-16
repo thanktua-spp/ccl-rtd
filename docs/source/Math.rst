@@ -17,7 +17,15 @@ Ode23
       |  This method uses the Bogacki-Shampine method (Ode23) to solve the ODE. It is an adaptive step size method that adjusts the step size to achieve the desired accuracy.
       |  For best results, the function should be smooth within the integration interval.
    Example: 
-        Solve the ODE :math:`d^2y/dt^2 = (1 - y^2) * y' - y` with initial condition :math:`y(0) = 1` over the interval :math:`[0, 2]`.
+        Solve the ODE :math:`~d^2y/dt^2 = (1 - y^2)y' - y~` with initial condition :math:`~y(0) = 1~` over the interval :math:`[0, 2]`.
+        First we have to convert this to a system of first order differential equations, 
+
+        .. math::
+           \begin{array}{rcl}
+                 y' &=& v \\
+                 v' &=& (1 - y^2)v - y
+            \end{array}
+        
 
        .. code-block:: CSharp 
 
