@@ -44,9 +44,9 @@ Ode45
 
       Output: 
 
-   .. figure:: images/Van der Pol-(μ = 1)-Ode45.png
-      :align: center
-      :alt: Van der Pol-(μ = 1)-Ode45.png
+    .. figure:: images/Van der Pol-(μ = 1)-Ode45.png
+       :align: center
+       :alt: Van der Pol-(μ = 1)-Ode45.png
 
 
 |   cref=System.ArgumentNullException is Thrown when the  dydx is null.
