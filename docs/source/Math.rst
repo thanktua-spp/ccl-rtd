@@ -177,7 +177,7 @@ Ode56
 Ode67
 =====
    Description: 
-       Solves an non stiff ordinary differential equations (ODE) using the Jim Verner 6th and 7th order pair method (Ode67).
+       Solves non stiff ordinary differential equations (ODE) using the Jim Verner 6th and 7th order pair method (Ode67).
    Param: 
       | dydx:  The function that represents the ODE. The function should accept two doubles (time and state) and return a double representing the derivative of the state.
       | initcon:  The initial value of the dependent variable (state).
@@ -293,7 +293,7 @@ Ode78
 Ode89
 =====
    Description: 
-       Solves non stiff ordinary differential equations (ODE) using the Jim Verner 5th and 6th order pair method (Ode56).
+       Solves non stiff ordinary differential equations (ODE) using the Jim Verner 8th and 9th order pair method (Ode89).
    Param: 
       | dydx:  The function that represents the ODE. The function should accept two doubles (time and state) and return a double representing the derivative of the state.
       | initcon:  The initial value of the dependent variable (state).
@@ -304,7 +304,7 @@ Ode89
           * ColVec T: A column vector of time points at which the solution was computed.
           * Matrix Y: A matrix where each row corresponds to the state of the system at the corresponding time point in T.
    Remark: 
-      |  This method uses the Jim Verner 5th and 6th order pair method (Ode56) to solve the ODE. It is an adaptive step size method that adjusts the step size to achieve the desired accuracy.
+      |  This method uses the Jim Verner 8th and 9th order pair method (Ode89) to solve the ODE. It is an adaptive step size method that adjusts the step size to achieve the desired accuracy.
       |  For best results, the function should be smooth within the integration interval.
    Example: 
         Solve the ODE :math:`~d^2y/dt^2 = (1 - y^2)y' - y~` with initial condition :math:`~y(0) = 1~` over the interval :math:`[0, 2]`.
