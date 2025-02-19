@@ -174,64 +174,6 @@ Ode56
 |   cref=System.ArgumentException is Thrown when the  tspan array has less than two elements.
 
 
-Ode67
-=====
-   Description: 
-       Solves non stiff ordinary differential equations (ODE) using the Jim Verner 6th and 7th order pair method (Ode67).
-   Param: 
-      | dydx:  The function that represents the ODE. The function should accept two doubles (time and state) and return a double representing the derivative of the state.
-      | initcon:  The initial value of the dependent variable (state).
-      | tspan:  An array of time points at which the solution is desired. The first element is the initial time, and the last element is the final time.
-      | options:  Optional parameters for the ODE solver, such as relative tolerance, absolute tolerance, and maximum step size. If not provided, default options will be used.
-   Returns: 
-       A tuple containing two elements:
-          * ColVec T: A column vector of time points at which the solution was computed.
-          * Matrix Y: A matrix where each row corresponds to the state of the system at the corresponding time point in T.
-   Remark: 
-      |  This method uses the Jim Verner 6th and 7th order pair method (Ode67) to solve the ODE. It is an adaptive step size method that adjusts the step size to achieve the desired accuracy.
-      |  For best results, the function should be smooth within the integration interval.
-   Example: 
-        Solve the ODE :math:`~d^2y/dt^2 = (1 - y^2)y' - y~` with initial condition :math:`~y(0) = 1~` over the interval :math:`[0, 2]`.
-        First we have to convert this to a system of first order differential equations, 
-
-        .. math::
-           \begin{array}{rcl}
-                 y' &=& v \\
-                 v' &=& (1 - y^2)v - y
-            \end{array}
-
-       .. code-block:: CSharp 
-
-          // import libraries
-          using System;
-          using CypherCrescent.MathematicsLibrary.Math;
-      
-          //define ODE
-          static ColVec vdp1(double t, ColVec y)
-          {
-               double[] dy;
-               return dy = [y[1], (1 - y[0] * y[0]) * y[1] - y[0]];
-          }
-          //Solve ODE
-          (ColVec T, Matrix Y) = Ode45(vdp1, [2, 0], [0, 20]);
-          // Plot the result
-          Plot(T, Y, "-o");
-          Xlabel("Time t"); Ylabel("Soluton y");
-          Legend(["y_1", "y_2"], Alignment.UpperLeft);
-          Title("Solution of van der Pol Equation (μ = 1) with ODE45");
-          SaveAs("Van-der-Pol-(μ=1)-Ode45");
-
-      Output: 
-
-    .. figure:: images/Van-der-Pol-(μ=1)-Ode45.png
-       :align: center
-       :alt: Van der Pol-(μ = 1)-Ode45.png
-
-
-|   cref=System.ArgumentNullException is Thrown when the  dydx is null.
-|   cref=System.ArgumentException is Thrown when the  tspan array has less than two elements.
-
-
 Ode78
 =====
    Description: 
