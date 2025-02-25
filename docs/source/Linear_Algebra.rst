@@ -15,6 +15,7 @@ In essence, matrices provide a versatile and elegant framework for representing 
 
 
 Matrix Slicing
+--------------
 Slicing is a powerful feature in CCL-Math that allows you to extract specific portions of arrays. Slicing can be applied along multiple axes, enabling efficient data manipulation and analysis.
 To illustrate the power of Matrix slicing lets see how to implement strassen multiplication in with CCL-Math. 
 
