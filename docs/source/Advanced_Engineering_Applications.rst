@@ -640,33 +640,36 @@ To solve system of ordinary differential equation, you need the initial conditio
          using CypherCrescent.MathematicsLibrary;
          using static CypherCrescent.MathematicsLibrary.Math;
 
+         // define variables
+         ColVec T = null; Matrix Y = null;
+
          // define function
          ColVec dydt(double t, ColVec y)
          {
-            double[] dy = [y[1], y[2], -0.5 * y[2] * y[0]];
-            return dy;
+             double[] dy = [y[1], y[2], -0.5 * y[2] * y[0]];
+             return dy;
          }
          
          // set time span
-         double[] tspan = [0, 6]; Ode.Result TY = null;
-
+         double[] tspan = [0, 6]; 
+        
          // define nonlinear function to shooting for terminal boundary
          double fun(double y3_0)
          {
              double[] y0 = [0, 0, y3_0];
-             TY = Ode.Ode45(dydt, y0, tspan);
-             return TY.Y[TY.X.Numel - 1, 1] - 1;
+             (T, Y) = Ode45(dydt, y0, tspan);
+             return Y.LastRow[1] - 1;
          }
-
+         
          // solve for unknown initial condition
          Solvers.Result y3_0 = Solvers.FSolve(fun, 0.5);
-
+        
          // plot the result
-         var plt = Plot(TY.X, TY.Y, linewidth: 2);
-         plt.Legend = new() { labels = ["f", "f'", "f''"], alignment = "upperleft" };
-         plt.Axis([0, 6, 0, 2]); plt.XLabel = "η"; plt.Title = "Blasius Boundary layer";
-         plt.SaveFig("Blasius-Boundary-Layer-CCL-Math.png");
-         
+         Plot(T, Y, Linewidth: 2);
+         Legend( ["f", "f'", "f''"], Alignment.UpperLeft );
+         Axis([0, 6, 0, 2]); Xlabel("η"); Title("Blasius Boundary layer");
+         SaveAs("Blasius-Boundary-Layer-CCL-Math.png");
+          
 
       .. figure:: images/Blasius-Boundary-Layer-CCL-Math.png
          :align: center
