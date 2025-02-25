@@ -105,7 +105,7 @@ Lets see how to compute water influx, and generate the started water influx plot
          Legend(lgd, Alignment.UpperLeft);
          Axis([0.1, 100, 1, 8]);
          Title("Dimensionless Water Influx");
-         SaveAs("Dimensionless-Water-Influx-CCL-Math.png");
+         SaveAs("Dimensionless-Water-Influx-CCL-Math-4dn.png");
          
 
       .. figure:: images/Dimensionless-Water-Influx-CCL-Math-4dn.png
