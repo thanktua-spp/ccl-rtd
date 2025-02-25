@@ -41,7 +41,8 @@ end
 
 % add legend, axis label and title
 legend(Tlabels, location = "southwest");
-xlabel("Pr");
-axis([0.1, 100, 0.01, 10])
+xlabel("Pr"); xlabel("CrTr"); 
+axis([0.1, 100, 0.01, 10]);
+grid on; grid minor;
 title("Reduced Compressibility Hall Yarborough"); box on;
 saveas(gcf, 'Reduced-Compressibility-Hall-Yarborough-Matlab', 'png');
