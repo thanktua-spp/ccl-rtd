@@ -23,9 +23,9 @@ Strassen’s algorithm is a method for matrix multiplication that is more effici
 
 In the standard matrix multiplication, multiplying two (2 \times 2) matrices requires 8 multiplications. Strassen’s algorithm reduces this to 7 multiplications by using a divide-and-conquer approach. Here’s a simplified outline of the process:
 
- # Divide the matrices into four submatrices.
- # Compute seven products using combinations of these submatrices.
- # Combine these products to get the final result.
+ #. Divide the matrices into four submatrices.
+ #. Compute seven products using combinations of these submatrices.
+ #. Combine these products to get the final result.
 
 .. figure:: images/StrassenMultilication.png
    :align: center
