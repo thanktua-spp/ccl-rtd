@@ -477,11 +477,11 @@ Using Hall and Yarborough Correlation, we can evaluate the reduced compressibili
          } 
         
          // set up ressure and temperature mesh
-         double[] Pr = Linspace(0.1, 25, 501);
+         double[] Pr = Linspace(0.2, 25, 501);
          double[] Tr = [1.05, 1.10, 1.20, 1.30, 1.40];
          ColVec Cr;
          
-         // compute reduced compressibility and plot them
+         // compute CrTr and plot them
          List<string> Tlabels = [];
          holdon = true;
          foreach( var tr in Tr)
@@ -491,7 +491,9 @@ Using Hall and Yarborough Correlation, we can evaluate the reduced compressibili
              Tlabels.Add("Tr = " + tr);
          }
          Legend(Tlabels, Alignment.LowerLeft );
+         Xlabel("Pr"); Ylabel("CrTr");
          Axis([0.1, 100, 0.01, 10]);
+         minorgrid = true;
          SaveAs("Reduced-Compressibility-Hall-Yarborough-CCL-Math.png");
 
       .. figure:: images/Reduced-Compressibility-Hall-Yarborough-CCL-Math.png
@@ -542,10 +544,10 @@ Using Hall and Yarborough Correlation, we can evaluate the reduced compressibili
          end
 
          % set up ressure and temperature mesh
-         Pr = linspace(0, 25, 501);
+         Pr = linspace(0.2, 25, 501);
          Tr = [1.05,  1.1,  1.2,  1.3,  1.4];
          
-         % compute z factors and plot them
+         % compute CrTr and plot them
          figure(Color = 'w'); Tlabels = {};
          for tr = Tr
              loglog(Pr, arrayfun(@(pr) CrTrHY(pr, tr), Pr)); hold on;
@@ -553,9 +555,10 @@ Using Hall and Yarborough Correlation, we can evaluate the reduced compressibili
          end
 
          % add legend, axis label and title
-         legend(Tlabels, location = "southeast");
-         xlabel("Pr"); 
-         axis([0.1, 100, 0.01, 10])
+         legend(Tlabels, location = "southwest");
+         xlabel("Pr"); ylabel("CrTr"); 
+         axis([0.1, 100, 0.01, 10]);
+         grid on; grid minor;
          title("Reduced Compressibility Hall Yarborough"); box on;
          saveas(gcf, 'Reduced-Compressibility-Hall-Yarborough-Matlab', 'png');
 
