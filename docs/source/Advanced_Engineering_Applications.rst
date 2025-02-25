@@ -525,18 +525,15 @@ Using Hall and Yarborough Correlation, we can evaluate the reduced compressibili
              B = 14.76 * t - 9.76 * t2 + 4.58 * t3;
              C = 90.7 * t - 242.2 * t2 + 42.4 * t3;
              D = 2.18 + 2.82 * t; r = A * Pr;
-             if(Pr > 0.8)
+             if(Pr > 15)
                  r = r/2;
              end
 
              % solve the density equation
              y = fsolve(@(y) yfunc(y, A, B, C, D, Pr), r);
-             disp(y)
-             y2 = y * y; y3 = y2 * y; y4 = y3 * y; 
-             ym1p4 = (1 - y)^4; yDm1 = y^(D - 1);
-             X = (1 + 4 * y + 4 * y2 - 4 * y3 + y4) / ym1p4 -...
-                            2 * B * y + C * D * yDm1;
-            crtrhy = A*Tr/(y*X);
+             y2 = y * y; y3 = y2 * y; y4 = y3 * y; ym1p4 = (1 - y)^4; yDm1 = y^(D - 1);
+             Den = (1 + 4 * y + 4 * y2 - 4 * y3 + y4) / ym1p4 - 2 * B * y + C * D * yDm1;
+            crtrhy = A*Tr/(y*Den);
              
          end
 
