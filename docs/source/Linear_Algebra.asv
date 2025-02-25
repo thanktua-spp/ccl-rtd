@@ -40,14 +40,14 @@ In the standard matrix multiplication, multiplying two (2 \times 2) matrices req
 
    static Matrix Strass(Matrix A, Matrix B)
    {
-      if (A.cols != B.rows)   
+      if (A.Cols != B.Rows)   
          throw new Exception("Matrices are not conformable for multiplication");
-      if (A.cols == 1)
+      if (A.Cols == 1)
          return A[0, 0] * B[0, 0];
       else
       {
          // get matrix size
-         int N = A.cols / 2; Indexer I = new(0, N), J = I + N;
+         int N = A.Cols / 2; Indexer I = new(0, N), J = I + N;
  
          // split A and B into submatrices
          Matrix A11 = A[I, I], A12 = A[I, J], B11 = B[I, I], B12 = B[I, J],
@@ -65,14 +65,19 @@ In the standard matrix multiplication, multiplying two (2 \times 2) matrices req
          // compose the result
          return new Matrix[,] 
          { 
-             { M1 + M4 - M5 + M7,      M3 + M5      },
-             {      M2 + M4,      M1 - M2 + M3 + M6 } 
+             { M1 + M4 - M5 + M7,        M3 + M5      },
+             {      M2 + M4,        M1 - M2 + M3 + M6 } 
          };
       } 
    }
 
    Matrix A = Rand(8,8), B = Rand(8,8), C = Strass(A, B);
-   Console.WriteLine($"A = \n{}" 
+   Console.WriteLine($"A = \n{A}");
+   Console.WriteLine($"B = \n{B}");
+   Console.WriteLine($"C = \n{C}");
+
+Output
+
    
 
    
