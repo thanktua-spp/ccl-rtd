@@ -430,6 +430,11 @@ Using Hall and Yarborough Correlation, we can evaluate the reduced compressibili
    
 .. math::
    c_rT_r = \cfrac{A Tr}{y\chi};
+
+
+.. figure:: images/CrTrCraftHawkins.png
+   :align: center
+   :alt: CrTrCraftHawkins.png
    
 
 .. tabs::
