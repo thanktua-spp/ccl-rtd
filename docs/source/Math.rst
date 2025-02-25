@@ -196,7 +196,7 @@ Ode56
       |  This method uses the Jim Verner 5th and 6th order pair method (Ode56) to solve the ODE. It is an adaptive step size method that adjusts the step size to achieve the desired accuracy.
       |  For best results, the function should be smooth within the integration interval.
    Example: 
-        Solve the ODE :math:`~d^2y/dt^2 = (1 - y^2)y' - y~` with initial condition :math:`~y(0) = [2, 0]~` over the interval :math:`[0, 2]`.
+        Solve the ODE :math:`~d^2y/dt^2 = (1 - y^2)y' - y~` with initial condition :math:`~y(0) = [2, 0]~` over the interval :math:`[0, 20]`.
         First we have to convert this to a system of first order differential equations, 
 
         .. math::
@@ -218,19 +218,19 @@ Ode56
                return dy = [y[1], (1 - y[0] * y[0]) * y[1] - y[0]];
           }
           //Solve ODE
-          (ColVec T, Matrix Y) = Ode45(vdp1, [2, 0], [0, 20]);
+          (ColVec T, Matrix Y) = Ode56(vdp1, [2, 0], [0, 20]);
           // Plot the result
           Plot(T, Y, "-o");
           Xlabel("Time t"); Ylabel("Soluton y");
           Legend(["y_1", "y_2"], Alignment.UpperLeft);
-          Title("Solution of van der Pol Equation (μ = 1) with ODE45");
-          SaveAs("Van-der-Pol-(μ=1)-Ode45");
+          Title("Solution of van der Pol Equation (μ = 1) with ODE56");
+          SaveAs("Van-der-Pol-(μ=1)-Ode56");
 
       Output: 
 
-    .. figure:: images/Van-der-Pol-(μ=1)-Ode45.png
+    .. figure:: images/Van-der-Pol-(μ=1)-Ode56.png
        :align: center
-       :alt: Van der Pol-(μ = 1)-Ode45.png
+       :alt: Van der Pol-(μ = 1)-Ode56.png
 
 
 |   cref=System.ArgumentNullException is Thrown when the  dydx is null.
@@ -254,7 +254,7 @@ Ode78
       |  This method uses the Jim Verner 7th and 8th order pair method (Ode78) to solve the ODE. It is an adaptive step size method that adjusts the step size to achieve the desired accuracy.
       |  For best results, the function should be smooth within the integration interval.
    Example: 
-        Solve the ODE :math:`~d^2y/dt^2 = (1 - y^2)y' - y~` with initial condition :math:`~y(0) = [2, 0]~` over the interval :math:`[0, 2]`.
+        Solve the ODE :math:`~d^2y/dt^2 = (1 - y^2)y' - y~` with initial condition :math:`~y(0) = [2, 0]~` over the interval :math:`[0, 20]`.
         First we have to convert this to a system of first order differential equations, 
 
         .. math::
@@ -276,19 +276,19 @@ Ode78
                return dy = [y[1], (1 - y[0] * y[0]) * y[1] - y[0]];
           }
           //Solve ODE
-          (ColVec T, Matrix Y) = Ode45(vdp1, [2, 0], [0, 20]);
+          (ColVec T, Matrix Y) = Ode78(vdp1, [2, 0], [0, 20]);
           // Plot the result
           Plot(T, Y, "-o");
           Xlabel("Time t"); Ylabel("Soluton y");
           Legend(["y_1", "y_2"], Alignment.UpperLeft);
-          Title("Solution of van der Pol Equation (μ = 1) with ODE45");
-          SaveAs("Van-der-Pol-(μ=1)-Ode45");
+          Title("Solution of van der Pol Equation (μ = 1) with ODE78");
+          SaveAs("Van-der-Pol-(μ=1)-Ode78");
 
       Output: 
 
-    .. figure:: images/Van-der-Pol-(μ=1)-Ode45.png
+    .. figure:: images/Van-der-Pol-(μ=1)-Ode78.png
        :align: center
-       :alt: Van der Pol-(μ = 1)-Ode45.png
+       :alt: Van der Pol-(μ = 1)-Ode78.png
 
 
 |   cref=System.ArgumentNullException is Thrown when the  dydx is null.
@@ -312,7 +312,7 @@ Ode89
       |  This method uses the Jim Verner 8th and 9th order pair method (Ode89) to solve the ODE. It is an adaptive step size method that adjusts the step size to achieve the desired accuracy.
       |  For best results, the function should be smooth within the integration interval.
    Example: 
-        Solve the ODE :math:`~d^2y/dt^2 = (1 - y^2)y' - y~` with initial condition :math:`~y(0) = [2, 0]~` over the interval :math:`[0, 2]`.
+        Solve the ODE :math:`~d^2y/dt^2 = (1 - y^2)y' - y~` with initial condition :math:`~y(0) = [2, 0]~` over the interval :math:`[0, 20]`.
         First we have to convert this to a system of first order differential equations, 
 
         .. math::
@@ -334,19 +334,19 @@ Ode89
                return dy = [y[1], (1 - y[0] * y[0]) * y[1] - y[0]];
           }
           //Solve ODE
-          (ColVec T, Matrix Y) = Ode45(vdp1, [2, 0], [0, 20]);
+          (ColVec T, Matrix Y) = Ode89(vdp1, [2, 0], [0, 20]);
           // Plot the result
           Plot(T, Y, "-o");
           Xlabel("Time t"); Ylabel("Soluton y");
           Legend(["y_1", "y_2"], Alignment.UpperLeft);
-          Title("Solution of van der Pol Equation (μ = 1) with ODE45");
-          SaveAs("Van-der-Pol-(μ=1)-Ode45");
+          Title("Solution of van der Pol Equation (μ = 1) with ODE89");
+          SaveAs("Van-der-Pol-(μ=1)-Ode89");
 
       Output: 
 
-    .. figure:: images/Van-der-Pol-(μ=1)-Ode45.png
+    .. figure:: images/Van-der-Pol-(μ=1)-Ode89.png
        :align: center
-       :alt: Van der Pol-(μ = 1)-Ode45.png
+       :alt: Van der Pol-(μ = 1)-Ode89.png
 
 
 |   cref=System.ArgumentNullException is Thrown when the  dydx is null.
@@ -370,7 +370,7 @@ Ode45s
       |  This method uses Adaptive Diagonally Implicit RungeKutta of 4th and 5th Order Method (Ode45s) to solve the ODE. It is an adaptive step size method that adjusts the step size to achieve the desired accuracy.
       |  For best results, the function should be smooth within the integration interval.
    Example: 
-        Solve the ODE :math:`~d^2y/dt^2 = 10^{5}((1 - y^2)y' - y)~` with initial condition :math:`~y(0) = [2, 0]~` over the interval :math:`[0, 3000]`.
+        Solve the ODE :math:`~d^2y/dt^2 = 10^{5}((1 - y^2)y' - y)~` with initial condition :math:`~y(0) = [2, 0]~` over the interval :math:`[0, 6.3]`.
         First we have to convert this to a system of first order differential equations, 
 
         .. math::
