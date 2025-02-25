@@ -116,21 +116,22 @@ Lets see how to compute water influx, and generate the started water influx plot
 
          // define the time and radial mesh
          Rd = [5, 6, 7, 8, 9, 10, 50];
-         Td = ColVec.Logspace(0, 3);
-
+         Td = Logspace(0, 3); end = Rd.Length - 1;
+        
          // compute the water influx and plot
-         plt = new ChartHandle();
-         Labels = ["rD = 5", "rD = 6", "rD = 7", "rD = 8", "rD = 9", "rD = 10", "rD = ∞"];
+         holdon = true;
+         lgd = [];
          foreach (double rD in Rd)
          {
              Wd = Td.Select(tD => EdgeClosedBoundaryRadial_Wd(tD, rD)).ToList();
-             plt.AddSemiLogx(Td, Wd, linewidth: 2);
+             SemiLogx(Td, Wd, Linewidth: 2); lgd.Add("rD = " + rD);
          }
-         plt.XLabel = "tD"; plt.YLabel = "WD";
-         plt.Legend = new() { labels = Labels, alignment = "upperleft" };
-         plt.Title = "Dimensionless Water Influx";
-         plt.Axis([1, 1000, 0, 70]); plt.XLogMinor = true;
-         plt.SaveFig("Dimensionless-Water-Influx-CCL-Math-5up.png");
+         lgd[end] = "rD = ∞";
+         Xlabel("tD"); Ylabel("WD");
+         Legend(lgd, Alignment.UpperLeft);
+         Axis([1, 1000, 0, 70]);
+         Title("Dimensionless Water Influx");
+         SaveAs("Dimensionless-Water-Influx-CCL-Math-5up.png");
  
       .. figure:: images/Dimensionless-Water-Influx-CCL-Math-5up.png
          :align: center
