@@ -511,6 +511,11 @@ Using Hall and Yarborough Correlation, we can evaluate the reduced compressibili
 
          % define crtr function
          function crtrhy =  CrTrHY(Pr, Tr)
+
+             % compute intermediate variables.
+             t = 1 / Tr; t2 = t * t; t3 = t2 * t; tm1 = 1 - t; tm1e2 = tm1 * tm1;
+             A = 0.06125 * t * exp(-1.2 * tm1e2); B = 14.76 * t - 9.76 * t2 + 4.58 * t3;
+             C = 90.7 * t - 242.2 * t2 + 42.4 * t3; D = 2.18 + 2.82 * t; r = A * Pr;
          
              % define density equation
              function yres = yfunc(y, A, B, C, D, Pr)
@@ -518,15 +523,10 @@ Using Hall and Yarborough Correlation, we can evaluate the reduced compressibili
                   yres = -A * Pr + (y + y2 + y3 - y4) / Den - B * y2 + C * y^D;
              end
 
-             % compute intermediate variables.
-             t = 1 / Tr; t2 = t * t; t3 = t2 * t; tm1 = 1 - t; tm1e2 = tm1 * tm1;
-             A = 0.06125 * t * exp(-1.2 * tm1e2); B = 14.76 * t - 9.76 * t2 + 4.58 * t3;
-             C = 90.7 * t - 242.2 * t2 + 42.4 * t3; D = 2.18 + 2.82 * t; r = A * Pr;
+             % solve the density equation
              if(Pr > 15)
                  r = r/2;
              end
-
-             % solve the density equation
              y = fsolve(@(y) yfunc(y, A, B, C, D, Pr), r);
 
              % compute crtr
