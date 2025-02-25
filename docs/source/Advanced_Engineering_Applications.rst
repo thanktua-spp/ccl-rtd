@@ -67,7 +67,9 @@ Lets see how to compute water influx, and generate the started water influx plot
       .. code-block:: C#
          
          // import libraries
+         using System;
          using System.Collections.Generic;
+         using CypherCrescent.MathematicsLibrary;
          using static CypherCrescent.MathematicsLibrary.Math;
 
          // define Wd function in time space.
@@ -293,7 +295,9 @@ And then compute:
       .. code-block:: C#
          
          // import libraries
+         using System;
          using System.Collections.Generic;
+         using CypherCrescent.MathematicsLibrary;
          using static CypherCrescent.MathematicsLibrary.Math;
 
          // define zfunction
@@ -450,7 +454,9 @@ Using Hall and Yarborough Correlation, we can evaluate the reduced compressibili
       .. code-block:: C#
          
          // import libraries
+         using System;
          using System.Collections.Generic;
+         using CypherCrescent.MathematicsLibrary;
          using static CypherCrescent.MathematicsLibrary.Math;
 
          // define CrTr function
@@ -629,8 +635,10 @@ To solve system of ordinary differential equation, you need the initial conditio
       .. code-block:: C#
          
          // import libraries
+         using System;
+         using System.Collections.Generic;
          using CypherCrescent.MathematicsLibrary;
-         using static MathsChart.Chart;
+         using static CypherCrescent.MathematicsLibrary.Math;
 
          // define function
          ColVec dydt(double t, ColVec y)
@@ -756,8 +764,10 @@ Here we present the solution for the model when :math:`M = 0` and :math:`5`.
       .. code-block:: C#
          
          // import libraries
+         using System;
+         using System.Collections.Generic;
          using CypherCrescent.MathematicsLibrary;
-         using static MathsChart.Chart;
+         using static CypherCrescent.MathematicsLibrary.Math;
 
          // define parameters
          double rhomu_h, drhomu_h_eta, gamma, Pr, C;
@@ -943,8 +953,10 @@ The dynamics of the system can then be modelled as:
       .. code-block:: C#
          
          // import libraries
+         using System;
+         using System.Collections.Generic;
          using CypherCrescent.MathematicsLibrary;
-         using static MathsChart.Chart;
+         using static CypherCrescent.MathematicsLibrary.Math;
 
          // define masses
          double[] m = [1, 2, 3, 4, 5, 6, 7];
@@ -1065,8 +1077,10 @@ we can add animation of the solution
       .. code-block:: C#
          
          // import libraries
+         using System;
+         using System.Collections.Generic;
          using CypherCrescent.MathematicsLibrary;
-         using static MathsChart.Chart;
+         using static CypherCrescent.MathematicsLibrary.Math;
 
          
          for (int i = 0; i < 200; i++)
@@ -1194,9 +1208,10 @@ By extracting the coeeficients of the derivatives into a matrix, we have:
       .. code-block:: C#
          
          // import libraries
-         using static System.Math;
+         using System;
+         using System.Collections.Generic;
          using CypherCrescent.MathematicsLibrary;
-         using static MathsChart.Chart;
+         using static CypherCrescent.MathematicsLibrary.Math;
 
          double pi = PI, Ub = 6, R0 = 1000, R15 = 9000, alpha = 0.99,
          beta = 1e-6, Uf = 0.026, c1 = 1e-6, c2 = 2e-6, c3 = 3e-6;
@@ -1207,36 +1222,30 @@ By extracting the coeeficients of the derivatives into a matrix, we have:
                             { 0,   0,   0,  -c3,  c3},
                             { 0,   0,   0,   c3, -c3} };
         
-        ColVec dudt(double t, ColVec u)
-        {
-            double Ue = 0.4 * Sin(200 * pi * t),
-                   f23 = beta * (Exp((u[1] - u[2]) / Uf) - 1);
-            double[] du = [ -(Ue - u[0])/R0,
-                          -(Ub/R15 - u[1]*2/R15 - (1-alpha)*f23),
-                          -(f23 - u[2]/R15),
-                          -((Ub - u[3])/R15 - alpha*f23),
-                           u[4]/R15 ];
-            return du;
-        }
-        double[] tspan = [0, 0.1];
-        double[] y0 = [0, Ub / 2, Ub / 2, Ub, 0];
+         ColVec dudt(double t, ColVec u)
+         {
+             double Ue = 0.4 * Sin(200 * pi * t),
+                    f23 = beta * (Exp((u[1] - u[2]) / Uf) - 1);
+             double[] du = [ -(Ue - u[0])/R0,
+                           -(Ub/R15 - u[1]*2/R15 - (1-alpha)*f23),
+                           -(f23 - u[2]/R15),
+                           -((Ub - u[3])/R15 - alpha*f23),
+                            u[4]/R15 ];
+             return du;
+         }
+         double[] tspan = [0, 0.1];
+         double[] y0 = [0, Ub / 2, Ub / 2, Ub, 0];
         
-        Ode.Set options = new() { RelTol = 1e-3, MassType = Ode.MassType.Constant };
+         Ode.Set options = new() { RelTol = 1e-3, MassType = Ode.MassType.Constant };
         
-        var TY = Ode.Dae45(dudt, Mass, y0, tspan, options);
-        ColVec X = TY.X, U5 = TY.Y["", 4];
-        var plt = Scatter(X, 0.4 * Maths.Sin(200 * pi * X), "o");
-        plt.AddPlot(X, U5, "--r");
-        plt.Legend = new()
-        {
-            labels = ["Input", "Output"],
-            alignment = "upperleft"
-        };
-        plt.XLabel = "Time t";
-        plt.YLabel = "Solution y";
-        plt.Title = "One Transistor Amplifier DAE Problem-DAE45";
-        plt.SaveFig("One Transistor Amplifier DAE Problem-DAE45.png");
-        plt.Show();
+         (ColVec T, Matrix Y) = Ode45a(dudt, Mass, y0, tspan, opts);
+         ColVec X = T, U5 = Y["", 4];
+         Scatter(X, 0.4 * Sin(200 * pi * X), "o"); holdon = true;
+         Plot(X, U5, "--r"); holdon = false;
+         Legend(["Input", "Output"], Alignment.UpperLeft);
+         Xlabel("Time t"); Ylabel("Solution y");
+         Title("One Transistor Amplifier DAE Problem-CCL-Math-DAE45");
+         SaveAs("One-Transistor-Amplifier-DAE-Problem-CCL-Math-DAE45.png");
         
 
       .. figure:: images/One-Transistor-Amplifier-DAE-Problem-CCL-Math-DAE45.png

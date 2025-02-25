@@ -67,7 +67,9 @@ Lets see how to compute water influx, and generate the started water influx plot
       .. code-block:: C#
          
          // import libraries
+         using System;
          using System.Collections.Generic;
+         using CypherCrescent.MathematicsLibrary;
          using static CypherCrescent.MathematicsLibrary.Math;
 
          // define Wd function in time space.
@@ -280,6 +282,11 @@ And then compute:
 .. math::
    z = \frac{AP_{pr}}{y}
 
+.. figure:: images/ZfactorBookPlot3.png
+   :align: center
+   :alt: ZfactorBookPlot3.png
+
+
 .. tabs::
 
    .. tab:: CCL-Math
@@ -288,7 +295,9 @@ And then compute:
       .. code-block:: C#
          
          // import libraries
+         using System;
          using System.Collections.Generic;
+         using CypherCrescent.MathematicsLibrary;
          using static CypherCrescent.MathematicsLibrary.Math;
 
          // define zfunction
@@ -445,7 +454,9 @@ Using Hall and Yarborough Correlation, we can evaluate the reduced compressibili
       .. code-block:: C#
          
          // import libraries
+         using System;
          using System.Collections.Generic;
+         using CypherCrescent.MathematicsLibrary;
          using static CypherCrescent.MathematicsLibrary.Math;
 
          // define CrTr function
@@ -481,7 +492,7 @@ Using Hall and Yarborough Correlation, we can evaluate the reduced compressibili
          double[] Tr = [1.05, 1.10, 1.20, 1.30, 1.40];
          ColVec Cr;
          
-         // compute r and plot them
+         // compute CrTr and plot them
          List<string> Tlabels = [];
          holdon = true;
          foreach( var tr in Tr)
@@ -491,7 +502,9 @@ Using Hall and Yarborough Correlation, we can evaluate the reduced compressibili
              Tlabels.Add("Tr = " + tr);
          }
          Legend(Tlabels, Alignment.LowerLeft );
+         Xlabel("Pr"); Ylabel("CrTr");
          Axis([0.1, 100, 0.01, 10]);
+         minorgrid = true;
          SaveAs("Reduced-Compressibility-Hall-Yarborough-CCL-Math.png");
 
       .. figure:: images/Reduced-Compressibility-Hall-Yarborough-CCL-Math.png
