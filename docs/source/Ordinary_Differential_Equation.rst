@@ -64,23 +64,21 @@ Consider: :math:`y' = 2(a - t)y^2`
          // define the ODE
          double a = 0.25;
          double dydt(double t, double y) => 2 * (a - t) * y * y;
-
+           
          // set initial condition
          double y0 = 15.9;
-
+         
          // set time span
-         double[] t_span = [0, 1] 
-
+         double[] t_span = [0, 1];
+            
          // solve ODE 
-         Ode.Result result = Ode.Ode23(dydt, y0, t_span);
-
+         (ColVec T, Matrix Y) = Ode23(dydt, y0, t_span);
+          
          // plot the result
-         var plt = Plot(result.X, result.Y, "-o");
-         plt.XLabel = "t";
-         plt.YLabel = "y";
-         plt.Title = "Solving-with-CCLMath-Ode23";
-         plt.SaveFig("Solving-with-CCLMath-Ode23.png");
-         plt.Show();
+         Plot(T, Y, "-o");
+         Xlabel("t"); Ylabel("y");
+         Title("Solving-with-CCLMath-Ode23");
+         SaveAs("Solving-with-CCLMath-Ode23.png");
 
       .. figure:: images/Solving-with-CCLMath-Ode23.png
          :align: center
