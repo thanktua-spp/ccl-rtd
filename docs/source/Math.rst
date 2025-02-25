@@ -108,7 +108,7 @@ Ode23
           Xlabel("Time t"); Ylabel("Soluton y");
           Legend(["y_1", "y_2"], Alignment.UpperLeft);
           Title("Solution of van der Pol Equation (μ = 1) with ODE23");
-          SaveAs("Van-der-Pol-(μ=1)-Ode23");
+          SaveAs("Van-der-Pol-(μ=1)-Ode23.png");
 
       Output: 
 
@@ -166,7 +166,7 @@ Ode45
           Xlabel("Time t"); Ylabel("Soluton y");
           Legend(["y_1", "y_2"], Alignment.UpperLeft);
           Title("Solution of van der Pol Equation (μ = 1) with ODE45");
-          SaveAs("Van-der-Pol-(μ=1)-Ode45");
+          SaveAs("Van-der-Pol-(μ=1)-Ode45.png");
 
       Output: 
 
@@ -224,7 +224,7 @@ Ode56
           Xlabel("Time t"); Ylabel("Soluton y");
           Legend(["y_1", "y_2"], Alignment.UpperLeft);
           Title("Solution of van der Pol Equation (μ = 1) with ODE56");
-          SaveAs("Van-der-Pol-(μ=1)-Ode56");
+          SaveAs("Van-der-Pol-(μ=1)-Ode56.png");
 
       Output: 
 
@@ -282,7 +282,7 @@ Ode78
           Xlabel("Time t"); Ylabel("Soluton y");
           Legend(["y_1", "y_2"], Alignment.UpperLeft);
           Title("Solution of van der Pol Equation (μ = 1) with ODE78");
-          SaveAs("Van-der-Pol-(μ=1)-Ode78");
+          SaveAs("Van-der-Pol-(μ=1)-Ode78.png");
 
       Output: 
 
@@ -340,7 +340,7 @@ Ode89
           Xlabel("Time t"); Ylabel("Soluton y");
           Legend(["y_1", "y_2"], Alignment.UpperLeft);
           Title("Solution of van der Pol Equation (μ = 1) with ODE89");
-          SaveAs("Van-der-Pol-(μ=1)-Ode89");
+          SaveAs("Van-der-Pol-(μ=1)-Ode89.png");
 
       Output: 
 
