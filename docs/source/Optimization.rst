@@ -43,6 +43,32 @@ The basic syntax for fzero is:
    x = fzero(fun, x0)
 
 
+* fun: A handle to the function for which you want to find the root.
+* x0: An initial guess or an interval where the function changes sign.
+
+Example
+Let's say you want to find the root of the function :math:`f(x) = x^3 - 2x - 5`. You can define this function in MATLAB and use fzero to find the root:
+
+.. code-block:: C#
+
+   fun = @(x)x^3 - 2*x - 5;
+   x0 = 2;
+   root = Fzero(fun, x0);
+
+Output
+
+.. code-block:: C#
+
+   0.22345;
+
+
+
+Advanced Options
+fzero also allows for more advanced usage with additional options:
+
+.. code-block:: C#
+   
+   var options = Solverset(Display: true);
 
 
 Root of System of Nonlinear Equation
