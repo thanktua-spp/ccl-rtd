@@ -783,7 +783,7 @@ Here we present the solution for the model when :math:`M = 0` and :math:`5`.
          Indexer I = new int[] { 1, 3 };
          
          //define function for solution of howarth transformation
-         Ode.Result HowarthTransform(double M)
+         (ColVec, Matrix) HowarthTransform(double M)
          {
              // assign parameters, functions anf their derivatives
              gamma = 1.4; 
@@ -808,40 +808,39 @@ Here we present the solution for the model when :math:`M = 0` and :math:`5`.
                                 -(drhomu_h_eta*y[4] + Pr*y[0]*y[4] + C*rhomu_h*y[2]*y[2])/rhomu_h ];
                  return dy;
              }
-        
+         
              // set time span and intial guess
-             tspan = [0, 5]; 
-             y35guess = [0.1, 0.2];
-             Ode.Result TY = null;
+             tspan = [0, 5]; y35guess = [0.1, 0.2];
+             ColVec T = null; Matrix Y = null;
          
              // define the nonlinear system to compute the initial condition
              ColVec fun(ColVec y35_0)
              {
                  y0 = [0, 0, y35_0[0], 2, y35_0[1]];
-                 TY = Ode.Ode45(dydt, y0, tspan);
-                 return TY.Y[TY.Y.Rows - 1, I].T - 1;
+                 (T, Y) = Ode45(dydt, y0, tspan);
+                 return Y.LastRow[I].T - 1;
              }
-         
-             // solve for the unknown initial conditions
-             Solvers.Result Solved = Solvers.FSolve(fun, y35guess);
-             return TY;
-         }
         
+             // solve for the unknown initial conditions
+             Solvers.FSolve(fun, y35guess);
+             return (T, Y);
+         }
+         
          // generator solution for M = 0 and plot
-         Ode.Result TY = HowarthTransform(0);
-         var plt = Plot(TY.X, TY.Y["", 1], "b", 2);
-         plt.AddPlot(TY.X, TY.Y["", 3] - 1, "r", 2);
+         (ColVec T, Matrix Y) = HowarthTransform(0);
+         Plot(T, Y["", 1], "b", 2); holdon = true;
+         Plot(T, Y["", 3] - 1, "r", 2);
          
          // generator solution for M = 5 and plot
-         TY = HowarthTransform(5);
-         plt.AddPlot(TY.X, TY.Y["", 1], "b", 2);
-         plt.AddPlot(TY.X, TY.Y["", 3] - 1, "r", 2);
-        
+         (T, Y) = HowarthTransform(5);
+         Plot(T, Y["", 1], "b", 2);
+         Plot(T, Y["", 3] - 1, "r", 2); holdon = false;
+         
          // add legend, axis label and title
-         plt.Legend = new() { labels = ["f'", "h-1"], alignment = "upperright" };
-         plt.XLabel = "η"; plt.Title = "Howarth Transformation";
-         plt.AxisLim = [0, 5, 0, 2];
-         plt.SaveFig("Howarth-Transformation-CCL-Math.png");
+         Legend( ["f'", "h-1"], Alignment.UpperRight);
+         Xlabel("η"); Title("Howarth Transformation");
+         Axis([0, 5, 0, 2]);
+         SaveAs("Howarth-Transformation-CCL-Math.png");
           
 
       .. figure:: images/Howarth-Transformation-CCL-Math.png
