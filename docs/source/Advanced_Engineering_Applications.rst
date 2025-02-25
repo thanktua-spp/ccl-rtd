@@ -440,8 +440,8 @@ Using Hall and Yarborough Correlation, we can evaluate the reduced compressibili
       .. code-block:: C#
          
          // import libraries
-         using CypherCrescent.MathematicsLibrary;
-         using static MathsChart.Chart;
+         using System.Collections.Generic;
+         using static CypherCrescent.MathematicsLibrary.Math;
 
          // define CrTr function
          static double CrTrHY(double Pr, double Tr)
@@ -452,10 +452,8 @@ Using Hall and Yarborough Correlation, we can evaluate the reduced compressibili
              // compute itnermediate variables
              t = 1 / Tr; t2 = t * t; t3 = t2 * t;
              tm1 = 1 - t; tm1e2 = tm1 * tm1;
-             A = 0.06125 * t * Exp(-1.2 * tm1e2);
-             B = 14.76 * t - 9.76 * t2 + 4.58 * t3;
-             C = 90.7 * t - 242.2 * t2 + 42.4 * t3;
-             D = 2.18 + 2.82 * t; r = A * Pr;
+             A = 0.06125 * t * Exp(-1.2 * tm1e2); B = 14.76 * t - 9.76 * t2 + 4.58 * t3;
+             C = 90.7 * t - 242.2 * t2 + 42.4 * t3;  D = 2.18 + 2.82 * t; r = A * Pr;
 
              // define density function
              var yfunc = new Func<double, double>(y =>
