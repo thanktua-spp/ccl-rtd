@@ -77,10 +77,7 @@ Root of System of Nonlinear Equation
          // display the result
          Console.WriteLine(x);
 
-   Output: 
-      
-      .. code-block:: C#
-
+         // Output: 
             0.5000
             0.0000
            -0.5236
@@ -111,10 +108,7 @@ Root of System of Nonlinear Equation
          # display the result
          print(x)
 
-   Output: 
-      
-      .. code-block:: python
- 
+         # Output: 
          [ 5.00000000e-01  1.38102142e-13 -5.23598776e-01]
 
    .. tab:: Matlab
@@ -138,8 +132,7 @@ Root of System of Nonlinear Equation
          disp(x);
 
    Output: 
-      
-      .. code-block:: matlab
+   
 
              0.5000
              0.0000
