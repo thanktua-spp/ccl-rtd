@@ -47,11 +47,11 @@ The basic syntax for fzero is:
 * x0: An initial guess or an interval where the function changes sign.
 
 Example
-Let's say you want to find the root of the function :math:`f(x) = x^3 - 2x - 5`. You can define this function in MATLAB and use fzero to find the root:
+Let's say you want to find the root of the function :math:`f(x) = x^3 - 2x - 5`. You can define this lambda expression and use fzero to find the root:
 
 .. code-block:: C#
 
-   fun = @(x)x^3 - 2*x - 5;
+   fun = x => x^3 - 2*x - 5;
    x0 = 2;
    root = Fzero(fun, x0);
 
