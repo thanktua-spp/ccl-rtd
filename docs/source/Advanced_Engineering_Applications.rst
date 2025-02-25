@@ -280,6 +280,11 @@ And then compute:
 .. math::
    z = \frac{AP_{pr}}{y}
 
+.. figure:: images/ZfactorBookPlot3.png
+   :align: center
+   :alt: ZfactorBookPlot3.png
+
+
 .. tabs::
 
    .. tab:: CCL-Math
