@@ -51,6 +51,11 @@ Let's say you want to find the root of the function :math:`f(x) = x^3 - 2x - 5`.
 
 .. code-block:: C#
 
+   // import libraries
+   using System;
+   using CypherCrescent.MathematicsLibrary;
+   using static CypherCrescent.MathematicsLibrary.Math;
+
    static double fun(double x) => Pow(x, 3) - 2 * x - 5;
    double x0 = 2;
    double root = Fzero(fun, x0);
