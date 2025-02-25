@@ -1,5 +1,68 @@
 
 
+decic
+=====
+   Description: 
+       Compute consistent initial conditions for ODE45I.
+   Param: 
+      | fun:  The function that represents the implicit ODE. The function should accept three doubles (time, state, and its derivative) and return a double representing the derivative of the state.
+      | t0:  An array of time points at which the solution is desired. The first element is the initial time, and the last element is the final time.
+      | y0:  The initial value of the dependent variable (state).
+      | ytruth:  An array of intergers indicating which component of y0 is fixed and which is not.
+      | yp0:  The initial time derivative of the dependent variable (state).
+      | yptruth:  An array of intergers indicating which component yp0 is fixed and which is not.
+      | options:  Optional parameters for the ODE solver, such as relative tolerance, absolute tolerance, and maximum step size. If not provided, default options will be used.
+   Returns: 
+       A tuple containing two elements:
+          * double y0: modified initial state.
+          * double yp0: modified initial rate of change.
+   Remark: 
+      |  decic changes as few components of the guess as possible. You can specify that certain components are to be held fixed by setting ytruth(i) = 1 if no change is permitted 
+      |  in the guess for Y0(i) and 0 otherwise.An empty array for yptruth is interpreted as allowing changes in all entries.yptruth is handled similarly. 
+      |  You cannot fix more than length(Y0) components.Depending on the problem, it may not be possible to fix this many.It also may not be possible to fix certain components of Y0 or YP0.
+      |  It is recommended that you fix no more components than necessary.
+   Example: 
+        Solve the ODE :math:`~d^2y/dt^2 = (1 - y^2)y' - y~` with initial condition :math:`~y(0) = [2, 0]~` over the interval :math:`[0, 2]`.
+        First we have to convert this to a system of first order differential equations, 
+
+        .. math::
+           \begin{array}{rcl}
+                 y' &=& v \\
+                 v' &=& (1 - y^2)v - y
+            \end{array}
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using CypherCrescent.MathematicsLibrary.Math;
+      
+          //define ODE
+          static ColVec vdp1(double t, ColVec y)
+          {
+               double[] dy;
+               return dy = [y[1], (1 - y[0] * y[0]) * y[1] - y[0]];
+          }
+          //Solve ODE
+          (ColVec T, Matrix Y) = Ode23(vdp1, [2, 0], [0, 20]);
+          // Plot the result
+          Plot(T, Y, "-o");
+          Xlabel("Time t"); Ylabel("Soluton y");
+          Legend(["y_1", "y_2"], Alignment.UpperLeft);
+          Title("Solution of van der Pol Equation (μ = 1) with ODE23");
+          SaveAs("Van-der-Pol-(μ=1)-Ode23");
+
+      Output: 
+
+    .. figure:: images/Van-der-Pol-(μ=1)-Ode23.png
+       :align: center
+       :alt: Van der Pol-(μ = 1)-Ode23.png
+
+
+|   cref=System.ArgumentNullException is Thrown when the  dydx is null.
+|   cref=System.ArgumentException is Thrown when the  tspan array has less than two elements.
+
+
 Ode23
 =====
    Description: 
@@ -17,7 +80,7 @@ Ode23
       |  This method uses the Bogacki-Shampine method (Ode23) to solve the ODE. It is an adaptive step size method that adjusts the step size to achieve the desired accuracy.
       |  For best results, the function should be smooth within the integration interval.
    Example: 
-        Solve the ODE :math:`~d^2y/dt^2 = (1 - y^2)y' - y~` with initial condition :math:`~y(0) = 1~` over the interval :math:`[0, 2]`.
+        Solve the ODE :math:`~d^2y/dt^2 = (1 - y^2)y' - y~` with initial condition :math:`~y(0) = [2, 0]~` over the interval :math:`[0, 2]`.
         First we have to convert this to a system of first order differential equations, 
 
         .. math::
@@ -75,7 +138,7 @@ Ode45
       |  This method uses the Dormand-Prince method (Ode45) to solve the ODE. It is an adaptive step size method that adjusts the step size to achieve the desired accuracy.
       |  For best results, the function should be smooth within the integration interval.
    Example: 
-        Solve the ODE :math:`~d^2y/dt^2 = (1 - y^2)y' - y~` with initial condition :math:`~y(0) = 1~` over the interval :math:`[0, 2]`.
+        Solve the ODE :math:`~d^2y/dt^2 = (1 - y^2)y' - y~` with initial condition :math:`~y(0) = [2, 0]~` over the interval :math:`[0, 2]`.
         First we have to convert this to a system of first order differential equations, 
 
         .. math::
@@ -133,7 +196,7 @@ Ode56
       |  This method uses the Jim Verner 5th and 6th order pair method (Ode56) to solve the ODE. It is an adaptive step size method that adjusts the step size to achieve the desired accuracy.
       |  For best results, the function should be smooth within the integration interval.
    Example: 
-        Solve the ODE :math:`~d^2y/dt^2 = (1 - y^2)y' - y~` with initial condition :math:`~y(0) = 1~` over the interval :math:`[0, 2]`.
+        Solve the ODE :math:`~d^2y/dt^2 = (1 - y^2)y' - y~` with initial condition :math:`~y(0) = [2, 0]~` over the interval :math:`[0, 2]`.
         First we have to convert this to a system of first order differential equations, 
 
         .. math::
@@ -191,7 +254,7 @@ Ode78
       |  This method uses the Jim Verner 7th and 8th order pair method (Ode78) to solve the ODE. It is an adaptive step size method that adjusts the step size to achieve the desired accuracy.
       |  For best results, the function should be smooth within the integration interval.
    Example: 
-        Solve the ODE :math:`~d^2y/dt^2 = (1 - y^2)y' - y~` with initial condition :math:`~y(0) = 1~` over the interval :math:`[0, 2]`.
+        Solve the ODE :math:`~d^2y/dt^2 = (1 - y^2)y' - y~` with initial condition :math:`~y(0) = [2, 0]~` over the interval :math:`[0, 2]`.
         First we have to convert this to a system of first order differential equations, 
 
         .. math::
@@ -249,7 +312,7 @@ Ode89
       |  This method uses the Jim Verner 8th and 9th order pair method (Ode89) to solve the ODE. It is an adaptive step size method that adjusts the step size to achieve the desired accuracy.
       |  For best results, the function should be smooth within the integration interval.
    Example: 
-        Solve the ODE :math:`~d^2y/dt^2 = (1 - y^2)y' - y~` with initial condition :math:`~y(0) = 1~` over the interval :math:`[0, 2]`.
+        Solve the ODE :math:`~d^2y/dt^2 = (1 - y^2)y' - y~` with initial condition :math:`~y(0) = [2, 0]~` over the interval :math:`[0, 2]`.
         First we have to convert this to a system of first order differential equations, 
 
         .. math::
@@ -272,6 +335,122 @@ Ode89
           }
           //Solve ODE
           (ColVec T, Matrix Y) = Ode45(vdp1, [2, 0], [0, 20]);
+          // Plot the result
+          Plot(T, Y, "-o");
+          Xlabel("Time t"); Ylabel("Soluton y");
+          Legend(["y_1", "y_2"], Alignment.UpperLeft);
+          Title("Solution of van der Pol Equation (μ = 1) with ODE45");
+          SaveAs("Van-der-Pol-(μ=1)-Ode45");
+
+      Output: 
+
+    .. figure:: images/Van-der-Pol-(μ=1)-Ode45.png
+       :align: center
+       :alt: Van der Pol-(μ = 1)-Ode45.png
+
+
+|   cref=System.ArgumentNullException is Thrown when the  dydx is null.
+|   cref=System.ArgumentException is Thrown when the  tspan array has less than two elements.
+
+
+Ode45s
+======
+   Description: 
+       Solves stiff ordinary differential equations (ODE) using Adaptive Diagonally Implicit RungeKutta of 4th and 5th Order Method (Ode45s).
+   Param: 
+      | dydx:  The function that represents the ODE. The function should accept two doubles (time and state) and return a double representing the derivative of the state.
+      | initcon:  The initial value of the dependent variable (state).
+      | tspan:  An array of time points at which the solution is desired. The first element is the initial time, and the last element is the final time.
+      | options:  Optional parameters for the ODE solver, such as relative tolerance, absolute tolerance, and maximum step size. If not provided, default options will be used.
+   Returns: 
+       A tuple containing two elements:
+          * ColVec T: A column vector of time points at which the solution was computed.
+          * Matrix Y: A matrix where each row corresponds to the state of the system at the corresponding time point in T.
+   Remark: 
+      |  This method uses Adaptive Diagonally Implicit RungeKutta of 4th and 5th Order Method (Ode45s) to solve the ODE. It is an adaptive step size method that adjusts the step size to achieve the desired accuracy.
+      |  For best results, the function should be smooth within the integration interval.
+   Example: 
+        Solve the ODE :math:`~d^2y/dt^2 = 1000(1 - y^2)y' - y~` with initial condition :math:`~y(0) = [2, 0]~` over the interval :math:`[0, 3000]`.
+        First we have to convert this to a system of first order differential equations, 
+
+        .. math::
+           \begin{array}{rcl}
+                 y' &=& v \\
+                 v' &=& 1000(1 - y^2)v - y
+            \end{array}
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using CypherCrescent.MathematicsLibrary.Math;
+      
+          //define ODE
+          static ColVec vdp2(double t, ColVec y)
+          {
+               double[] dy;
+               return dy = [y[1], 1000(1 - y[0] * y[0]) * y[1] - y[0]];
+          }
+          //Solve ODE
+          (ColVec T, Matrix Y) = Ode45(vdp1, [2, 0], [0, 200]);
+          // Plot the result
+          Plot(T, Y, "-o");
+          Xlabel("Time t"); Ylabel("Soluton y");
+          Legend(["y_1", "y_2"], Alignment.UpperLeft);
+          Title("Solution of van der Pol Equation (μ = 1) with ODE45");
+          SaveAs("Van-der-Pol-(μ=1)-Ode45");
+
+      Output: 
+
+    .. figure:: images/Van-der-Pol-(μ=1)-Ode45.png
+       :align: center
+       :alt: Van der Pol-(μ = 1)-Ode45.png
+
+
+|   cref=System.ArgumentNullException is Thrown when the  dydx is null.
+|   cref=System.ArgumentException is Thrown when the  tspan array has less than two elements.
+
+
+fun,
+====
+   Description: 
+       Solves stiff ordinary differential equations (ODE) using Adaptive Diagonally Implicit RungeKutta of 4th and 5th Order Method (Ode45i).
+   Param: 
+      | dydx:  The function that represents the ODE. The function should accept two doubles (time and state) and return a double representing the derivative of the state.
+      | initcon:  The initial value of the dependent variable (state).
+      | tspan:  An array of time points at which the solution is desired. The first element is the initial time, and the last element is the final time.
+      | options:  Optional parameters for the ODE solver, such as relative tolerance, absolute tolerance, and maximum step size. If not provided, default options will be used.
+   Returns: 
+       A tuple containing two elements:
+          * ColVec T: A column vector of time points at which the solution was computed.
+          * Matrix Y: A matrix where each row corresponds to the state of the system at the corresponding time point in T.
+   Remark: 
+      |  This method uses Adaptive Diagonally Implicit RungeKutta of 4th and 5th Order Method (Ode45i) to solve the ODE. It is an adaptive step size method that adjusts the step size to achieve the desired accuracy.
+      |  For best results, the function should be smooth within the integration interval.
+   Example: 
+        Solve the ODE :math:`~d^2y/dt^2 = 1000(1 - y^2)y' - y~` with initial condition :math:`~y(0) = [2, 0]~` over the interval :math:`[0, 3000]`.
+        First we have to convert this to a system of first order differential equations, 
+
+        .. math::
+           \begin{array}{rcl}
+                 y' &=& v \\
+                 v' &=& (1 - y^2)v - y
+            \end{array}
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using CypherCrescent.MathematicsLibrary.Math;
+      
+          //define ODE
+          static ColVec vdp2(double t, ColVec y)
+          {
+               double[] dy;
+               return dy = [y[1], 1000(1 - y[0] * y[0]) * y[1] - y[0]];
+          }
+          //Solve ODE
+          (ColVec T, Matrix Y) = Ode45(vdp1, [2, 0], [0, 200]);
           // Plot the result
           Plot(T, Y, "-o");
           Xlabel("Time t"); Ylabel("Soluton y");

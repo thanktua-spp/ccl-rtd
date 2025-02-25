@@ -67,20 +67,10 @@ Lets see how to compute water influx, and generate the started water influx plot
       .. code-block:: C#
          
          // import libraries
-         using CypherCrescent.MathematicsLibrary;
-         using static MathsChart.Chart;
+         using System.Collections.Generic;
+         using static CypherCrescent.MathematicsLibrary.Math;
 
-         // expose the numerical laplace transform
-         double niLaplace(Func<double, double> Lapfun, double t) 
-            => Transform.InverseLaplaceGavSteh(Lapfun, t);
-         
-         // expose special functions
-         double J(int n, double x) => SpecialFunctions.BesselJ(n, x);
-         double Y(int n, double x) => SpecialFunctions.BesselY(n, x);
-         double I(int n, double x) => SpecialFunctions.BesselI(n, x);
-         double K(int n, double x) => SpecialFunctions.BesselK(n, x);
-
-         // define Wd function in time space. 
+         // define Wd function in time space.
          double EdgeClosedBoundaryRadial_Wd(double tD, double rD)
          {
              // define the embedded laplace space solution
@@ -88,32 +78,34 @@ Lets see how to compute water influx, and generate the started water influx plot
              {
                  double sqrts, sqrts3, rDsqrts, Num, Den;
                  sqrts = Sqrt(s); sqrts3 = s * sqrts; rDsqrts = rD * sqrts;
-                 Num = I(1, rDsqrts) * K(1, sqrts) - K(1, rDsqrts) * I(1, sqrts);
-                 Den = I(1, rDsqrts) * K(0, sqrts) + K(1, rDsqrts) * I(0, sqrts);
+                 Num = BesselI(1, rDsqrts) * BesselK(1, sqrts) - BesselK(1, rDsqrts) * BesselI(1, sqrts);
+                 Den = BesselI(1, rDsqrts) * BesselK(0, sqrts) + BesselK(1, rDsqrts) * BesselI(0, sqrts);
                  if (double.IsInfinity(Num) || double.IsInfinity(Den))
                      return 1 / sqrts3;
                  else
                      return Num / (sqrts3 * Den);
              });
-             return tD == 0 || rD == 1 ? 0 : niLaplace(lapW, tD);
+             return tD == 0 || rD == 1 ? 0 : NiLaplace(lapW, tD);
          }
-        
-         // define the time and radial mesh
-         double [] Rd = [2, 2.5, 3, 3.5, 4, 50];
-         ColVec Td = ColVec.Logspace(-1, 2), Wd;
          
+         // define the time and radial mesh
+         double[] Rd = [2, 2.5, 3, 3.5, 4, 50];
+         ColVec Td = Logspace(-1, 2), Wd;
+         int end = Rd.Length - 1;
          // compute the water influx and plot
-         var plt = new ChartHandle();
-         string[] Labels = ["rD = 2", "rD = 2.5", "rD = 3", "rD = 3.5", "rD = 4", "rD = ∞"];
+         holdon = true;
+         List<string> lgd = [];
          foreach (double rD in Rd)
          {
              Wd = Td.Select(tD => EdgeClosedBoundaryRadial_Wd(tD, rD)).ToList();
-             plt.AddSemiLogx(Td, Wd, linewidth: 2);
+             SemiLogx(Td, Wd, Linewidth: 2); lgd.Add("rD = " + rD);
          }
-         plt.XLabel = "tD"; plt.YLabel = "WD";
-         plt.Legend = new(){ labels = Labels, alignment = "upperleft" };
-         plt.Title = "Dimensionless Water Influx";
-         plt.SaveFig("Dimensionless-Water-Influx-CCL-Math.png");
+         lgd[end] = "rD = ∞";
+         Xlabel("tD"); Ylabel("WD");
+         Legend(lgd, Alignment.UpperLeft);
+         Axis([0.1, 100, 1, 8]);
+         Title("Dimensionless Water Influx");
+         SaveAs("Dimensionless-Water-Influx-CCL-Math.png");
          
 
       .. figure:: images/Dimensionless-Water-Influx-CCL-Math-4dn.png
@@ -164,7 +156,8 @@ Lets see how to compute water influx, and generate the started water influx plot
          Td = logspace(-1, 2);
             
          % compute the water influx and plot
-         figure(Color='w'); lgd = {};
+         figure(Color='w'); 
+         lgd = {};
          for rD = Rd 
             Wd = arrayfun(@(tD)EdgeClosedBoundaryRadial_Wd(tD, rD), Td);
             semilogx(Td, Wd, linewidth = 2); hold on;

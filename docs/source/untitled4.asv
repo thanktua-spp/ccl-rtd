@@ -50,7 +50,7 @@ end
 
 for i = 0:9
     mu = 10^i;
-    [T, Y] = ode15s(@(t, y)vanderPol(t, y, mu), [0, 6.3], [2,0], opts);
+    [T, Y] = ode15s(@(t, y)vanderPol(t, y, mu), [0, 6], [2,0], opts);
     disp(['number of Points in the result = ', num2str(numel(T))])
     disp(['==================', num2str(i), '=================='])
     subplot(1,2,1)
