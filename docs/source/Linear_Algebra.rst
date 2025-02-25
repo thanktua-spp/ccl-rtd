@@ -38,62 +38,35 @@ In the standard matrix multiplication, multiplying two (2 \times 2) matrices req
    using CypherCrescent.MathematicsLibrary;
    using static CypherCrescent.MathematicsLibrary.Math;
 
-         // define zfunction
-         static double ZfactorHY(double Pr, double Tr)
-         {
-             // define variables
-             double z = 1, t, tm1, tm1e2, t2, t3, A, B,
-                 C, D, r, y2, y3, y4, Den;
-         
-             // avoid computing z when Pr = 0.
-             if (Pr != 0)
-             {
-                 t = 1 / Tr; t2 = t * t; t3 = t2 * t;
-                 tm1 = 1 - t; tm1e2 = tm1 * tm1;
-                 A = 0.06125 * t * Exp(-1.2 * tm1e2);
-                 B = 14.76 * t - 9.76 * t2 + 4.58 * t3;
-                 C = 90.7 * t - 242.2 * t2 + 42.4 * t3;
-                 D = 2.18 + 2.82 * t; r = A * Pr;
-         
-                 // define density equation
-                 var yfunc = new Func<double, double>(y =>
-                 {
-                     y2 = y * y; y3 = y2 * y; y4 = y3 * y;
-                     Den = Pow(1 - y, 3);
-                     return -A * Pr + (y + y2 + y3 - y4) / Den -
-                     B * y2 + C * Pow(y, D);
-                 });
-        
-                 // solve the density equation
-                 var opts = SolverSet (StepFactor: 0.5 );
-                 double y = Fsolve(yfunc, r, opts);
-         
-                 // compute the z factor
-                 z = A * Pr / y;
-             }
-             return z;
-         } 
-         
-         // set up ressure and temperature mesh
-         double[] Pr = Enumerable.Range(0, 301).Select(i => i * 0.05).ToArray();
-         double[] Tr = [1.05,    1.08,   1.12,   1.18,   1.26,   1.35,   1.47,
-                        1.61,    1.75,   1.91,   2.09,   2.29,   2.62,   3.00];
-         ColVec Z;
-         
-         // compute z factors and plot them
-         List<string> Tlabels = [];
-         holdon = true;
-         foreach( var tr in Tr)
-         {
-             Z = Pr.Select(p => ZfactorHY(p, tr)).ToArray();
-             Plot(Pr, Z);
-             Tlabels.Add("Tr = " + tr);
-         }
-         Legend(Tlabels, Alignment.LowerRight );
-         SaveAs("Zfactor-Hall-Yarborough-CCL-Math.png");
-
-      .. figure:: images/Zfactor-Hall-Yarborough-CCL-Math.png
-         :align: center
-         :alt: Zfactor-Hall-Yarborough-CCL-Math.png
-
-
+   public Matrix Strass(Matrix A, Matrix B)
+   {
+      if (A.cols != B.rows)   
+         throw new Exception("Matrices are not conformable for multiplication");
+      if (A.cols == 1)
+         return A[0, 0] * B[0, 0];
+      else
+      {
+         // get matrix size
+         int N = A.cols / 2; Indexer I = new(0, N), J = I + N;
+ 
+         // split A and B into submatrices
+         Matrix A11 = A[I, I], A12 = A[I, J], B11 = B[I, I], B12 = B[I, J],
+                A21 = A[J, I], A22 = A[J, J], B21 = B[J, I], B22 = B[J, J],
+ 
+         // compute the strassen submatrices (7 multiplication)
+             M1 = Strass(A11 + A22, B11 + B22),
+             M2 = Strass(A21 + A22, B11),
+             M3 = Strass(A11, B12 - B22),
+             M4 = Strass(A22, B21 - B11),
+             M5 = Strass(A11 + A12, B22),
+             M6 = Strass(A21 - A11, B11 + B12),
+             M7 = Strass(A12 - A22, B21 + B22);
+ 
+         // compose the result
+         return new Matrix[,] 
+         { 
+             { M1 + M4 - M5 + M7,      M3 + M5      },
+             {      M2 + M4,      M1 - M2 + M3 + M6 } 
+         };
+      } 
+   }
