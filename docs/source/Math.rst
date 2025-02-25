@@ -370,13 +370,13 @@ Ode45s
       |  This method uses Adaptive Diagonally Implicit RungeKutta of 4th and 5th Order Method (Ode45s) to solve the ODE. It is an adaptive step size method that adjusts the step size to achieve the desired accuracy.
       |  For best results, the function should be smooth within the integration interval.
    Example: 
-        Solve the ODE :math:`~d^2y/dt^2 = 1000(1 - y^2)y' - y~` with initial condition :math:`~y(0) = [2, 0]~` over the interval :math:`[0, 3000]`.
+        Solve the ODE :math:`~d^2y/dt^2 = 10^{5}((1 - y^2)y' - y)~` with initial condition :math:`~y(0) = [2, 0]~` over the interval :math:`[0, 3000]`.
         First we have to convert this to a system of first order differential equations, 
 
         .. math::
            \begin{array}{rcl}
                  y' &=& v \\
-                 v' &=& 1000(1 - y^2)v - y
+                 v' &=& 10^{5}((1 - y^2)v - y)
             \end{array}
 
        .. code-block:: CSharp 
@@ -389,16 +389,16 @@ Ode45s
           static ColVec vdp2(double t, ColVec y)
           {
                double[] dy;
-               return dy = [y[1], 1000(1 - y[0] * y[0]) * y[1] - y[0]];
+               return dy = [y[1], 1e5*((1 - y[0] * y[0]) * y[1] - y[0])];
           }
           //Solve ODE
-          (ColVec T, Matrix Y) = Ode45(vdp1, [2, 0], [0, 200]);
+          (ColVec T, Matrix Y) = Ode45s(vdp2, [2, 0], [0, 6.3]);
           // Plot the result
-          Plot(T, Y, "-o");
+          Plot(T, Y);
           Xlabel("Time t"); Ylabel("Soluton y");
           Legend(["y_1", "y_2"], Alignment.UpperLeft);
-          Title("Solution of van der Pol Equation (μ = 1) with ODE45");
-          SaveAs("Van-der-Pol-(μ=1)-Ode45");
+          Title("Solution of van der Pol Equation (μ = 1e5) with ODE45s");
+          SaveAs("Van-der-Pol-(μ=1e5)-Ode45s");
 
       Output: 
 
