@@ -57,7 +57,7 @@ Root of System of Nonlinear Equation
          using CypherCrescent.MathematicsLibrary;
          using static CypherCrescent.MathematicsLibrary.Math;
 
-         double[] x0, res;
+         double[] x0, res; ColVec x;
          // define the function
          ColVec fun(ColVec x)
          {
@@ -72,7 +72,7 @@ Root of System of Nonlinear Equation
          x0 = [0.1, 0.1, -0.1];
          
          // call the solver
-         ColVec x = Fsolve(fun, x0);
+         x = Fsolve(fun, x0);
 
          // display the result
          Console.WriteLine(x);
