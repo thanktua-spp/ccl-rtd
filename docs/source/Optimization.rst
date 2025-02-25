@@ -67,13 +67,44 @@ Output
    2.0946;
 
 
-
 Advanced Options
 fzero also allows for more advanced usage with additional options:
 
 .. code-block:: C#
    
-   var options = Solverset(Display: true);
+   var options = SolverSet(Display: true);
+
+
+.. code-block:: C#
+
+   // import libraries
+   using System;
+   using CypherCrescent.MathematicsLibrary;
+   using static CypherCrescent.MathematicsLibrary.Math;
+
+   static double fun(double x) => Pow(x, 3) - 2 * x - 5;
+   var ops = SolverSet(Display: true);
+   double x0 = 2;
+   double root = Fzero(fun, x0, opts);
+
+Output
+
+.. code-block:: C#
+
+       Summary of solutions of nonlinear equations
+   fun-count     a          f(a)           b          f(b)     Procedure
+       1     2.000000    -1.000000     2.000000    -1.000000   initial interval
+       3     1.943431    -1.546666     2.056569    -0.414934   search
+       5     1.920000    -1.762112     2.080000    -0.161088   search
+       7     1.886863    -2.056019     2.113137     0.209619   search
+   
+    Solving for solution between 1.886863 and 2.113137
+   fun-count     x         f(x)       Procedure
+       7     2.113137     0.209619    initial
+       8     2.092202    -0.026189    interpolation
+       9     2.094527    -0.000273    interpolation
+      10     2.094551     0.000000    interpolation
+      11     2.094550    -0.000011    interpolation
 
 
 Root of System of Nonlinear Equation
