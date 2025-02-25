@@ -26,3 +26,7 @@ Divide the matrices into four submatrices.
 Compute seven products using combinations of these submatrices.
 Combine these products to get the final result.
 
+.. figure:: images/StrassenMultilication.png
+   :align: center
+   :alt: StrassenMultilication.png
+
