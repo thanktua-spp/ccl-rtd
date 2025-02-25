@@ -29,7 +29,7 @@ function crtrhy =  CrTrHY(Pr, Tr)
 end
 
 % set up ressure and temperature mesh
-Pr = linspace(0, 25, 501);
+Pr = linspace(0.2, 25, 501);
 Tr = [1.05,  1.1,  1.2,  1.3,  1.4];
 
 % compute z factors and plot them

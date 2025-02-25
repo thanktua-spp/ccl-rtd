@@ -477,7 +477,7 @@ Using Hall and Yarborough Correlation, we can evaluate the reduced compressibili
          } 
         
          // set up ressure and temperature mesh
-         double[] Pr = Linspace(0, 25, 501);
+         double[] Pr = Linspace(0.1, 25, 501);
          double[] Tr = [1.05, 1.10, 1.20, 1.30, 1.40];
          ColVec Cr;
          
