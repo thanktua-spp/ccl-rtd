@@ -63,8 +63,8 @@ Root of System of Nonlinear Equation
          {
              double x1 = x[0], x2 = x[1], x3 = x[2];
              res = [3 * x1 - Cos(x2 * x3) - 0.5,
-                    x1*x1 - 81*Pow(x2 + 0.1, 2) + Sin(x3) + 1.06,
-                    Exp(-x1 * x2) + 20 * x3 + (10 * PI - 3) / 3];
+                    x1 * x1 - 81*Pow(x2 + 0.1, 2) + Sin(x3) + 1.06,
+                    Exp(-x1 * x2) + 20 * x3 + (10 * pi - 3) / 3];
              return res;
          };
             
@@ -98,7 +98,7 @@ Root of System of Nonlinear Equation
          def func(x):
              x1 = x[0]; x2 = x[1]; x3 = x[2]; pi = np.pi;
              return [3 * x1 - np.cos(x2 * x3) - 0.5,
-                     x1*x1 - 81*(x2 + 0.1)**2 + np.sin(x3) + 1.06,
+                     x1 * x1 - 81*(x2 + 0.1)**2 + np.sin(x3) + 1.06,
                      np.exp(-x1 * x2) + 20 * x3 + (10 * pi - 3) / 3]
 
 
@@ -126,7 +126,7 @@ Root of System of Nonlinear Equation
          % define the function handle
          f = @(x)[3*x(1) - cos(x(2)*x(2)) - 1/2;
                   x(1)^2 - 81*(x(2)+0.1)^2 + sin(x(3)) + 1.06;
-                  exp(x(1)*x(2)) + 20*x(3) + (10*pi-3)/3];
+                  exp(x(1)*x(2)) + 20*x(3) + (10 * pi - 3)/3 ];
          
          % set initial guess
          x0 = [0.1; 0.1; -0.1];
