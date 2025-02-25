@@ -151,27 +151,27 @@ Lets see how to compute water influx, and generate the started water influx plot
 
       .. code-block:: matlab
          
-        % define the solution in time space
-        function wt = EdgeClosedBoundaryRadial_Wd(tD, rD)
-        
-           % define the solution in laplace space
-           function ws = lapW(s)
-              sqrts = sqrt(s); sqrts3 = s * sqrts; rDsqrts = rD * sqrts;
-              Num = besseli(1, rDsqrts) * besselk(1, sqrts) - besselk(1, rDsqrts) * besseli(1, sqrts);
-              Den = besseli(1, rDsqrts) * besselk(0, sqrts) + besselk(1, rDsqrts) * besseli(0, sqrts);
-              if (isinf(Num) || isinf(Den))
-                 ws = 1 / sqrts3;
-              else
-                 ws = Num / (sqrts3 * Den);
-              end
-           end
-        
-           if(tD == 0 || rD == 1)
-              wt =  0;
-           else
-              wt = niLaplace(@(s)lapW(s), tD);
-           end
-        end
+         % define the solution in time space
+         function wt = EdgeClosedBoundaryRadial_Wd(tD, rD)
+         
+            % define the solution in laplace space
+            function ws = lapW(s)
+               sqrts = sqrt(s); sqrts3 = s * sqrts; rDsqrts = rD * sqrts;
+               Num = besseli(1, rDsqrts) * besselk(1, sqrts) - besselk(1, rDsqrts) * besseli(1, sqrts);
+               Den = besseli(1, rDsqrts) * besselk(0, sqrts) + besselk(1, rDsqrts) * besseli(0, sqrts);
+               if (isinf(Num) || isinf(Den))
+                  ws = 1 / sqrts3;
+               else
+                  ws = Num / (sqrts3 * Den);
+               end
+            end
+         
+            if(tD == 0 || rD == 1)
+               wt =  0;
+            else
+               wt = niLaplace(@(s)lapW(s), tD);
+            end
+         end
 
          % define the time and radial mesh
          Rd = [2, 2.5, 3, 3.5, 4, 50];
@@ -288,8 +288,8 @@ And then compute:
       .. code-block:: C#
          
          // import libraries
-         using CypherCrescent.MathematicsLibrary;
-         using static MathsChart.Chart;
+         using System.Collections.Generic;
+         using static CypherCrescent.MathematicsLibrary.Math;
 
          // define zfunction
          static double ZfactorHY(double Pr, double Tr)
@@ -297,7 +297,7 @@ And then compute:
              // define variables
              double z = 1, t, tm1, tm1e2, t2, t3, A, B,
                  C, D, r, y2, y3, y4, Den;
-
+         
              // avoid computing z when Pr = 0.
              if (Pr != 0)
              {
@@ -307,40 +307,43 @@ And then compute:
                  B = 14.76 * t - 9.76 * t2 + 4.58 * t3;
                  C = 90.7 * t - 242.2 * t2 + 42.4 * t3;
                  D = 2.18 + 2.82 * t; r = A * Pr;
-
+         
                  // define density equation
                  var yfunc = new Func<double, double>(y =>
                  {
                      y2 = y * y; y3 = y2 * y; y4 = y3 * y;
                      Den = Pow(1 - y, 3);
-                     return -A * Pr + (y + y2 + y3 - y4) / Den - 
+                     return -A * Pr + (y + y2 + y3 - y4) / Den -
                      B * y2 + C * Pow(y, D);
                  });
-
+        
                  // solve the density equation
-                 Solvers.Set options = new() { StepFactor = 0.5 };
-                 Solvers.Result sol = Solvers.FSolve(yfunc, r, options);
-
+                 var opts = SolverSet (StepFactor: 0.5 );
+                 double y = Fsolve(yfunc, r, opts);
+         
                  // compute the z factor
-                 z = A * Pr / sol.Sol;
+                 z = A * Pr / y;
              }
              return z;
-         }
-
+         } 
+         
          // set up ressure and temperature mesh
          double[] Pr = Enumerable.Range(0, 301).Select(i => i * 0.05).ToArray();
          double[] Tr = [1.05,    1.08,   1.12,   1.18,   1.26,   1.35,   1.47,
                         1.61,    1.75,   1.91,   2.09,   2.29,   2.62,   3.00];
+         ColVec Z;
          
          // compute z factors and plot them
-         plt = new ChartHandle(); List<string> Tlabels = [];
-         for (int j = 0; j < Tr.Length; j++)
+         List<string> Tlabels = [];
+         holdon = true;
+         foreach( var tr in Tr)
          {
-             plt.AddPlot(Pr, Pr.Select(p => ZfactorHY(p, Tr[j])).ToArray());
-             Tlabels.Add("Tr = " + Tr[j]);
+             Z = Pr.Select(p => ZfactorHY(p, tr)).ToArray();
+             Plot(Pr, Z);
+             Tlabels.Add("Tr = " + tr);
          }
-         plt.Legend = new() { labels = Tlabels.ToArray(), alignment = "lowerright" };
-         plt.SaveFig("Zfactor-Hall-Yarborough-CCL-Math.png"); 
+         Legend(Tlabels, Alignment.LowerRight );
+         SaveAs("Zfactor-Hall-Yarborough-CCL-Math.png");
 
       .. figure:: images/Zfactor-Hall-Yarborough-CCL-Math.png
          :align: center
@@ -440,40 +443,52 @@ Using Hall and Yarborough Correlation, we can evaluate the reduced compressibili
          using CypherCrescent.MathematicsLibrary;
          using static MathsChart.Chart;
 
-         // define zfunction
-         static double ZfactorHY(double Pr, double Tr)
-         {
-             // define variables
-             double z = 1, t, tm1, tm1e2, t2, t3, A, B,
-                    C, D, r, y2, y3, y4, Den;
-
-             // avoid computing intermediate values.
-             t = 1 / Tr; t2 = t * t; t3 = t2 * t;
-             tm1 = 1 - t; tm1e2 = tm1 * tm1;
-             A = 0.06125 * t * Exp(-1.2 * tm1e2);
-             B = 14.76 * t - 9.76 * t2 + 4.58 * t3;
-             C = 90.7 * t - 242.2 * t2 + 42.4 * t3;
-             D = 2.18 + 2.82 * t; r = A * Pr;
-
-             // define density equation
-             var yfunc = new Func<double, double>(y =>
-             {
-                 y2 = y * y; y3 = y2 * y; y4 = y3 * y;
-                 Den = Pow(1 - y, 3);
-                 return -A * Pr + (y + y2 + y3 - y4) / Den - 
-                 B * y2 + C * Pow(y, D);
-             });
-
-             // solve the density equation
-             Solvers.Set options = new() { StepFactor = 0.5 };
-             Solvers.Result sol = Solvers.FSolve(yfunc, r, options);
-
-             // compute the z factor
-             double y = sol;
-             y2 = y * y; y3 = y2 * y; y4 = y3 * y; ym1p4 = Pow(1 - y, 4); yDm1 = Pow(y, D - 1);
-             X = (1 + 4 * y + 4 * y2 - 4 * y3 + y4) /  ym1p4 - 2 * B * y + C * D * yDm1;
-             return A*Tr/(y*X);
-         }
+         // define CrTr function
+        static double CrTrHY(double Pr, double Tr)
+        {
+            double t, tm1, tm1e2, t2, t3, A, B, C, D,
+                r, y2, y3, y4, yDm1, ym1p3, ym1p4, Den;
+            t = 1 / Tr; t2 = t * t; t3 = t2 * t;
+            tm1 = 1 - t; tm1e2 = tm1 * tm1;
+            A = 0.06125 * t * Exp(-1.2 * tm1e2);
+            B = 14.76 * t - 9.76 * t2 + 4.58 * t3;
+            C = 90.7 * t - 242.2 * t2 + 42.4 * t3;
+            D = 2.18 + 2.82 * t; r = A * Pr;
+            var yfunc = new Func<double, double>(y =>
+            {
+                y2 = y * y; y3 = y2 * y; y4 = y3 * y;
+                ym1p3 = Pow(1 - y, 3);
+                return -A * Pr + (y + y2 + y3 - y4) /
+                ym1p3 - B * y2 + C * Pow(y, D);
+            });
+            var opts = SolverSet(StepFactor: 0.5);
+            if (Pr > 15) r *= 0.5;
+            double y = Fsolve(yfunc, r, opts);
+            y2 = y * y; y3 = y2 * y; y4 = y3 * y;
+            ym1p4 = Pow(1 - y, 4); yDm1 = Pow(y, D - 1);
+            Den = (1 + 4 * y + 4 * y2 - 4 * y3 + y4) /
+                ym1p4 - 2 * B * y + C * D * yDm1;
+            return A * Tr / (y * Den);
+        }
+        
+        // set up ressure and temperature mesh
+        Indexer I = new(0, 501);
+        double[] Pr = [..I.Select(i=>i * 0.05 + 0.2)];
+        double[] Tr = [1.05, 1.10, 1.20, 1.30, 1.40];
+        ColVec Cr;
+        
+        // compute z factors and plot them
+        List<string> Tlabels = [];
+        holdon = true;
+        foreach( var tr in Tr)
+        {
+            Cr = Pr.Select(p => CrTrHY(p, tr)).ToArray();
+            LogLog(Pr, Cr);
+            Tlabels.Add("Tr = " + tr);
+        }
+        Legend(Tlabels, Alignment.LowerLeft );
+        Axis([0.1, 100, 0.01, 10]);
+        SaveAs("Reduced-Compressibility-Hall-Yarborough-CCL-Math.png");
 
          // set up ressure and temperature mesh
          double[] Pr = Enumerable.Range(0, 501).Select(i => i * 0.05+0.2).ToArray();
