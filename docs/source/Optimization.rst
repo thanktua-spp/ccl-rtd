@@ -34,6 +34,15 @@ Least squares curve fitting is a technique used to find the best-fitting curve f
 
 Root of an Equation
 -------------------
+The fzero function in CCL-Math is a powerful tool for finding the roots of nonlinear equations. It is particularly useful when you need to find a point where a given function equals zero. Here's a brief overview of how it works and some of its key features:
+
+Basic Usage
+The basic syntax for fzero is:
+.. code-block:: C#
+
+   x = fzero(fun, x0)
+
+
 
 
 Root of System of Nonlinear Equation

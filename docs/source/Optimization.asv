@@ -34,7 +34,7 @@ Least squares curve fitting is a technique used to find the best-fitting curve f
 
 Root of an Equation
 -------------------
-
+The fzero function in MATLAB is a powerful tool for finding the roots of nonlinear equations. It is particularly useful when you need to find a point where a given function equals zero. Here's a brief overview of how it works and some of its key features:
 
 Root of System of Nonlinear Equation
 ------------------------------------
@@ -137,9 +137,9 @@ Root of System of Nonlinear Equation
          % display the result
          disp(x);
 
-   Output: 
+      Output: 
       
-      .. code-block:: matlab
+         .. code-block:: matlab
 
              0.5000
              0.0000
