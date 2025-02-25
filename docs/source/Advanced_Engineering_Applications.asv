@@ -151,27 +151,27 @@ Lets see how to compute water influx, and generate the started water influx plot
 
       .. code-block:: matlab
          
-         % define the solution in time space
-         function wt = EdgeClosedBoundaryRadial_Wd(tD, rD)
-         
-            % define the solution in laplace space
-            function ws = lapW(s)
-               sqrts = sqrt(s); sqrts3 = s * sqrts; rDsqrts = rD * sqrts;
-               Num = besseli(1, rDsqrts) * besselk(1, sqrts) - besselk(1, rDsqrts) * besseli(1, sqrts);
-               Den = besseli(1, rDsqrts) * besselk(0, sqrts) + besselk(1, rDsqrts) * besseli(0, sqrts);
-               if (isinf(Num) || isinf(Den))
-                  ws = 1 / sqrts3;
-               else
-                  ws = Num / (sqrts3 * Den);
-               end
-            end
-         
-            if(tD == 0 || rD == 1)
-               wt =  0;
-            else
-               wt = niLaplace(@(s)lapW(s), tD);
-            end
-         end
+        % define the solution in time space
+        function wt = EdgeClosedBoundaryRadial_Wd(tD, rD)
+        
+           % define the solution in laplace space
+           function ws = lapW(s)
+              sqrts = sqrt(s); sqrts3 = s * sqrts; rDsqrts = rD * sqrts;
+              Num = besseli(1, rDsqrts) * besselk(1, sqrts) - besselk(1, rDsqrts) * besseli(1, sqrts);
+              Den = besseli(1, rDsqrts) * besselk(0, sqrts) + besselk(1, rDsqrts) * besseli(0, sqrts);
+              if (isinf(Num) || isinf(Den))
+                 ws = 1 / sqrts3;
+              else
+                 ws = Num / (sqrts3 * Den);
+              end
+           end
+        
+           if(tD == 0 || rD == 1)
+              wt =  0;
+           else
+              wt = niLaplace(@(s)lapW(s), tD);
+           end
+        end
 
          % define the time and radial mesh
          Rd = [2, 2.5, 3, 3.5, 4, 50];
