@@ -51,15 +51,15 @@ Let's say you want to find the root of the function :math:`f(x) = x^3 - 2x - 5`.
 
 .. code-block:: C#
 
-   fun = x => x^3 - 2*x - 5;
-   x0 = 2;
-   root = Fzero(fun, x0);
+   static double fun(double x) => Pow(x, 3) - 2 * x - 5;
+   double x0 = 2;
+   double root = Fzero(fun, x0);
 
 Output
 
 .. code-block:: C#
 
-   0.22345;
+   2.0946;
 
 
 
