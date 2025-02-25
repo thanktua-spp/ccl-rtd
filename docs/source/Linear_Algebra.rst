@@ -38,7 +38,7 @@ In the standard matrix multiplication, multiplying two (2 \times 2) matrices req
    using CypherCrescent.MathematicsLibrary;
    using static CypherCrescent.MathematicsLibrary.Math;
 
-   public Matrix Strass(Matrix A, Matrix B)
+   static Matrix Strass(Matrix A, Matrix B)
    {
       if (A.cols != B.rows)   
          throw new Exception("Matrices are not conformable for multiplication");
@@ -70,3 +70,13 @@ In the standard matrix multiplication, multiplying two (2 \times 2) matrices req
          };
       } 
    }
+
+   Matrix A = Rand(8,8), B = Rand(8,8), C = Strass(A, B);
+   Console.WriteLine($"A = \n{A}") 
+   Console.WriteLine($"B = \n{B}") 
+   Console.WriteLine($"C = \n{C}") 
+   
+
+   
+
+
