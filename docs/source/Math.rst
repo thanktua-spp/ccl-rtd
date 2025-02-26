@@ -23,11 +23,6 @@ decic
       |  It is recommended that you fix no more components than necessary.
    Example: 
         Determine the consistent initial condition for the ODE :math:`~ty^2y'^3 - y^3y'^2 + t(t^2 + 1)y' - t^2y~` with initial condition :math:`~y(0) = \sqrt{1.5}~`.
-        First we have to convert this to a system of first order differential equations, 
-
-        .. math::
-      
-          ty^2y'^3 - y^3y'^2 + t(t^2 + 1)y' - t^2y, ~y(0) = \sqrt{1.5} 
           
 
        .. code-block:: CSharp 
