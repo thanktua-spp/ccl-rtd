@@ -108,6 +108,32 @@ Output:
    :alt: Legendre-Polynomial-Functions.png
 
 
+.. math::
+
+   Q_n(z) = \frac{1}{2}P_n(x)\ln\left(\frac{1+x}{1-x}\right) + \sum_{k=1}^{\floor{\frac{n+1}{2}}} \frac{2n - 4k + 3}{(2k - 1)(n - k + 1)}P_{n - 2k + 1}(x)
+
+.. code-block:: C#
+
+   // import libraries
+   using System;
+   using CypherCrescent.MathematicsLibrary;
+   using static CypherCrescent.MathematicsLibrary.Math;
+
+   ColVec x = Linspace(-0.95, 0.95);
+   Indexer Z = new(1, 5);
+   Matrix P = Z.Select(z => LegendreQ(z, x)).ToList();
+   Plot(x, P, Linewidth: 2);
+   Title("LegendreQ Functions");
+   Legend(Z.Select(z => z.ToString()), Alignment.UpperCenter);
+   SaveAs("LegendreQ-Functions.png");
+
+Output: 
+      
+.. figure:: images/LegendreQ-Functions.png
+   :align: center
+   :alt: LegendreQ-Functions.png
+
+
 .. code-block:: C#
 
    // import libraries

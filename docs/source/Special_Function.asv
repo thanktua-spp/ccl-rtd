@@ -51,31 +51,15 @@ Types of Bessel Functions
     
        Y_n(x) = \frac{J_n(x)\cos(n\pi) - J_{-n}(x)}{\sin(n\pi)}
 
-#. **Modified Bessel Functions (
-I
-n
-(
-x
-)
-I 
-n
-​
- (x) and 
-K
-n
-(
-x
-)
-K 
-n
-​
- (x)): These functions are solutions to the modified Bessel's differential equation, which is obtained by replacing 
-x
-x with 
-i
-x
-ix in the original equation. They are used in problems involving heat conduction and diffusion.
+#. **Modified Bessel Functions (** :math:`I_n(x)` **and** :math:`K_n(x)` **)**: These functions are solutions to the modified Bessel's differential equation, which is obtained by replacing  :math:`x` with :math:`ix` in the original equation. They are used in problems involving heat conduction and diffusion.
 
+    .. math::
+    
+       I_n(x) = \sum_{m = 0}^{\infty} \frac{1}{m!\Gamma(m+n+1)}\left(\frac{x}{2}\right)^{2m + n}
+    .. math::
+    
+       K_n(x) = \frac{\pi}{2}\frac{I_{-n}(x) - I_n(x)}{\sin(n\pi)}
+    
 .. code-block:: C#
 
    // import libraries
@@ -122,6 +106,32 @@ Output:
 .. figure:: images/Legendre-Polynomial-Functions.png
    :align: center
    :alt: Legendre-Polynomial-Functions.png
+
+
+.. math::
+
+   Q_n(z) = \frac{1}{2}P_n(x)\ln\left(\frac{1+x}{1-x}\right) + \sum_{k=1}^{\floor{\frac}}
+
+.. code-block:: C#
+
+   // import libraries
+   using System;
+   using CypherCrescent.MathematicsLibrary;
+   using static CypherCrescent.MathematicsLibrary.Math;
+
+   ColVec x = Linspace(-0.95, 0.95);
+   Indexer Z = new(1, 5);
+   Matrix P = Z.Select(z => LegendreQ(z, x)).ToList();
+   Plot(x, P, Linewidth: 2);
+   Title("LegendreQ Functions");
+   Legend(Z.Select(z => z.ToString()), Alignment.UpperCenter);
+   SaveAs("LegendreQ-Functions.png");
+
+Output: 
+      
+.. figure:: images/LegendreQ-Functions.png
+   :align: center
+   :alt: LegendreQ-Functions.png
 
 
 .. code-block:: C#
