@@ -1,5 +1,5 @@
 Special Functions
-=================
+#################
 
 In the realm of mathematics, we encounter a vast array of functions, from the simple linear functions to the intricate complexities of calculus. Among these, a special class of functions emerges, known as special functions. These are not your everyday polynomials or trigonometric functions; they arise naturally in various branches of mathematics, physics, and engineering, often as solutions to differential equations or integrals that defy elementary solutions.   
 
@@ -20,6 +20,20 @@ Examples of Special Functions:
 - Elliptic Integrals: Arise in the calculation of arc lengths of ellipses and other geometric problems.
 
    
+Bessel Functions
+****************
+
+Bessel functions are a family of solutions to Bessel's differential equation, which appears in many physical problems involving cylindrical or spherical symmetry. They are named after the German mathematician Friedrich Wilhelm Bessel, who first studied them in the early 19th century.
+
+Bessel's Differential Equation
+==============================
+The general form of Bessel's differential equation is:
+.. math::
+
+   x^2 \frac{d^2y}{dx^2} + x\frac{dy}{dx} + (x^2 - n^2)y = 0
+
+where :math: `n`  is a parameter that determines the order of the Bessel function.
+
 .. code-block:: C#
 
    // import libraries
