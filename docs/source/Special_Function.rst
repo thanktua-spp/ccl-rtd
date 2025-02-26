@@ -49,7 +49,7 @@ Types of Bessel Functions
 
 .. math::
 
-   J_n(x) = \sum_{m = 0}^{\infty} \frac{(-1)^m}{m!\Gamma(m+n+1)}\left(\frac{x}{2}\right)^{2m + n}
+   Y_n(x) = \frac{J_n(x)\cos(n\pi) - J_{-n}(x)}{\sin(n\pi)}
 
 .. code-block:: C#
 
