@@ -121,6 +121,7 @@ Output:
    Plot(x, P, Linewidth: 2);
    Title("Laguerre Polynomial Functions");
    Axis([-2, 10, -10, 10]);
+   Legend(Z.Select(z => z.ToString()), Alignment.UpperCenter);
    SaveAs("Laguerre-Polynomial-Functions.png");
 
 Output: 
