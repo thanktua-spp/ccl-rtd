@@ -32,6 +32,7 @@ Examples of Special Functions:
    Matrix J = Z.Select(z => BesselJ(z, x)).ToList();
    Plot(x, J, Linewidth: 2);
    Title("Bessel Functions");
+   Legend(Z.Select(z => z.ToString()), Alignment.UpperRight);
    SaveAs("BesselJ-Functions.png");
 
 Output: 
@@ -49,10 +50,11 @@ Output:
    using static CypherCrescent.MathematicsLibrary.Math;
 
    ColVec x = Linspace(-1, 1);
-   Indexer Z = new(0, 8);
+   Indexer Z = new(1, 5);
    Matrix P = Z.Select(z => Legendre(z, x)).ToList();
    Plot(x, P, Linewidth: 2);
    Title("Legendre Polynomial Functions");
+   Legend(Z.Select(z => z.ToString()), Alignment.UpperCenter);
    SaveAs("Legendre-Polynomial-Functions.png");
 
 Output: 
@@ -70,10 +72,11 @@ Output:
    using static CypherCrescent.MathematicsLibrary.Math;
 
    ColVec x = Linspace(-1, 1);
-   Indexer Z = new(0, 8);
+   Indexer Z = new(0, 5);
    Matrix T = Z.Select(z => ChebyshevT(z, x)).ToList();
    Plot(x, T, Linewidth: 2);
    Title("ChebyshevT Polynomial Functions");
+   Legend(Z.Select(z => z.ToString()), Alignment.UpperCenter);
    SaveAs("ChebyshevT-Polynomial-Functions.png");
 
 Output: 
