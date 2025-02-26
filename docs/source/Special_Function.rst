@@ -84,7 +84,7 @@ Output:
 
 .. math::
 
-   Q_n(z) = \frac{\sqrt{\pi} \Gamma(n+1)}{2^{n+1} \Gamma(n+\frac{3}{2})} \left( \frac{z^2-1}{z} \right)^{n/2} \, _2F_1\left( \frac{n+1}{2}, \frac{n+2}{2}; n+\frac{3}{2}; \frac{1}{z^2} \right)
+   P_n(z) =  \frac{1}{2^n}\sum_{k=0}^{\floor{\frac{n}{2}}} \frac{(-1)^k(2n-2k)!}{k!(n-k)!(n - 2k)!}x^{n-2k}
 
 .. code-block:: C#
 
@@ -97,15 +97,15 @@ Output:
    Indexer Z = new(1, 5);
    Matrix P = Z.Select(z => Legendre(z, x)).ToList();
    Plot(x, P, Linewidth: 2);
-   Title("Legendre Polynomial Functions");
+   Title("LegendreP Functions");
    Legend(Z.Select(z => z.ToString()), Alignment.UpperCenter);
-   SaveAs("Legendre-Polynomial-Functions.png");
+   SaveAs("LegendreP-Functions.png");
 
 Output: 
       
-.. figure:: images/Legendre-Polynomial-Functions.png
+.. figure:: images/Legendre-Functions.png
    :align: center
-   :alt: Legendre-Polynomial-Functions.png
+   :alt: LegendreP-Functions.png
 
 
 .. math::
@@ -121,8 +121,8 @@ Output:
 
    ColVec x = Linspace(-0.95, 0.95);
    Indexer Z = new(1, 5);
-   Matrix P = Z.Select(z => LegendreQ(z, x)).ToList();
-   Plot(x, P, Linewidth: 2);
+   Matrix Q = Z.Select(z => LegendreQ(z, x)).ToList();
+   Plot(x, Q, Linewidth: 2);
    Title("LegendreQ Functions");
    Legend(Z.Select(z => z.ToString()), Alignment.UpperCenter);
    SaveAs("LegendreQ-Functions.png");
