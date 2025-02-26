@@ -202,7 +202,7 @@ Now we have 2 equations
          double[] t_span = [0, 10];
 
          // solve ODE 
-         (ColVec T, Matrix Y) = Ode.Ode45(dzdt, z0, t_span);
+         (ColVec T, Matrix Y) = Ode45(dzdt, z0, t_span);
 
          // plot the result
          Plot(T, Y, "-o");
