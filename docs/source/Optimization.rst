@@ -226,6 +226,7 @@ fmincon function is a versatile tool for solving constrained nonlinear optimizat
 
 
    .. code-block:: C#
+
       // import libraries
       using System;
       using CypherCrescent.MathematicsLibrary;
