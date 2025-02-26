@@ -401,8 +401,8 @@ Ode45s
 |   cref=System.ArgumentException is Thrown when the  tspan array has less than two elements.
 
 
-fun,
-====
+Ode45i
+======
    Description: 
        Solves stiff ordinary differential equations (ODE) using Adaptive Diagonally Implicit RungeKutta of 4th and 5th Order Method (Ode45i).
    Param: 
