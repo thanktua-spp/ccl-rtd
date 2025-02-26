@@ -38,27 +38,18 @@ decic
           using CypherCrescent.MathematicsLibrary.Math;
       
           //define ODE
-          static ColVec vdp1(double t, ColVec y)
-          {
-               double[] dy;
-               return dy = [y[1], (1 - y[0] * y[0]) * y[1] - y[0]];
-          }
-          //Solve ODE
-          (ColVec T, Matrix Y) = Ode23(vdp1, [2, 0], [0, 20]);
-          // Plot the result
-          Plot(T, Y, "-o");
-          Xlabel("Time t"); Ylabel("Soluton y");
-          Legend(["y_1", "y_2"], Alignment.UpperLeft);
-          Title("Solution of van der Pol Equation (μ = 1) with ODE23");
-          SaveAs("Van-der-Pol-(μ=1)-Ode23");
+          static double fun(double t, double y, double yp) =>
+             t* y * y* yp * yp* yp - y* y * y* yp * yp + t* (t* t + 1) * yp - t* t * y;
+             var opts = Odeset(Stats: true);
+             double t0 = 1, y0 = Sqrt(t0 * t0 + 1 / 2.0), yp0 = 0;
+              (y0, yp0) = decic(fun, t0, y0, 1, yp0, 0);
 
       Output: 
 
-    .. figure:: images/Van-der-Pol-(μ=1)-Ode23.png
-       :align: center
-       :alt: Van der Pol-(μ = 1)-Ode23.png
 
+       .. code-block:: Terminal 
 
+           
 |   cref=System.ArgumentNullException is Thrown when the  dydx is null.
 |   cref=System.ArgumentException is Thrown when the  tspan array has less than two elements.
 
@@ -444,25 +435,27 @@ fun,
           using CypherCrescent.MathematicsLibrary.Math;
       
           //define ODE
-          static ColVec vdp2(double t, ColVec y)
-          {
-               double[] dy;
-               return dy = [y[1], 1000(1 - y[0] * y[0]) * y[1] - y[0]];
-          }
-          //Solve ODE
-          (ColVec T, Matrix Y) = Ode45(vdp1, [2, 0], [0, 200]);
-          // Plot the result
-          Plot(T, Y, "-o");
-          Xlabel("Time t"); Ylabel("Soluton y");
-          Legend(["y_1", "y_2"], Alignment.UpperLeft);
-          Title("Solution of van der Pol Equation (μ = 1) with ODE45");
-          SaveAs("Van-der-Pol-(μ=1)-Ode45");
+          static double fun(double t, double y, double yp) =>
+             t* y * y* yp * yp* yp - y* y * y* yp * yp + t* (t* t + 1) * yp - t* t * y;
+             
+          var opts = Odeset(Stats: true);
+          double t0 = 1, y0 = Sqrt(t0 * t0 + 1 / 2.0), yp0 = 0;
+          (y0, yp0) = decic(fun, t0, y0, 1, yp0, 0);
+          (ColVec T, Matrix Y) = Ode45i(fun, (y0, yp0), [t0, 10], opts);
+          ColVec Y_exact = T.Select(t => Sqrt(t * t + 0.5)).ToList();
+          Console.WriteLine(Hcart(Y, Y_exact));
+          Plot(T, Y, "*"); holdon = true;
+          Plot(T, Y_exact, "-o"); holdon = false;
+          Title("Implicit differential (weissinger) equation with ODE45i");
+          Xlabel("Time t");
+          Ylabel("Solution y");
+          SaveAs("Weissinger-Ode45i.png");
 
       Output: 
 
-    .. figure:: images/Van-der-Pol-(μ=1)-Ode45.png
+    .. figure:: images/Weissinger-Ode45i.png
        :align: center
-       :alt: Van der Pol-(μ = 1)-Ode45.png
+       :alt: Weissinger-Ode45i.png
 
 
 |   cref=System.ArgumentNullException is Thrown when the  dydx is null.
@@ -670,7 +663,7 @@ Conv
 Integral
 ========
    Description: 
-       Computes the definite integral of a function using adaptive Gauss-Legendre quadrature.
+       Computes the definite integral of a function using adaptive Gauss-LegendreP quadrature.
    Param: 
       | fun:  The function to integrate. The function should accept a double and return a double.
       | x_1:  The lower bound of the integration interval.
@@ -679,7 +672,7 @@ Integral
    Returns: 
        The approximate value of the definite integral.
    Remark: 
-      |  This method uses adaptive Gauss-Legendre quadrature to approximate the definite integral.
+      |  This method uses adaptive Gauss-LegendreP quadrature to approximate the definite integral.
       |  The number of quadrature points is increased until the desired relative accuracy is achieved or a maximum number of iterations is reached.
       |  For best results, the function should be smooth within the integration interval.
       |  If x_1 equals x_2 then the method will return 0.
@@ -719,7 +712,7 @@ Integral
 Integral2
 =========
    Description: 
-       Computes the definite double integral of a function over a region where both y-bounds are defined by functions of x, using adaptive Gauss-Legendre quadrature.
+       Computes the definite double integral of a function over a region where both y-bounds are defined by functions of x, using adaptive Gauss-LegendreP quadrature.
    Param: 
       | fun:  The function to integrate. The function should accept two doubles (x, y) and return a double.
       | x_1:  The lower bound of the x integration.
@@ -730,7 +723,7 @@ Integral2
    Returns: 
        The approximate value of the definite double integral.
    Remark: 
-      |  This method uses adaptive Gauss-Legendre quadrature to approximate the double integral.
+      |  This method uses adaptive Gauss-LegendreP quadrature to approximate the double integral.
       |  The integration is performed over the region defined by x_1 <= x <= x_2 and y_1(x) <= y <= y_2(x).
       |  The number of quadrature points is increased until the desired relative accuracy is achieved or a maximum number of iterations is reached.
       |  For best results, the function should be smooth within the integration region, and both y_1(x) and y_2(x) should be smooth functions. Additionally, y_1(x) should be less than or equal to y_2(x) for all x in the interval [x_1, x_2] to ensure a valid integration region.
@@ -816,7 +809,7 @@ Integral2
 Integral3
 =========
    Description: 
-       Computes the definite triple integral of a function over a region where the y-bounds are defined by functions of x, and the z-bounds are defined by functions of x and y, using adaptive Gauss-Legendre quadrature.
+       Computes the definite triple integral of a function over a region where the y-bounds are defined by functions of x, and the z-bounds are defined by functions of x and y, using adaptive Gauss-LegendreP quadrature.
    Param: 
       | fun:  The function to integrate. The function should accept three doubles (x, y, z) and return a double.
       | x_1:  The lower bound of the x integration.
@@ -829,7 +822,7 @@ Integral3
    Returns: 
        The approximate value of the definite triple integral.
    Remark: 
-      |  This method uses adaptive Gauss-Legendre quadrature to approximate the triple integral.
+      |  This method uses adaptive Gauss-LegendreP quadrature to approximate the triple integral.
       |  The integration is performed over the region defined by x_1 <= x <= x_2, y_1(x) <= y <= y_2(x), and z_1(x, y) <= z <= z_2(x, y).
       |  The number of quadrature points is increased until the desired relative accuracy is achieved or a maximum number of iterations is reached.
       |  For best results, the function should be smooth within the integration region, y_1(x), y_2(x), z_1(x, y), and z_2(x, y) should be smooth functions. 
@@ -926,7 +919,7 @@ Integral3
 Integral4
 =========
    Description: 
-       Computes the definite quadruple integral of a function over a region where the y-bounds are defined by functions of x, and the z-bounds are defined by functions of x and y, using adaptive Gauss-Legendre quadrature.
+       Computes the definite quadruple integral of a function over a region where the y-bounds are defined by functions of x, and the z-bounds are defined by functions of x and y, using adaptive Gauss-LegendreP quadrature.
    Param: 
       | fun:  The function to integrate. The function should accept four doubles (w, x, y, z) and return a double.
       | w_1:  The lower bound of the w integration.
@@ -941,7 +934,7 @@ Integral4
    Returns: 
        The approximate value of the definite triple integral.
    Remark: 
-      |  This method uses adaptive Gauss-Legendre quadrature to approximate the quadruple integral.
+      |  This method uses adaptive Gauss-LegendreP quadrature to approximate the quadruple integral.
       |  The integration is performed over the region defined by w_1 <= w <= w_2, x_1(w) <= x <= x_2(w), y_1(w, x) <= y <= y_2(w, x), and z_1(w, x, y) <= z <= z_2(w, x, y).
       |  The number of quadrature points is increased until the desired relative accuracy is achieved or a maximum number of iterations is reached.
       |  For best results, the function should be smooth within the integration region, x_1(w), x_2(w),  y_1(w, x), y_2(w, x), z_1(w, x, y), and z_2(w, x, y) should be smooth functions. 
