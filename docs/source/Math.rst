@@ -22,7 +22,7 @@ decic
       |  You cannot fix more than length(Y0) components.Depending on the problem, it may not be possible to fix this many.It also may not be possible to fix certain components of Y0 or YP0.
       |  It is recommended that you fix no more components than necessary.
    Example: 
-        Determine the consistent initial condition for the ODE :math:`~ty^2y'^3 - y^3y'^2 + t(t^2 + 1)y' - t^2y~` with initial condition :math:`~y(0) = \sqrt{1.5}~`.
+        Determine the consistent initial condition for the implicit ODE :math:`~ty^2y'^3 - y^3y'^2 + t(t^2 + 1)y' - t^2y = 0~` with initial condition :math:`~y(0) = \sqrt{1.5}~`.
           
 
        .. code-block:: CSharp 
