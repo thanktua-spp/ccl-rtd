@@ -84,7 +84,7 @@ Output:
 
 .. math::
 
-   P_n(z) =  \frac{1}{2^n}\sum_{k=0}^{\floor{\frac{n}{2}}} \frac{(-1)^k(2n-2k)!}{k!(n-k)!(n - 2k)!}x^{n-2k}
+   P_n(z) =  \frac{1}{2^n}\sum_{k=0}^{\lfloor \frac{n}{2} \rfloor} \frac{(-1)^k(2n-2k)!}{k!(n-k)!(n - 2k)!}x^{n-2k}
 
 .. code-block:: C#
 
