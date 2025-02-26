@@ -103,7 +103,7 @@ Output:
 
 Output: 
       
-.. figure:: images/Legendre-Functions.png
+.. figure:: images/LegendreP-Functions.png
    :align: center
    :alt: LegendreP-Functions.png
 
