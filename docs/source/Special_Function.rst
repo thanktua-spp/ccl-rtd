@@ -94,10 +94,11 @@ Output:
    using static CypherCrescent.MathematicsLibrary.Math;
 
    ColVec x = Linspace(-1, 1);
-   Indexer Z = new(0, 8);
-   Matrix U = Z.Select(z => ChebyshevT(z, x)).ToList();
-   Plot(x, U, Linewidth: 2);
+   Indexer Z = new(0, 5);
+   Matrix T = Z.Select(z => ChebyshevT(z, x)).ToList();
+   Plot(x, T, Linewidth: 2);
    Title("ChebyshevU Polynomial Functions");
+   Legend(Z.Select(z => z.ToString()), Alignment.UpperCenter);
    SaveAs("ChebyshevU-Polynomial-Functions.png");
 
 Output: 
