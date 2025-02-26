@@ -38,7 +38,7 @@ where :math:`n`  is a parameter that determines the order of the Bessel function
 
 Types of Bessel Functions
 =========================
-#. *Bessel Functions of the First Kind :math:`(J_n(x))` * These functions are denoted by :math:`(J_n(x))` and are solutions to Bessel's differential equation that are finite at the origin (for non-negative integer orders). They are commonly used in problems involving wave propagation and static potentials.
+#. **Bessel Functions of the First Kind :math:`(J_n(x))`** These functions are denoted by :math:`(J_n(x))` and are solutions to Bessel's differential equation that are finite at the origin (for non-negative integer orders). They are commonly used in problems involving wave propagation and static potentials.
 
 .. math::
 
