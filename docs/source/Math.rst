@@ -404,7 +404,7 @@ Ode45s
 Ode45i
 ======
    Description: 
-       Solves stiff ordinary differential equations (ODE) using Adaptive Diagonally Implicit RungeKutta of 4th and 5th Order Method (Ode45i).
+       Solves inmplicit ordinary differential equations (ODE) using Adaptive Diagonally Implicit RungeKutta of 4th and 5th Order Method (Ode45i).
    Param: 
       | dydx:  The function that represents the ODE. The function should accept two doubles (time and state) and return a double representing the derivative of the state.
       | initcon:  The initial value of the dependent variable (state).
@@ -418,14 +418,8 @@ Ode45i
       |  This method uses Adaptive Diagonally Implicit RungeKutta of 4th and 5th Order Method (Ode45i) to solve the ODE. It is an adaptive step size method that adjusts the step size to achieve the desired accuracy.
       |  For best results, the function should be smooth within the integration interval.
    Example: 
-        Solve the ODE :math:`~d^2y/dt^2 = 1000(1 - y^2)y' - y~` with initial condition :math:`~y(0) = [2, 0]~` over the interval :math:`[0, 3000]`.
-        First we have to convert this to a system of first order differential equations, 
-
-        .. math::
-           \begin{array}{rcl}
-                 y' &=& v \\
-                 v' &=& (1 - y^2)v - y
-            \end{array}
+        Solve the ODE :math:`~ty^2y'^3 - y^3y'^2 + t(t^2 + 1)y' - t^2y = 0~` with initial condition :math:`~y(0) = \sqrt{1.5}~`.
+          
 
        .. code-block:: CSharp 
 
