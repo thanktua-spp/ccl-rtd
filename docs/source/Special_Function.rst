@@ -28,6 +28,7 @@ Bessel functions are a family of solutions to Bessel's differential equation, wh
 Bessel's Differential Equation
 ==============================
 The general form of Bessel's differential equation is:
+
 .. math::
 
    x^2 \frac{d^2y}{dx^2} + x\frac{dy}{dx} + (x^2 - n^2)y = 0
