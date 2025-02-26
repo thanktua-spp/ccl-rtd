@@ -102,3 +102,25 @@ Output:
 .. figure:: images/ChebyshevU-Polynomial-Functions.png
    :align: center
    :alt: ChebyshevU-Polynomial-Functions.png
+
+
+.. code-block:: C#
+
+   // import libraries
+   using System;
+   using CypherCrescent.MathematicsLibrary;
+   using static CypherCrescent.MathematicsLibrary.Math;
+
+   ColVec x = Linspace(-2, 10);
+   Indexer Z = new(1, 5);
+   Matrix P = Z.Select(z => Laguerre(z, x)).ToList();
+   Plot(x, P, Linewidth: 2);
+   Title("Laguerre Polynomial Functions");
+   Axis([-2, 10, -10, 10]);
+   SaveAs("Laguerre-Polynomial-Functions.png");
+
+Output: 
+      
+.. figure:: images/Laguerre-Polynomial-Functions.png
+   :align: center
+   :alt: Laguerre-Polynomial-Functions.png

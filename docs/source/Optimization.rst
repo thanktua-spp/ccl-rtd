@@ -41,7 +41,7 @@ The basic syntax for fzero is:
 
 .. code-block:: C#
 
-   x = fzero(fun, x0)
+   x = Fzero(fun, x0)
 
 
 * fun: A handle to the function for which you want to find the root.
