@@ -33,12 +33,12 @@ The general form of Bessel's differential equation is:
 
    x^2 \frac{d^2y}{dx^2} + x\frac{dy}{dx} + (x^2 - n^2)y = 0
 
-where :math: `n`  is a parameter that determines the order of the Bessel function.
+where :math:`n`  is a parameter that determines the order of the Bessel function.
 
 
 Types of Bessel Functions
 =========================
-#. *Bessel Functions of the First Kind :math: `(J_n(x))` * These functions are denoted by :math: `(J_n(x))` and are solutions to Bessel's differential equation that are finite at the origin (for non-negative integer orders). They are commonly used in problems involving wave propagation and static potentials.
+#. *Bessel Functions of the First Kind :math:`(J_n(x))` * These functions are denoted by :math:`(J_n(x))` and are solutions to Bessel's differential equation that are finite at the origin (for non-negative integer orders). They are commonly used in problems involving wave propagation and static potentials.
 
 .. math::
 
