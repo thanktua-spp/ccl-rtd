@@ -42,6 +42,10 @@ Output:
    :alt: BesselJ-Functions.png
 
 
+.. math::
+
+   Q_n(z) = \frac{\sqrt{\pi} \Gamma(n+1)}{2^{n+1} \Gamma(n+\frac{3}{2})} \left( \frac{z^2-1}{z} \right)^{n/2} \, _2F_1\left( \frac{n+1}{2}, \frac{n+2}{2}; n+\frac{3}{2}; \frac{1}{z^2} \right)
+
 .. code-block:: C#
 
    // import libraries
@@ -129,3 +133,29 @@ Output:
 .. figure:: images/Laguerre-Polynomial-Functions.png
    :align: center
    :alt: Laguerre-Polynomial-Functions.png
+
+
+
+
+
+.. code-block:: C#
+
+   // import libraries
+   using System;
+   using CypherCrescent.MathematicsLibrary;
+   using static CypherCrescent.MathematicsLibrary.Math;
+
+   ColVec x = Linspace(-2, 2);
+   Indexer Z = new(0, 5);
+   Matrix T = Z.Select(z => Hermite(z, x)).ToList();
+   Plot(x, T, Linewidth: 2);
+   Title("HermiteH Polynomial Functions");
+   Axis([-2, 2, -30, 30]);
+   Legend(Z.Select(z => z.ToString()), Alignment.UpperCenter);
+   SaveAs("HermiteH-Polynomial-Functions.png");
+
+Output: 
+      
+.. figure:: images/HermiteH-Polynomial-Functions.png
+   :align: center
+   :alt: HermiteH-Polynomial-Functions.png
