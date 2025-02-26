@@ -222,6 +222,39 @@ Linear Programming
 
 Sequential Quadratic Programming
 --------------------------------
+fmincon function is a versatile tool for solving constrained nonlinear optimization problems. It finds the minimum of a scalar function subject to various constraints, including linear, nonlinear, and bound constraints using sequential quadratic programming:
+
+
+   .. code-block:: C#
+      // import libraries
+      using System;
+      using CypherCrescent.MathematicsLibrary;
+      using static CypherCrescent.MathematicsLibrary.Math;
+
+      static double fun(ColVec x) => 100 * Pow(x[1] - x[0]*x[0], 2) + Pow(1 - x[0], 2);
+      double[] x0 = [0.5, 0];
+      Matrix A = new double[,]{ { 1, 2} };
+      ColVec b = 1;
+      Matrix Aeq = new double[,] { { 2, 1 } };
+      ColVec beq = 1;
+      ColVec x = Fmincon(fun, x0, x => A * x - b, x => Aeq * x - beq);
+      Console.WriteLine(x);
+
+   Output:
+
+   .. code-block:: C#
+
+      Running HiGHS 1.7.1 (git hash: n/a): Copyright (c) 2024 HiGHS under MIT licence terms
+      Optimal solution found
+      Running HiGHS 1.7.1 (git hash: n/a): Copyright (c) 2024 HiGHS under MIT licence terms
+      Optimal solution found
+      Running HiGHS 1.7.1 (git hash: n/a): Copyright (c) 2024 HiGHS under MIT licence terms
+      Optimal solution found
+      Running HiGHS 1.7.1 (git hash: n/a): Copyright (c) 2024 HiGHS under MIT licence terms
+      Optimal solution found
+      
+         0.4149
+         0.1701
 
 Least Square Fitting
 ---------------------
