@@ -406,9 +406,11 @@ Ode45i
    Description: 
        Solves inmplicit ordinary differential equations (ODE) using Adaptive Diagonally Implicit RungeKutta of 4th and 5th Order Method (Ode45i).
    Param: 
-      | dydx:  The function that represents the ODE. The function should accept two doubles (time and state) and return a double representing the derivative of the state.
-      | initcon:  The initial value of the dependent variable (state).
-      | tspan:  An array of time points at which the solution is desired. The first element is the initial time, and the last element is the final time.
+      | fun:  The function that represents the implicit ODE. The function should accept three doubles (time, state, and its derivative) and return a double representing the derivative of the state.
+      | initcon:  A tuple containing two elements:
+                   * double y0:  initial state.
+                   * double yp0: initial rate of change.
+      | tspan:  The initial value of the dependent variable (state).
       | options:  Optional parameters for the ODE solver, such as relative tolerance, absolute tolerance, and maximum step size. If not provided, default options will be used.
    Returns: 
        A tuple containing two elements:
