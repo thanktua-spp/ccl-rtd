@@ -39,10 +39,14 @@ decic
       
           //define ODE
           static double fun(double t, double y, double yp) =>
-             t* y * y* yp * yp* yp - y* y * y* yp * yp + t* (t* t + 1) * yp - t* t * y;
+             t * y * y * yp * yp * yp - y * y * y * yp * yp + t * (t * t + 1) * yp - t * t * y;
              var opts = Odeset(Stats: true);
              double t0 = 1, y0 = Sqrt(t0 * t0 + 1 / 2.0), yp0 = 0;
-              (y0, yp0) = decic(fun, t0, y0, 1, yp0, 0);
+             (y0, yp0) = decic(fun, t0, y0, 1, yp0, 0);
+             
+         // print result to console
+         Console.WriteLine($"y0 = {y0}");
+         Console.WriteLine($"yp0 = {yp0}");
 
       Output: 
 
