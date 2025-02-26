@@ -38,6 +38,7 @@ The fzero function in CCL-Math is a powerful tool for finding the roots of nonli
 
 Basic Usage
 The basic syntax for fzero is:
+
 .. code-block:: C#
 
    x = fzero(fun, x0)
