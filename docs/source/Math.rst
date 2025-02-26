@@ -33,16 +33,16 @@ decic
 
        .. code-block:: CSharp 
 
-          // import libraries
-          using System;
-          using CypherCrescent.MathematicsLibrary.Math;
+         // import libraries
+         using System;
+         using CypherCrescent.MathematicsLibrary.Math;
       
-          //define ODE
-          static double fun(double t, double y, double yp) =>
-             t * y * y * yp * yp * yp - y * y * y * yp * yp + t * (t * t + 1) * yp - t * t * y;
-             var opts = Odeset(Stats: true);
-             double t0 = 1, y0 = Sqrt(t0 * t0 + 1 / 2.0), yp0 = 0;
-             (y0, yp0) = decic(fun, t0, y0, 1, yp0, 0);
+         //define ODE
+         static double fun(double t, double y, double yp) =>
+            t * y * y * yp * yp * yp - y * y * y * yp * yp + t * (t * t + 1) * yp - t * t * y;
+            var opts = Odeset(Stats: true);
+            double t0 = 1, y0 = Sqrt(t0 * t0 + 1 / 2.0), yp0 = 0;
+            (y0, yp0) = decic(fun, t0, y0, 1, yp0, 0);
              
          // print result to console
          Console.WriteLine($"y0 = {y0}");
@@ -53,7 +53,8 @@ decic
 
        .. code-block:: Terminal 
 
-           
+         y0 = 1.2247
+         yp0 = 0.8165
 |   cref=System.ArgumentNullException is Thrown when the  dydx is null.
 |   cref=System.ArgumentException is Thrown when the  tspan array has less than two elements.
 
