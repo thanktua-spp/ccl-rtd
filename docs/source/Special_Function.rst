@@ -94,7 +94,7 @@ Output:
    using static CypherCrescent.MathematicsLibrary.Math;
 
    ColVec x = Linspace(-1, 1);
-   Indexer Z = new(1, 5);
+   Indexer Z = new(0, 5);
    Matrix P = Z.Select(z => Legendre(z, x)).ToList();
    Plot(x, P, Linewidth: 2);
    Title("LegendreP Functions");
@@ -120,7 +120,7 @@ Output:
    using static CypherCrescent.MathematicsLibrary.Math;
 
    ColVec x = Linspace(-0.95, 0.95);
-   Indexer Z = new(1, 5);
+   Indexer Z = new(0, 5);
    Matrix Q = Z.Select(z => LegendreQ(z, x)).ToList();
    Plot(x, Q, Linewidth: 2);
    Title("LegendreQ Functions");
