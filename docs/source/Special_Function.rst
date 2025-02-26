@@ -42,7 +42,7 @@ Types of Bessel Functions
 
 .. math::
 
-   J_n(x) = \sum_{m = 0}^{\infty} \frac{}{}\left(\frac{x}{2}\right)^{2m + n}
+   J_n(x) = \sum_{m = 0}^{\infty} \frac{(-1)^m}{m!\Gamma(m+n+1)}\left(\frac{x}{2}\right)^{2m + n}
 
 .. code-block:: C#
 
