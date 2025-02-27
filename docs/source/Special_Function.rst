@@ -89,6 +89,7 @@ Output:
    Matrix Y = Z.Select(z => BesselY(z, x)).ToList();
    Plot(x, Y, Linewidth: 2);
    Title("BesselY Functions");
+   Axis([1, 10, -5, 1]);
    Legend(Z.Select(z => z.ToString()), Alignment.UpperRight);
    SaveAs("BesselY-Functions.png");
 
@@ -100,6 +101,30 @@ Output:
 
 
 
+Legendre Functions
+******************
+Legendre polynomials are a set of orthogonal polynomials that arise in solving certain types of differential equations, particularly in physics and engineering. They are named after the French mathematician Adrien-Marie Legendre.
+
+The Legendre polynomials :math:`P_n(x)` are solutions to Legendre's differential equation:
+
+.. math::
+
+   (1 - x^2) \frac{d^2y}{dx^2} - 2x\frac{dy}{dx} + n(n+1)y = 0
+
+where :math:`n` is a non-negative integer.
+
+Some key properties of Legendre polynomials include:
+
+#. Orthogonality: They are orthogonal with respect to the weight function :math:`w(x) = 1`  on the interval :math:`[-1,1]`.
+#. Normalization: :math:`w(x) = 1`for all :math:`n`
+#. Recurrence Relation: They satisfy the recurrence relation:
+
+   .. math::
+
+      (n+1)P_{n+1}(x) = (2n + 1)P_{n}(x) - nP_{n-1}(x)
+
+
+**Legendre polynomials of the First Kind** :math:`(P_n(x))`
 
 .. math::
 
@@ -126,6 +151,9 @@ Output:
    :align: center
    :alt: LegendreP-Functions.png
 
+
+
+**Legendre polynomials of the Second Kind** :math:`(Q_n(x))`
 
 .. math::
 
