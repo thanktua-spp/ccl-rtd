@@ -121,7 +121,7 @@ Some key properties of Legendre polynomials include:
 
    .. math::
 
-      (n+1)P_{n+1}(x) = (2n + 1)P_{n}(x) - nP_{n-1}(x)
+      (n+1)P_{n+1}(x) = (2n + 1)xP_{n}(x) - nP_{n-1}(x)
 
 Types of Legendre polynomials
 =============================
