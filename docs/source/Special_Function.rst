@@ -82,6 +82,23 @@ Output:
    :alt: BesselJ-Functions.png
 
 
+   ColVec x = Linspace(0.3, 10);
+   Indexer Z = new(0, 8);
+   Matrix Y = Z.Select(z => BesselY(z, x)).ToList();
+   Plot(x, J, Linewidth: 2);
+   Title("Bessel Functions");
+   Legend(Z.Select(z => z.ToString()), Alignment.UpperRight);
+   SaveAs("BesselY-Functions.png");
+
+Output: 
+      
+.. figure:: images/BesselY-Functions.png
+   :align: center
+   :alt: BesselY-Functions.png
+
+
+
+
 .. math::
 
    P_n(z) =  \frac{1}{2^n}\sum_{k=0}^{\lfloor \frac{n}{2} \rfloor} \frac{(-1)^k(2n-2k)!}{k!(n-k)!(n - 2k)!}x^{n-2k}
