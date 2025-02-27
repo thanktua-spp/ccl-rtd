@@ -116,7 +116,7 @@ where :math:`n` is a non-negative integer.
 Some key properties of Legendre polynomials include:
 
 #. Orthogonality: They are orthogonal with respect to the weight function :math:`w(x) = 1`  on the interval :math:`[-1,1]`.
-#. Normalization: :math:`w(x) = 1`for all :math:`n`
+#. Normalization: :math:`P_n(1) = 1` for all :math:`n`
 #. Recurrence Relation: They satisfy the recurrence relation:
 
    .. math::
