@@ -71,7 +71,8 @@ Types of Bessel Functions
    Indexer Z = new(0, 8);
    Matrix J = Z.Select(z => BesselJ(z, x)).ToList();
    Plot(x, J, Linewidth: 2);
-   Title("Bessel Functions");
+   Axis([0, 10, -0.5, 1]);
+   Title("BesselJ Functions");
    Legend(Z.Select(z => z.ToString()), Alignment.UpperRight);
    SaveAs("BesselJ-Functions.png");
 
@@ -83,11 +84,11 @@ Output:
 
 .. code-block:: C#
 
-   ColVec x = Linspace(0.3, 10);
+   ColVec x = Linspace(1, 10);
    Indexer Z = new(0, 8);
    Matrix Y = Z.Select(z => BesselY(z, x)).ToList();
-   Plot(x, J, Linewidth: 2);
-   Title("Bessel Functions");
+   Plot(x, Y, Linewidth: 2);
+   Title("BesselY Functions");
    Legend(Z.Select(z => z.ToString()), Alignment.UpperRight);
    SaveAs("BesselY-Functions.png");
 
