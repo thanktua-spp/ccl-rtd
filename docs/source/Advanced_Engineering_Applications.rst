@@ -95,7 +95,7 @@ Lets see how to compute water influx, and generate the started water influx plot
          ColVec Td = Logspace(-1, 2), Wd;
          int end = Rd.Length - 1;
          // compute the water influx and plot
-         holdon = true;
+         hold = true;
          List<string> lgd = [];
          foreach (double rD in Rd)
          {
@@ -120,7 +120,7 @@ Lets see how to compute water influx, and generate the started water influx plot
          Td = Logspace(0, 3); end = Rd.Length - 1;
         
          // compute the water influx and plot
-         holdon = true;
+         hold = true;
          lgd = [];
          foreach (double rD in Rd)
          {
@@ -344,7 +344,7 @@ And then compute:
          
          // compute z factors and plot them
          List<string> Tlabels = [];
-         holdon = true;
+         hold = true;
          foreach( var tr in Tr)
          {
              Z = Pr.Select(p => ZfactorHY(p, tr)).ToArray();
@@ -494,7 +494,7 @@ Using Hall and Yarborough Correlation, we can evaluate the reduced compressibili
          
          // compute CrTr and plot them
          List<string> Tlabels = [];
-         holdon = true;
+         hold = true;
          foreach( var tr in Tr)
          {
              Cr = Pr.Select(p => CrTrHY(p, tr)).ToArray();
@@ -831,13 +831,13 @@ Here we present the solution for the model when :math:`M = 0` and :math:`5`.
          
          // generator solution for M = 0 and plot
          (ColVec T, Matrix Y) = HowarthTransform(0);
-         Plot(T, Y["", 1], "b", 2); holdon = true;
+         Plot(T, Y["", 1], "b", 2); hold = true;
          Plot(T, Y["", 3] - 1, "r", 2);
          
          // generator solution for M = 5 and plot
          (T, Y) = HowarthTransform(5);
          Plot(T, Y["", 1], "b", 2);
-         Plot(T, Y["", 3] - 1, "r", 2); holdon = false;
+         Plot(T, Y["", 3] - 1, "r", 2); hold = false;
          
          // add legend, axis label and title
          Legend( ["f'", "h-1"], Alignment.UpperRight);
@@ -1242,8 +1242,8 @@ By extracting the coeeficients of the derivatives into a matrix, we have:
         
          (ColVec T, Matrix Y) = Ode45a(dudt, Mass, y0, tspan, opts);
          ColVec X = T, U5 = Y["", 4];
-         Scatter(X, 0.4 * Sin(200 * pi * X), "o"); holdon = true;
-         Plot(X, U5, "--r"); holdon = false;
+         Scatter(X, 0.4 * Sin(200 * pi * X), "o"); hold = true;
+         Plot(X, U5, "--r"); hold = false;
          Legend(["Input", "Output"], Alignment.UpperLeft);
          Xlabel("Time t"); Ylabel("Solution y");
          Title("One Transistor Amplifier DAE Problem-CCL-Math-DAE45");
