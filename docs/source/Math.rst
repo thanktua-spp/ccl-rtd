@@ -439,12 +439,40 @@ Ode45i
           (ColVec T, Matrix Y) = Ode45i(fun, (y0, yp0), [t0, 10], opts);
           ColVec Y_exact = T.Select(t => Sqrt(t * t + 0.5)).ToList();
           Console.WriteLine(Hcart(Y, Y_exact));
-          Plot(T, Y, "*"); holdon = true;
-          Plot(T, Y_exact, "-o"); holdon = false;
+          Plot(T, Y, "*"); hold = true;
+          Plot(T, Y_exact, "-o"); hold = false;
           Title("Implicit differential (weissinger) equation with ODE45i");
           Xlabel("Time t");
           Ylabel("Solution y");
           SaveAs("Weissinger-Ode45i.png");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+       Summary of statistics by Ode45i
+               13 successful steps
+               0 failed attempts
+               335 function evaluations
+               52 partial derivatives
+               52 LU decompositions
+               174 solutions of linear systems
+      
+          1.2247    1.2247
+          1.2993    1.2993
+          1.4536    1.4536
+          1.7767    1.7768
+          2.3227    2.3229
+          3.1865    3.1869
+          4.0689    4.0694
+          4.9575    4.9582
+          5.8496    5.8504
+          6.7437    6.7447
+          7.6392    7.6403
+          8.5357    8.5368
+          9.4327    9.4340
+         10.0236   10.0250
 
       Output: 
 
