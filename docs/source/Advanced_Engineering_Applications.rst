@@ -999,7 +999,7 @@ The dynamics of the system can then be modelled as:
         
          Indexer I = new(0, 7), J = I + 7;
          double[] tspan = Linspace(1, 15, 200);
-                var opts = Odeset( AbsTol: 1e-15, RelTol: 1e-13 );
+         var opts = Odeset( AbsTol: 1e-15, RelTol: 1e-13 );
         
          (ColVec T, Matrix Y) = Ode89(pleiades, init, tspan, opts);
          Plot(Y["", I], Y["", J], "--");
