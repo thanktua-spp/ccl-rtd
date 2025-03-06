@@ -129,7 +129,7 @@ Root of System of Nonlinear Equation
          using CypherCrescent.MathematicsLibrary;
          using static CypherCrescent.MathematicsLibrary.Math;
 
-         double[] x0, res; ColVec x;
+         double[] x0, res; ColVec x
          // define the function
          ColVec fun(ColVec x)
          {
@@ -233,13 +233,14 @@ fmincon function is a versatile tool for solving constrained nonlinear optimizat
       using CypherCrescent.MathematicsLibrary;
       using static CypherCrescent.MathematicsLibrary.Math;
 
+      
       static double fun(ColVec x) => 100 * Pow(x[1] - x[0]*x[0], 2) + Pow(1 - x[0], 2);
       double[] x0 = [0.5, 0];
-      Matrix A = new double[,]{ { 1, 2} };
-      ColVec b = 1;
-      Matrix Aeq = new double[,] { { 2, 1 } };
-      ColVec beq = 1;
-      ColVec x = Fmincon(fun, x0, x => A * x - b, x => Aeq * x - beq);
+      Matrix AInEq = new double[,]{ { 1, 2} };
+      ColVec bInEq = 1;
+      Matrix AEq = new double[,] { { 2, 1 } };
+      ColVec bEq = 1;
+      ColVec x = Fmincon(fun, x0, x => AInEq * x - bInEq, x => AEq * x - bEq);
       Console.WriteLine(x);
 
    Output:

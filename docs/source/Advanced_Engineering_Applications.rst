@@ -998,16 +998,15 @@ The dynamics of the system can then be modelled as:
                           0, 0, 0, -1.25, 1, 0, 0];
         
          Indexer I = new(0, 7), J = I + 7;
-         double[] tspan = [..ColVec.Linspace(1, 15, 200)];
-         var opts = new Ode.Set() {AbsTol = 1e-15, RelTol = 1e-13};
+         double[] tspan = Linspace(1, 15, 200);
+                var opts = Odeset( AbsTol: 1e-15, RelTol: 1e-13 );
         
-         Ode.Result result89 = Ode.Ode89(pleiades, 
-             init, tspan, opts);
-         var plt = Plot(result89.Y["", I], result89.Y["", J], "--");
-         plt.Title = "Position of Pleiades Stars, Solved by ODE89";
-         plt.XLabel = "X Position";
-         plt.YLabel = "y Position";
-         plt.SaveFig("Position-of-Pleiades-Stars-CCL-Math-Ode89.png");
+         (ColVec T, Matrix Y) = Ode89(pleiades, init, tspan, opts);
+         Plot(Y["", I], Y["", J], "--");
+         Title("Position of Pleiades Stars, Solved by ODE89");
+         Xlabel("X Position");
+         Ylabel("y Position");
+         SaveAs("Position-of-Pleiades-Stars-CCL-Math-Ode89.png");
         
 
       .. figure:: images/Position-of-Pleiades-Stars-CCL-Math-Ode89.png

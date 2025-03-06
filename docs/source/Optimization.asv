@@ -38,9 +38,10 @@ The fzero function in CCL-Math is a powerful tool for finding the roots of nonli
 
 Basic Usage
 The basic syntax for fzero is:
+
 .. code-block:: C#
 
-   x = fzero(fun, x0)
+   x = Fzero(fun, x0)
 
 
 * fun: A handle to the function for which you want to find the root.
@@ -67,21 +68,6 @@ Output
    2.0946;
 
 
- Summary of solutions of nonlinear equations
-fun-count     a          f(a)           b          f(b)     Procedure
-    1     2.000000    -1.000000     2.000000    -1.000000   initial interval
-    3     1.943431    -1.546666     2.056569    -0.414934   search
-    5     1.920000    -1.762112     2.080000    -0.161088   search
-    7     1.886863    -2.056019     2.113137     0.209619   search
-
- Solving for solution between 1.886863 and 2.113137
-fun-count     x         f(x)       Procedure
-    7     2.113137     0.209619    initial
-    8     2.092202    -0.026189    interpolation
-    9     2.094527    -0.000273    interpolation
-   10     2.094551     0.000000    interpolation
-   11     2.094550    -0.000011    interpolation
-
 Advanced Options
 fzero also allows for more advanced usage with additional options:
 
@@ -106,7 +92,20 @@ Output
 
 .. code-block:: C#
 
-   2.0946;
+       Summary of solutions of nonlinear equations
+   fun-count     a          f(a)           b          f(b)     Procedure
+       1     2.000000    -1.000000     2.000000    -1.000000   initial interval
+       3     1.943431    -1.546666     2.056569    -0.414934   search
+       5     1.920000    -1.762112     2.080000    -0.161088   search
+       7     1.886863    -2.056019     2.113137     0.209619   search
+   
+    Solving for solution between 1.886863 and 2.113137
+   fun-count     x         f(x)       Procedure
+       7     2.113137     0.209619    initial
+       8     2.092202    -0.026189    interpolation
+       9     2.094527    -0.000273    interpolation
+      10     2.094551     0.000000    interpolation
+      11     2.094550    -0.000011    interpolation
 
 
 Root of System of Nonlinear Equation
@@ -130,7 +129,7 @@ Root of System of Nonlinear Equation
          using CypherCrescent.MathematicsLibrary;
          using static CypherCrescent.MathematicsLibrary.Math;
 
-         double[] x0, res; ColVec x;
+         double[] x0, res; ColVec x
          // define the function
          ColVec fun(ColVec x)
          {
@@ -224,6 +223,41 @@ Linear Programming
 
 Sequential Quadratic Programming
 --------------------------------
+fmincon function is a versatile tool for solving constrained nonlinear optimization problems. It finds the minimum of a scalar function subject to various constraints, including linear, nonlinear, and bound constraints using sequential quadratic programming:
+
+
+   .. code-block:: C#
+
+      // import libraries
+      using System;
+      using CypherCrescent.MathematicsLibrary;
+      using static CypherCrescent.MathematicsLibrary.Math;
+
+      
+      static double fun(ColVec x) => 100 * Pow(x[1] - x[0]*x[0], 2) + Pow(1 - x[0], 2);
+      double[] x0 = [0.5, 0];
+      Matrix AInEq = new double[,]{ { 1, 2} };
+      ColVec bInEq = 1;
+      Matrix AEq = new double[,] { { 2, 1 } };
+      ColVec bEq = 1;
+      ColVec x = Fmincon(fun, x0, x => AInEq * x - bInEq, x => AEq * x - bEq);
+      Console.WriteLine(x);
+
+   Output:
+
+   .. code-block:: C#
+
+      Running HiGHS 1.7.1 (git hash: n/a): Copyright (c) 2024 HiGHS under MIT licence terms
+      Optimal solution found
+      Running HiGHS 1.7.1 (git hash: n/a): Copyright (c) 2024 HiGHS under MIT licence terms
+      Optimal solution found
+      Running HiGHS 1.7.1 (git hash: n/a): Copyright (c) 2024 HiGHS under MIT licence terms
+      Optimal solution found
+      Running HiGHS 1.7.1 (git hash: n/a): Copyright (c) 2024 HiGHS under MIT licence terms
+      Optimal solution found
+      
+         0.4149
+         0.1701
 
 Least Square Fitting
 ---------------------
