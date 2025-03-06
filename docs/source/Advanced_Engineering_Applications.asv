@@ -95,7 +95,7 @@ Lets see how to compute water influx, and generate the started water influx plot
          ColVec Td = Logspace(-1, 2), Wd;
          int end = Rd.Length - 1;
          // compute the water influx and plot
-         holdon = true;
+         hold = true;
          List<string> lgd = [];
          foreach (double rD in Rd)
          {
@@ -120,7 +120,7 @@ Lets see how to compute water influx, and generate the started water influx plot
          Td = Logspace(0, 3); end = Rd.Length - 1;
         
          // compute the water influx and plot
-         holdon = true;
+         hold = true;
          lgd = [];
          foreach (double rD in Rd)
          {
@@ -344,7 +344,7 @@ And then compute:
          
          // compute z factors and plot them
          List<string> Tlabels = [];
-         holdon = true;
+         hold = true;
          foreach( var tr in Tr)
          {
              Z = Pr.Select(p => ZfactorHY(p, tr)).ToArray();
@@ -494,7 +494,7 @@ Using Hall and Yarborough Correlation, we can evaluate the reduced compressibili
          
          // compute CrTr and plot them
          List<string> Tlabels = [];
-         holdon = true;
+         hold = true;
          foreach( var tr in Tr)
          {
              Cr = Pr.Select(p => CrTrHY(p, tr)).ToArray();
@@ -635,36 +635,41 @@ To solve system of ordinary differential equation, you need the initial conditio
       .. code-block:: C#
          
          // import libraries
+         using System;
+         using System.Collections.Generic;
          using CypherCrescent.MathematicsLibrary;
-         using static MathsChart.Chart;
+         using static CypherCrescent.MathematicsLibrary.Math;
+
+         // define variables
+         ColVec T = null; Matrix Y = null;
 
          // define function
          ColVec dydt(double t, ColVec y)
          {
-            double[] dy = [y[1], y[2], -0.5 * y[2] * y[0]];
-            return dy;
+             double[] dy = [y[1], y[2], -0.5 * y[2] * y[0]];
+             return dy;
          }
          
          // set time span
-         double[] tspan = [0, 6]; Ode.Result TY = null;
-
+         double[] tspan = [0, 6]; 
+        
          // define nonlinear function to shooting for terminal boundary
          double fun(double y3_0)
          {
              double[] y0 = [0, 0, y3_0];
-             TY = Ode.Ode45(dydt, y0, tspan);
-             return TY.Y[TY.X.Numel - 1, 1] - 1;
+             (T, Y) = Ode45(dydt, y0, tspan);
+             return Y.LastRow[1] - 1;
          }
-
+         
          // solve for unknown initial condition
          Solvers.Result y3_0 = Solvers.FSolve(fun, 0.5);
-
+        
          // plot the result
-         var plt = Plot(TY.X, TY.Y, linewidth: 2);
-         plt.Legend = new() { labels = ["f", "f'", "f''"], alignment = "upperleft" };
-         plt.Axis([0, 6, 0, 2]); plt.XLabel = "η"; plt.Title = "Blasius Boundary layer";
-         plt.SaveFig("Blasius-Boundary-Layer-CCL-Math.png");
-         
+         Plot(T, Y, Linewidth: 2);
+         Legend( ["f", "f'", "f''"], Alignment.UpperLeft );
+         Axis([0, 6, 0, 2]); Xlabel("η"); Title("Blasius Boundary layer");
+         SaveAs("Blasius-Boundary-Layer-CCL-Math.png");
+          
 
       .. figure:: images/Blasius-Boundary-Layer-CCL-Math.png
          :align: center
@@ -762,8 +767,10 @@ Here we present the solution for the model when :math:`M = 0` and :math:`5`.
       .. code-block:: C#
          
          // import libraries
+         using System;
+         using System.Collections.Generic;
          using CypherCrescent.MathematicsLibrary;
-         using static MathsChart.Chart;
+         using static CypherCrescent.MathematicsLibrary.Math;
 
          // define parameters
          double rhomu_h, drhomu_h_eta, gamma, Pr, C;
@@ -779,7 +786,7 @@ Here we present the solution for the model when :math:`M = 0` and :math:`5`.
          Indexer I = new int[] { 1, 3 };
          
          //define function for solution of howarth transformation
-         Ode.Result HowarthTransform(double M)
+         (ColVec, Matrix) HowarthTransform(double M)
          {
              // assign parameters, functions anf their derivatives
              gamma = 1.4; 
@@ -804,40 +811,39 @@ Here we present the solution for the model when :math:`M = 0` and :math:`5`.
                                 -(drhomu_h_eta*y[4] + Pr*y[0]*y[4] + C*rhomu_h*y[2]*y[2])/rhomu_h ];
                  return dy;
              }
-        
+         
              // set time span and intial guess
-             tspan = [0, 5]; 
-             y35guess = [0.1, 0.2];
-             Ode.Result TY = null;
+             tspan = [0, 5]; y35guess = [0.1, 0.2];
+             ColVec T = null; Matrix Y = null;
          
              // define the nonlinear system to compute the initial condition
              ColVec fun(ColVec y35_0)
              {
                  y0 = [0, 0, y35_0[0], 2, y35_0[1]];
-                 TY = Ode.Ode45(dydt, y0, tspan);
-                 return TY.Y[TY.Y.Rows - 1, I].T - 1;
+                 (T, Y) = Ode45(dydt, y0, tspan);
+                 return Y.LastRow[I].T - 1;
              }
-         
-             // solve for the unknown initial conditions
-             Solvers.Result Solved = Solvers.FSolve(fun, y35guess);
-             return TY;
-         }
         
+             // solve for the unknown initial conditions
+             Solvers.FSolve(fun, y35guess);
+             return (T, Y);
+         }
+         
          // generator solution for M = 0 and plot
-         Ode.Result TY = HowarthTransform(0);
-         var plt = Plot(TY.X, TY.Y["", 1], "b", 2);
-         plt.AddPlot(TY.X, TY.Y["", 3] - 1, "r", 2);
+         (ColVec T, Matrix Y) = HowarthTransform(0);
+         Plot(T, Y["", 1], "b", 2); hold = true;
+         Plot(T, Y["", 3] - 1, "r", 2);
          
          // generator solution for M = 5 and plot
-         TY = HowarthTransform(5);
-         plt.AddPlot(TY.X, TY.Y["", 1], "b", 2);
-         plt.AddPlot(TY.X, TY.Y["", 3] - 1, "r", 2);
-        
+         (T, Y) = HowarthTransform(5);
+         Plot(T, Y["", 1], "b", 2);
+         Plot(T, Y["", 3] - 1, "r", 2); hold = false;
+         
          // add legend, axis label and title
-         plt.Legend = new() { labels = ["f'", "h-1"], alignment = "upperright" };
-         plt.XLabel = "η"; plt.Title = "Howarth Transformation";
-         plt.AxisLim = [0, 5, 0, 2];
-         plt.SaveFig("Howarth-Transformation-CCL-Math.png");
+         Legend( ["f'", "h-1"], Alignment.UpperRight);
+         Xlabel("η"); Title("Howarth Transformation");
+         Axis([0, 5, 0, 2]);
+         SaveAs("Howarth-Transformation-CCL-Math.png");
           
 
       .. figure:: images/Howarth-Transformation-CCL-Math.png
@@ -949,8 +955,10 @@ The dynamics of the system can then be modelled as:
       .. code-block:: C#
          
          // import libraries
+         using System;
+         using System.Collections.Generic;
          using CypherCrescent.MathematicsLibrary;
-         using static MathsChart.Chart;
+         using static CypherCrescent.MathematicsLibrary.Math;
 
          // define masses
          double[] m = [1, 2, 3, 4, 5, 6, 7];
@@ -990,16 +998,15 @@ The dynamics of the system can then be modelled as:
                           0, 0, 0, -1.25, 1, 0, 0];
         
          Indexer I = new(0, 7), J = I + 7;
-         double[] tspan = [..ColVec.Linspace(1, 15, 200)];
-         var opts = new Ode.Set() {AbsTol = 1e-15, RelTol = 1e-13};
+         double[] tspan = Linspace(1, 15, 200);
+         var opts = Odeset( AbsTol: 1e-15, RelTol: 1e-13 );
         
-         Ode.Result result89 = Ode.Ode89(pleiades, 
-             init, tspan, opts);
-         var plt = Plot(result89.Y["", I], result89.Y["", J], "--");
-         plt.Title = "Position of Pleiades Stars, Solved by ODE89";
-         plt.XLabel = "X Position";
-         plt.YLabel = "y Position";
-         plt.SaveFig("Position-of-Pleiades-Stars-CCL-Math-Ode89.png");
+         (ColVec T, Matrix Y) = Ode89(pleiades, init, tspan, opts);
+         Plot(Y["", I], Y["", J], "--");
+         Title("Position of Pleiades Stars, Solved by ODE89");
+         Xlabel("X Position");
+         Ylabel("y Position");
+         SaveAs("Position-of-Pleiades-Stars-CCL-Math-Ode89.png");
         
 
       .. figure:: images/Position-of-Pleiades-Stars-CCL-Math-Ode89.png
@@ -1071,20 +1078,23 @@ we can add animation of the solution
       .. code-block:: C#
          
          // import libraries
+         using System;
+         using System.Collections.Generic;
          using CypherCrescent.MathematicsLibrary;
-         using static MathsChart.Chart;
+         using static CypherCrescent.MathematicsLibrary.Math;
 
          
-         for (int i = 0; i < 200; i++)
+         byte[] ImageGen(int i)
          {
-             plt = Plot(result89.Y["", I], result89.Y["", J], "--");
+             Plot(Y["", I], Y["", J], "--"); hold = true;
              for (int j = 0; j < 7; j++)
-                 plt.AddScatter(result89.Y[i, j], 
-                     result89.Y[i, j + 7], "fo", 20);
-             plt.SaveFig("gif_"+i+".png", 700, 700);
-         }
-         Animation.Make(i=> Image.FromFile("gif_" + i + ".png"),
-                 "Position-of-Pleiades-Stars-CCL-Math-Ode89.gif", 10, 200);
+                 Scatter(Y[i, j], Y[i, j + 7], "fo", 20);
+             hold = false;
+             Title($"Position of Pleiades Stars at time {T[i]:0.00}");
+             Xlabel("X Position"); Ylabel("y Position");
+             return GetImageBytes(700, 700);
+          }
+          AnimationMaker(ImageGen, "Position-of-Pleiades-Stars-CCL-Math-Ode89.gif", 10, 200);
         
 
       .. figure:: images/Position-of-Pleiades-Stars-CCL-Math-Ode89.gif
@@ -1200,9 +1210,10 @@ By extracting the coeeficients of the derivatives into a matrix, we have:
       .. code-block:: C#
          
          // import libraries
-         using static System.Math;
+         using System;
+         using System.Collections.Generic;
          using CypherCrescent.MathematicsLibrary;
-         using static MathsChart.Chart;
+         using static CypherCrescent.MathematicsLibrary.Math;
 
          double pi = PI, Ub = 6, R0 = 1000, R15 = 9000, alpha = 0.99,
          beta = 1e-6, Uf = 0.026, c1 = 1e-6, c2 = 2e-6, c3 = 3e-6;
@@ -1213,36 +1224,30 @@ By extracting the coeeficients of the derivatives into a matrix, we have:
                             { 0,   0,   0,  -c3,  c3},
                             { 0,   0,   0,   c3, -c3} };
         
-        ColVec dudt(double t, ColVec u)
-        {
-            double Ue = 0.4 * Sin(200 * pi * t),
-                   f23 = beta * (Exp((u[1] - u[2]) / Uf) - 1);
-            double[] du = [ -(Ue - u[0])/R0,
-                          -(Ub/R15 - u[1]*2/R15 - (1-alpha)*f23),
-                          -(f23 - u[2]/R15),
-                          -((Ub - u[3])/R15 - alpha*f23),
-                           u[4]/R15 ];
-            return du;
-        }
-        double[] tspan = [0, 0.1];
-        double[] y0 = [0, Ub / 2, Ub / 2, Ub, 0];
+         ColVec dudt(double t, ColVec u)
+         {
+             double Ue = 0.4 * Sin(200 * pi * t),
+                    f23 = beta * (Exp((u[1] - u[2]) / Uf) - 1);
+             double[] du = [ -(Ue - u[0])/R0,
+                           -(Ub/R15 - u[1]*2/R15 - (1-alpha)*f23),
+                           -(f23 - u[2]/R15),
+                           -((Ub - u[3])/R15 - alpha*f23),
+                            u[4]/R15 ];
+             return du;
+         }
+         double[] tspan = [0, 0.1];
+         double[] y0 = [0, Ub / 2, Ub / 2, Ub, 0];
         
-        Ode.Set options = new() { RelTol = 1e-3, MassType = Ode.MassType.Constant };
+         Ode.Set options = new() { RelTol = 1e-3, MassType = Ode.MassType.Constant };
         
-        var TY = Ode.Dae45(dudt, Mass, y0, tspan, options);
-        ColVec X = TY.X, U5 = TY.Y["", 4];
-        var plt = Scatter(X, 0.4 * Maths.Sin(200 * pi * X), "o");
-        plt.AddPlot(X, U5, "--r");
-        plt.Legend = new()
-        {
-            labels = ["Input", "Output"],
-            alignment = "upperleft"
-        };
-        plt.XLabel = "Time t";
-        plt.YLabel = "Solution y";
-        plt.Title = "One Transistor Amplifier DAE Problem-DAE45";
-        plt.SaveFig("One Transistor Amplifier DAE Problem-DAE45.png");
-        plt.Show();
+         (ColVec T, Matrix Y) = Ode45a(dudt, Mass, y0, tspan, opts);
+         ColVec X = T, U5 = Y["", 4];
+         Scatter(X, 0.4 * Sin(200 * pi * X), "o"); hold = true;
+         Plot(X, U5, "--r"); hold = false;
+         Legend(["Input", "Output"], Alignment.UpperLeft);
+         Xlabel("Time t"); Ylabel("Solution y");
+         Title("One Transistor Amplifier DAE Problem-CCL-Math-DAE45");
+         SaveAs("One-Transistor-Amplifier-DAE-Problem-CCL-Math-DAE45.png");
         
 
       .. figure:: images/One-Transistor-Amplifier-DAE-Problem-CCL-Math-DAE45.png

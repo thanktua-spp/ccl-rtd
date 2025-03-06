@@ -1084,18 +1084,18 @@ we can add animation of the solution
          using static CypherCrescent.MathematicsLibrary.Math;
 
          
-         for (int i = 0; i < 200; i++)
+         byte[] ImageGen(int i)
          {
-             plt = Plot(result89.Y["", I], result89.Y["", J], "--");
+             Plot(Y["", I], Y["", J], "--"); hold = true;
              for (int j = 0; j < 7; j++)
-                 plt.AddScatter(result89.Y[i, j], 
-                     result89.Y[i, j + 7], "fo", 20);
-             plt.SaveFig("gif_"+i+".png", 700, 700);
+                 Scatter(Y[i, j], Y[i, j + 7], "fo", 20);
+             hold = false;
+             Title($"Position of Pleiades Stars at time {T[i]:0.00}");
+             Xlabel("X Position"); Ylabel("y Position");
+             return GetImageBytes(700, 700);
          }
-         Animation.Make(i=> Image.FromFile("gif_" + i + ".png"),
-                 "Position-of-Pleiades-Stars-CCL-Math-Ode89.gif", 10, 200);
+         AnimationMaker(ImageGen, "Position-of-Pleiades-Stars-CCL-Math-Ode89.gif", 10, 200);
         
-
       .. figure:: images/Position-of-Pleiades-Stars-CCL-Math-Ode89.gif
          :align: center
          :alt: Position-of-Pleiades-Stars-CCL-Math-Ode89.gif
