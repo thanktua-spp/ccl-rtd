@@ -1090,8 +1090,6 @@ we can add animation of the solution
              for (int j = 0; j < 7; j++)
                  Scatter(Y[i, j], Y[i, j + 7], "fo", 20);
              hold = false;
-             Title($"Position of Pleiades Stars at time {T[i]:0.00}");
-             Xlabel("X Position"); Ylabel("y Position");
              return GetImageBytes(700, 700);
          }
          AnimationMaker(ImageGen, "Position-of-Pleiades-Stars-CCL-Math-Ode89.gif", 10, 200);
