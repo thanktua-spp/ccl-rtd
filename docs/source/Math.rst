@@ -798,7 +798,7 @@ Conv
           .. math::
              P(x) = x^2 + 2x + 3,~ M(x) = x + 1
        In this example, we perform polynomial convolution on two polynomials.
-       The first polynomial is represented by the coefficients { 1, 2, 3 } and the second polynomial by { 1, 1 }.
+       The first polynomial is represented by the coefficients :math:`[1, 2, 3]` and the second polynomial by :math:`[1, 1]`.
 
        .. code-block:: CSharp 
 
@@ -824,7 +824,7 @@ Conv
           .. math::
              P(x) = (2+3i)x^2 + (5-i)x + 3+7i,~ M(x) = (-3+2i)x + 2-i
        In this example, we perform polynomial convolution on two polynomials.
-       The first polynomial is represented by the coefficients { 2+3i, 5-i, 3+7i } and the second polynomial by { -3+2i, 2-i }.
+       The first polynomial is represented by the coefficients :math:`[2+3i, 5-i, 3+7i]` and the second polynomial by :math:`[-3+2i, 2-i]`.
 
        .. code-block:: CSharp 
 
@@ -998,6 +998,106 @@ Integral2
        .. code-block:: Terminal 
 
           The integral of x*y is approximately: 0.749999999948747
+   Example: 
+        Integrate the function f(x, y) = x * y over the region where x ranges from 0 to 1, and y ranges from x^2 to 2, which can be expressed as:
+
+       .. math::
+          \int_{x_1}^{x_2} \int_{y_1(x)}^{y_2} x y \, dy \, dx
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using SepalSolver;
+          using System;
+      
+          // Define the function to integrate
+          Func<double, double, double> f = (x, y) => x * y;
+          // Define the lower bound of y as a function of x
+          Func<double, double> y_1 = (x) => x * x;
+          // Set the lower bound of x
+          double x_1 = 0;
+          // Set the upper bound of x
+          double x_2 = 1;
+          // Set the upper bound of y
+          double y_2 = 2;
+          // Calculate the integral
+          double integral = Integrators.GaussLeg2(f, x_1, x_2, y_1, y_2);
+          // Print the result
+          Console.WriteLine($"The integral is approximately: {integral}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          The integral is approximately: 0.916666666604556
+   Example: 
+        Integrate the function f(x, y) = x * y over the region where x ranges from 0 to 1, and y ranges from 1 to x^2, which can be expressed as:
+
+       .. math::
+          \int_{x_1}^{x_2} \int_{y_1}^{y_2(x)} x y \, dy \, dx
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using SepalSolver;
+          using System;
+      
+          // Define the function to integrate
+          Func<double, double, double> f = (x, y) => x * y;
+          // Define the upper bound of y as a function of x
+          Func<double, double> y_2 = (x) => x * x;
+          // Set the lower bound of x
+          double x_1 = 0;
+          // Set the upper bound of x
+          double x_2 = 1;
+          // Set the lower bound of y
+          double y_1 = 1;
+          // Calculate the integral
+          double integral = Integrators.GaussLeg2(f, x_1, x_2, y_1, y_2);
+          // Print the result
+          Console.WriteLine($"The integral is approximately: {integral}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          The integral is approximately: -0.166666666655809
+   Example: 
+        Integrate the function f(x, y) = x * y over the region where x ranges from 0 to 1, y ranges from x^2 to sqrt(x), which can be expressed as:
+
+       .. math::
+          \int_{x_1}^{x_2} \int_{y_1(x)}^{y_2(x)} x y \, dy \, dx
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using SepalSolver;
+          using static System.Math
+          using System;
+      
+          // Define the function to integrate
+          Func<double, double, double> f = (x, y) => x * y;
+          // Define the lower bound of y as a function of x
+          Func<double, double> y_1 = (x) => x * x;
+          // Define the upper bound of y as a function of x
+          Func<double, double> y_2 = (x) => Sqrt(x);
+          // Set the lower bound of x
+          double x_1 = 0;
+          // Set the upper bound of x
+          double x_2 = 1;
+          // Calculate the integral
+          double integral = Integrators.GaussLeg2(f, x_1, x_2, y_1, y_2);
+          // Print the result
+          Console.WriteLine($"The integral is approximately: {integral}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          The integral is approximately: 0.0833333333277262
 |   cref=System.ArgumentNullException is Thrown when the  fun is null.
 |   cref=System.ArgumentNullException is Thrown when the  y_1 is null.
 |   cref=System.ArgumentNullException is Thrown when the  y_2 is null.
@@ -1015,22 +1115,22 @@ Integral3
 
        .. code-block:: CSharp 
 
-          double Integral2( Func<double, double, double, double> fun, double x_1, double x_2, double y_1, double y_2, double z_1, double z_2)
-          double Integral2( Func<double, double, double, double> fun, double x_1, double x_2, double y_1, Func<double, double> y_2, double z_1, double z_2)
-          double Integral2( Func<double, double, double, double> fun, double x_1, double x_2, Func<double, double> y_1, double y_2, double z_1, double z_2)
-          double Integral2( Func<double, double, double, double> fun, double x_1, double x_2, Func<double, double> y_1, Func<double, double> y_2, double z_1, double z_2)
-          double Integral2( Func<double, double, double, double> fun, double x_1, double x_2, double y_1, double y_2, Func<double, double, double> z_1, double z_2)
-          double Integral2( Func<double, double, double, double> fun, double x_1, double x_2, double y_1, Func<double, double> y_2, Func<double, double, double> z_1, double z_2)
-          double Integral2( Func<double, double, double, double> fun, double x_1, double x_2, Func<double, double> y_1, double y_2, Func<double, double, double> z_1, double z_2)
-          double Integral2( Func<double, double, double, double> fun, double x_1, double x_2, Func<double, double> y_1, Func<double, double> y_2, Func<double, double, double> z_1, double z_2)
-          double Integral2( Func<double, double, double, double> fun, double x_1, double x_2, double y_1, double y_2, double z_1, Func<double, double, double> z_2)
-          double Integral2( Func<double, double, double, double> fun, double x_1, double x_2, double y_1, Func<double, double> y_2, double z_1, Func<double, double, double> z_2)
-          double Integral2( Func<double, double, double, double> fun, double x_1, double x_2, Func<double, double> y_1, double y_2, double z_1, Func<double, double, double> z_2)
-          double Integral2( Func<double, double, double, double> fun, double x_1, double x_2, Func<double, double> y_1, Func<double, double> y_2, double z_1, Func<double, double, double> z_2)
-          double Integral2( Func<double, double, double, double> fun, double x_1, double x_2, double y_1, double y_2, Func<double, double, double> z_1, Func<double, double, double> z_2)
-          double Integral2( Func<double, double, double, double> fun, double x_1, double x_2, double y_1, Func<double, double> y_2, Func<double, double, double> z_1, Func<double, double, double> z_2)
-          double Integral2( Func<double, double, double, double> fun, double x_1, double x_2, Func<double, double> y_1, double y_2, Func<double, double, double> z_1, Func<double, double, double> z_2)
-          double Integral2( Func<double, double, double, double> fun, double x_1, double x_2, Func<double, double> y_1, Func<double, double> y_2, Func<double, double, double> z_1, Func<double, double, double> z_2)
+          double Integral3( Func<double, double, double, double> fun, double x_1, double x_2, double y_1, double y_2, double z_1, double z_2)
+          double Integral3( Func<double, double, double, double> fun, double x_1, double x_2, double y_1, Func<double, double> y_2, double z_1, double z_2)
+          double Integral3( Func<double, double, double, double> fun, double x_1, double x_2, Func<double, double> y_1, double y_2, double z_1, double z_2)
+          double Integral3( Func<double, double, double, double> fun, double x_1, double x_2, Func<double, double> y_1, Func<double, double> y_2, double z_1, double z_2)
+          double Integral3( Func<double, double, double, double> fun, double x_1, double x_2, double y_1, double y_2, Func<double, double, double> z_1, double z_2)
+          double Integral3( Func<double, double, double, double> fun, double x_1, double x_2, double y_1, Func<double, double> y_2, Func<double, double, double> z_1, double z_2)
+          double Integral3( Func<double, double, double, double> fun, double x_1, double x_2, Func<double, double> y_1, double y_2, Func<double, double, double> z_1, double z_2)
+          double Integral3( Func<double, double, double, double> fun, double x_1, double x_2, Func<double, double> y_1, Func<double, double> y_2, Func<double, double, double> z_1, double z_2)
+          double Integral3( Func<double, double, double, double> fun, double x_1, double x_2, double y_1, double y_2, double z_1, Func<double, double, double> z_2)
+          double Integral3( Func<double, double, double, double> fun, double x_1, double x_2, double y_1, Func<double, double> y_2, double z_1, Func<double, double, double> z_2)
+          double Integral3( Func<double, double, double, double> fun, double x_1, double x_2, Func<double, double> y_1, double y_2, double z_1, Func<double, double, double> z_2)
+          double Integral3( Func<double, double, double, double> fun, double x_1, double x_2, Func<double, double> y_1, Func<double, double> y_2, double z_1, Func<double, double, double> z_2)
+          double Integral3( Func<double, double, double, double> fun, double x_1, double x_2, double y_1, double y_2, Func<double, double, double> z_1, Func<double, double, double> z_2)
+          double Integral3( Func<double, double, double, double> fun, double x_1, double x_2, double y_1, Func<double, double> y_2, Func<double, double, double> z_1, Func<double, double, double> z_2)
+          double Integral3( Func<double, double, double, double> fun, double x_1, double x_2, Func<double, double> y_1, double y_2, Func<double, double, double> z_1, Func<double, double, double> z_2)
+          double Integral3( Func<double, double, double, double> fun, double x_1, double x_2, Func<double, double> y_1, Func<double, double> y_2, Func<double, double, double> z_1, Func<double, double, double> z_2)
    Param: 
       | fun:  The function to integrate. The function should accept three doubles (x, y, z) and return a double.
       | x_1:  The lower bound of the x integration.
