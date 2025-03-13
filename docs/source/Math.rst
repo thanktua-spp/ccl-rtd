@@ -6,7 +6,7 @@ Hypot
        Calculates the length of the hypotenuse of a right-angled triangle given the lengths of the other two sides.This method computes z = Sqrt(Pow(x, 2) + Pow(y, 2)) by avoiding underflow and overflow.
 
        .. math::
-          \hypot(x,y) = \sqrt{x^2 + y^2}
+          \text{hypot}(x,y) = \sqrt{x^2 + y^2}
           
 
        .. code-block:: CSharp 
