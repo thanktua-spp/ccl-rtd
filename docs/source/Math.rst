@@ -33,10 +33,12 @@ Hypot
    Returns: 
        The length of the hypotenuse.
    Example: 
-       <code>
+       Compute the hypotenus of a triangle with sides 3 and 4
+
+       .. code-block:: CSharp 
+
           var hypotenuse = Hypot(3, 4);
           Console.WriteLine(hypotenuse);
-       </code>
 
       Output: 
 
@@ -45,12 +47,14 @@ Hypot
 
           5
    Example: 
-       <code>
+       Compute the hypotenus of a triangle with sides :math:`[2,3,4,5]` and :math:`[7,6]^T`
+
+       .. code-block:: CSharp 
+
           RowVec X = new double[]{2,3,4,5};
           ColVec Y = new double[]{7,6};
           var hypotenuse = Hypot(X, Y);
           Console.WriteLine(hypotenuse); 
-       </code>
 
       Output: 
 
