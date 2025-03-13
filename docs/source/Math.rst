@@ -824,7 +824,7 @@ Conv
           .. math::
              P(x) = (2+3i)x^2 + (5-i)x + 3+7i,~ M(x) = (-3+2i)x + 2-i
        In this example, we perform polynomial convolution on two polynomials.
-       The first polynomial is represented by the coefficients { 2+3i, 5-i, 3+7i } and the second polynomial by { 1, 1 }.
+       The first polynomial is represented by the coefficients { 2+3i, 5-i, 3+7i } and the second polynomial by { -3+2i, 2-i }.
 
        .. code-block:: CSharp 
 
