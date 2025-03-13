@@ -1150,6 +1150,155 @@ Integral3
       |  Ensure that y_1(x) <= y_2(x) and z_1(x, y) <= z_2(x, y) throughout the integration region.
       |  If x_1 equals x_2 then the method will return 0.
    Example: 
+        Integrate the function f(x, y, z) = x * y * z over the region where x ranges from 0 to 1, y ranges from 1 to 2, and z ranges from 2 to 3, which can be expressed as:
+
+       .. math::
+          \int_{x_1}^{x_2} \int_{y_1}^{y_2}  \int_{z_1}^{z_2} x y z \, dz \, dy \, dx
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using SepalSolver;
+          using System;
+      
+          // Define the function to integrate
+          Func<double, double, double, double> f = (x, y, z) => x * y * z;
+          // Set the lower bound of x
+          double x_1 = 0;
+          // Set the upper bound of x
+          double x_2 = 1;
+          // Set the lower bound of y
+          double y_1 = 1;
+          // Set the upper bound of y
+          double y_2 = 2;
+          // Set the lower bound of z
+          double z1 = 2;
+          // Set the upper bound of z
+          double z2 = 3;
+          // Calculate the integral
+          double integral = Integrators.GaussLeg3(f, x_1, x_2, y_1, y_2, z1, z2);
+          // Print the result
+          Console.WriteLine($"The triple integral of x*y*z is approximately: {integral}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          The triple integral of x*y*z is approximately: 1.8749999998078
+       <example>
+        Integrate the function f(x, y, z) = x * y * z over the region where x ranges from 0 to 1, y ranges from x^2 to sqrt(x), and z ranges from 2 to 3, which can be expressed as:
+
+       .. math::
+          \int_{x_1}^{x_2} \int_{y_1(x)}^{y_2(x)}  \int_{z_1}^{z_2} x y z \, dz \, dy \, dx
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using SepalSolver;
+          using static System.Math
+          using System;
+      
+          // Define the function to integrate
+          Func<double, double, double, double> f = (x, y, z) => x * y * z;
+          // Define the lower bound of y as a function of x
+          Func<double, double> y_1 = (x) => x * x;
+          // Define the upper bound of y as a function of x
+          Func<double, double> y_2 = (x) => Sqrt(x);
+          // Set the lower bound of z
+          double z_1 = 2;
+          // Set the upper bound of z
+          double z_2 = 3;
+          // Set the lower bound of x
+          double x_1 = 0;
+          // Set the upper bound of x
+          double x_2 = 1;
+          // Calculate the integral
+          double integral = Integrators.GaussLeg3(f, x_1, x_2, y_1, y_2, z_1, z_2);
+          // Print the result
+          Console.WriteLine($"The triple integral of x*y*z is approximately: {integral}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          The triple integral of x*y*z is approximately: 0.208333333312197
+   Example: 
+        Integrate the function f(x, y, z) = x * y * z over the region where x ranges from 0 to 1, y ranges from 1 to x^2, and z ranges from 2 to 3, which can be expressed as:
+
+       .. math::
+          \int_{x_1}^{x_2} \int_{y_1}^{y_2(x)}  \int_{z_1}^{z_2} x y z \, dz \, dy \, dx
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using SepalSolver;
+          using System;
+      
+          // Define the function to integrate
+          Func<double, double, double, double> f = (x, y, z) => x * y * z;
+          // Define the upper bound of y as a function of x
+          Func<double, double> y_2 = (x) => x * x;
+          // Set the lower bound of x
+          double x_1 = 0;
+          // Set the upper bound of x
+          double x_2 = 1;
+          // Set the lower bound of y
+          double y_1 = 1;
+          // Set the lower bound of z
+          double z_1 = 2;
+          // Set the upper bound of z
+          double z_2 = 3;
+          // Calculate the integral
+          double integral = Integrators.GaussLeg3(f, x_1, x_2, y_1, y_2, z_1, z_2);
+          // Print the result
+          Console.WriteLine($"The triple integral of x*y*z is approximately: {integral}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          The triple integral of x*y*z is approximately: -0.416666666625285
+   Example: 
+        Integrate the function f(x, y, z) = x * y * z over the region where x ranges from 0 to 1, y ranges from x^2 to 2, and z ranges from 2 to 3, which can be expressed as:
+
+       .. math::
+          \int_{x_1}^{x_2} \int_{y_1(x)}^{y_2}  \int_{z_1}^{z_2} x y z \, dz \, dy \, dx
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using SepalSolver;
+          using System;
+      
+          // Define the function to integrate
+          Func<double, double, double, double> f = (x, y, z) => x * y * z;
+          // Define the lower bound of y as a function of x
+          Func<double, double> y_1 = (x) => x * x;
+          // Set the upper bound of y
+          double y_2 = 2;
+          // Set the lower bound of z
+          double z_1 = 2;
+          // Set the upper bound of z
+          double z_2 = 3;
+          // Set the lower bound of x
+          double x_1 = 0;
+          // Set the upper bound of x
+          double x_2 = 1;
+          // Calculate the integral
+          double integral = Integrators.GaussLeg3(f, x_1, x_2, y_1, y_2, z_1, z_2);
+          // Print the result
+          Console.WriteLine($"The triple integral of x*y*z is approximately: {integral}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          The triple integral of x*y*z is approximately: 2.29166666643309
+   Example: 
         Integrate the function f(x, y, z) = x * y * z over the region where x ranges from 0 to 1, y ranges from x^2 to sqrt(x), and z ranges from x*y to x+y, which can be expressed as:
 
        .. math::
@@ -1229,6 +1378,453 @@ Integral3
        .. code-block:: Terminal 
 
           The triple integral of x*y*z is approximately:  1.56851851820977
+   Example: 
+        Integrate the function f(x, y, z) = x * x * y * y * z over the region where x ranges from -1 to 1, y ranges from -1 to 1, and z ranges from x*y to 2, which can be expressed as:
+
+       .. math::
+          \int_{x_1}^{x_2} \int_{y_1}^{y_2}  \int_{z_1(x, y)}^{z_2} (x^2 y^2 z) \, dz \, dy \, dx
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using SepalSolver;
+          using System;
+      
+          // Define the function to integrate
+          Func<double, double, double, double> f = (x, y, z) => x * x * y * y * z;
+          // Set the lower bound of y
+          double y_1 = -1;
+          // Set the upper bound of y
+          double y_2 = 1;
+          // Define the lower bound of z as a function of x and y
+          Func<double, double, double> z_1 = (x, y) => x * y;
+          // Set the upper bound of z
+          double z_2 = 2;
+          // Set the lower bound of x
+          double x_1 = -1;
+          // Set the upper bound of x
+          double x_2 = 1;
+          // Calculate the integral
+          double integral = Integrators.GaussLeg3(f, x_1, x_2, y_1, y_2, z_1, z_2);
+          // Print the result
+          Console.WriteLine($"The triple integral of x^2*y^2*z is approximately: {integral}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          The triple integral of x^2*y^2*z is approximately: 0.808888888786791
+   Example: 
+        Integrate the function f(x, y, z) = x * y * z over the region where x ranges from 0 to 1, y ranges from x^2 to 2, and z ranges from x*y to 3, which can be expressed as:
+
+       .. math::
+          \int_{x_1}^{x_2} \int_{y_1(x)}^{y_2}  \int_{z_1(x,y)}^{z_2} x y z \, dz \, dy \, dx
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using SepalSolver;
+          using System;
+      
+          // Define the function to integrate
+          Func<double, double, double, double> f = (x, y, z) => x * y * z;
+          // Define the lower bound of y as a function of x
+          Func<double, double> y_1 = (x) => x * x;
+          // Set the upper bound of y
+          double y_2 = 2;
+          // Define the lower bound of z as a function of x and y
+          Func<double, double, double> z_1 = (x, y) => x * y;
+          // Set the upper bound of z
+          double z_2 = 3;
+          // Set the lower bound of x
+          double x_1 = 0;
+          // Set the upper bound of x
+          double x_2 = 1;
+          // Calculate the integral
+          double integral = Integrators.GaussLeg3(f, x_1, x_2, y_1, y_2, z_1, z_2);
+          // Print the result
+          Console.WriteLine($"The triple integral of x*y*z is approximately: {integral}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          The triple integral of x*y*z is approximately: 3.63541666602461
+   Example: 
+        Integrate the function f(x, y, z) = x + y + z over the region where x ranges from 0 to 1, y ranges from 1 to x + 2, and z ranges from x*y to 4, which can be expressed as:
+
+       .. math::
+          \int_{x_1}^{x_2} \int_{y_1}^{y_2(x)}  \int_{z_1(x, y)}^{z_2} (x + y + z) \, dz \, dy \, dx
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using SepalSolver;
+          using System;
+      
+          // Define the function to integrate
+          Func<double, double, double, double> f = (x, y, z) => x + y + z;
+          // Define the upper bound of y as a function of x
+          Func<double, double> y_2 = (x) => x + 2;
+          // Set the lower bound of y
+          double y_1 = 1;
+          // Define the lower bound of z as a function of x and y
+          Func<double, double, double> z_1 = (x, y) => x * y;
+          // Set the upper bound of z
+          double z_2 = 4;
+          // Set the lower bound of x
+          double x_1 = 0;
+          // Set the upper bound of x
+          double x_2 = 1;
+          // Calculate the integral
+          double integral = Integrators.GaussLeg3(f, x_1, x_2, y_1, y_2, z_1, z_2);
+          // Print the result
+          Console.WriteLine($"The triple integral of x+y+z is approximately: {integral}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          The triple integral of x+y+z is approximately: 20.7166666645573
+   Example: 
+        Integrate the function f(x, y, z) = x * x + y * y + z * z over the region where x ranges from 0 to 1, y ranges from 0 to sqrt(x), and z ranges from x+y to 5, which can be expressed as:
+
+       .. math::
+          \int_{x_1}^{x_2} \int_{y_1(x)}^{y_2(x)}  \int_{z_1(x, y)}^{z_2} (x^2 + y^2 + z^2) \, dz \, dy \, dx
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using SepalSolver;
+          using static System.Math
+          using System;
+      
+          // Define the function to integrate
+          Func<double, double, double, double> f = (x, y, z) => x * x + y * y + z * z;
+          // Define the lower bound of y as a function of x
+          Func<double, double> y_1 = (x) => 0;
+          // Define the upper bound of y as a function of x
+          Func<double, double> y_2 = (x) => Sqrt(x);
+          // Define the lower bound of z as a function of x and y
+          Func<double, double, double> z_1 = (x, y) => x + y;
+          // Set the upper bound of z
+          double z_2 = 5;
+          // Set the lower bound of x
+          double x_1 = 0;
+          // Set the upper bound of x
+          double x_2 = 1;
+          // Calculate the integral
+          double integral = Integrators.GaussLeg3(f, x_1, x_2, y_1, y_2, z_1, z_2);
+          // Print the result
+          Console.WriteLine($"The triple integral of x^2+y^2+z^2 is approximately: {integral}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          The triple integral of x^2+y^2+z^2 is approximately: 29.0252572989997
+   Example: 
+        Integrate the function f(x, y, z) = 1 / (1 + x + y + z) over the region where x ranges from 0 to 1, y ranges from 0 to 2, and z ranges from 1 to x*x + y*y + 3, which can be expressed as:
+
+       .. math::
+          \int_{x_1}^{x_2} \int_{y_1}^{y_2}  \int_{z_1}^{z_2(x, y)} \frac{1}{1 + x + y + z} \, dz \, dy \, dx
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using SepalSolver;
+          using System;
+      
+          // Define the function to integrate
+          Func<double, double, double, double> f = (x, y, z) => 1.0 / (1.0 + x + y + z);
+          // Set the lower bound of y
+          double y_1 = 0;
+          // Set the upper bound of y
+          double y_2 = 2;
+          // Set the lower bound of z
+          double z_1 = 1;
+          // Define the upper bound of z as a function of x and y
+          Func<double, double, double> z_2 = (x, y) => x * x + y * y + 3;
+          // Set the lower bound of x
+          double x_1 = 0;
+          // Set the upper bound of x
+          double x_2 = 1;
+          // Calculate the integral
+          double integral = Integrators.GaussLeg3(f, x_1, x_2, y_1, y_2, z_1, z_2);
+          // Print the result
+          Console.WriteLine($"The triple integral of 1/(1+x+y+z) is approximately: {integral}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          The triple integral of 1/(1+x+y+z) is approximately: 1.40208584910316
+   Example: 
+        Integrate the function f(x, y, z) = x * y + z over the region where x ranges from 0 to 2, y ranges from sin(x) to 3, and z ranges from -1 to x*x + y + 2, which can be expressed as:
+
+       .. math::
+          \int_{x_1}^{x_2} \int_{y_1(x)}^{y_2}  \int_{z_1}^{z_2(x, y)} (x y + z) \, dz \, dy \, dx
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using SepalSolver;
+          using System;
+      
+          // Define the function to integrate
+          Func<double, double, double, double> f = (x, y, z) => x * y + z;
+          // Define the lower bound of y as a function of x
+          Func<double, double> y_1 = (x) => Sin(x);
+          // Set the upper bound of y
+          double y_2 = 3;
+          // Set the lower bound of z
+          double z_1 = -1;
+          // Define the upper bound of z as a function of x and y
+          Func<double, double, double> z_2 = (x, y) => x * x + y + 2;
+          // Set the lower bound of x
+          double x_1 = 0;
+          // Set the upper bound of x
+          double x_2 = 2;
+          // Calculate the integral
+          double integral = Integrators.GaussLeg3(f, x_1, x_2, y_1, y_2, z_1, z_2);
+          // Print the result
+          Console.WriteLine($"The triple integral of xy+z is approximately: {integral}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          The triple integral of xy+z is approximately: 119.271742284841
+   Example: 
+        Integrate the function f(x, y, z) = x - y + 2*z over the region where x ranges from 1 to 3, y ranges from -2 to x*x, and z ranges from 0 to x + y + 1, which can be expressed as:
+
+       .. math::
+          \int_{x_1}^{x_2} \int_{y_1}^{y_2(x)}  \int_{z_1}^{z_2(x, y)} (x - y + 2z) \, dz \, dy \, dx
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using SepalSolver;
+          using System;
+      
+          // Define the function to integrate
+          Func<double, double, double, double> f = (x, y, z) => x - y + 2 * z;
+          // Define the upper bound of y as a function of x
+          Func<double, double> y_2 = (x) => x * x;
+          // Set the lower bound of y
+          double y_1 = -2;
+          // Set the lower bound of z
+          double z_1 = 0;
+          // Define the upper bound of z as a function of x and y
+          Func<double, double, double> z_2 = (x, y) => x + y + 1;
+          // Set the lower bound of x
+          double x_1 = 1;
+          // Set the upper bound of x
+          double x_2 = 3;
+          // Calculate the integral
+          double integral = Integrators.GaussLeg3(f, x_1, x_2, y_1, y_2, z_1, z_2);
+          // Print the result
+          Console.WriteLine($"The triple integral of x-y+2z is approximately: {integral}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          The triple integral of x-y+2z is approximately: 353.666666629263
+   Example: 
+        Integrate the function f(x, y, z) = x * y * z over the region where x ranges from 0 to 1, y ranges from x^2 to sqrt(x), and z ranges from 2 to x+y, which can be expressed as:
+
+       .. math::
+          \int_{x_1}^{x_2} \int_{y_1(x)}^{y_2(x)}  \int_{z_1}^{z_2(x,y)} x y z \, dz \, dy \, dx
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using SepalSolver;
+          using stati System.Math;
+          using System;
+      
+          // Define the function to integrate
+          Func<double, double, double, double> f = (x, y, z) => x * y * z;
+          // Define the lower bound of y as a function of x
+          Func<double, double> y_1 = (x) => x * x;
+          // Define the upper bound of y as a function of x
+          Func<double, double> y_2 = (x) => Sqrt(x);
+          // Set the lower bound of z
+          double z_1 = 2;
+          // Define the upper bound of z as a function of x and y
+          Func<double, double, double> z_2 = (x, y) => x + y;
+          // Set the lower bound of x
+          double x_1 = 0;
+          // Set the upper bound of x
+          double x_2 = 1;
+          // Calculate the integral
+          double integral = Integrators.GaussLeg3(f, x_1, x_2, y_1, y_2, z_1, z_2);
+          // Print the result
+          Console.WriteLine($"The triple integral of x*y*z is approximately: {integral}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          The triple integral of x*y*z is approximately:   -0.0921296305735099
+   Example: 
+        Integrate the function f(x, y, z) = x * y * z over the region where x ranges from 0 to 1, y ranges from 1 to 2, and z ranges from x*y to x+y, which can be expressed as:
+
+       .. math::
+          \int_{x_1}^{x_2} \int_{y_1}^{y_2}  \int_{z_1(x,y)}^{z_2(x,y)} x y z \, dz \, dy \, dx
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using SepalSolver;
+          using System;
+      
+          // Define the function to integrate
+          Func<double, double, double, double> f = (x, y, z) => x * y * z;
+          // Set the lower bound of y
+          double y_1 = 1;
+          // Set the upper bound of y
+          double y_2 = 2;
+          // Define the lower bound of z as a function of x and y
+          Func<double, double, double> z_1 = (x, y) => x * y;
+          // Define the upper bound of z as a function of x and y
+          Func<double, double, double> z_2 = (x, y) => x + y;
+          // Set the lower bound of x
+          double x_1 = 0;
+          // Set the upper bound of x
+          double x_2 = 1;
+          // Calculate the integral
+          double integral = Integrators.GaussLeg3(f, x_1, x_2, y_1, y_2, z_1, z_2);
+          // Print the result
+          Console.WriteLine($"The triple integral of x*y*z is approximately: {integral}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          The triple integral of x*y*z is approximately:  1.43402777762941
+   Example: 
+        Integrate the function f(x, y, z) = x * y * z over the region where x ranges from 0 to 1, y ranges from x^2 to 2, and z ranges from x*y to x+y, which can be expressed as:
+
+       .. math::
+          \int_{x_1}^{x_2} \int_{y_1(x)}^{y_2}  \int_{z_1(x,y)}^{z_2(x,y)} x y z \, dz \, dy \, dx
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using SepalSolver;
+          using System;
+      
+          // Define the function to integrate
+          Func<double, double, double, double> f = (x, y, z) => x * y * z;
+          // Define the lower bound of y as a function of x
+          Func<double, double> y_1 = (x) => x * x;
+          // Set the upper bound of y
+          double y_2 = 2;
+          // Define the lower bound of z as a function of x and y
+          Func<double, double, double> z_1 = (x, y) => x * y;
+          // Define the upper bound of z as a function of x and y
+          Func<double, double, double> z_2 = (x, y) => x + y;
+          // Set the lower bound of x
+          double x_1 = 0;
+          // Set the upper bound of x
+          double x_2 = 1;
+          // Calculate the integral
+          double integral = Integrators.GaussLeg3(f, x_1, x_2, y_1, y_2, z_1, z_2);
+          // Print the result
+          Console.WriteLine($"The triple integral of x*y*z is approximately: {integral}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          The triple integral of x*y*z is approximately:  1.56851851820977
+   Example: 
+        Integrate the function f(x, y, z) = x * y * z over the region where x ranges from 0 to 1, y ranges from 1 to x^2, and z ranges from x*y to x+y, which can be expressed as:
+
+       .. math::
+          \int_{x_1}^{x_2} \int_{y_1}^{y_2(x)}  \int_{z_1(x,y)}^{z_2(x,y)} x y z \, dz \, dy \, dx
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using SepalSolver;
+          using System;
+      
+          // Define the function to integrate
+          Func<double, double, double, double> f = (x, y, z) => x * y * z;
+          // Define the upper bound of y as a function of x
+          Func<double, double> y_2 = (x) => x * x;
+          // Set the lower bound of y
+          double y_1 = 1;
+          // Define the lower bound of z as a function of x and y
+          Func<double, double, double> z_1 = (x, y) => x * y;
+          // Define the upper bound of z as a function of x and y
+          Func<double, double, double> z_2 = (x, y) => x + y;
+          // Set the lower bound of x
+          double x_1 = 0;
+          // Set the upper bound of x
+          double x_2 = 1;
+          // Calculate the integral
+          double integral = Integrators.GaussLeg3(f, x_1, x_2, y_1, y_2, z_1, z_2);
+          // Print the result
+          Console.WriteLine($"The triple integral of x*y*z is approximately: {integral}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          The triple integral of x*y*z is approximately: -0.134490740716508
+   Example: 
+        Integrate the function f(x, y, z) = x * y * z over the region where x ranges from 0 to 1, y ranges from x^2 to sqrt(x), and z ranges from x*y to x+y, which can be expressed as:
+
+       .. math::
+          \int_{x_1}^{x_2} \int_{y_1(x)}^{y_2(x)}  \int_{z_1(x,y)}^{z_2(x,y)} x y z \, dz \, dy \, dx
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using SepalSolver;
+          using static System.Math;
+          using System;
+      
+          // Define the function to integrate
+          Func<double, double, double, double> f = (x, y, z) => x * y * z;
+          // Define the lower bound of y as a function of x
+          Func<double, double> y_1 = (x) => x * x;
+          // Define the upper bound of y as a function of x
+          Func<double, double> y_2 = (x) => Sqrt(x);
+          // Define the lower bound of z as a function of x and y
+          Func<double, double, double> z_1 = (x, y) => x * y;
+          // Define the upper bound of z as a function of x and y
+          Func<double, double, double> z_2 = (x, y) => x + y;
+          // Set the lower bound of x
+          double x_1 = 0;
+          // Set the upper bound of x
+          double x_2 = 1;
+          // Calculate the integral
+          double integral = Integrators.GaussLeg3(f, x_1, x_2, y_1, y_2, z_1, z_2);
+          // Print the result
+          Console.WriteLine($"The triple integral of x*y*z is approximately: {integral}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          The triple integral of x*y*z is approximately: 0.0641203694008985
 |   cref=System.ArgumentNullException is Thrown when the  fun is null.
 |   cref=System.ArgumentNullException is Thrown when the  y_1 is null.
 |   cref=System.ArgumentNullException is Thrown when the  y_2 is null.
