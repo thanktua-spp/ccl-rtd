@@ -594,6 +594,95 @@ Polyfit
           Coefficients: 1, 0, 0
 
 
+Roots
+=====
+   Description: 
+       Calculates the roots of a polynomial given its coefficients.
+       Mathematically, this can be represented as:
+
+       .. math::
+          P(x) = 0
+       where P(x) is the polynomial.
+
+       .. code-block:: CSharp 
+
+          Complex[] Roots(double[] Coeffs)
+          Complex[] Roots(Complex[] Coeffs)
+   Param: 
+      | Coeffs:  The coefficients of the polynomial, ordered from the highest degree to the constant term.
+   Returns: 
+       An array of Complex numbers representing the roots of the polynomial.
+   Example: 
+
+          .. math::
+             P(x) = 2x^5 + 3x^4 + 5x^3 + 2x^2 + 7x + 4
+       In this example, we find the roots of the polynomial represented by the coefficients { 2, 3, 4, 2, 7, 4 }.
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using SepalSolver;
+          using static SepalSolver.Math;
+      
+          // Example of finding roots of a polynomial
+          double[] Coeffs = [2, 3, 4, 2, 7, 4];
+          Complex[] roots = Roots(Coeffs);
+          // Print the result
+          Console.WriteLine($"Roots:\n\t {string.Join(", \n\t", roots)}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          Roots:
+            -1.0310 + 1.1635i
+            -1.0310 - 1.1635i
+             0.5737 + 1.0415i
+             0.5737 - 1.0415i
+            -0.5854 + 0.0000i
+
+   ..note::
+       The coefficients can be real or complex.
+
+
+
+   Example: 
+
+       .. math::
+          \begin{array}{rcl}
+          P(x) &=& (5 + 2i)x^4 + (3 + 7i)x^3 + (5 + 8i)x^2 + (3 + 7i)x + (7 + 4i)
+          \end{array}
+          
+       In this example, we find the roots of the polynomial with complex coefficients.
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using SepalSolver;
+          using static SepalSolver.Math;
+      
+          // Example of finding roots of a polynomial with complex coefficients
+          Complex[] Coeffs = [new(5, 2), new(3, 7), new(5, 8), new(3, 7), new(7, 4)];
+          Complex[] roots = Roots(Coeffs);
+      
+          // Print the result
+          Console.WriteLine($"Roots:\n\t {string.Join(", \n\t", roots)}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          Roots:
+             0.3102 - 1.4446i
+            -0.7626 - 0.9963i
+            -0.7572 + 0.6704i
+             0.2097 + 0.7705i
+
+
 Deconv
 ======
    Description: 
@@ -694,6 +783,11 @@ Conv
        .. math::
           C(x) = P(x) * M(x)
        where P(x) is the first polynomial, M(x) is the second polynomial, and C(x) is the resulting polynomial.
+
+       .. code-block:: CSharp 
+
+          double[] Conv(double[] Polynomial, double[] Multiplier)
+          Complex[] Conv(Complex[] Polynomial, Complex[] Multiplier)
    Param: 
       | Polynomial:  The coefficients of the first polynomial.
       | Multiplier:  The coefficients of the second polynomial.
