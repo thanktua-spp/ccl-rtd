@@ -3,10 +3,10 @@
 Hypot
 =====
    Description: 
-       Calculates the length of the hypotenuse of a right-angled triangle given the lengths of the other two sides.This method computes C = sqrt(abs(A).^2 + abs(B).^2) by avoiding underflow and overflow.
+       Calculates the length of the hypotenuse of a right-angled triangle given the lengths of the other two sides.This method computes z = Sqrt(Pow(x, 2) + Pow(y, 2)) by avoiding underflow and overflow.
 
        .. math::
-          hypot(x,y) = \sqrt{x^2 + y^2}
+          \hypot(x,y) = \sqrt{x^2 + y^2}
           
 
        .. code-block:: CSharp 
@@ -34,8 +34,8 @@ Hypot
        The length of the hypotenuse.
    Example: 
        <code>
-       var hypotenuse = Hypot(3, 4);
-       Console.WriteLine(hypotenuse);
+          var hypotenuse = Hypot(3, 4);
+          Console.WriteLine(hypotenuse);
        </code>
 
       Output: 
@@ -46,10 +46,10 @@ Hypot
           5
    Example: 
        <code>
-       RowVec X = new double[]{2,3,4,5};
-       ColVec Y = new double[]{7,6};
-       var hypotenuse = Hypot(X, Y);
-       Console.WriteLine(hypotenuse); 
+          RowVec X = new double[]{2,3,4,5};
+          ColVec Y = new double[]{7,6};
+          var hypotenuse = Hypot(X, Y);
+          Console.WriteLine(hypotenuse); 
        </code>
 
       Output: 
