@@ -1087,10 +1087,8 @@ we can add animation of the solution
          byte[] ImageGen(int i)
          {
              Plot(Y["", I], Y["", J], "--"); hold = true;
-             for (int j = 0; j < 7; j++)
-                 Scatter(Y[i, j], Y[i, j + 7], "fo", 20);
-             hold = false;
-             return GetImageBytes(700, 700);
+             for (int j = 0; j < 7; j++) Scatter(Y[i, j], Y[i, j + 7], "fo", 20);
+             hold = false; return GetImageBytes(700, 700);
          }
          AnimationMaker(ImageGen, "Position-of-Pleiades-Stars-CCL-Math-Ode89.gif", 10, 200);
         

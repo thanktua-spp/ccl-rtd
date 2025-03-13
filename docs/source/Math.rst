@@ -1,5 +1,66 @@
 
 
+Hypot
+=====
+   Description: 
+       Calculates the length of the hypotenuse of a right-angled triangle given the lengths of the other two sides.This method computes C = sqrt(abs(A).^2 + abs(B).^2) by avoiding underflow and overflow.
+
+       .. math::
+          hypot(x,y) = \sqrt{x^2 + y^2}
+          
+
+       .. code-block:: CSharp 
+
+          double Hypot(double x, double y)
+          ColVec Hypot(ColVec x, double y)
+          ColVec Hypot(double x, ColVec y)
+          RowVec Hypot(RowVec x, double y)
+          RowVec Hypot(double x, RowVec y)
+          Matrix Hypot(Matrix x, double y)
+          Matrix Hypot(double x, Matrix y)
+          ColVec Hypot(ColVec x, ColVec y)
+          RowVec Hypot(RowVec x, RowVec y)
+          Matrix Hypot(Matrix x, Matrix y)
+          Matrix Hypot(RowVec x, ColVec y)
+          Matrix Hypot(ColVec x, RowVec y)
+          Matrix Hypot(RowVec x, Matrix y)
+          Matrix Hypot(Matrix x, RowVec y)
+          Matrix Hypot(Matrix x, ColVec y)
+          Matrix Hypot(ColVec x, Matrix y)
+   Param: 
+      | x:  The length of one side of the triangle.
+      | y:  The length of the other side of the triangle.
+   Returns: 
+       The length of the hypotenuse.
+   Example: 
+       <code>
+       var hypotenuse = Hypot(3, 4);
+       Console.WriteLine(hypotenuse);
+       </code>
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          5
+   Example: 
+       <code>
+       RowVec X = new double[]{2,3,4,5};
+       ColVec Y = new double[]{7,6};
+       var hypotenuse = Hypot(X, Y);
+       Console.WriteLine(hypotenuse); 
+       </code>
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          7.2801    7.6158    8.0623    8.6023
+          6.3246    6.7082    7.2111    7.8102
+
+
 decic
 =====
    Description: 
@@ -29,7 +90,7 @@ decic
 
          // import libraries
          using System;
-         using CypherCrescent.MathematicsLibrary.Math;
+         using SepalSolver.Math;
       
          //define ODE
          static double fun(double t, double y, double yp) =>
@@ -83,7 +144,7 @@ Ode23
 
           // import libraries
           using System;
-          using CypherCrescent.MathematicsLibrary.Math;
+          using SepalSolver.Math;
       
           //define ODE
           static ColVec vdp1(double t, ColVec y)
@@ -141,7 +202,7 @@ Ode45
 
           // import libraries
           using System;
-          using CypherCrescent.MathematicsLibrary.Math;
+          using SepalSolver.Math;
       
           //define ODE
           static ColVec vdp1(double t, ColVec y)
@@ -199,7 +260,7 @@ Ode56
 
           // import libraries
           using System;
-          using CypherCrescent.MathematicsLibrary.Math;
+          using SepalSolver.Math;
       
           //define ODE
           static ColVec vdp1(double t, ColVec y)
@@ -257,7 +318,7 @@ Ode78
 
           // import libraries
           using System;
-          using CypherCrescent.MathematicsLibrary.Math;
+          using SepalSolver.Math;
       
           //define ODE
           static ColVec vdp1(double t, ColVec y)
@@ -315,7 +376,7 @@ Ode89
 
           // import libraries
           using System;
-          using CypherCrescent.MathematicsLibrary.Math;
+          using SepalSolver.Math;
       
           //define ODE
           static ColVec vdp1(double t, ColVec y)
@@ -373,7 +434,7 @@ Ode45s
 
           // import libraries
           using System;
-          using CypherCrescent.MathematicsLibrary.Math;
+          using SepalSolver.Math;
       
           //define ODE
           static ColVec vdp2(double t, ColVec y)
@@ -427,7 +488,7 @@ Ode45i
 
           // import libraries
           using System;
-          using CypherCrescent.MathematicsLibrary.Math;
+          using SepalSolver.Math;
       
           //define ODE
           static double fun(double t, double y, double yp) =>
@@ -511,7 +572,7 @@ Polyfit
 
           // import libraries
           using System;
-          using CypherCrescent.MathematicsLibrary.Math;
+          using SepalSolver.Math;
       
           // Example of fitting a polynomial
           double[] X = { 1, 2, 3, 4 };
@@ -538,6 +599,11 @@ Deconv
        .. math::
           P(x) = D(x) * Q(x) + R(x)
        where P(x) is the dividend polynomial, D(x) is the divisor polynomial, Q(x) is the quotient polynomial, and R(x) is the remainder polynomial.
+
+       .. code-block:: CSharp 
+
+          (double[] Quotient, double[] Remainder) Deconv(double[] Polynomial, double[] Divisor)
+          (Complex[] Quotient, Complex[] Remainder) Deconv(Complex[] Polynomial, Complex[] Divisor)
    Param: 
       | Polynomial:  The coefficients of the dividend polynomial (numerator).
       | Divisor:  The coefficients of the divisor polynomial (denominator).
@@ -556,7 +622,7 @@ Deconv
 
           // import libraries
           using System;
-          using CypherCrescent.MathematicsLibrary.Math;
+          using SepalSolver.Math;
       
           // Example of performing polynomial deconvolution
           double[] Polynomial = [1, 2, 3, 4, 5, 6];
@@ -593,7 +659,7 @@ Deconv
 
           // import libraries
           using System;
-          using CypherCrescent.MathematicsLibrary.Math;
+          using SepalSolver.Math;
       
           // Example of performing polynomial deconvolution
           Complex[] P = [new(7,3), new(9,10), new(10,4), new(2,7)], 
@@ -640,7 +706,7 @@ Conv
 
           // import libraries
           using System;
-          using CypherCrescent.MathematicsLibrary.Math;
+          using SepalSolver.Math;
       
           // Example of performing polynomial convolution
           double[] Polynomial = [ 1, 2, 3 ];
@@ -666,7 +732,7 @@ Conv
 
           // import libraries
           using System;
-          using CypherCrescent.MathematicsLibrary.Math;
+          using SepalSolver.Math;
       
           // Example of performing polynomial convolution
           Complex[] Polynomial = [ new(2,3), new(5,-1), new(3,7) ];
@@ -709,7 +775,7 @@ Integral
 
           // import libraries
           using System;
-          using CypherCrescent.MathematicsLibrary.Math;
+          using SepalSolver.Math;
       
           // Define the function to integrate
           Func<double, double> f = (x) => x * x;
@@ -761,7 +827,7 @@ Integral2
 
           // import libraries
           using System;
-          using CypherCrescent.MathematicsLibrary.Math;
+          using SepalSolver.Math;
       
           // Define the function to integrate
           Func<double, double, double> f = (x, y) => x * y;
@@ -800,7 +866,7 @@ Integral2
 
           // import libraries
           using System;
-          using CypherCrescent.MathematicsLibrary.Math;
+          using SepalSolver.Math;
       
           // Define the function to integrate
           Func<double, double, double> f = (x, y) => x * y;
@@ -861,7 +927,7 @@ Integral3
 
           // import libraries
           using System;
-          using CypherCrescent.MathematicsLibrary.Math;
+          using SepalSolver.Math;
       
           // Define the function to integrate
           Func<double, double, double, double> f = (x, y, z) => x * y * z;
@@ -904,7 +970,7 @@ Integral3
 
           // import libraries
           using System;
-          using CypherCrescent.MathematicsLibrary.Math;
+          using SepalSolver.Math;
       
           // Define the function to integrate
           Func<double, double, double, double> f = (x, y, z) => x * y * z;
@@ -973,7 +1039,7 @@ Integral4
 
           // import libraries
           using System;
-          using CypherCrescent.MathematicsLibrary.Math;
+          using SepalSolver.Math;
       
           // Define the function to integrate
           Func<double, double, double, double, double> f = (w, x, y, z) => 1;
