@@ -629,7 +629,7 @@ Roots
           double[] Coeffs = [2, 3, 4, 2, 7, 4];
           Complex[] roots = Roots(Coeffs);
           // Print the result
-          Console.WriteLine($"Roots:\n\t {string.Join(", \n\t", roots)}");
+          Console.WriteLine($"Roots:\n {string.Join("\n ", roots)}");
 
       Output: 
 
@@ -637,11 +637,11 @@ Roots
        .. code-block:: Terminal 
 
           Roots:
-            -1.0310 + 1.1635i
-            -1.0310 - 1.1635i
-             0.5737 + 1.0415i
-             0.5737 - 1.0415i
             -0.5854 + 0.0000i
+             0.5737 - 1.0415i
+             0.5737 + 1.0415i
+            -1.0310 - 1.1635i
+            -1.0310 + 1.1635i
 
    ..note::
        The coefficients can be real or complex.
@@ -669,7 +669,7 @@ Roots
           Complex[] roots = Roots(Coeffs);
       
           // Print the result
-          Console.WriteLine($"Roots:\n\t {string.Join(", \n\t", roots)}");
+          Console.WriteLine($"Roots:\n {string.Join("\n ", roots)}");
 
       Output: 
 
@@ -677,10 +677,10 @@ Roots
        .. code-block:: Terminal 
 
           Roots:
-             0.3102 - 1.4446i
-            -0.7626 - 0.9963i
-            -0.7572 + 0.6704i
              0.2097 + 0.7705i
+            -0.7572 + 0.6704i
+            -0.7626 - 0.9963i
+             0.3102 - 1.4446i
 
 
 Deconv
