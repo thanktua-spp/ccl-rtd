@@ -844,7 +844,7 @@ Conv
 
        .. code-block:: Terminal 
 
-          Product: -12.0000 - 5.0000i ,  -6.0000 + 17.0000i, -1.4000e+01 - 2.2000e+01i,  13.0000 + 11.0000i
+          Product: -12 - 5i ,  -6 + 17i, -14 - 22i,  13 + 11i
 
 
 Integral
