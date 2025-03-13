@@ -690,7 +690,7 @@ Deconv
        Mathematically, this can be represented as:
 
        .. math::
-          P(x) = D(x) * Q(x) + R(x)
+          P(x) = D(x) \times Q(x) + R(x)
        where P(x) is the dividend polynomial, D(x) is the divisor polynomial, Q(x) is the quotient polynomial, and R(x) is the remainder polynomial.
 
        .. code-block:: CSharp 
@@ -781,7 +781,7 @@ Conv
        Mathematically, this can be represented as:
 
        .. math::
-          C(x) = P(x) * M(x)
+          C(x) = P(x) \times M(x)
        where P(x) is the first polynomial, M(x) is the second polynomial, and C(x) is the resulting polynomial.
 
        .. code-block:: CSharp 
